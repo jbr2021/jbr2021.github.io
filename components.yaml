@@ -6,7 +6,7 @@ metadata:
 
  annotations:
   github.com/project-slug: csp/referenceservice
-  backstage.io/source-location: url:https://github.service.anz/csp/referenceservice
+  backstage.io/source-location: url:https://test.com/csp/referenceservice
  tags:
    - java
 spec:
@@ -23,7 +23,7 @@ metadata:
  description: Audit Service
  annotations:
   github.com/project-slug: csp/auditservice
-  backstage.io/source-location: url:https://github.service.anz/csp/auditservice
+  backstage.io/source-location: url:https://test.com/csp/auditservice
   jira/project-key: CSPPS
  tags:
    - java
@@ -42,7 +42,7 @@ metadata:
 
  annotations:
   github.com/project-slug: csp/featuretoggleservice
-  backstage.io/source-location: url:https://github.service.anz/csp/featuretoggleservice
+  backstage.io/source-location: url:https://test.com/csp/featuretoggleservice
  tags:
    - java
 spec:
@@ -60,7 +60,7 @@ metadata:
 
  annotations:
   github.com/project-slug: csp/commentsservice
-  backstage.io/source-location: url:https://github.service.anz/csp/commentservice
+  backstage.io/source-location: url:https://test.com/csp/commentservice
  tags:
    - java
 spec:
@@ -78,7 +78,7 @@ metadata:
 
  annotations:
   github.com/project-slug: csp/shoppingcart
-  backstage.io/source-location: url:https://github.service.anz/csp/shoppingcart
+  backstage.io/source-location: url:https://test.com/csp/shoppingcart
  tags:
    - java
 spec:
@@ -96,7 +96,7 @@ metadata:
 
  annotations:
   github.com/project-slug: csp/addressservice
-  backstage.io/source-location: url:https://github.service.anz/csp/addressservice
+  backstage.io/source-location: url:https://test.com/csp/addressservice
  tags:
    - java
 spec:
@@ -114,7 +114,7 @@ metadata:
 
  annotations:
   github.com/project-slug: csp/documentvault-api
-  backstage.io/source-location: url:https://github.service.anz/csp/documentvault-api
+  backstage.io/source-location: url:https://test.com/csp/documentvault-api
  tags:
    - java
 spec:
@@ -132,7 +132,7 @@ metadata:
 
  annotations:
   github.com/project-slug: csp/productservice-v1
-  backstage.io/source-location: url:https://github.service.anz/csp/productservice-v1
+  backstage.io/source-location: url:https://test.com/csp/productservice-v1
  tags:
    - java
 spec:
@@ -150,7 +150,7 @@ metadata:
 
  annotations:
   github.com/project-slug: csp/consent-ui
-  backstage.io/source-location: url:https://github.service.anz/csp/consent-ui
+  backstage.io/source-location: url:https://test.com/csp/consent-ui
  tags:
    - react-js
    - ui
@@ -169,7 +169,7 @@ metadata:
 
  annotations:
   github.com/project-slug: csp/consent-service
-  backstage.io/source-location: url:https://github.service.anz/csp/consentservice
+  backstage.io/source-location: url:https://test.com/csp/consentservice
  tags:
    - java
 spec:
@@ -187,12 +187,12 @@ metadata:
 
  annotations:
   github.com/project-slug: csp/customerservicev2
-  backstage.io/source-location: url:https://github.service.anz/csp/customerservicev2
+  backstage.io/source-location: url:https://test.com/csp/customerservicev2
   backstage.io/kubernetes-label-selector: 'app=customer-service-v2'
  tags:
    - java
  links: 
-   -url: https://confluence.service.anz/display/BEX/CSP+Customer+Service
+   -url: https://test.com/display/BEX/CSP+Customer+Service
     title: Solution Architecture
     icon: document 
 spec:
@@ -210,28 +210,3 @@ spec:
      "component:feature-toggle-services"
      "component:party-service"
    ] 
-
----
-apiVersion: backstage.io/v1alpha1
-kind: API
-metadata: 
- name: customer-service-v2-api
- description: test-desc
-
- annotations:
-  github.com/project-slug: csp/customerservicev2
-  backstage.io/source-location: url:https://github.service.anz/csp/customerservicev2
-  backstage.io/techdocs-ref: https://github.service.anz/bhradwad/customerservicev2/tree/develop
- tags:
-   - java
- links: 
-   -url: https://confluence.service.anz/display/BEX/CSP+Customer+Service
-    title: Solution Architecture
-    icon: document 
-spec:
- type: openapi
- lifecycle: production
- owner: bds
- system: csp
- definition:
-    $text: https://github.service.anz.bhradwad/customerservicev2/blob/develop/web/src/main/resources/interfaces/swagger/swagger_definition/Customer%20Service.yaml
