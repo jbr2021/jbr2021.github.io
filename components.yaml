@@ -1,4 +1,4 @@
-apiVersion: backstage/io/v1alpha1
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata: 
  name: reference-service
@@ -16,7 +16,7 @@ spec:
  system: csp
 
 ---
-apiVersion: backstage/io/v1alpha1
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata: 
  name: audit-service
@@ -34,7 +34,7 @@ spec:
  system: csp
 
 ---
-apiVersion: backstage/io/v1alpha1
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata: 
  name: feature-toggle-services
@@ -52,7 +52,7 @@ spec:
  system: csp
 
 ---
-apiVersion: backstage/io/v1alpha1
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata: 
  name: comment-service
@@ -70,7 +70,7 @@ spec:
  system: csp
 
 ---
-apiVersion: backstage/io/v1alpha1
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata: 
  name: shoppingcarte
@@ -88,7 +88,7 @@ spec:
  system: csp
 
 ---
-apiVersion: backstage/io/v1alpha1
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata: 
  name: address-service
@@ -106,7 +106,7 @@ spec:
  system: csp
 
 ---
-apiVersion: backstage/io/v1alpha1
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata: 
  name: docvault-service
@@ -124,7 +124,7 @@ spec:
  system: csp
 
 ---
-apiVersion: backstage/io/v1alpha1
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata: 
  name: product-service-v1
@@ -142,7 +142,7 @@ spec:
  system: csp
 
 ---
-apiVersion: backstage/io/v1alpha1
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata: 
  name: consent-management-ui
@@ -161,7 +161,7 @@ spec:
  system: csp
 
 ---
-apiVersion: backstage/io/v1alpha1
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata: 
  name: consent-management-service
@@ -179,7 +179,7 @@ spec:
  system: csp
 
  ---
-apiVersion: backstage/io/v1alpha1
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata: 
  name: customer-service-v2
@@ -212,7 +212,7 @@ spec:
    ] 
 
 ---
-apiVersion: backstage/io/v1alpha1
+apiVersion: backstage.io/v1alpha1
 kind: API
 metadata: 
  name: customer-service-v2-api
