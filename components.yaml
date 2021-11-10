@@ -3,7 +3,6 @@ kind: Component
 metadata: 
  name: reference-service
  description: test-desc
-
  annotations:
   github.com/project-slug: csp/referenceservice
   backstage.io/source-location: url:https://github.service.anz/csp/referenceservice
@@ -39,7 +38,6 @@ kind: Component
 metadata: 
  name: feature-toggle-services
  description: test-desc
-
  annotations:
   github.com/project-slug: csp/featuretoggleservice
   backstage.io/source-location: url:https://github.service.anz/csp/featuretoggleservice
@@ -57,7 +55,6 @@ kind: Component
 metadata: 
  name: comment-service
  description: test-desc
-
  annotations:
   github.com/project-slug: csp/commentsservice
   backstage.io/source-location: url:https://github.service.anz/csp/commentservice
@@ -75,7 +72,6 @@ kind: Component
 metadata: 
  name: shoppingcarte
  description: test-desc
-
  annotations:
   github.com/project-slug: csp/shoppingcart
   backstage.io/source-location: url:https://github.service.anz/csp/shoppingcart
@@ -93,7 +89,6 @@ kind: Component
 metadata: 
  name: address-service
  description: test-desc
-
  annotations:
   github.com/project-slug: csp/addressservice
   backstage.io/source-location: url:https://github.service.anz/csp/addressservice
@@ -111,7 +106,6 @@ kind: Component
 metadata: 
  name: docvault-service
  description: test-desc
-
  annotations:
   github.com/project-slug: csp/documentvault-api
   backstage.io/source-location: url:https://github.service.anz/csp/documentvault-api
@@ -129,7 +123,6 @@ kind: Component
 metadata: 
  name: product-service-v1
  description: test-desc
-
  annotations:
   github.com/project-slug: csp/productservice-v1
   backstage.io/source-location: url:https://github.service.anz/csp/productservice-v1
@@ -147,7 +140,6 @@ kind: Component
 metadata: 
  name: consent-management-ui
  description: test-desc
-
  annotations:
   github.com/project-slug: csp/consent-ui
   backstage.io/source-location: url:https://github.service.anz/csp/consent-ui
@@ -166,7 +158,6 @@ kind: Component
 metadata: 
  name: consent-management-service
  description: test-desc
-
  annotations:
   github.com/project-slug: csp/consent-service
   backstage.io/source-location: url:https://github.service.anz/csp/consentservice
@@ -184,7 +175,6 @@ kind: Component
 metadata: 
  name: customer-service-v2
  description: test-desc
-
  annotations:
   github.com/project-slug: csp/customerservicev2
   backstage.io/source-location: url:https://github.service.anz/csp/customerservicev2
@@ -217,7 +207,6 @@ kind: API
 metadata: 
  name: customer-service-v2-api
  description: test-desc
-
  annotations:
   github.com/project-slug: csp/customerservicev2
   backstage.io/source-location: url:https://github.service.anz/csp/customerservicev2
