@@ -3,11 +3,11 @@ kind: Component
 metadata: 
   name: reference-service
   description: test-desc
+  tags:
+    - java
   annotations:
     github.com/project-slug: csp/referenceservice
     backstage.io/source-location: url:https://github.com/jbr2021/jbr2021.github.io
-  tags:
-    - java
   spec:
     type: service
     lifecycle: production
