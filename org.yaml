@@ -8,7 +8,7 @@ spec:
   profile: 
     email: banker-experience-tribe@example.com
     picture: 
-  parent: anz
+  parent: acme-corp
   children: []
 
 ---
