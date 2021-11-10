@@ -4,7 +4,7 @@ metadata:
   name: banker-experience-tribe
   description: Banker Experience Tribe
 spec: 
-  type: tribe
+  type: organization
   profile: 
     email: banker-experience-tribe@example.com
     picture: 
