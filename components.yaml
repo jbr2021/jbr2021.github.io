@@ -82,7 +82,7 @@ spec:
  lifecycle: production
  owner: aryabhata-squad
  system: csp
- children: ['feature-toggle-services','address-service']
+ children: [feature-toggle-services,address-service]
 
 ---
 apiVersion: backstage.io/v1alpha1
