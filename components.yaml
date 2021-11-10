@@ -1,15 +1,16 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
-metadata: 
+metadata:
   name: reference-service
-  description: test-desc
+  description: Knowledge Management Search service
   tags:
     - java
+    - test
   annotations:
-    github.com/project-slug: csp/referenceservice
-    backstage.io/source-location: url:https://github.com/jbr2021/jbr2021.github.io
-  spec:
-    type: service
-    lifecycle: production
-    owner: platform-acceleration
-    system: csp
+    backstage.io/kubernetes-label-selector: app=knowledge-management-search-service,component=search
+spec:
+  type: service
+  lifecycle: experimental
+  owner: platform-acceleration
+  system: csp
+  children: []
