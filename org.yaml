@@ -8,7 +8,7 @@ spec:
   profile: 
     email: banker-experience-tribe@example.com
     picture: "https://cdn-icons-png.flaticon.com/512/116/116370.png" 
-  parent: anz
+  parent: HCL Technologies Ltd.
   children: []
 
 ---
