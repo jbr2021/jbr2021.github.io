@@ -1,29 +1,11 @@
-apiVersion: backstage/io/v1alpha1
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata: 
   name: reference-service
   description: test-desc
   annotations:
     github.com/project-slug: csp/referenceservice
-    backstage.io/source-location: url:https://github.service.anz/csp/referenceservice
-  tags:
-    - java
-  spec:
-    type: service
-    lifecycle: production
-    owner: platform-acceleration
-    system: csp
-
----
-apiVersion: backstage/io/v1alpha1
-kind: Component
-metadata: 
-  name: audit-service
-  description: Audit Service
-  annotations:
-    github.com/project-slug: csp/auditservice
-    backstage.io/source-location: url:https://github.service.anz/csp/auditservice
-    jira/project-key: CSPPS
+    backstage.io/source-location: url:https://github.com/jbr2021/jbr2021.github.io
   tags:
     - java
   spec:
