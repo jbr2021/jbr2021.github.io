@@ -1,0 +1,826 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: banker-experience-tribe
+  description: Banker Experience Tribe
+spec: 
+  type: tribe
+  profile: 
+    email: banker-experience-tribe@example.com
+    picture: 
+  parent: anz
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: business-banker-desktop
+  description: Business Banker Desktop
+spec: 
+  type: cluster
+  profile: 
+    email: business-banker-desktop@example.com
+    picture: 
+  parent: banker-experience-tribe
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: enablers-friends
+  description: Enablers & Friends
+spec: 
+  type: cluster
+  profile: 
+    email: enablers-friends@example.com
+    picture: 
+  parent: banker-experience-tribe
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: kyc-onboarding
+  description: Kyc & Onboarding
+spec: 
+  type: cluster
+  profile: 
+    email: kyc-onboarding@example.com
+    picture: 
+  parent: banker-experience-tribe
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: branch
+  description: Branch
+spec: 
+  type: cluster
+  profile: 
+    email: branch@example.com
+    picture: 
+  parent: banker-experience-tribe
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: contact-centre
+  description: Contact Centre
+spec: 
+  type: cluster
+  profile: 
+    email: contact-centre@example.com
+    picture: 
+  parent: banker-experience-tribe
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: default
+  description: Default
+spec: 
+  type: cluster
+  profile: 
+    email: default@example.com
+    picture: 
+  parent: banker-experience-tribe
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: crm
+  description: CRM
+spec: 
+  type: cluster
+  profile: 
+    email: crm@example.com
+    picture: 
+  parent: banker-experience-tribe
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: cc-cluster
+  description: CC Cluster
+spec: 
+  type: cluster
+  profile: 
+    email: cc-cluster@example.com
+    picture: 
+  parent: banker-experience-tribe
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: digital-assurance-team-at-portfolio-level
+  description: Digital Assurance Team at portfolio level
+spec: 
+  type: cluster
+  profile: 
+    email: digital-assurance-team-at-portfolio-level@example.com
+    picture: 
+  parent: banker-experience-tribe
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: wolfpack
+  description: Wolfpack
+spec: 
+  type: squad
+  profile: 
+    email: wolfpack@example.com
+    picture: 
+  parent: business-banker-desktop
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: raiders
+  description: Raiders
+spec: 
+  type: squad
+  profile: 
+    email: raiders@example.com
+    picture: 
+  parent: business-banker-desktop
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: the-artists
+  description: |-
+    The ARTists 
+    (Release train - The ARTists) 
+spec: 
+  type: squad
+  profile: 
+    email: the-artists-release-train-the-artists@example.com
+    picture: 
+  parent: enablers-friends
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: aryabhata-squad
+  description: Aryabhata Squad
+spec: 
+  type: squad
+  profile: 
+    email: aryabhata-squad@example.com
+    picture: 
+  parent: kyc-onboarding
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: asterix
+  description: Asterix
+spec: 
+  type: squad
+  profile: 
+    email: asterix@example.com
+    picture: 
+  parent: kyc-onboarding
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: aryabhata-squad
+  description: Aryabhata Squad
+spec: 
+  type: squad
+  profile: 
+    email: aryabhata-squad@example.com
+    picture: 
+  parent: kyc-onboarding
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: akari
+  description: Akari
+spec: 
+  type: squad
+  profile: 
+    email: akari@example.com
+    picture: 
+  parent: kyc-onboarding
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: kosmos
+  description: Kosmos
+spec: 
+  type: squad
+  profile: 
+    email: kosmos@example.com
+    picture: 
+  parent: kyc-onboarding
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: banker-tools
+  description: Banker Tools
+spec: 
+  type: squad
+  profile: 
+    email: banker-tools@example.com
+    picture: 
+  parent: kyc-onboarding
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: serenity
+  description: Serenity
+spec: 
+  type: squad
+  profile: 
+    email: serenity@example.com
+    picture: 
+  parent: business-banker-desktop
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: armstrong
+  description: Armstrong
+spec: 
+  type: squad
+  profile: 
+    email: armstrong@example.com
+    picture: 
+  parent: business-banker-desktop
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: platform-acceleration
+  description: Platform Acceleration
+spec: 
+  type: squad
+  profile: 
+    email: platform-acceleration@example.com
+    picture: 
+  parent: business-banker-desktop
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: beagles
+  description: |-
+    Beagles
+    (System Stability & Continuous Improvement)
+spec: 
+  type: squad
+  profile: 
+    email: beagles-system-stability-continuous-improvement@example.com
+    picture: 
+  parent: branch
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: cc-lab
+  description: |-
+    CC Lab
+    (Contact Centre Elaborate)
+spec: 
+  type: squad
+  profile: 
+    email: cc-lab-contact-centre-elaborate@example.com
+    picture: 
+  parent: contact-centre
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: discovery-banker-desktop
+  description: |-
+    Discovery
+    Banker Desktop
+    Personal Loan Banker Desktop
+spec: 
+  type: squad
+  profile: 
+    email: discovery-banker-desktop-personal-loan-banker-desktop@example.com
+    picture: 
+  parent: branch
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: discovery-league
+  description: |-
+    Discovery League
+    (Retail Banker Desktop Service)
+spec: 
+  type: squad
+  profile: 
+    email: discovery-league-retail-banker-desktop-service@example.com
+    picture: 
+  parent: branch
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: dora-the-explorer
+  description: |-
+    Dora the Explorer
+    (Platform Services)
+spec: 
+  type: squad
+  profile: 
+    email: dora-the-explorer-platform-services@example.com
+    picture: 
+  parent: enablers-friends
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: enterprise-business-banker-services
+  description: |-
+    Enterprise
+    (Business Banker Services (Business Banker Desktop 1))
+spec: 
+  type: squad
+  profile: 
+    email: enterprise-business-banker-services-business-banker-desktop-@example.com
+    picture: 
+  parent: default
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: global-contact-centre-run
+  description: Global Contact Centre Run
+spec: 
+  type: squad
+  profile: 
+    email: global-contact-centre-run@example.com
+    picture: 
+  parent: contact-centre
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: iknow-centaurus
+  description: Iknow Centaurus
+spec: 
+  type: squad
+  profile: 
+    email: iknow-centaurus@example.com
+    picture: 
+  parent: branch
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: iknow-phoenix
+  description: Iknow Phoenix
+spec: 
+  type: squad
+  profile: 
+    email: iknow-phoenix@example.com
+    picture: 
+  parent: branch
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: iknow-draco
+  description: Iknow Draco
+spec: 
+  type: squad
+  profile: 
+    email: iknow-draco@example.com
+    picture: 
+  parent: branch
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: iknow-griffin
+  description: Iknow Griffin
+spec: 
+  type: squad
+  profile: 
+    email: iknow-griffin@example.com
+    picture: 
+  parent: branch
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: iknow-orion
+  description: Iknow Orion
+spec: 
+  type: squad
+  profile: 
+    email: iknow-orion@example.com
+    picture: 
+  parent: crm
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: iknow-axolot
+  description: Iknow Axolot
+spec: 
+  type: squad
+  profile: 
+    email: iknow-axolot@example.com
+    picture: 
+  parent: crm
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: mytell-incredibles
+  description: |-
+    MyTell
+    Incredibles
+spec: 
+  type: squad
+  profile: 
+    email: mytell-incredibles@example.com
+    picture: 
+  parent: branch
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: mytell-ttr-crusaders
+  description: |-
+    MyTell TTR
+    Crusaders
+spec: 
+  type: squad
+  profile: 
+    email: mytell-ttr-crusaders@example.com
+    picture: 
+  parent: branch
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: space-x-eonboarding
+  description: |-
+    Space X
+    (eOnBoarding)
+spec: 
+  type: squad
+  profile: 
+    email: space-x-eonboarding@example.com
+    picture: 
+  parent: default
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: cumulus-inc-sre-squad
+  description: |-
+    Cumulus Inc.
+    SRE Squad
+spec: 
+  type: squad
+  profile: 
+    email: cumulus-inc-sre-squad@example.com
+    picture: 
+  parent: default
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: super-villians
+  description: |-
+    Super Villians
+    Contac Centre (Front line tools)
+spec: 
+  type: squad
+  profile: 
+    email: super-villians-contact-centre-front-line-tools@example.com
+    picture: 
+  parent: contact-centre
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: accelerators
+  description: |-
+    Accelerators (Accounts)
+    Turbo (Transactions)
+    Mustang-X (Intiatives)
+    (Banker Desktop - Service)
+spec: 
+  type: squad
+  profile: 
+    email: accelerators-accounts-turbo-transactions-mustangx-initiatives-banker-desktop=service@example.com
+    picture: 
+  parent: cc-cluster
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: turbo
+  description: |-
+    Accelerators (Accounts)
+    Turbo (Transactions)
+    Mustang-X (Intiatives)
+    (Banker Desktop - Service)
+spec: 
+  type: squad
+  profile: 
+    email: accelerators-accounts-turbo-transactions-mustangx-initiatives-banker-desktop=service@example.com
+    picture: 
+  parent: cc-cluster
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: mustang-X
+  description: |-
+    Accelerators (Accounts)
+    Turbo (Transactions)
+    Mustang-X (Intiatives)
+    (Banker Desktop - Service)
+spec: 
+  type: squad
+  profile: 
+    email: accelerators-accounts-turbo-transactions-mustangx-initiatives-banker-desktop=service@example.com
+    picture: 
+  parent: cc-cluster
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: bds
+  description: |-
+    Accelerators (Accounts)
+    Turbo (Transactions)
+    Mustang-X (Intiatives)
+    (Banker Desktop - Service)
+spec: 
+  type: squad
+  profile: 
+    email: accelerators-accounts-turbo-transactions-mustangx-initiatives-banker-desktop=service@example.com
+    picture: 
+  parent: cc-cluster
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: tintin
+  description: Tintin 
+spec: 
+  type: squad
+  profile: 
+    email: tintin@example.com
+    picture: 
+  parent: business-banker-desktop
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: trailblazers-banker-communication-adoption
+  description: |-
+    Trailblazers
+    (Banker Communication & Adoption)
+spec: 
+  type: squad
+  profile: 
+    email: trailblazers-banker-communication-adoption@example.com
+    picture: 
+  parent: enablers-friends
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: transformers-banker-communication-adoption
+  description: |-
+    Transformers
+    (Banker Communication & Adoption)
+spec: 
+  type: squad
+  profile: 
+    email: transformers-banker-communication-adoption@example.com
+    picture: 
+  parent: default
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: tribe-hub-leadership-team
+  description: |-
+    Tribe Hub
+    (Leadership team)
+spec: 
+  type: squad
+  profile: 
+    email: tribe-hub-leadership-team@example.com
+    picture: 
+  parent: enablers-friends
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: uncle-travelling-matt
+  description: |-
+    Uncle Travelling Matt
+    (Contact Centre Platform)
+spec: 
+  type: squad
+  profile: 
+    email: uncle-travelling-matt@example.com
+    picture: 
+  parent: enablers-friends
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: well-managed-squad-wms
+  description: Well Managed Squad (WMS)
+spec: 
+  type: squad
+  profile: 
+    email: well-managed-squad-wms@example.com
+    picture: 
+  parent: enablers-friends
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: wukong-chengdu
+  description: Well Managed Squad (WMS)
+spec: 
+  type: squad
+  profile: 
+    email: wukong-chengdu@example.com
+    picture: 
+  parent: business-banker-desktop
+  children: []
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata: 
+  name: wukong-chengdu
+  description: Well Managed Squad (WMS)
+spec: 
+  type: squad
+  profile: 
+    email: wukong-chengdu@example.com
+    picture: 
+  parent: business-banker-desktop
+  children: []
