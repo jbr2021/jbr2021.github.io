@@ -4,11 +4,11 @@ metadata:
   name: banker-experience-tribe
   description: Banker Experience Tribe
 spec: 
-  type: organization
+  type: tribe
   profile: 
     email: banker-experience-tribe@example.com
-    picture: 
-  parent: acme-corp
+    picture: "" 
+  parent: anz
   children: []
 
 ---
@@ -22,7 +22,7 @@ spec:
   type: cluster
   profile: 
     email: business-banker-desktop@example.com
-    picture: 
+    picture: "" 
   parent: banker-experience-tribe
   children: []
 
@@ -37,7 +37,7 @@ spec:
   type: cluster
   profile: 
     email: enablers-friends@example.com
-    picture: 
+    picture: "" 
   parent: banker-experience-tribe
   children: []
 
@@ -52,7 +52,7 @@ spec:
   type: cluster
   profile: 
     email: kyc-onboarding@example.com
-    picture: 
+    picture: "" 
   parent: banker-experience-tribe
   children: []
 
@@ -67,7 +67,7 @@ spec:
   type: cluster
   profile: 
     email: branch@example.com
-    picture: 
+    picture: "" 
   parent: banker-experience-tribe
   children: []
 
@@ -82,7 +82,7 @@ spec:
   type: cluster
   profile: 
     email: contact-centre@example.com
-    picture: 
+    picture: "" 
   parent: banker-experience-tribe
   children: []
 
@@ -97,7 +97,7 @@ spec:
   type: cluster
   profile: 
     email: default@example.com
-    picture: 
+    picture: "" 
   parent: banker-experience-tribe
   children: []
 
@@ -112,7 +112,7 @@ spec:
   type: cluster
   profile: 
     email: crm@example.com
-    picture: 
+    picture: "" 
   parent: banker-experience-tribe
   children: []
 
@@ -127,7 +127,7 @@ spec:
   type: cluster
   profile: 
     email: cc-cluster@example.com
-    picture: 
+    picture: "" 
   parent: banker-experience-tribe
   children: []
 
@@ -142,7 +142,7 @@ spec:
   type: cluster
   profile: 
     email: digital-assurance-team-at-portfolio-level@example.com
-    picture: 
+    picture: "" 
   parent: banker-experience-tribe
   children: []
 
@@ -157,7 +157,7 @@ spec:
   type: squad
   profile: 
     email: wolfpack@example.com
-    picture: 
+    picture: "" 
   parent: business-banker-desktop
   children: []
 
@@ -172,7 +172,7 @@ spec:
   type: squad
   profile: 
     email: raiders@example.com
-    picture: 
+    picture: "" 
   parent: business-banker-desktop
   children: []
 
@@ -189,7 +189,7 @@ spec:
   type: squad
   profile: 
     email: the-artists-release-train-the-artists@example.com
-    picture: 
+    picture: "" 
   parent: enablers-friends
   children: []
 
@@ -204,7 +204,7 @@ spec:
   type: squad
   profile: 
     email: aryabhata-squad@example.com
-    picture: 
+    picture: "" 
   parent: kyc-onboarding
   children: []
 
@@ -219,7 +219,7 @@ spec:
   type: squad
   profile: 
     email: asterix@example.com
-    picture: 
+    picture: "" 
   parent: kyc-onboarding
   children: []
 
@@ -234,7 +234,7 @@ spec:
   type: squad
   profile: 
     email: aryabhata-squad@example.com
-    picture: 
+    picture: "" 
   parent: kyc-onboarding
   children: []
 
@@ -249,7 +249,7 @@ spec:
   type: squad
   profile: 
     email: akari@example.com
-    picture: 
+    picture: "" 
   parent: kyc-onboarding
   children: []
 
@@ -264,7 +264,7 @@ spec:
   type: squad
   profile: 
     email: kosmos@example.com
-    picture: 
+    picture: "" 
   parent: kyc-onboarding
   children: []
 
@@ -279,7 +279,7 @@ spec:
   type: squad
   profile: 
     email: banker-tools@example.com
-    picture: 
+    picture: "" 
   parent: kyc-onboarding
   children: []
 
@@ -294,7 +294,7 @@ spec:
   type: squad
   profile: 
     email: serenity@example.com
-    picture: 
+    picture: "" 
   parent: business-banker-desktop
   children: []
 
@@ -309,7 +309,7 @@ spec:
   type: squad
   profile: 
     email: armstrong@example.com
-    picture: 
+    picture: "" 
   parent: business-banker-desktop
   children: []
 
@@ -324,7 +324,7 @@ spec:
   type: squad
   profile: 
     email: platform-acceleration@example.com
-    picture: 
+    picture: "" 
   parent: business-banker-desktop
   children: []
 
@@ -341,7 +341,7 @@ spec:
   type: squad
   profile: 
     email: beagles-system-stability-continuous-improvement@example.com
-    picture: 
+    picture: "" 
   parent: branch
   children: []
 
@@ -358,7 +358,7 @@ spec:
   type: squad
   profile: 
     email: cc-lab-contact-centre-elaborate@example.com
-    picture: 
+    picture: "" 
   parent: contact-centre
   children: []
 
@@ -376,7 +376,7 @@ spec:
   type: squad
   profile: 
     email: discovery-banker-desktop-personal-loan-banker-desktop@example.com
-    picture: 
+    picture: "" 
   parent: branch
   children: []
 
@@ -393,7 +393,7 @@ spec:
   type: squad
   profile: 
     email: discovery-league-retail-banker-desktop-service@example.com
-    picture: 
+    picture: "" 
   parent: branch
   children: []
 
@@ -410,7 +410,7 @@ spec:
   type: squad
   profile: 
     email: dora-the-explorer-platform-services@example.com
-    picture: 
+    picture: "" 
   parent: enablers-friends
   children: []
 
@@ -427,7 +427,7 @@ spec:
   type: squad
   profile: 
     email: enterprise-business-banker-services-business-banker-desktop-@example.com
-    picture: 
+    picture: "" 
   parent: default
   children: []
 
@@ -442,7 +442,7 @@ spec:
   type: squad
   profile: 
     email: global-contact-centre-run@example.com
-    picture: 
+    picture: "" 
   parent: contact-centre
   children: []
 
@@ -457,7 +457,7 @@ spec:
   type: squad
   profile: 
     email: iknow-centaurus@example.com
-    picture: 
+    picture: "" 
   parent: branch
   children: []
 
@@ -472,7 +472,7 @@ spec:
   type: squad
   profile: 
     email: iknow-phoenix@example.com
-    picture: 
+    picture: "" 
   parent: branch
   children: []
 
@@ -487,7 +487,7 @@ spec:
   type: squad
   profile: 
     email: iknow-draco@example.com
-    picture: 
+    picture: "" 
   parent: branch
   children: []
 
@@ -502,7 +502,7 @@ spec:
   type: squad
   profile: 
     email: iknow-griffin@example.com
-    picture: 
+    picture: "" 
   parent: branch
   children: []
 
@@ -517,7 +517,7 @@ spec:
   type: squad
   profile: 
     email: iknow-orion@example.com
-    picture: 
+    picture: "" 
   parent: crm
   children: []
 
@@ -532,7 +532,7 @@ spec:
   type: squad
   profile: 
     email: iknow-axolot@example.com
-    picture: 
+    picture: "" 
   parent: crm
   children: []
 
@@ -549,7 +549,7 @@ spec:
   type: squad
   profile: 
     email: mytell-incredibles@example.com
-    picture: 
+    picture: "" 
   parent: branch
   children: []
 
@@ -566,7 +566,7 @@ spec:
   type: squad
   profile: 
     email: mytell-ttr-crusaders@example.com
-    picture: 
+    picture: "" 
   parent: branch
   children: []
 
@@ -583,7 +583,7 @@ spec:
   type: squad
   profile: 
     email: space-x-eonboarding@example.com
-    picture: 
+    picture: "" 
   parent: default
   children: []
 
@@ -600,7 +600,7 @@ spec:
   type: squad
   profile: 
     email: cumulus-inc-sre-squad@example.com
-    picture: 
+    picture: "" 
   parent: default
   children: []
 
@@ -617,7 +617,7 @@ spec:
   type: squad
   profile: 
     email: super-villians-contact-centre-front-line-tools@example.com
-    picture: 
+    picture: "" 
   parent: contact-centre
   children: []
 
@@ -636,7 +636,7 @@ spec:
   type: squad
   profile: 
     email: accelerators-accounts-turbo-transactions-mustangx-initiatives-banker-desktop=service@example.com
-    picture: 
+    picture: "" 
   parent: cc-cluster
   children: []
 
@@ -655,7 +655,7 @@ spec:
   type: squad
   profile: 
     email: accelerators-accounts-turbo-transactions-mustangx-initiatives-banker-desktop=service@example.com
-    picture: 
+    picture: "" 
   parent: cc-cluster
   children: []
 
@@ -674,7 +674,7 @@ spec:
   type: squad
   profile: 
     email: accelerators-accounts-turbo-transactions-mustangx-initiatives-banker-desktop=service@example.com
-    picture: 
+    picture: "" 
   parent: cc-cluster
   children: []
 
@@ -693,7 +693,7 @@ spec:
   type: squad
   profile: 
     email: accelerators-accounts-turbo-transactions-mustangx-initiatives-banker-desktop=service@example.com
-    picture: 
+    picture: "" 
   parent: cc-cluster
   children: []
 
@@ -708,7 +708,7 @@ spec:
   type: squad
   profile: 
     email: tintin@example.com
-    picture: 
+    picture: "" 
   parent: business-banker-desktop
   children: []
 
@@ -725,7 +725,7 @@ spec:
   type: squad
   profile: 
     email: trailblazers-banker-communication-adoption@example.com
-    picture: 
+    picture: "" 
   parent: enablers-friends
   children: []
 
@@ -742,7 +742,7 @@ spec:
   type: squad
   profile: 
     email: transformers-banker-communication-adoption@example.com
-    picture: 
+    picture: "" 
   parent: default
   children: []
 
@@ -759,7 +759,7 @@ spec:
   type: squad
   profile: 
     email: tribe-hub-leadership-team@example.com
-    picture: 
+    picture: "" 
   parent: enablers-friends
   children: []
 
@@ -776,7 +776,7 @@ spec:
   type: squad
   profile: 
     email: uncle-travelling-matt@example.com
-    picture: 
+    picture: "" 
   parent: enablers-friends
   children: []
 
@@ -791,7 +791,7 @@ spec:
   type: squad
   profile: 
     email: well-managed-squad-wms@example.com
-    picture: 
+    picture: "" 
   parent: enablers-friends
   children: []
 
@@ -806,7 +806,7 @@ spec:
   type: squad
   profile: 
     email: wukong-chengdu@example.com
-    picture: 
+    picture: "" 
   parent: business-banker-desktop
   children: []
 
@@ -821,6 +821,6 @@ spec:
   type: squad
   profile: 
     email: wukong-chengdu@example.com
-    picture: 
+    picture: "" 
   parent: business-banker-desktop
   children: []
