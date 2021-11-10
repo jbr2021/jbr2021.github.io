@@ -13,4 +13,3 @@ spec:
   lifecycle: experimental
   owner: platform-acceleration
   system: csp
-  children: []
