@@ -237,8 +237,11 @@ h1, h2, h3, h4, h5, h6 {
   #hero .hero-container {
     position: relative;
     z-index: 2;
-    min-width: 450px !important;
-  } 
+    min-width: 355px !important;
+  }
+  #hero p{
+    font-size: 16px !important;
+  }
 }
 
 #hero h1 {
