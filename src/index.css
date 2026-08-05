@@ -69,9 +69,9 @@ html {
 /* ============================================
    FIXED NAVBAR - Prevent content overlap
    ============================================ */
-:root {
+/* :root {
   --navbar-height: 110px;
-}
+} */
 
 .navbar-header {
   position: fixed;
@@ -80,7 +80,7 @@ html {
   right: 0;
   z-index: 1030;
   background: var(--surface-glass) !important;
-  min-height: var(--navbar-height);
+  /* min-height: var(--navbar-height); */
   border-bottom: 1px solid var(--border-color);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(20px);
@@ -332,9 +332,9 @@ body {
 }
 
 /* Direct rule on the card (always) */
-.hero-content {
+/* .hero-content {
   margin-top: 0 !important;
-}
+} */
 
 /* === DESKTOP (≥992px) — primary fix for "new desktop window" ===
    Fully neutralizes d-lg-flex / align-items-lg-center / min-vh-lg-100
@@ -366,8 +366,8 @@ body {
 
   /* Direct margin on the hero-content card itself (per instructions) */
   .hero-content {
-    margin-top: 22px !important;
-    padding-top: 0 !important;
+    /* margin-top: 22px !important; */
+    padding-top: 22px !important;
   }
 
   .hero-section .container {
