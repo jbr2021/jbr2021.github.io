@@ -21,12 +21,15 @@ const Contact = ({ profile }) => {
   return (
     <section id="contact" className="contact-section py-5">
       <div className="container">
-        <div className="section-header text-center mb-5">
-          <div className="badge-pill mb-2">Let's Connect</div>
-          <h2 className="section-title">Get In Touch</h2>
-          <p className="section-subtitle">
-            Interested in collaborating on AI engineering, cloud microservices, or technical architecture? Send a message below.
-          </p>
+        {/* Glass Section Header */}
+        <div className="text-center mb-5">
+          <div className="section-header card border-0 glass-card p-4 rounded-4 shadow-sm mx-auto">
+            <div className="badge-pill mb-2">Let's Connect</div>
+            <h2 className="section-title text-body">Get In Touch</h2>
+            <p className="section-subtitle text-body-secondary mb-0">
+              Interested in collaborating on AI engineering, cloud microservices, or technical architecture? Send a message below.
+            </p>
+          </div>
         </div>
 
         <div className="row g-4 justify-content-center">
@@ -34,11 +37,11 @@ const Contact = ({ profile }) => {
           <div className="col-lg-5">
             <div className="card border-0 glass-card p-4 rounded-4 shadow-sm h-100 d-flex flex-column justify-content-between">
               <div>
-                <h3 className="h5 fw-bold mb-4">Contact Details</h3>
+                <h3 className="h5 fw-bold mb-4 text-body">Contact Details</h3>
 
                 <div className="d-flex flex-column gap-3 mb-4">
                   {/* Email */}
-                  <div className="d-flex align-items-center gap-3 p-3 rounded-3 bg-body-tertiary">
+                  <div className="d-flex align-items-center gap-3 p-3 rounded-3 bg-body-tertiary border">
                     <div className="icon-box bg-primary-subtle text-primary rounded-circle p-2">
                       <i className="bi bi-envelope-fill fs-5"></i>
                     </div>
@@ -58,18 +61,18 @@ const Contact = ({ profile }) => {
                   </div>
 
                   {/* Location */}
-                  <div className="d-flex align-items-center gap-3 p-3 rounded-3 bg-body-tertiary">
+                  <div className="d-flex align-items-center gap-3 p-3 rounded-3 bg-body-tertiary border">
                     <div className="icon-box bg-cyan-subtle text-cyan rounded-circle p-2">
                       <i className="bi bi-geo-alt-fill fs-5"></i>
                     </div>
                     <div>
                       <div className="x-small text-muted">Location</div>
-                      <div className="fw-semibold small">{personal.location || "Ghaziabad, Uttar Pradesh, India"}</div>
+                      <div className="fw-semibold small text-body">{personal.location || "Ghaziabad, Uttar Pradesh, India"}</div>
                     </div>
                   </div>
 
                   {/* GitHub & Links */}
-                  <div className="d-flex align-items-center gap-3 p-3 rounded-3 bg-body-tertiary">
+                  <div className="d-flex align-items-center gap-3 p-3 rounded-3 bg-body-tertiary border">
                     <div className="icon-box bg-secondary-subtle text-body rounded-circle p-2">
                       <i className="bi bi-github fs-5"></i>
                     </div>
@@ -101,7 +104,7 @@ const Contact = ({ profile }) => {
           {/* Right Column: Message Form */}
           <div className="col-lg-7">
             <div className="card border-0 glass-card p-4 rounded-4 shadow-sm">
-              <h3 className="h5 fw-bold mb-4">Send a Message</h3>
+              <h3 className="h5 fw-bold mb-4 text-body">Send a Message</h3>
 
               {submitted ? (
                 <div className="alert alert-success rounded-3 p-4 text-center my-4 animate-fade-in">
@@ -116,10 +119,10 @@ const Contact = ({ profile }) => {
                 <form onSubmit={handleSubmit}>
                   <div className="row g-3">
                     <div className="col-md-6">
-                      <label className="form-label small fw-semibold">Your Name *</label>
+                      <label className="form-label small fw-semibold text-body">Your Name *</label>
                       <input
                         type="text"
-                        className="form-control bg-body-tertiary rounded-3"
+                        className="form-control bg-body-tertiary rounded-3 text-body"
                         placeholder="John Doe"
                         required
                         value={formData.name}
@@ -128,10 +131,10 @@ const Contact = ({ profile }) => {
                     </div>
 
                     <div className="col-md-6">
-                      <label className="form-label small fw-semibold">Your Email *</label>
+                      <label className="form-label small fw-semibold text-body">Your Email *</label>
                       <input
                         type="email"
-                        className="form-control bg-body-tertiary rounded-3"
+                        className="form-control bg-body-tertiary rounded-3 text-body"
                         placeholder="john@example.com"
                         required
                         value={formData.email}
@@ -140,10 +143,10 @@ const Contact = ({ profile }) => {
                     </div>
 
                     <div className="col-12">
-                      <label className="form-label small fw-semibold">Subject</label>
+                      <label className="form-label small fw-semibold text-body">Subject</label>
                       <input
                         type="text"
-                        className="form-control bg-body-tertiary rounded-3"
+                        className="form-control bg-body-tertiary rounded-3 text-body"
                         placeholder="AI Systems Collaboration / Inquiries"
                         value={formData.subject}
                         onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
@@ -151,9 +154,9 @@ const Contact = ({ profile }) => {
                     </div>
 
                     <div className="col-12">
-                      <label className="form-label small fw-semibold">Message *</label>
+                      <label className="form-label small fw-semibold text-body">Message *</label>
                       <textarea
-                        className="form-control bg-body-tertiary rounded-3"
+                        className="form-control bg-body-tertiary rounded-3 text-body"
                         rows="4"
                         placeholder="Describe your project, team, or technical requirements..."
                         required

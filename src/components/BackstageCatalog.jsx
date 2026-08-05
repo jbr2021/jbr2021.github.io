@@ -18,12 +18,15 @@ const BackstageCatalog = ({ profile }) => {
   return (
     <section id="backstage" className="backstage-section py-5">
       <div className="container">
-        <div className="section-header text-center mb-5">
-          <div className="badge-pill mb-2">Backstage IDP Platform</div>
-          <h2 className="section-title">Enterprise Software Catalog &amp; Service Mesh</h2>
-          <p className="section-subtitle">
-            Demonstrating unified service discovery, cataloging, and squad architecture implemented at ANZ Bank.
-          </p>
+        {/* Glass Section Header */}
+        <div className="text-center mb-5">
+          <div className="section-header card border-0 glass-card p-4 rounded-4 shadow-sm mx-auto">
+            <div className="badge-pill mb-2">Backstage IDP Platform</div>
+            <h2 className="section-title text-body">Enterprise Software Catalog &amp; Service Mesh</h2>
+            <p className="section-subtitle text-body-secondary mb-0">
+              Demonstrating unified service discovery, cataloging, and squad architecture implemented at ANZ Bank.
+            </p>
+          </div>
         </div>
 
         <div className="catalog-card card border-0 glass-card p-4 rounded-4 shadow-sm">
@@ -33,14 +36,14 @@ const BackstageCatalog = ({ profile }) => {
               <div className="btn-group" role="group">
                 <button
                   type="button"
-                  className={`btn btn-sm ${activeTab === 'components' ? 'btn-primary' : 'btn-outline-secondary'}`}
+                  className={`btn btn-sm ${activeTab === 'components' ? 'btn-primary' : 'btn-outline-secondary text-body-secondary'}`}
                   onClick={() => setActiveTab('components')}
                 >
                   <i className="bi bi-box-seam me-1"></i> Microservice Components ({components.length})
                 </button>
                 <button
                   type="button"
-                  className={`btn btn-sm ${activeTab === 'tribes' ? 'btn-primary' : 'btn-outline-secondary'}`}
+                  className={`btn btn-sm ${activeTab === 'tribes' ? 'btn-primary' : 'btn-outline-secondary text-body-secondary'}`}
                   onClick={() => setActiveTab('tribes')}
                 >
                   <i className="bi bi-diagram-3 me-1"></i> Tribes &amp; Squad Mesh ({tribes.length})
@@ -55,7 +58,7 @@ const BackstageCatalog = ({ profile }) => {
                 </span>
                 <input
                   type="text"
-                  className="form-control bg-body-tertiary border-start-0"
+                  className="form-control bg-body-tertiary border-start-0 text-body"
                   placeholder="Search catalog components, owners, or tech stack..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
@@ -77,9 +80,9 @@ const BackstageCatalog = ({ profile }) => {
                       </span>
                     </div>
 
-                    <p className="x-small text-muted mb-2 style-leading">{comp.description}</p>
+                    <p className="x-small text-body-secondary mb-2 style-leading">{comp.description}</p>
 
-                    <div className="d-flex flex-wrap gap-2 pt-2 border-top x-small text-muted">
+                    <div className="d-flex flex-wrap gap-2 pt-2 border-top x-small text-body-secondary">
                       <div><strong className="text-body">System:</strong> {comp.system}</div>
                       <div><strong className="text-body">Owner:</strong> {comp.owner}</div>
                       <div><strong className="text-body">Tech:</strong> {comp.tech}</div>
@@ -98,9 +101,9 @@ const BackstageCatalog = ({ profile }) => {
                   <div className="tribe-box card h-100 border p-3 rounded-3 bg-body-tertiary">
                     <div className="d-flex align-items-center gap-2 mb-2">
                       <i className={`bi ${tribe.type === 'Tribe' ? 'bi-shield-check text-primary' : 'bi-cpu text-cyan'} fs-5`}></i>
-                      <h4 className="h6 fw-bold mb-0">{tribe.name}</h4>
+                      <h4 className="h6 fw-bold mb-0 text-body">{tribe.name}</h4>
                     </div>
-                    <div className="d-flex justify-content-between align-items-center x-small text-muted mt-2 pt-2 border-top">
+                    <div className="d-flex justify-content-between align-items-center x-small text-body-secondary mt-2 pt-2 border-top">
                       <span>Type: <strong className="text-body">{tribe.type}</strong></span>
                       <span>Parent: <strong className="text-body">{tribe.parent}</strong></span>
                     </div>

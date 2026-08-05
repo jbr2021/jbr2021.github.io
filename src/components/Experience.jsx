@@ -9,12 +9,15 @@ const Experience = ({ profile, onSelectProject }) => {
   return (
     <section id="experience" className="experience-section py-5">
       <div className="container">
-        <div className="section-header text-center mb-5">
-          <div className="badge-pill mb-2">14+ Years Track Record</div>
-          <h2 className="section-title">Professional Experience</h2>
-          <p className="section-subtitle">
-            Leading high-impact AI engineering, cloud microservices, and enterprise technical architectures.
-          </p>
+        {/* Glass Section Header */}
+        <div className="text-center mb-5">
+          <div className="section-header card border-0 glass-card p-4 rounded-4 shadow-sm mx-auto">
+            <div className="badge-pill mb-2">14+ Years Track Record</div>
+            <h2 className="section-title text-body">Professional Experience</h2>
+            <p className="section-subtitle text-body-secondary mb-0">
+              Leading high-impact AI engineering, cloud microservices, and enterprise technical architectures.
+            </p>
+          </div>
         </div>
 
         {/* Filter Badges */}
@@ -69,7 +72,7 @@ const Experience = ({ profile, onSelectProject }) => {
                     </div>
                   </div>
 
-                  <p className="text-muted small mb-0 style-leading">{exp.description}</p>
+                  <p className="text-body-secondary small mb-0 style-leading">{exp.description}</p>
                 </div>
 
                 {/* Projects Grid for this role */}
@@ -96,7 +99,7 @@ const Experience = ({ profile, onSelectProject }) => {
                             </div>
                           )}
 
-                          <p className="small text-muted mb-3 flex-grow-1 style-leading">
+                          <p className="small text-body-secondary mb-3 flex-grow-1 style-leading">
                             {project.summary}
                           </p>
 

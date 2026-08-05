@@ -46,28 +46,28 @@ const AIBackground = () => {
         nodeAgent: '#a855f7',
         nodeVector: '#22d3ee',
         nodeApi: '#f59e0b',
-        line: 'rgba(56, 189, 248, 0.12)',
-        lineActive: 'rgba(34, 211, 238, 0.45)',
-        text: '#94a3b8',
-        textHighlight: '#f1f5f9',
+        line: 'rgba(56, 189, 248, 0.08)',
+        lineActive: 'rgba(34, 211, 238, 0.35)',
+        text: '#64748b',
+        textHighlight: '#cbd5e1',
         packetCore: '#38bdf8',
         packetAgent: '#c084fc',
         packetVector: '#34d399',
-        halo: 'rgba(56, 189, 248, 0.08)'
+        halo: 'rgba(56, 189, 248, 0.04)'
       } : {
         bg: '#f8fafc',
         nodeCore: '#0284c7',
         nodeAgent: '#7e22ce',
         nodeVector: '#0d9488',
         nodeApi: '#d97706',
-        line: 'rgba(14, 165, 233, 0.15)',
-        lineActive: 'rgba(14, 165, 233, 0.55)',
-        text: '#475569',
-        textHighlight: '#0f172a',
+        line: 'rgba(14, 165, 233, 0.08)',
+        lineActive: 'rgba(14, 165, 233, 0.35)',
+        text: '#64748b',
+        textHighlight: '#1e293b',
         packetCore: '#0284c7',
         packetAgent: '#9333ea',
         packetVector: '#059669',
-        halo: 'rgba(14, 165, 233, 0.07)'
+        halo: 'rgba(14, 165, 233, 0.03)'
       };
     };
 
@@ -89,42 +89,41 @@ const AIBackground = () => {
       agentPackets = [];
       neuralWaves = [];
 
-      // Responsive density: 14 nodes on desktop, 10 on tablet, 7 on mobile
-      const count = width < 600 ? 7 : width < 1024 ? 10 : 14;
+      // Density tuned for clean backdrop
+      const count = width < 600 ? 6 : width < 1024 ? 9 : 12;
       
       for (let i = 0; i < count; i++) {
         const catalogItem = conceptCatalog[i % conceptCatalog.length];
         const angle = (i / count) * Math.PI * 2 + Math.random() * 0.2;
-        const radius = Math.min(width, height) * (0.18 + Math.random() * 0.28);
+        const radius = Math.min(width, height) * (0.2 + Math.random() * 0.25);
         
         nodes.push({
           id: i,
           x: width / 2 + Math.cos(angle) * radius,
           y: height / 2 + Math.sin(angle) * radius,
-          vx: (Math.random() - 0.5) * 0.22,
-          vy: (Math.random() - 0.5) * 0.22,
-          radius: catalogItem.type === 'core' ? 18 : catalogItem.type === 'agent' ? 15 : 12,
+          vx: (Math.random() - 0.5) * 0.18,
+          vy: (Math.random() - 0.5) * 0.18,
+          radius: catalogItem.type === 'core' ? 16 : catalogItem.type === 'agent' ? 14 : 11,
           label: catalogItem.label,
           type: catalogItem.type,
           desc: catalogItem.desc,
           pulse: Math.random() * Math.PI * 2,
-          pulseSpeed: 0.015 + Math.random() * 0.02,
+          pulseSpeed: 0.015 + Math.random() * 0.015,
           embedding: Array.from({ length: 3 }, () => (Math.random() * 2 - 1).toFixed(2))
         });
       }
 
-      // Initial neural waves
+      // Initial wave
       neuralWaves.push({
         x: width * 0.5,
         y: height * 0.5,
         r: 10,
-        maxR: Math.max(width, height) * 0.6,
-        speed: 1.8,
-        alpha: 0.35
+        maxR: Math.max(width, height) * 0.5,
+        speed: 1.5,
+        alpha: 0.3
       });
     }
 
-    // Spawn semantic search query packet traveling between nodes
     function spawnQueryPacket() {
       if (nodes.length < 2) return;
       const srcIdx = Math.floor(Math.random() * nodes.length);
@@ -144,27 +143,25 @@ const AIBackground = () => {
         targetX: target.x,
         targetY: target.y,
         progress: 0,
-        speed: 0.008 + Math.random() * 0.012,
-        payload: src.type === 'agent' ? `Agent [${src.label}] -> Call [${target.label}]` : `cos_sim(v_q, v_${target.id}) = 0.94`,
+        speed: 0.007 + Math.random() * 0.01,
+        payload: src.type === 'agent' ? `Agent [${src.label}] -> Call [${target.label}]` : `cos_sim = 0.94`,
         color: src.type === 'agent' ? colors.packetAgent : src.type === 'vector' ? colors.packetVector : colors.packetCore
       });
     }
 
-    // Periodic packet generation
     const packetInterval = setInterval(() => {
-      if (queryPackets.length < 6) {
+      if (queryPackets.length < 4) {
         spawnQueryPacket();
       }
-    }, 1800);
+    }, 2200);
 
     function draw() {
       ctx.clearRect(0, 0, width, height);
       colors = getThemeColors();
 
-      // Check reduced motion
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // === 1. Render Knowledge Graph Edges ===
+      // === 1. Render Edges ===
       for (let i = 0; i < nodes.length; i++) {
         const n1 = nodes[i];
         for (let j = i + 1; j < nodes.length; j++) {
@@ -172,32 +169,24 @@ const AIBackground = () => {
           const dx = n2.x - n1.x;
           const dy = n2.y - n1.y;
           const dist = Math.hypot(dx, dy);
-          const maxDist = width < 600 ? 220 : 320;
+          const maxDist = width < 600 ? 200 : 280;
 
           if (dist < maxDist) {
-            const alpha = (1 - dist / maxDist) * 0.45;
+            const alpha = (1 - dist / maxDist) * 0.35;
             ctx.strokeStyle = colors.line;
-            ctx.lineWidth = dist < 150 ? 1.2 : 0.8;
+            ctx.lineWidth = 0.9;
             ctx.beginPath();
             ctx.moveTo(n1.x, n1.y);
             ctx.lineTo(n2.x, n2.y);
             ctx.stroke();
-
-            // Distance metric callout on close lines
-            if (dist < 120 && i % 3 === 0) {
-              ctx.fillStyle = colors.text;
-              ctx.font = '8px monospace';
-              ctx.textAlign = 'center';
-              ctx.fillText(`d=${Math.round(dist)}`, (n1.x + n2.x) / 2, (n1.y + n2.y) / 2 - 4);
-            }
           }
         }
       }
 
-      // === 2. Render Neural Activation Wave Sweeps ===
+      // === 2. Render Waves ===
       neuralWaves.forEach((wave, idx) => {
         ctx.strokeStyle = colors.lineActive;
-        ctx.lineWidth = 1.5;
+        ctx.lineWidth = 1.2;
         ctx.globalAlpha = wave.alpha;
         ctx.beginPath();
         ctx.arc(wave.x, wave.y, wave.r, 0, Math.PI * 2);
@@ -206,7 +195,7 @@ const AIBackground = () => {
 
         if (!prefersReducedMotion) {
           wave.r += wave.speed;
-          wave.alpha = Math.max(0, 0.35 * (1 - wave.r / wave.maxR));
+          wave.alpha = Math.max(0, 0.3 * (1 - wave.r / wave.maxR));
         }
 
         if (wave.r >= wave.maxR || wave.alpha <= 0) {
@@ -214,7 +203,7 @@ const AIBackground = () => {
         }
       });
 
-      // === 3. Render Floating Query & Vector Packets ===
+      // === 3. Render Packets ===
       queryPackets.forEach((pkt, idx) => {
         if (!prefersReducedMotion) {
           pkt.progress += pkt.speed;
@@ -225,61 +214,48 @@ const AIBackground = () => {
         const currX = pkt.x + (pkt.targetX - pkt.x) * pkt.progress;
         const currY = pkt.y + (pkt.targetY - pkt.y) * pkt.progress;
 
-        // Packet Trail
         ctx.strokeStyle = pkt.color;
-        ctx.lineWidth = 2;
-        ctx.globalAlpha = 0.8;
+        ctx.lineWidth = 1.8;
+        ctx.globalAlpha = 0.7;
         ctx.beginPath();
-        ctx.moveTo(currX - (pkt.targetX - pkt.x) * 0.08, currY - (pkt.targetY - pkt.y) * 0.08);
+        ctx.moveTo(currX - (pkt.targetX - pkt.x) * 0.06, currY - (pkt.targetY - pkt.y) * 0.06);
         ctx.lineTo(currX, currY);
         ctx.stroke();
 
-        // Glowing Packet Head
         ctx.fillStyle = pkt.color;
         ctx.shadowColor = pkt.color;
-        ctx.shadowBlur = 10;
+        ctx.shadowBlur = 8;
         ctx.beginPath();
-        ctx.arc(currX, currY, 3.5, 0, Math.PI * 2);
+        ctx.arc(currX, currY, 3, 0, Math.PI * 2);
         ctx.fill();
         ctx.shadowBlur = 0;
         ctx.globalAlpha = 1;
-
-        // Packet Payload Tag
-        if (width >= 768 && pkt.progress > 0.2 && pkt.progress < 0.8) {
-          ctx.fillStyle = colors.textHighlight;
-          ctx.font = '9px monospace';
-          ctx.textAlign = 'center';
-          ctx.fillText(pkt.payload, currX, currY - 8);
-        }
 
         if (pkt.progress >= 1) {
           queryPackets.splice(idx, 1);
         }
       });
 
-      // === 4. Render Nodes & AI Concepts ===
+      // === 4. Render Nodes ===
       nodes.forEach(n => {
         if (!prefersReducedMotion) {
           n.pulse += n.pulseSpeed;
         }
-        const pulseScale = 1 + Math.sin(n.pulse) * 0.12;
+        const pulseScale = 1 + Math.sin(n.pulse) * 0.1;
         const nodeColor = n.type === 'core' ? colors.nodeCore :
                           n.type === 'agent' ? colors.nodeAgent :
                           n.type === 'vector' ? colors.nodeVector : colors.nodeApi;
 
-        // Outer Halo / Glow
         ctx.fillStyle = colors.halo;
         ctx.beginPath();
-        ctx.arc(n.x, n.y, n.radius * pulseScale * 2.2, 0, Math.PI * 2);
+        ctx.arc(n.x, n.y, n.radius * pulseScale * 2, 0, Math.PI * 2);
         ctx.fill();
 
-        // Node Geometry
         ctx.fillStyle = nodeColor;
         ctx.shadowColor = nodeColor;
-        ctx.shadowBlur = mouse.active && Math.hypot(mouse.x - n.x, mouse.y - n.y) < 100 ? 16 : 6;
+        ctx.shadowBlur = mouse.active && Math.hypot(mouse.x - n.x, mouse.y - n.y) < 100 ? 12 : 4;
 
         if (n.type === 'agent') {
-          // Hexagon for Agents
           ctx.beginPath();
           for (let side = 0; side < 6; side++) {
             const a = (side / 6) * Math.PI * 2;
@@ -291,13 +267,11 @@ const AIBackground = () => {
           ctx.closePath();
           ctx.fill();
         } else if (n.type === 'vector') {
-          // Rounded Square for Vector Stores
-          const size = n.radius * pulseScale * 1.6;
+          const size = n.radius * pulseScale * 1.5;
           ctx.beginPath();
           ctx.roundRect(n.x - size / 2, n.y - size / 2, size, size, 4);
           ctx.fill();
         } else {
-          // Circle for Core / APIs
           ctx.beginPath();
           ctx.arc(n.x, n.y, n.radius * pulseScale, 0, Math.PI * 2);
           ctx.fill();
@@ -305,36 +279,11 @@ const AIBackground = () => {
 
         ctx.shadowBlur = 0;
 
-        // Label Tag
         ctx.fillStyle = colors.textHighlight;
-        ctx.font = '600 11px Inter, sans-serif';
+        ctx.font = '600 10.5px Inter, sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillText(n.label, n.x, n.y + n.radius + 16);
-
-        // Subtitle Vector / Desc
-        if (width >= 600) {
-          ctx.fillStyle = colors.text;
-          ctx.font = '9px monospace';
-          ctx.fillText(`[${n.embedding.join(',')}]`, n.x, n.y + n.radius + 28);
-        }
+        ctx.fillText(n.label, n.x, n.y + n.radius + 14);
       });
-
-      // Mouse Target Highlights
-      if (mouse.active) {
-        ctx.strokeStyle = colors.lineActive;
-        ctx.lineWidth = 1;
-        ctx.setLineDash([4, 4]);
-        nodes.forEach(n => {
-          const d = Math.hypot(mouse.x - n.x, mouse.y - n.y);
-          if (d < 180) {
-            ctx.beginPath();
-            ctx.moveTo(mouse.x, mouse.y);
-            ctx.lineTo(n.x, n.y);
-            ctx.stroke();
-          }
-        });
-        ctx.setLineDash([]);
-      }
     }
 
     function update(delta) {
@@ -347,20 +296,18 @@ const AIBackground = () => {
         n.x += n.vx * dt;
         n.y += n.vy * dt;
 
-        // Mouse repulsion
         if (mouse.active) {
           const dx = n.x - mouse.x;
           const dy = n.y - mouse.y;
           const dist = Math.hypot(dx, dy);
-          if (dist < 120 && dist > 0) {
-            const force = (120 - dist) / 120;
-            n.x += (dx / dist) * force * 1.5;
-            n.y += (dy / dist) * force * 1.5;
+          if (dist < 100 && dist > 0) {
+            const force = (100 - dist) / 100;
+            n.x += (dx / dist) * force * 1.2;
+            n.y += (dy / dist) * force * 1.2;
           }
         }
 
-        // Bounded boundaries
-        const pad = 60;
+        const pad = 50;
         if (n.x < pad) { n.x = pad; n.vx *= -1; }
         if (n.x > width - pad) { n.x = width - pad; n.vx *= -1; }
         if (n.y < pad) { n.y = pad; n.vy *= -1; }
@@ -376,7 +323,6 @@ const AIBackground = () => {
       requestAnimationFrame(loop);
     }
 
-    // Interactive Click: Triggers Semantic Query Wave
     const handleCanvasClick = (e) => {
       const rect = canvas.getBoundingClientRect();
       const clickX = e.clientX - rect.left;
@@ -386,12 +332,11 @@ const AIBackground = () => {
         x: clickX,
         y: clickY,
         r: 5,
-        maxR: 350,
-        speed: 3.5,
-        alpha: 0.6
+        maxR: 300,
+        speed: 3,
+        alpha: 0.5
       });
 
-      // Find nearest node & trigger active concept update
       let closestNode = null;
       let minDist = Infinity;
       nodes.forEach(n => {
@@ -402,7 +347,7 @@ const AIBackground = () => {
         }
       });
 
-      if (closestNode && minDist < 200) {
+      if (closestNode && minDist < 180) {
         setActiveConcept(`Query Executed: ${closestNode.label} (${closestNode.desc})`);
         spawnQueryPacket();
       }
@@ -459,7 +404,6 @@ const AIBackground = () => {
         aria-label="Interactive AI system background visualizing Knowledge Graphs, Multi-Agent Systems, RAG, and Vector Embeddings"
       />
       
-      {/* Dynamic Status Ticker overlay in corner */}
       <div className="ai-bg-status-badge d-none d-md-flex align-items-center gap-2">
         <span className="pulse-dot"></span>
         <span className="concept-text">{activeConcept}</span>

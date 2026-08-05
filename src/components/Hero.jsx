@@ -7,22 +7,22 @@ const Hero = ({ profile }) => {
     <section id="hero" className="hero-section d-flex align-items-center position-relative min-vh-100 py-5">
       <div className="container">
         <div className="row align-items-center g-5">
-          {/* Main Hero Text */}
+          {/* Main Hero Glass Panel Container */}
           <div className="col-lg-7">
-            <div className="hero-content">
+            <div className="hero-content card border-0 glass-card p-4 p-md-5 rounded-4 shadow-lg position-relative">
               {/* Badge */}
-              <div className="d-inline-flex align-items-center gap-2 px-3 py-1.5 rounded-pill badge-ai-status mb-4 shadow-sm">
+              <div className="d-inline-flex align-items-center gap-2 px-3 py-1.5 rounded-pill badge-ai-status mb-3 shadow-sm align-self-start">
                 <span className="pulse-dot"></span>
                 <span className="small fw-bold tracking-wide text-uppercase">
                   AI Engineer &amp; Technical Architect • {personal.yearsOfExperience || '14+'} Years
                 </span>
               </div>
 
-              <h1 className="hero-title display-3 fw-extrabold mb-3">
+              <h1 className="hero-title display-3 fw-extrabold mb-3 text-body">
                 Hi, I’m <span className="gradient-text">{personal.name || 'Jaibir Singh'}</span>
               </h1>
 
-              <p className="hero-subtitle lead mb-4 text-muted">
+              <p className="hero-subtitle lead mb-4 text-body-secondary style-leading">
                 {personal.tagline || 
                   "Technical Architect with deep expertise in building production-grade AI systems — Generative AI, RAG, Multi-Agent architectures, Azure, and Python."
                 }
@@ -31,7 +31,7 @@ const Hero = ({ profile }) => {
               {/* Tech Stack Pills */}
               <div className="hero-tech-pills d-flex flex-wrap gap-2 mb-4">
                 {['Azure OpenAI (gpt-4o)', 'Agentic AI', 'RAG & Vector Search', 'Python FastAPI', 'Backstage IDP', 'Google Cloud Certified'].map((tech, i) => (
-                  <span key={i} className="tech-pill px-2.5 py-1 rounded-3 small">
+                  <span key={i} className="tech-pill px-2.5 py-1 rounded-3 small border">
                     <i className="bi bi-cpu me-1 text-cyan"></i>
                     {tech}
                   </span>
@@ -80,19 +80,19 @@ const Hero = ({ profile }) => {
                 {/* Micro Stats inside Card */}
                 <div className="row g-2 text-center pt-1">
                   <div className="col-4">
-                    <div className="p-2 rounded-3 bg-body-tertiary">
+                    <div className="p-2 rounded-3 bg-body-tertiary border">
                       <div className="fw-extrabold text-cyan">14+</div>
                       <div className="x-small text-muted">Years Exp</div>
                     </div>
                   </div>
                   <div className="col-4">
-                    <div className="p-2 rounded-3 bg-body-tertiary">
+                    <div className="p-2 rounded-3 bg-body-tertiary border">
                       <div className="fw-extrabold text-primary">GPT-4o</div>
                       <div className="x-small text-muted">RAG &amp; AI</div>
                     </div>
                   </div>
                   <div className="col-4">
-                    <div className="p-2 rounded-3 bg-body-tertiary">
+                    <div className="p-2 rounded-3 bg-body-tertiary border">
                       <div className="fw-extrabold text-success">Cloud</div>
                       <div className="x-small text-muted">GCP &amp; Azure</div>
                     </div>

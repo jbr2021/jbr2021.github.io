@@ -9,12 +9,15 @@ const Skills = ({ profile }) => {
   return (
     <section id="skills" className="skills-section py-5">
       <div className="container">
-        <div className="section-header text-center mb-5">
-          <div className="badge-pill mb-2">Technical Proficiency</div>
-          <h2 className="section-title">Skills &amp; Technology Stack</h2>
-          <p className="section-subtitle">
-            Comprehensive domain expertise spanning AI engineering, cloud microservices, and modern enterprise frameworks.
-          </p>
+        {/* Glass Section Header */}
+        <div className="text-center mb-5">
+          <div className="section-header card border-0 glass-card p-4 rounded-4 shadow-sm mx-auto">
+            <div className="badge-pill mb-2">Technical Proficiency</div>
+            <h2 className="section-title text-body">Skills &amp; Technology Stack</h2>
+            <p className="section-subtitle text-body-secondary mb-0">
+              Comprehensive domain expertise spanning AI engineering, cloud microservices, and modern enterprise frameworks.
+            </p>
+          </div>
         </div>
 
         {/* Category Filter Tabs */}
@@ -48,15 +51,15 @@ const Skills = ({ profile }) => {
                       cIdx === 1 ? 'bi-cloud-check-fill text-primary' :
                       cIdx === 2 ? 'bi-window-stack text-warning' : 'bi-database-fill text-success'
                     } fs-4`}></i>
-                    <h3 className="h5 fw-bold mb-0">{catGroup.category}</h3>
+                    <h3 className="h5 fw-bold mb-0 text-body">{catGroup.category}</h3>
                   </div>
 
                   <div className="skills-list d-flex flex-column gap-3">
                     {catGroup.items.map((skill, sIdx) => (
                       <div key={sIdx} className="skill-item">
                         <div className="d-flex justify-content-between align-items-center mb-1">
-                          <span className="fw-semibold small">{skill.name}</span>
-                          <span className="x-small text-muted font-monospace">{skill.level}%</span>
+                          <span className="fw-semibold small text-body">{skill.name}</span>
+                          <span className="x-small text-body-secondary font-monospace">{skill.level}%</span>
                         </div>
                         <div className="skill-progress-bar rounded-pill bg-body-tertiary p-0.5 border">
                           <div

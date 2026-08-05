@@ -9,12 +9,15 @@ const About = ({ profile }) => {
   return (
     <section id="about" className="about-section py-5">
       <div className="container">
-        <div className="section-header text-center mb-5">
-          <div className="badge-pill mb-2">Architect Background</div>
-          <h2 className="section-title">About Me</h2>
-          <p className="section-subtitle">
-            Bridging complex cloud infrastructure with cutting-edge artificial intelligence and enterprise engineering.
-          </p>
+        {/* Glass Section Header */}
+        <div className="text-center mb-5">
+          <div className="section-header card border-0 glass-card p-4 rounded-4 shadow-sm mx-auto">
+            <div className="badge-pill mb-2">Architect Background</div>
+            <h2 className="section-title text-body">About Me</h2>
+            <p className="section-subtitle text-body-secondary mb-0">
+              Bridging complex cloud infrastructure with cutting-edge artificial intelligence and enterprise engineering.
+            </p>
+          </div>
         </div>
 
         {/* Main Grid: Bio & Personal Details */}
@@ -42,8 +45,8 @@ const About = ({ profile }) => {
 
           {/* Bio text */}
           <div className="col-lg-8">
-            <div className="bio-content card border-0 glass-card p-4 rounded-4 shadow-sm">
-              <h3 className="h4 fw-bold mb-3 d-flex align-items-center gap-2">
+            <div className="bio-content card border-0 glass-card p-4 p-md-5 rounded-4 shadow-sm">
+              <h3 className="h4 fw-bold mb-3 d-flex align-items-center gap-2 text-body">
                 <i className="bi bi-person-badge text-primary"></i>
                 Technical Architect &amp; AI Engineering Specialist
               </h3>
@@ -58,7 +61,7 @@ const About = ({ profile }) => {
                   <i className="bi bi-briefcase text-primary fs-5"></i>
                   <div>
                     <span className="text-muted small d-block">Profession</span>
-                    <strong className="small">{personal.title || "Technical Architect"}</strong>
+                    <strong className="small text-body">{personal.title || "Technical Architect"}</strong>
                   </div>
                 </div>
 
@@ -86,7 +89,7 @@ const About = ({ profile }) => {
                   <i className="bi bi-telephone text-primary fs-5"></i>
                   <div>
                     <span className="text-muted small d-block">Phone</span>
-                    <strong className="small">{personal.phone || "+91-9999XXXXXX"}</strong>
+                    <strong className="small text-body">{personal.phone || "+91-9999XXXXXX"}</strong>
                   </div>
                 </div>
 
@@ -94,7 +97,7 @@ const About = ({ profile }) => {
                   <i className="bi bi-geo-alt text-primary fs-5"></i>
                   <div>
                     <span className="text-muted small d-block">City / Location</span>
-                    <strong className="small">{personal.location || "Ghaziabad, Uttar Pradesh, India"}</strong>
+                    <strong className="small text-body">{personal.location || "Ghaziabad, Uttar Pradesh, India"}</strong>
                   </div>
                 </div>
 
@@ -102,7 +105,7 @@ const About = ({ profile }) => {
                   <i className="bi bi-calendar-event text-primary fs-5"></i>
                   <div>
                     <span className="text-muted small d-block">Birthday / Age</span>
-                    <strong className="small">{personal.birthday} ({personal.age} years)</strong>
+                    <strong className="small text-body">{personal.birthday} ({personal.age} years)</strong>
                   </div>
                 </div>
 
@@ -110,7 +113,7 @@ const About = ({ profile }) => {
                   <i className="bi bi-check-circle text-primary fs-5"></i>
                   <div>
                     <span className="text-muted small d-block">Freelance</span>
-                    <strong className="small">{personal.freelance || "Not Available"}</strong>
+                    <strong className="small text-body">{personal.freelance || "Not Available"}</strong>
                   </div>
                 </div>
 
@@ -118,7 +121,7 @@ const About = ({ profile }) => {
                   <i className="bi bi-award text-primary fs-5"></i>
                   <div>
                     <span className="text-muted small d-block">Certification</span>
-                    <strong className="small">Google Cloud Professional Cloud Developer</strong>
+                    <strong className="small text-body">Google Cloud Professional Cloud Developer</strong>
                   </div>
                 </div>
               </div>
@@ -129,7 +132,7 @@ const About = ({ profile }) => {
         {/* Highlights Cards */}
         {highlights.length > 0 && (
           <div className="highlights-section pt-3">
-            <h3 className="h5 fw-bold mb-4 text-center">Core Architectural Pillars</h3>
+            <h3 className="h5 fw-bold mb-4 text-center text-body">Core Architectural Pillars</h3>
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
               {highlights.map((item, idx) => (
                 <div key={idx} className="col">
@@ -143,9 +146,9 @@ const About = ({ profile }) => {
                           idx === 3 ? 'bi-code-slash' : 'bi-kanban'
                         } fs-4`}></i>
                       </div>
-                      <h4 className="h6 fw-bold mb-0">{item.title}</h4>
+                      <h4 className="h6 fw-bold mb-0 text-body">{item.title}</h4>
                     </div>
-                    <p className="small text-muted mb-0 style-leading">{item.description}</p>
+                    <p className="small text-body-secondary mb-0 style-leading">{item.description}</p>
                   </div>
                 </div>
               ))}

@@ -76,17 +76,20 @@ const AIPipelineVisualizer = () => {
   };
 
   return (
-    <section id="ai-pipeline" className="pipeline-section">
+    <section id="ai-pipeline" className="pipeline-section py-5">
       <div className="container">
-        <div className="section-header text-center mb-5">
-          <div className="badge-pill mb-2">Interactive AI Architecture Lab</div>
-          <h2 className="section-title">Live AI System Workflow Visualizer</h2>
-          <p className="section-subtitle">
-            Simulate production-grade AI pipelines engineered by Jaibir Singh for World Bank Group & ANZ Bank.
-          </p>
+        {/* Glass Section Header */}
+        <div className="text-center mb-5">
+          <div className="section-header card border-0 glass-card p-4 rounded-4 shadow-sm mx-auto">
+            <div className="badge-pill mb-2">Interactive AI Architecture Lab</div>
+            <h2 className="section-title text-body">Live AI System Workflow Visualizer</h2>
+            <p className="section-subtitle text-body-secondary mb-0">
+              Simulate production-grade AI pipelines engineered by Jaibir Singh for World Bank Group &amp; ANZ Bank.
+            </p>
+          </div>
         </div>
 
-        <div className="pipeline-card card p-4">
+        <div className="pipeline-card card border-0 glass-card p-4 rounded-4 shadow-sm">
           <div className="row g-4 align-items-center">
             {/* Left Selector & Control */}
             <div className="col-lg-5">
@@ -94,7 +97,7 @@ const AIPipelineVisualizer = () => {
                 {Object.keys(pipelines).map((key) => (
                   <button
                     key={key}
-                    className={`pipeline-tab-btn text-start p-3 rounded-3 border-0 transition-all ${
+                    className={`pipeline-tab-btn text-start p-3 rounded-3 border transition-all ${
                       activePipeline === key ? 'active' : ''
                     }`}
                     onClick={() => {
@@ -103,12 +106,12 @@ const AIPipelineVisualizer = () => {
                     }}
                   >
                     <div className="d-flex justify-content-between align-items-center mb-1">
-                      <span className="fw-bold">{pipelines[key].title.split(' ')[0]} {pipelines[key].title.split(' ')[1]}</span>
+                      <span className="fw-bold text-body">{pipelines[key].title.split(' ')[0]} {pipelines[key].title.split(' ')[1]}</span>
                       <span className="badge bg-primary-subtle text-primary border border-primary-subtle">
                         {pipelines[key].client}
                       </span>
                     </div>
-                    <small className="text-muted d-block">{pipelines[key].tech}</small>
+                    <small className="text-body-secondary d-block">{pipelines[key].tech}</small>
                   </button>
                 ))}
               </div>
@@ -121,12 +124,12 @@ const AIPipelineVisualizer = () => {
                 >
                   {isRunning ? (
                     <>
-                      <span className="spinner-border spinner-spinner-sm" role="status"></span>
+                      <span className="spinner-border spinner-border-sm" role="status"></span>
                       <span>Processing AI Pipeline...</span>
                     </>
                   ) : (
                     <>
-                      <i className="bi fill bi-play-circle-fill"></i>
+                      <i className="bi bi-play-circle-fill"></i>
                       <span>Simulate {pipelines[activePipeline].title.split(' ')[0]} Pipeline</span>
                     </>
                   )}
@@ -146,8 +149,8 @@ const AIPipelineVisualizer = () => {
                           idx === activeStep && isRunning
                             ? 'border-cyan bg-cyan-glow text-white'
                             : idx <= activeStep
-                            ? 'border-primary bg-primary-subtle'
-                            : 'border-secondary text-muted'
+                            ? 'border-primary bg-primary-subtle text-body'
+                            : 'border-secondary text-body-secondary'
                         }`}
                       >
                         <div className="step-num fw-bold">0{idx + 1}</div>
@@ -159,7 +162,7 @@ const AIPipelineVisualizer = () => {
               </div>
 
               {/* Console log display */}
-              <div className="console-window rounded-3 p-3 bg-dark font-monospace text-light small shadow-sm">
+              <div className="console-window rounded-3 p-3 font-monospace text-light small shadow-sm">
                 <div className="console-header d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom border-secondary">
                   <span className="text-cyan">
                     <i className="bi bi-terminal me-2"></i>

@@ -6,12 +6,15 @@ const EducationCertifications = ({ profile }) => {
   return (
     <section id="education" className="education-section py-5">
       <div className="container">
-        <div className="section-header text-center mb-5">
-          <div className="badge-pill mb-2">Academic &amp; Professional Credentials</div>
-          <h2 className="section-title">Education &amp; Certifications</h2>
-          <p className="section-subtitle">
-            Formal degrees and globally recognized cloud developer certifications.
-          </p>
+        {/* Glass Section Header */}
+        <div className="text-center mb-5">
+          <div className="section-header card border-0 glass-card p-4 rounded-4 shadow-sm mx-auto">
+            <div className="badge-pill mb-2">Academic &amp; Professional Credentials</div>
+            <h2 className="section-title text-body">Education &amp; Certifications</h2>
+            <p className="section-subtitle text-body-secondary mb-0">
+              Formal degrees and globally recognized cloud developer certifications.
+            </p>
+          </div>
         </div>
 
         <div className="row row-cols-1 row-cols-md-3 g-4">
@@ -30,7 +33,7 @@ const EducationCertifications = ({ profile }) => {
                 <h3 className="h6 fw-extrabold mb-1 text-body">{item.degree}</h3>
                 <div className="small fw-semibold text-primary mb-3">{item.institution}</div>
 
-                <p className="x-small text-muted mb-0 style-leading flex-grow-1">
+                <p className="x-small text-body-secondary mb-0 style-leading flex-grow-1">
                   {item.description}
                 </p>
 
