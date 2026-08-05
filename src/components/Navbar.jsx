@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import JBRLogo from './JBRLogo';
+import LiveClock from './LiveClock';
 
 const Navbar = ({ theme, toggleTheme }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -26,9 +27,9 @@ const Navbar = ({ theme, toggleTheme }) => {
     <header className={`navbar-header fixed-top transition-all ${scrolled ? 'navbar-scrolled' : ''}`}>
       <nav className="navbar navbar-expand-lg py-2">
         <div className="container">
-          {/* Logo */}
-          <a href="#hero" className="navbar-brand d-flex align-items-center me-4" onClick={(e) => { e.preventDefault(); scrollTo('hero'); }}>
-            <JBRLogo width={150} height={40} />
+          {/* Brand Logo */}
+          <a href="#hero" className="navbar-brand d-flex align-items-center me-3" onClick={(e) => { e.preventDefault(); scrollTo('hero'); }}>
+            <JBRLogo width={145} height={38} />
           </a>
 
           {/* Desktop Nav Links */}
@@ -58,8 +59,12 @@ const Navbar = ({ theme, toggleTheme }) => {
             </ul>
           </div>
 
-          {/* Right Action Buttons */}
+          {/* Right Action Controls: Live Clock + Theme Toggle + CTA */}
           <div className="d-flex align-items-center gap-2">
+            {/* Live System Time & Date Clock */}
+            <LiveClock className="d-none d-sm-inline-flex" />
+
+            {/* Theme Toggle Button */}
             <button 
               className="theme-toggle-btn rounded-circle d-flex align-items-center justify-content-center" 
               onClick={toggleTheme}
@@ -73,15 +78,16 @@ const Navbar = ({ theme, toggleTheme }) => {
               )}
             </button>
 
+            {/* CTA Button */}
             <a 
               href="#contact" 
-              className="btn btn-sm btn-outline-primary rounded-pill d-none d-sm-inline-flex align-items-center gap-1 px-3"
+              className="btn btn-sm btn-outline-primary rounded-pill d-none d-xl-inline-flex align-items-center gap-1 px-3"
               onClick={(e) => { e.preventDefault(); scrollTo('contact'); }}
             >
               <i className="bi bi-send"></i> Get In Touch
             </a>
 
-            {/* Mobile Menu Toggle Button */}
+            {/* Mobile Drawer Toggle */}
             <button 
               className="mobile-toggle-btn d-lg-none rounded-3 border-0 bg-transparent p-2" 
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -93,10 +99,13 @@ const Navbar = ({ theme, toggleTheme }) => {
         </div>
       </nav>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Drawer */}
       {mobileOpen && (
         <div className="mobile-menu-drawer d-lg-none p-3 shadow-lg border-bottom animate-fade-in">
           <div className="d-flex flex-column gap-2">
+            <div className="mb-2 text-center">
+              <LiveClock className="w-100 justify-content-center" />
+            </div>
             <a className="mobile-nav-link" href="#about" onClick={(e) => { e.preventDefault(); scrollTo('about'); }}>About</a>
             <a className="mobile-nav-link" href="#experience" onClick={(e) => { e.preventDefault(); scrollTo('experience'); }}>Experience</a>
             <a className="mobile-nav-link" href="#ai-pipeline" onClick={(e) => { e.preventDefault(); scrollTo('ai-pipeline'); }}>AI Architecture</a>
