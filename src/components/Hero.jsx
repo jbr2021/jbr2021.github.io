@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import RAGWorkflowDiagram from './RAGWorkflowDiagram';
 
 const Hero = ({ profile }) => {
   const personal = profile?.personal || {};
+  const [showPhoto, setShowPhoto] = useState(true);
+
+  // Sync state with profile.json flag when loaded
+  useEffect(() => {
+    if (personal.usePersonalPhoto !== undefined) {
+      setShowPhoto(personal.usePersonalPhoto);
+    }
+  }, [personal.usePersonalPhoto]);
 
   return (
     <section id="hero" className="hero-section d-flex align-items-center position-relative min-vh-100 py-5">
@@ -50,56 +59,68 @@ const Hero = ({ profile }) => {
                   <span>AI Architecture Lab</span>
                 </a>
 
-                <a href="#contact" className="btn btn-link text-decoration-none text-body fw-semibold px-2">
-                  Contact Me &rarr;
-                </a>
+                {/* Mode Toggle Button */}
+                <button 
+                  className="btn btn-sm btn-outline-secondary rounded-pill px-3 py-2 d-inline-flex align-items-center gap-1.5 x-small"
+                  onClick={() => setShowPhoto(!showPhoto)}
+                  title="Toggle visual mode between Personal Photo and Animated RAG Architecture Flow"
+                >
+                  <i className={`bi ${showPhoto ? 'bi-diagram-3-fill text-cyan' : 'bi-person-square text-primary'}`}></i>
+                  <span>{showPhoto ? 'View RAG Diagram' : 'View Personal Photo'}</span>
+                </button>
               </div>
             </div>
           </div>
 
-          {/* Profile Card & Avatar */}
+          {/* Right Column: Dynamic Switcher (Photo vs RAG Workflow Diagram) */}
           <div className="col-lg-5 text-center">
-            <div className="hero-profile-wrapper position-relative mx-auto" style={{ maxWidth: '340px' }}>
-              {/* Outer Ambient Glow Ring */}
-              <div className="profile-glow-ring position-absolute top-50 start-50 translate-middle w-100 h-100 rounded-circle opacity-75 blur-3xl"></div>
-              
-              <div className="profile-card-inner card border-0 rounded-4 overflow-hidden shadow-2xl glass-card position-relative p-3">
-                <div className="position-relative overflow-hidden rounded-3 mb-3">
-                  <img 
-                    src={personal.photos?.avatar || "/assets/img/Jaibir-Singh-07.jpg"} 
-                    alt={personal.name || "Jaibir Singh"}
-                    className="img-fluid w-100 profile-avatar-img transition-transform duration-500"
-                    loading="eager"
-                  />
-                  <div className="profile-overlay-badge position-absolute bottom-0 start-0 end-0 p-2 text-start bg-gradient-dark text-white">
-                    <div className="fw-bold small">{personal.title || "Technical Architect & AI Engineer"}</div>
-                    <div className="x-small opacity-75"><i className="bi bi-geo-alt-fill me-1"></i>{personal.location || "Noida / Delhi NCR, India"}</div>
+            {showPhoto ? (
+              <div className="hero-profile-wrapper position-relative mx-auto" style={{ maxWidth: '340px' }}>
+                {/* Outer Ambient Glow Ring */}
+                <div className="profile-glow-ring position-absolute top-50 start-50 translate-middle w-100 h-100 rounded-circle opacity-75 blur-3xl"></div>
+                
+                <div className="profile-card-inner card border-0 rounded-4 overflow-hidden shadow-2xl glass-card position-relative p-3">
+                  <div className="position-relative overflow-hidden rounded-3 mb-3">
+                    <img 
+                      src={personal.photos?.avatar || "/assets/img/Jaibir-Singh-07.jpg"} 
+                      alt={personal.name || "Jaibir Singh"}
+                      className="img-fluid w-100 profile-avatar-img transition-transform duration-500"
+                      loading="eager"
+                    />
+                    <div className="profile-overlay-badge position-absolute bottom-0 start-0 end-0 p-2 text-start bg-gradient-dark text-white">
+                      <div className="fw-bold small">{personal.title || "Technical Architect & AI Engineer"}</div>
+                      <div className="x-small opacity-75"><i className="bi bi-geo-alt-fill me-1"></i>{personal.location || "Noida / Delhi NCR, India"}</div>
+                    </div>
                   </div>
-                </div>
 
-                {/* Micro Stats inside Card */}
-                <div className="row g-2 text-center pt-1">
-                  <div className="col-4">
-                    <div className="p-2 rounded-3 bg-body-tertiary border">
-                      <div className="fw-extrabold text-cyan">14+</div>
-                      <div className="x-small text-muted">Years Exp</div>
+                  {/* Micro Stats inside Card */}
+                  <div className="row g-2 text-center pt-1">
+                    <div className="col-4">
+                      <div className="p-2 rounded-3 bg-body-tertiary border">
+                        <div className="fw-extrabold text-cyan">14+</div>
+                        <div className="x-small text-muted">Years Exp</div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="col-4">
-                    <div className="p-2 rounded-3 bg-body-tertiary border">
-                      <div className="fw-extrabold text-primary">GPT-4o</div>
-                      <div className="x-small text-muted">RAG &amp; AI</div>
+                    <div className="col-4">
+                      <div className="p-2 rounded-3 bg-body-tertiary border">
+                        <div className="fw-extrabold text-primary">GPT-4o</div>
+                        <div className="x-small text-muted">RAG &amp; AI</div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="col-4">
-                    <div className="p-2 rounded-3 bg-body-tertiary border">
-                      <div className="fw-extrabold text-success">Cloud</div>
-                      <div className="x-small text-muted">GCP &amp; Azure</div>
+                    <div className="col-4">
+                      <div className="p-2 rounded-3 bg-body-tertiary border">
+                        <div className="fw-extrabold text-success">Cloud</div>
+                        <div className="x-small text-muted">GCP &amp; Azure</div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <div className="hero-diagram-wrapper position-relative mx-auto" style={{ maxWidth: '420px' }}>
+                <RAGWorkflowDiagram compact={true} />
+              </div>
+            )}
           </div>
         </div>
       </div>

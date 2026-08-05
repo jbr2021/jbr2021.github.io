@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import RAGWorkflowDiagram from './RAGWorkflowDiagram';
 
 const About = ({ profile }) => {
   const personal = profile?.personal || {};
   const summary = profile?.summary || '';
   const highlights = profile?.highlights || [];
   const [photoModal, setPhotoModal] = useState(false);
+
+  const usePhoto = personal.usePersonalPhoto !== false;
 
   return (
     <section id="about" className="about-section py-5">
@@ -22,25 +25,31 @@ const About = ({ profile }) => {
 
         {/* Main Grid: Bio & Personal Details */}
         <div className="row g-4 align-items-center mb-5">
-          {/* Photo & Badge */}
+          {/* Photo or RAG Workflow Diagram */}
           <div className="col-lg-4 text-center">
-            <div className="about-photo-wrapper position-relative mx-auto" style={{ maxWidth: '300px' }}>
-              <div 
-                className="photo-card card border-0 shadow-lg rounded-4 overflow-hidden cursor-pointer"
-                onClick={() => setPhotoModal(true)}
-                title="Click to expand photograph"
-              >
-                <img 
-                  src={personal.photos?.featured || personal.photos?.avatar || "/assets/img/Jaibir-Singh-03.jpg"} 
-                  alt={personal.name || "Jaibir Singh"}
-                  className="img-fluid w-100 about-img transition-all"
-                  loading="lazy"
-                />
-                <div className="photo-expand-hint position-absolute top-0 end-0 m-2 badge bg-dark bg-opacity-75 text-white">
-                  <i className="bi bi-arrows-angle-expand me-1"></i> Expand
+            {usePhoto ? (
+              <div className="about-photo-wrapper position-relative mx-auto" style={{ maxWidth: '300px' }}>
+                <div 
+                  className="photo-card card border-0 shadow-lg rounded-4 overflow-hidden cursor-pointer"
+                  onClick={() => setPhotoModal(true)}
+                  title="Click to expand photograph"
+                >
+                  <img 
+                    src={personal.photos?.featured || personal.photos?.avatar || "/assets/img/Jaibir-Singh-03.jpg"} 
+                    alt={personal.name || "Jaibir Singh"}
+                    className="img-fluid w-100 about-img transition-all"
+                    loading="lazy"
+                  />
+                  <div className="photo-expand-hint position-absolute top-0 end-0 m-2 badge bg-dark bg-opacity-75 text-white">
+                    <i className="bi bi-arrows-angle-expand me-1"></i> Expand
+                  </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <div className="about-diagram-wrapper mx-auto" style={{ maxWidth: '360px' }}>
+                <RAGWorkflowDiagram compact={true} />
+              </div>
+            )}
           </div>
 
           {/* Bio text */}
@@ -158,7 +167,7 @@ const About = ({ profile }) => {
       </div>
 
       {/* Photo Lightbox Modal */}
-      {photoModal && (
+      {photoModal && usePhoto && (
         <div className="modal fade show d-block bg-dark bg-opacity-75 backdrop-blur" tabIndex="-1" onClick={() => setPhotoModal(false)}>
           <div className="modal-dialog modal-dialog-centered modal-lg" onClick={(e) => e.stopPropagation()}>
             <div className="modal-content bg-dark text-white border-secondary rounded-4 overflow-hidden">
