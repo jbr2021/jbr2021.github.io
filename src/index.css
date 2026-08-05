@@ -23,6 +23,12 @@
   
   --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
   --glass-border: 1px solid rgba(203, 213, 225, 0.8);
+
+  /* Console / Terminal */
+  --console-bg: #f8fafc;
+  --console-border: #cbd5e1;
+  --console-text: #0f172a;
+  --console-muted: #64748b;
 }
 
 [data-theme="dark"], [data-bs-theme="dark"] {
@@ -42,6 +48,12 @@
   
   --card-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6);
   --glass-border: 1px solid rgba(255, 255, 255, 0.14);
+
+  /* Console / Terminal */
+  --console-bg: #0b0f19;
+  --console-border: #334155;
+  --console-text: #f8fafc;
+  --console-muted: #94a3b8;
 }
 
 /* Base resets */
@@ -202,13 +214,16 @@ body {
 .navbar-header {
   z-index: 100;
   transition: all 0.3s ease;
+  /* Ensure visible top menu line on all viewports, especially mobile */
+  border-bottom: 1px solid var(--border-color);
+  background: var(--surface-glass);
 }
 
 .navbar-scrolled {
   background: var(--surface-glass);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: var(--glass-border);
+  /* border-bottom handled by .navbar-header to ensure always visible on mobile too */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
 }
 
@@ -343,8 +358,35 @@ body {
 
 /* Pipeline Visualizer Console */
 .console-window {
-  background-color: #0b0f19 !important;
-  border: 1px solid #334155;
+  background-color: var(--console-bg) !important;
+  border: 1px solid var(--console-border) !important;
+  color: var(--console-text);
+}
+
+.console-window,
+.console-window .console-line,
+.console-window .console-line span {
+  color: var(--console-text);
+}
+
+.console-window .text-muted,
+.console-window .console-line .text-muted {
+  color: var(--console-muted) !important;
+}
+
+.console-window .text-cyan {
+  color: var(--cyan) !important;
+}
+
+/* Ensure console text is visible in light mode (override bootstrap text-* when needed) */
+[data-theme="light"] .console-window,
+[data-bs-theme="light"] .console-window {
+  color: #0f172a;
+}
+
+[data-theme="light"] .console-window .text-muted,
+[data-bs-theme="light"] .console-window .text-muted {
+  color: #64748b !important;
 }
 
 .pipeline-tab-btn {
