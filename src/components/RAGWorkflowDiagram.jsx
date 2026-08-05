@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const RAGWorkflowDiagram = ({ compact = false }) => {
+const RAGWorkflowDiagram = () => {
   const [activeStep, setActiveStep] = useState(0);
 
   const ragSteps = [
@@ -11,7 +11,7 @@ const RAGWorkflowDiagram = ({ compact = false }) => {
       color: 'text-primary',
       badge: 'FastAPI Input',
       desc: 'User queries document repository via API endpoint',
-      detail: 'REST / WebSocket payload ingested into Python FastAPI router with rate-limiting & auth validation.'
+      detail: 'REST payload ingested into Python FastAPI router with rate-limiting & auth validation.'
     },
     {
       id: 2,
@@ -20,7 +20,7 @@ const RAGWorkflowDiagram = ({ compact = false }) => {
       color: 'text-info',
       badge: 'text-embedding-3',
       desc: 'Sliding window chunking into 1536-dim vectors',
-      detail: 'Overlapping text chunker converts unstructured PDF/Word documents into 1536-dimensional dense embedding vectors.'
+      detail: 'Overlapping text chunker converts PDF/Word files into 1536-dimensional dense embedding vectors.'
     },
     {
       id: 3,
@@ -29,7 +29,7 @@ const RAGWorkflowDiagram = ({ compact = false }) => {
       color: 'text-cyan',
       badge: 'Azure AI Search',
       desc: 'Cosine distance top-K similarity retrieval',
-      detail: 'Hybrid search querying Azure AI Search & AWS OpenSearch using HNSW indexing (cos_sim >= 0.88).'
+      detail: 'Hybrid search querying Azure AI Search & OpenSearch using HNSW indexing (cos_sim >= 0.88).'
     },
     {
       id: 4,
@@ -59,41 +59,47 @@ const RAGWorkflowDiagram = ({ compact = false }) => {
     return () => clearInterval(timer);
   }, []);
 
+  const currentStep = ragSteps[activeStep];
+
   return (
-    <div className={`rag-diagram-wrapper card border-0 glass-card p-3 p-md-4 rounded-4 shadow-lg text-start ${compact ? 'compact-mode' : ''}`}>
-      {/* Header */}
-      <div className="d-flex align-items-center justify-content-between mb-3 pb-2 border-bottom">
+    <div 
+      className="rag-diagram-wrapper card border-0 glass-card p-3 rounded-4 shadow-lg text-start"
+      style={{ height: '420px', minHeight: '420px', maxHeight: '420px', overflow: 'hidden' }}
+    >
+      {/* Fixed Header */}
+      <div className="d-flex align-items-center justify-content-between mb-2 pb-2 border-bottom" style={{ height: '36px' }}>
         <div className="d-flex align-items-center gap-2">
           <span className="pulse-dot"></span>
-          <span className="fw-bold small text-body font-monospace text-uppercase">Enterprise RAG Architecture</span>
+          <span className="fw-bold x-small text-body font-monospace text-uppercase">RAG Execution Flow</span>
         </div>
         <span className="badge bg-primary-subtle text-primary border border-primary-subtle x-small">
-          Interactive Workflow
+          Live Runtime Sequence
         </span>
       </div>
 
-      {/* RAG Animated Flow Cards */}
-      <div className="rag-steps-container d-flex flex-column gap-2 mb-3">
+      {/* Fixed Steps List */}
+      <div className="rag-steps-container d-flex flex-column gap-1.5 mb-2" style={{ height: '275px' }}>
         {ragSteps.map((step, idx) => {
           const isActive = idx === activeStep;
           return (
             <div
               key={step.id}
-              className={`rag-step-item p-2.5 rounded-3 border transition-all cursor-pointer ${
+              className={`rag-step-item p-2 rounded-3 border transition-all cursor-pointer ${
                 isActive
-                  ? 'border-cyan bg-cyan-glow shadow-sm'
-                  : 'bg-body-tertiary border-secondary text-body-secondary opacity-85'
+                  ? 'border-cyan bg-cyan-glow'
+                  : 'bg-body-tertiary border-secondary text-body-secondary opacity-80'
               }`}
+              style={{ height: '50px', overflow: 'hidden' }}
               onClick={() => setActiveStep(idx)}
             >
-              <div className="d-flex align-items-center justify-content-between">
-                <div className="d-flex align-items-center gap-2.5">
-                  <div className={`step-icon-box rounded-2 p-1.5 bg-body d-flex align-items-center justify-content-center shadow-xs ${step.color}`}>
-                    <i className={`bi ${step.icon} fs-6`}></i>
+              <div className="d-flex align-items-center justify-content-between h-100">
+                <div className="d-flex align-items-center gap-2">
+                  <div className={`step-icon-box rounded-2 p-1 bg-body d-flex align-items-center justify-content-center ${step.color}`} style={{ width: '28px', height: '28px' }}>
+                    <i className={`bi ${step.icon} x-small`}></i>
                   </div>
                   <div>
-                    <div className="fw-bold x-small text-body mb-0.5">{step.title}</div>
-                    <div className="x-small text-body-secondary style-leading">{step.desc}</div>
+                    <div className="fw-bold x-small text-body text-truncate" style={{ maxWidth: '200px' }}>{step.title}</div>
+                    <div className="x-small text-body-secondary text-truncate" style={{ maxWidth: '200px', fontSize: '0.72rem' }}>{step.desc}</div>
                   </div>
                 </div>
 
@@ -101,27 +107,22 @@ const RAGWorkflowDiagram = ({ compact = false }) => {
                   {step.badge}
                 </span>
               </div>
-
-              {/* Active Step Details */}
-              {isActive && (
-                <div className="mt-2 pt-2 border-top border-secondary-subtle x-small text-body-secondary style-leading animate-fade-in">
-                  <i className="bi bi-info-circle text-cyan me-1"></i>
-                  {step.detail}
-                </div>
-              )}
             </div>
           );
         })}
       </div>
 
-      {/* Bottom Status Bar */}
-      <div className="rag-footer p-2 rounded-3 bg-body-tertiary border d-flex align-items-center justify-content-between x-small font-monospace">
-        <span className="text-muted">
-          Active Node: <strong className="text-cyan">{ragSteps[activeStep].badge}</strong>
-        </span>
-        <span className="text-success">
-          <i className="bi bi-check-circle-fill me-1"></i> Latency: 120ms
-        </span>
+      {/* Fixed Detail Display Area at Bottom */}
+      <div className="rag-footer p-2 rounded-3 bg-body-tertiary border text-body-secondary style-leading" style={{ height: '65px', overflow: 'hidden' }}>
+        <div className="d-flex justify-content-between align-items-center mb-0.5">
+          <strong className="x-small text-body font-monospace">{currentStep.badge}</strong>
+          <span className="x-small text-success font-monospace">
+            <i className="bi bi-check-circle-fill me-1"></i> Latency: 120ms
+          </span>
+        </div>
+        <div className="x-small text-truncate style-leading" style={{ fontSize: '0.75rem' }}>
+          {currentStep.detail}
+        </div>
       </div>
     </div>
   );

@@ -63,16 +63,16 @@ const Hero = ({ profile }) => {
                 <button 
                   className="btn btn-sm btn-outline-secondary rounded-pill px-3 py-2 d-inline-flex align-items-center gap-1.5 x-small"
                   onClick={() => setShowPhoto(!showPhoto)}
-                  title="Toggle visual mode between Personal Photo and Animated RAG Architecture Flow"
+                  title="Toggle visual mode between Personal Photo and Animated RAG Execution Flow"
                 >
                   <i className={`bi ${showPhoto ? 'bi-diagram-3-fill text-cyan' : 'bi-person-square text-primary'}`}></i>
-                  <span>{showPhoto ? 'View RAG Diagram' : 'View Personal Photo'}</span>
+                  <span>{showPhoto ? 'View RAG Execution Flow' : 'View Personal Photo'}</span>
                 </button>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Dynamic Switcher (Photo vs RAG Workflow Diagram) */}
+          {/* Right Column: Dynamic Switcher (Photo vs RAG Execution Flow Diagram) */}
           <div className="col-lg-5 text-center">
             {showPhoto ? (
               <div className="hero-profile-wrapper position-relative mx-auto" style={{ maxWidth: '340px' }}>
@@ -117,8 +117,8 @@ const Hero = ({ profile }) => {
                 </div>
               </div>
             ) : (
-              <div className="hero-diagram-wrapper position-relative mx-auto" style={{ maxWidth: '420px' }}>
-                <RAGWorkflowDiagram compact={true} />
+              <div className="hero-diagram-wrapper position-relative mx-auto" style={{ maxWidth: '380px' }}>
+                <RAGWorkflowDiagram />
               </div>
             )}
           </div>
