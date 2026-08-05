@@ -110,6 +110,61 @@ body {
   color: var(--primary);
 }
 
+/* Mobile nav toggle */
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 1.35rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mobile-toggle:hover {
+  background: var(--bg);
+  color: var(--primary);
+}
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  padding: 0.65rem 1.5rem 0.85rem;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+.mobile-menu a {
+  color: var(--text-muted);
+  padding: 0.5rem 0;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.mobile-menu a:hover {
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  
+  .mobile-toggle {
+    display: flex;
+  }
+  
+  .mobile-menu {
+    display: flex;
+  }
+}
+
 /* Hero Section - Modern */
 #hero {
   min-height: 100vh;
@@ -223,7 +278,7 @@ section {
   transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* AI Background - Very Subtle Background Decoration Only */
+/* AI Background - Subtle Background Decoration Only (visible but elegant) */
 #ai-bg-canvas {
   position: fixed;
   top: 0;
@@ -232,12 +287,12 @@ section {
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.07; /* Extremely subtle - barely visible */
+  opacity: 0.085; /* Subtle yet visible in background */
   transition: opacity 0.3s ease;
 }
 
 [data-theme="dark"] #ai-bg-canvas {
-  opacity: 0.05; /* Almost invisible in dark mode */
+  opacity: 0.065; /* Slightly more visible in dark for better contrast */
 }
 
 /* Responsive */
@@ -250,25 +305,125 @@ section {
     display: none;
   }
   
-.back-to-top {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 44px;
-  height: 44px;
-  background: var(--primary);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  z-index: 999;
-  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
-  transition: transform 0.2s;
+  .back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 44px;
+    height: 44px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 999;
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+    transition: transform 0.2s;
+  }
+
+  .back-to-top:hover {
+    transform: translateY(-3px);
+  }
 }
 
-.back-to-top:hover {
-  transform: translateY(-3px);
+/* =====================================================
+   Legacy-style Skills (restored full original list + polished)
+   ===================================================== */
+.skills .progress {
+  height: 22px;
+  margin-bottom: 11px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
 }
+
+.skills .progress .skill {
+  padding: 0 11px;
+  line-height: 22px;
+  display: block;
+  font-weight: 500;
+  font-size: 0.88rem;
+  color: var(--text);
+}
+
+.skills .progress .val {
+  float: right;
+  font-style: normal;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.skills .progress-bar-wrap {
+  background: var(--border);
+  height: 100%;
+}
+
+.skills .progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), #60a5fa);
+  transition: width 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Extra modern polish for latest design */
+.container {
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section {
+  padding: 4.5rem 0;
+}
+
+.resume-item {
+  margin-bottom: 1.85rem;
+}
+
+.resume-item ul {
+  padding-left: 1.25rem;
+  margin-bottom: 0.35rem;
+}
+
+.resume-item li {
+  margin-bottom: 5px;
+  line-height: 1.55;
+}
+
+.resume-item h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.1rem;
+}
+
+.resume-item h5 {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.resume-item em {
+  font-size: 0.84rem;
+}
+
+.resume-title {
+  font-size: 1.2rem;
+  margin-top: 0.6rem;
+  margin-bottom: 0.65rem;
+}
+
+.card {
+  box-shadow: var(--card-shadow);
+}
+
+#about .card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.09);
+}
+
+/* Make sure content is readable over the subtle background */
+#about, #resume, #skills {
+  position: relative;
+  z-index: 1;
 }

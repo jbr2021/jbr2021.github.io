@@ -13,8 +13,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['react', 'react-dom'],
-          bootstrap: ['bootstrap']
+          vendor: ['react', 'react-dom']
         }
       }
     }
