@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import LiveClock from './LiveClock';
 
 const AIBackground = () => {
   const canvasRef = useRef(null);
@@ -15,7 +16,7 @@ const AIBackground = () => {
 
     // AI Engineering Concept Node Catalog
     const conceptCatalog = [
-      { label: 'Azure OpenAI (gpt-4o)', type: 'core', desc: 'LLM Reasoning Core' },
+      { label: 'Azure OpenAI (gpt-5)', type: 'core', desc: 'LLM Reasoning Core' },
       { label: 'Agentic Router', type: 'agent', desc: 'Autonomous Task Decomposition' },
       { label: 'RAG Pipeline', type: 'rag', desc: 'Hybrid Vector Retrieval' },
       { label: 'Vector Index', type: 'vector', desc: '1536-dim Embedding Space' },
@@ -89,7 +90,6 @@ const AIBackground = () => {
       agentPackets = [];
       neuralWaves = [];
 
-      // Density tuned for clean backdrop
       const count = width < 600 ? 6 : width < 1024 ? 9 : 12;
       
       for (let i = 0; i < count; i++) {
@@ -113,7 +113,6 @@ const AIBackground = () => {
         });
       }
 
-      // Initial wave
       neuralWaves.push({
         x: width * 0.5,
         y: height * 0.5,
@@ -161,7 +160,6 @@ const AIBackground = () => {
 
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // === 1. Render Edges ===
       for (let i = 0; i < nodes.length; i++) {
         const n1 = nodes[i];
         for (let j = i + 1; j < nodes.length; j++) {
@@ -172,7 +170,6 @@ const AIBackground = () => {
           const maxDist = width < 600 ? 200 : 280;
 
           if (dist < maxDist) {
-            const alpha = (1 - dist / maxDist) * 0.35;
             ctx.strokeStyle = colors.line;
             ctx.lineWidth = 0.9;
             ctx.beginPath();
@@ -183,7 +180,6 @@ const AIBackground = () => {
         }
       }
 
-      // === 2. Render Waves ===
       neuralWaves.forEach((wave, idx) => {
         ctx.strokeStyle = colors.lineActive;
         ctx.lineWidth = 1.2;
@@ -203,7 +199,6 @@ const AIBackground = () => {
         }
       });
 
-      // === 3. Render Packets ===
       queryPackets.forEach((pkt, idx) => {
         if (!prefersReducedMotion) {
           pkt.progress += pkt.speed;
@@ -236,7 +231,6 @@ const AIBackground = () => {
         }
       });
 
-      // === 4. Render Nodes ===
       nodes.forEach(n => {
         if (!prefersReducedMotion) {
           n.pulse += n.pulseSpeed;
@@ -404,9 +398,13 @@ const AIBackground = () => {
         aria-label="Interactive AI system background visualizing Knowledge Graphs, Multi-Agent Systems, RAG, and Vector Embeddings"
       />
       
-      <div className="ai-bg-status-badge d-none d-md-flex align-items-center gap-2">
-        <span className="pulse-dot"></span>
-        <span className="concept-text">{activeConcept}</span>
+      {/* Bottom Right Status Badge Overlay with Concept + Live Clock directly below */}
+      <div className="ai-bg-status-badge d-none d-md-flex flex-column align-items-start gap-1">
+        <div className="d-flex align-items-center gap-2">
+          <span className="pulse-dot flex-shrink-0 me-1"></span>
+          <span className="concept-text fw-semibold text-body">{activeConcept}</span>
+        </div>
+        <LiveClock />
       </div>
     </>
   );

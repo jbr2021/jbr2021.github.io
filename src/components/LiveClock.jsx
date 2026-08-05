@@ -20,11 +20,10 @@ const LiveClock = ({ className = '' }) => {
       const seconds = String(now.getSeconds()).padStart(2, '0');
       const timeFormatted = `${hours}:${minutes}:${seconds}`;
 
-      // System Timezone Name / Offset
+      // System Timezone
       let timeZoneName = '';
       try {
         timeZoneName = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        // Shorten long timezones if needed
         if (timeZoneName.includes('/')) {
           timeZoneName = timeZoneName.split('/')[1].replace(/_/g, ' ');
         }
@@ -45,12 +44,12 @@ const LiveClock = ({ className = '' }) => {
   }, []);
 
   return (
-    <div className={`live-clock-badge d-inline-flex align-items-center gap-2 px-2.5 py-1 rounded-pill bg-body-tertiary border text-body-secondary font-monospace x-small ${className}`} title={`System Local Timezone: ${timeState.tzStr}`}>
-      <span className="pulse-dot-sm bg-success flex-shrink-0"></span>
-      <span className="fw-semibold text-cyan">{timeState.dateStr}</span>
+    <div className={`live-clock-line d-inline-flex align-items-center gap-1.5 font-monospace text-body-secondary ${className}`} title={`System Local Timezone: ${timeState.tzStr}`}>
+      <i className="bi bi-clock-history text-cyan me-0.5"></i>
+      <span className="fw-semibold text-body-secondary" style={{ fontSize: '0.74rem' }}>{timeState.dateStr}</span>
       <span className="text-muted">|</span>
-      <span className="fw-bold text-body">{timeState.timeStr}</span>
-      {timeState.tzStr && <span className="text-muted d-none d-xl-inline">({timeState.tzStr})</span>}
+      <span className="fw-bold text-cyan" style={{ fontSize: '0.76rem' }}>{timeState.timeStr}</span>
+      {timeState.tzStr && <span className="text-muted" style={{ fontSize: '0.7rem' }}>({timeState.tzStr})</span>}
     </div>
   );
 };
