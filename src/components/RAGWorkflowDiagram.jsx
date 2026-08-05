@@ -33,7 +33,7 @@ const RAGWorkflowDiagram = () => {
     },
     {
       id: 4,
-      title: '4. Augmented Context & LLM',
+      title: '4. Context & LLM Synthesis',
       icon: 'bi-robot',
       color: 'text-purple',
       badge: 'Azure OpenAI gpt-5',
@@ -42,7 +42,7 @@ const RAGWorkflowDiagram = () => {
     },
     {
       id: 5,
-      title: '5. Structured AI Generation',
+      title: '5. Structured AI Output',
       icon: 'bi-file-earmark-check-fill',
       color: 'text-success',
       badge: 'Aspose Output',
@@ -63,47 +63,52 @@ const RAGWorkflowDiagram = () => {
 
   return (
     <div 
-      className="rag-diagram-wrapper card border-0 glass-card p-3.5 p-md-4 rounded-4 shadow-lg text-start"
+      className="rag-diagram-wrapper card border-0 glass-card p-2.5 p-sm-3 rounded-4 shadow-lg text-start w-100"
       style={{ height: '420px', minHeight: '420px', maxHeight: '420px', overflow: 'hidden' }}
     >
-      {/* Fixed Header */}
-      <div className="d-flex align-items-center justify-content-between mb-2.5 pb-2 border-bottom px-1" style={{ height: '36px' }}>
-        <div className="d-flex align-items-center gap-2">
-          <span className="pulse-dot"></span>
-          <span className="fw-bold x-small text-body font-monospace text-uppercase">RAG Execution Flow</span>
+      {/* Reduced Padding Header */}
+      <div className="d-flex align-items-center justify-content-between mb-2 pb-1.5 border-bottom px-1" style={{ height: '34px' }}>
+        <div className="d-flex align-items-center gap-1.5 min-width-0">
+          <span className="pulse-dot flex-shrink-0"></span>
+          <span className="fw-bold text-body font-monospace text-uppercase text-truncate" style={{ fontSize: '0.72rem' }}>RAG Execution Flow</span>
         </div>
-        <span className="badge bg-primary-subtle text-primary border border-primary-subtle x-small flex-shrink-0">
+        <span className="badge bg-primary-subtle text-primary border border-primary-subtle flex-shrink-0 text-nowrap" style={{ fontSize: '0.68rem', padding: '3px 8px' }}>
           Runtime Sequence
         </span>
       </div>
 
-      {/* Fixed Steps List */}
-      <div className="rag-steps-container d-flex flex-column gap-1.5 mb-2.5 px-1" style={{ height: '270px' }}>
+      {/* Reduced Outer Padding Grid List */}
+      <div className="rag-steps-container d-flex flex-column gap-1.5 mb-2" style={{ height: '275px' }}>
         {ragSteps.map((step, idx) => {
           const isActive = idx === activeStep;
           return (
             <div
               key={step.id}
-              className={`rag-step-item px-3 py-2 rounded-3 border transition-all cursor-pointer ${
+              className={`rag-step-item px-2.5 py-1.5 rounded-3 border transition-all cursor-pointer ${
                 isActive
                   ? 'border-cyan bg-cyan-glow'
-                  : 'bg-body-tertiary border-secondary text-body-secondary opacity-80'
+                  : 'bg-body-tertiary border-secondary text-body-secondary opacity-85'
               }`}
               style={{ height: '50px', overflow: 'hidden' }}
               onClick={() => setActiveStep(idx)}
             >
               <div className="d-flex align-items-center justify-content-between gap-2 h-100">
-                <div className="d-flex align-items-center gap-2.5 flex-grow-1 min-width-0 me-2">
-                  <div className={`step-icon-box rounded-2 p-1 bg-body d-flex align-items-center justify-content-center flex-shrink-0 ${step.color}`} style={{ width: '28px', height: '28px' }}>
+                {/* Left Title & Icon */}
+                <div className="d-flex align-items-center gap-2 flex-grow-1 min-width-0">
+                  <div className={`step-icon-box rounded-2 p-1 bg-body d-flex align-items-center justify-content-center flex-shrink-0 ${step.color}`} style={{ width: '26px', height: '28px' }}>
                     <i className={`bi ${step.icon} x-small`}></i>
                   </div>
                   <div className="flex-grow-1 min-width-0">
-                    <div className="fw-bold x-small text-body text-truncate">{step.title}</div>
-                    <div className="x-small text-body-secondary text-truncate" style={{ fontSize: '0.72rem' }}>{step.desc}</div>
+                    <div className="fw-bold text-body text-truncate" style={{ fontSize: '0.76rem', lineHeight: '1.2' }}>{step.title}</div>
+                    <div className="text-body-secondary text-truncate" style={{ fontSize: '0.68rem', lineHeight: '1.2' }}>{step.desc}</div>
                   </div>
                 </div>
 
-                <span className={`badge ${isActive ? 'bg-primary text-white' : 'bg-body-secondary text-body-secondary'} x-small font-monospace flex-shrink-0 ms-auto`}>
+                {/* Right Properly Aligned Tag */}
+                <span 
+                  className={`badge flex-shrink-0 text-nowrap align-self-center ${isActive ? 'bg-primary text-white' : 'bg-body-secondary text-body-secondary'} font-monospace`}
+                  style={{ fontSize: '0.68rem', padding: '4px 8px', letterSpacing: '0.02em' }}
+                >
                   {step.badge}
                 </span>
               </div>
@@ -112,15 +117,15 @@ const RAGWorkflowDiagram = () => {
         })}
       </div>
 
-      {/* Fixed Detail Display Area at Bottom */}
-      <div className="rag-footer p-2.5 px-3 rounded-3 bg-body-tertiary border text-body-secondary style-leading" style={{ height: '65px', overflow: 'hidden' }}>
+      {/* Detail Display Area at Bottom */}
+      <div className="rag-footer p-2 px-2.5 rounded-3 bg-body-tertiary border text-body-secondary style-leading" style={{ height: '65px', overflow: 'hidden' }}>
         <div className="d-flex justify-content-between align-items-center mb-0.5">
-          <strong className="x-small text-body font-monospace text-truncate me-2">{currentStep.badge}</strong>
-          <span className="x-small text-success font-monospace flex-shrink-0">
+          <strong className="text-body font-monospace text-truncate me-2" style={{ fontSize: '0.74rem' }}>{currentStep.badge}</strong>
+          <span className="text-success font-monospace flex-shrink-0 text-nowrap" style={{ fontSize: '0.7rem' }}>
             <i className="bi bi-check-circle-fill me-1"></i> Latency: 120ms
           </span>
         </div>
-        <div className="x-small text-truncate style-leading pe-1" style={{ fontSize: '0.75rem' }}>
+        <div className="text-truncate style-leading" style={{ fontSize: '0.72rem' }}>
           {currentStep.detail}
         </div>
       </div>
