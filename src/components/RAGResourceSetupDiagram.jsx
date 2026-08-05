@@ -36,12 +36,12 @@ const RAGResourceSetupDiagram = () => {
     },
     {
       id: 4,
-      title: 'Azure OpenAI Service (gpt-4o)',
+      title: 'Azure OpenAI Service (gpt-5)',
       type: 'AI Model Deployment',
       icon: 'bi-cpu-fill',
       color: 'text-purple',
       status: 'Endpoints Live',
-      tech: 'GPT-4o Managed Resource • VNet',
+      tech: 'GPT-5 Managed Resource • VNet',
       desc: 'Enterprise deployment in private VNet with zero data retention'
     },
     {

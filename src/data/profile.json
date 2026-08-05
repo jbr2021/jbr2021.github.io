@@ -28,7 +28,7 @@
   "highlights": [
     {
       "title": "Generative AI & LLMs",
-      "description": "Architecting enterprise AI systems powered by Azure OpenAI GPT-4o, automated content generation, prompt engineering, and structured output compilation."
+      "description": "Architecting enterprise AI systems powered by Azure OpenAI GPT-5, automated content generation, prompt engineering, and structured output compilation."
     },
     {
       "title": "RAG & Semantic Retrieval",
@@ -53,7 +53,7 @@
       "items": [
         { "name": "Python", "level": 92, "category": "AI" },
         { "name": "Generative AI / LLMs", "level": 90, "category": "AI" },
-        { "name": "Azure AI & OpenAI (GPT-4o)", "level": 90, "category": "AI" },
+        { "name": "Azure AI & OpenAI (GPT-5)", "level": 90, "category": "AI" },
         { "name": "RAG & Vector Search Systems", "level": 88, "category": "AI" },
         { "name": "Multi-Agent Systems & AI Agents", "level": 85, "category": "AI" },
         { "name": "Prompt Engineering & Guardrails", "level": 92, "category": "AI" },
@@ -107,21 +107,21 @@
           "title": "Project Approval Document (PAD)",
           "client": "World Bank Group",
           "summary": "Generate a structured 15-section approval document using AI-powered content generation. Each section is created from user prompts, automatically compiled into a single document with an indexed table of contents, and made available for download.",
-          "technologies": ["Azure OpenAI (gpt-4o)", ".NET Core", "Python FastAPI", "Aspose", "Blob Storage", "NumPy", "MS SQL Server", "Azure Search Index", "AWS Open Search"],
+          "technologies": ["Azure OpenAI (gpt-5)", ".NET Core", "Python FastAPI", "Aspose", "Blob Storage", "NumPy", "MS SQL Server", "Azure Search Index", "AWS Open Search"],
           "badge": "Generative AI"
         },
         {
           "title": "Implementation Status and Results Reports (ISR)",
           "client": "World Bank Group",
           "summary": "A system designed to monitor, track, and analyze issues across multiple international projects, enabling better management and resolution strategies.",
-          "technologies": ["Databricks", "Blob Storage", "MS SQL Server", "Python FastAPI", "Angular", "Timer-triggered Azure Functions", "Azure OpenAI GPT-4o", "Aspose library"],
+          "technologies": ["Databricks", "Blob Storage", "MS SQL Server", "Python FastAPI", "Angular", "Timer-triggered Azure Functions", "Azure OpenAI GPT-5", "Aspose library"],
           "badge": "Analytics & AI"
         },
         {
           "title": "Document Review Tool (DRT)",
           "client": "World Bank Group",
           "summary": "A compliance-focused application to review uploaded documents (Word, PDF, PPT). It detects and highlights sensitive words, provides recommendations for better alternatives, adds explanatory notes, and generates a summary of sensitive words used. It also presents a tabular report of sensitive keywords with corresponding page numbers.",
-          "technologies": ["Angular", ".NET Core", "Azure Service Bus", "Azure Functions", "Blob Storage", "MS SQL Server (C#)", "Azure OpenAI GPT-4o", "Aspose library"],
+          "technologies": ["Angular", ".NET Core", "Azure Service Bus", "Azure Functions", "Blob Storage", "MS SQL Server (C#)", "Azure OpenAI GPT-5", "Aspose library"],
           "badge": "Compliance AI"
         },
         {

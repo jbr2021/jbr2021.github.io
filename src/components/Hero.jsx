@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import RAGWorkflowDiagram from './RAGWorkflowDiagram';
+import RAGResourceSetupDiagram from './RAGResourceSetupDiagram';
 
 const Hero = ({ profile }) => {
   const personal = profile?.personal || {};
@@ -39,7 +39,7 @@ const Hero = ({ profile }) => {
 
               {/* Tech Stack Pills */}
               <div className="hero-tech-pills d-flex flex-wrap gap-2 mb-4">
-                {['Azure OpenAI (gpt-4o)', 'Agentic AI', 'RAG & Vector Search', 'Python FastAPI', 'Backstage IDP', 'Google Cloud Certified'].map((tech, i) => (
+                {['Azure OpenAI (gpt-5)', 'Agentic AI', 'RAG & Vector Search', 'Python FastAPI', 'Backstage IDP', 'Google Cloud Certified'].map((tech, i) => (
                   <span key={i} className="tech-pill px-2.5 py-1 rounded-3 small border">
                     <i className="bi bi-cpu me-1 text-cyan"></i>
                     {tech}
@@ -63,16 +63,16 @@ const Hero = ({ profile }) => {
                 <button 
                   className="btn btn-sm btn-outline-secondary rounded-pill px-3 py-2 d-inline-flex align-items-center gap-1.5 x-small"
                   onClick={() => setShowPhoto(!showPhoto)}
-                  title="Toggle visual mode between Personal Photo and Animated RAG Execution Flow"
+                  title="Toggle visual mode between Personal Photo and Azure RAG Cloud Topology Diagram"
                 >
                   <i className={`bi ${showPhoto ? 'bi-diagram-3-fill text-cyan' : 'bi-person-square text-primary'}`}></i>
-                  <span>{showPhoto ? 'View RAG Execution Flow' : 'View Personal Photo'}</span>
+                  <span>{showPhoto ? 'View RAG Topology' : 'View Personal Photo'}</span>
                 </button>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Dynamic Switcher (Photo vs RAG Execution Flow Diagram) */}
+          {/* Right Column: Dynamic Switcher (Photo vs Azure RAG Cloud Topology Diagram) */}
           <div className="col-lg-5 text-center">
             {showPhoto ? (
               <div className="hero-profile-wrapper position-relative mx-auto" style={{ maxWidth: '340px' }}>
@@ -103,7 +103,7 @@ const Hero = ({ profile }) => {
                     </div>
                     <div className="col-4">
                       <div className="p-2 rounded-3 bg-body-tertiary border">
-                        <div className="fw-extrabold text-primary">GPT-4o</div>
+                        <div className="fw-extrabold text-primary">GPT-5</div>
                         <div className="x-small text-muted">RAG &amp; AI</div>
                       </div>
                     </div>
@@ -118,7 +118,7 @@ const Hero = ({ profile }) => {
               </div>
             ) : (
               <div className="hero-diagram-wrapper position-relative mx-auto" style={{ maxWidth: '380px' }}>
-                <RAGWorkflowDiagram />
+                <RAGResourceSetupDiagram />
               </div>
             )}
           </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import RAGResourceSetupDiagram from './RAGResourceSetupDiagram';
+import RAGWorkflowDiagram from './RAGWorkflowDiagram';
 
 const About = ({ profile }) => {
   const personal = profile?.personal || {};
@@ -25,7 +25,7 @@ const About = ({ profile }) => {
 
         {/* Main Grid: Bio & Personal Details */}
         <div className="row g-4 align-items-center mb-5">
-          {/* Photo or RAG Cloud Resource Setup Diagram */}
+          {/* Photo or RAG Execution Flow Diagram */}
           <div className="col-lg-4 text-center">
             {usePhoto ? (
               <div className="about-photo-wrapper position-relative mx-auto" style={{ maxWidth: '300px' }}>
@@ -47,7 +47,7 @@ const About = ({ profile }) => {
               </div>
             ) : (
               <div className="about-diagram-wrapper mx-auto" style={{ maxWidth: '380px' }}>
-                <RAGResourceSetupDiagram />
+                <RAGWorkflowDiagram />
               </div>
             )}
           </div>

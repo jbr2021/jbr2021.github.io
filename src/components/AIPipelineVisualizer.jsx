@@ -4,7 +4,7 @@ const AIPipelineVisualizer = () => {
   const [activePipeline, setActivePipeline] = useState('pad');
   const [isRunning, setIsRunning] = useState(false);
   const [logs, setLogs] = useState([
-    'System initialized. Azure OpenAI gpt-4o connected.',
+    'System initialized. Azure OpenAI gpt-5 connected.',
     'Vector Index ready: 1536-dimensional embeddings loaded.',
     'Agentic Router standby.'
   ]);
@@ -14,11 +14,11 @@ const AIPipelineVisualizer = () => {
     pad: {
       title: 'Project Approval Document (PAD) AI Generator',
       client: 'World Bank Group',
-      tech: 'Azure OpenAI gpt-4o • Python FastAPI • Aspose • MS SQL • Azure AI Search',
+      tech: 'Azure OpenAI gpt-5 • Python FastAPI • Aspose • MS SQL • Azure AI Search',
       steps: [
         { label: 'Prompt Ingestion', desc: 'Accepting user section prompts & historical context' },
         { label: 'Semantic Chunking & RAG', desc: 'Querying Azure Search Index & AWS OpenSearch' },
-        { label: 'LLM Parallel Generation', desc: 'Synthesizing 15 structured document sections via gpt-4o' },
+        { label: 'LLM Parallel Generation', desc: 'Synthesizing 15 structured document sections via gpt-5' },
         { label: 'Document Compilation', desc: 'Aspose library compiling TOC & exporting Word/PDF' }
       ]
     },

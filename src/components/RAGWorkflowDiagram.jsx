@@ -36,9 +36,9 @@ const RAGWorkflowDiagram = () => {
       title: '4. Augmented Context & LLM',
       icon: 'bi-robot',
       color: 'text-purple',
-      badge: 'Azure OpenAI gpt-4o',
+      badge: 'Azure OpenAI gpt-5',
       desc: 'Prompt synthesis with retrieved chunk citations',
-      detail: 'GPT-4o model receives prompt augmented with retrieved document context & strict system guardrails.'
+      detail: 'GPT-5 model receives prompt augmented with retrieved document context & strict system guardrails.'
     },
     {
       id: 5,
