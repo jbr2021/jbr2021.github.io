@@ -10,10 +10,11 @@
   const themeIcon = document.getElementById('themeIcon');
   const themeColor = document.getElementById('themeColor');
   const navCollapse = document.getElementById('primaryNav');
+  const navToggle = document.getElementById('navToggle');
   const toast = document.getElementById('siteToast');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const systemTheme = window.matchMedia('(prefers-color-scheme: light)');
-  const $ = window.jQuery;
+  const mobileNav = window.matchMedia('(max-width: 991.98px)');
   let scrollTicking = false;
   let toastTimer;
 
@@ -60,6 +61,8 @@
 
   if (systemTheme.addEventListener) {
     systemTheme.addEventListener('change', adaptToSystemTheme);
+  } else if (systemTheme.addListener) {
+    systemTheme.addListener(adaptToSystemTheme);
   }
 
   const updateAge = () => {
@@ -81,7 +84,44 @@
     });
   };
 
-  updateAge();
+  const setNavOpen = (isOpen) => {
+    navCollapse.classList.toggle('show', isOpen);
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+    navToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+  };
+
+  const closeMobileNav = () => {
+    if (mobileNav.matches && navCollapse.classList.contains('show')) {
+      setNavOpen(false);
+    }
+  };
+
+  navToggle.addEventListener('click', () => {
+    setNavOpen(!navCollapse.classList.contains('show'));
+  });
+
+  document.querySelectorAll('.navbar .nav-link').forEach((link) => {
+    link.addEventListener('click', closeMobileNav);
+  });
+
+  document.addEventListener('click', (event) => {
+    if (mobileNav.matches && navCollapse.classList.contains('show') && !navCollapse.contains(event.target) && !navToggle.contains(event.target)) {
+      setNavOpen(false);
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && navCollapse.classList.contains('show')) {
+      setNavOpen(false);
+      navToggle.focus();
+    }
+  });
+
+  if (mobileNav.addEventListener) {
+    mobileNav.addEventListener('change', (event) => {
+      if (!event.matches) setNavOpen(false);
+    });
+  }
 
   const sections = ['about', 'systems', 'experience', 'skills', 'contact']
     .map((id) => document.getElementById(id))
@@ -123,28 +163,11 @@
 
   window.addEventListener('scroll', requestScrollUpdate, { passive: true });
   window.addEventListener('resize', requestScrollUpdate, { passive: true });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+  });
+  updateAge();
   updateScrollUI();
-
-  const closeMobileNav = () => {
-    if (navCollapse && navCollapse.classList.contains('show') && window.bootstrap) {
-      window.bootstrap.Collapse.getOrCreateInstance(navCollapse, { toggle: false }).hide();
-    }
-  };
-
-  if ($) {
-    $('.navbar .nav-link').on('click', function () {
-      closeMobileNav();
-    });
-
-    $('#backToTop').on('click', () => {
-      window.scrollTo({ top: 0, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
-    });
-  } else {
-    document.querySelectorAll('.navbar .nav-link').forEach((link) => link.addEventListener('click', closeMobileNav));
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
-    });
-  }
 
   const revealElements = document.querySelectorAll('[data-reveal]');
   const revealAll = () => revealElements.forEach((element) => element.classList.add('is-visible'));

@@ -12,19 +12,7 @@
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
-  <script>
-    (function () {
-      try {
-        var savedTheme = localStorage.getItem('jaibir-theme');
-        var theme = savedTheme || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-        document.documentElement.setAttribute('data-theme', theme);
-        document.documentElement.setAttribute('data-bs-theme', theme);
-      } catch (error) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        document.documentElement.setAttribute('data-bs-theme', 'dark');
-      }
-    }());
-  </script>
+  <script>(()=>{try{const e=localStorage.getItem('jaibir-theme'),t=e||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);document.documentElement.setAttribute('data-bs-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','dark');document.documentElement.setAttribute('data-bs-theme','dark')}})()</script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -46,7 +34,7 @@
             <svg class="icon" aria-hidden="true"><use id="themeIcon" href="#icon-sun"></use></svg>
             <span class="visually-hidden">Switch color theme</span>
           </button>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primaryNav" aria-controls="primaryNav" aria-expanded="false" aria-label="Open navigation">
+          <button class="navbar-toggler" id="navToggle" type="button" aria-controls="primaryNav" aria-expanded="false" aria-label="Open navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
         </div>
@@ -521,8 +509,6 @@
     <symbol id="icon-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m8.2 12 2.4 2.4 5.2-5.2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/></symbol>
   </svg>
 
-  <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
-  <script src="assets/vendor/jquery/jquery.min.js" defer></script>
-  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/main.min.js" defer></script>
 </body>
 </html>
