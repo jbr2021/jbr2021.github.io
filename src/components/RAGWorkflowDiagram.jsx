@@ -64,7 +64,7 @@ const RAGWorkflowDiagram = () => {
   return (
     <div 
       className="rag-diagram-wrapper card border-0 glass-card p-2.5 p-sm-3 rounded-4 shadow-lg text-start w-100"
-      style={{ height: '420px', minHeight: '420px', maxHeight: '420px', overflow: 'hidden' }}
+      style={{ height: '425px', minHeight: '425px', maxHeight: '425px', overflow: 'hidden' }}
     >
       {/* Header */}
       <div className="d-flex align-items-center justify-content-between mb-2 pb-1.5 border-bottom px-1" style={{ height: '34px' }}>
@@ -72,47 +72,47 @@ const RAGWorkflowDiagram = () => {
           <span className="pulse-dot flex-shrink-0 me-1"></span>
           <span className="fw-bold text-body font-monospace text-uppercase text-truncate" style={{ fontSize: '0.72rem' }}>RAG Execution Flow</span>
         </div>
-        <span className="badge bg-primary-subtle text-primary border border-primary-subtle flex-shrink-0 text-nowrap" style={{ fontSize: '0.68rem', padding: '3px 10px' }}>
+        <span className="badge bg-primary-subtle text-primary border border-primary-subtle flex-shrink-0 text-nowrap" style={{ fontSize: '0.68rem', padding: '3px 8px' }}>
           Runtime Sequence
         </span>
       </div>
 
-      {/* Grid List */}
-      <div className="rag-steps-container d-flex flex-column gap-1.5 mb-2 px-1" style={{ height: '275px' }}>
+      {/* Grid List with 6px vertical space between items */}
+      <div className="rag-steps-container d-flex flex-column mb-2 px-1" style={{ height: '280px' }}>
         {ragSteps.map((step, idx) => {
           const isActive = idx === activeStep;
           return (
             <div
               key={step.id}
-              className={`rag-step-item px-2.5 py-1.5 rounded-3 border transition-all cursor-pointer ${
+              className={`rag-step-item px-2.5 py-1 rounded-3 border transition-all cursor-pointer ${
                 isActive
                   ? 'border-cyan bg-cyan-glow'
                   : 'bg-body-tertiary border-secondary text-body-secondary opacity-85'
               }`}
-              style={{ height: '50px', overflow: 'hidden' }}
+              style={{ height: '48px', marginBottom: '6px', overflow: 'hidden' }}
               onClick={() => setActiveStep(idx)}
             >
-              <div className="row align-items-center g-2 h-100 px-1">
+              <div className="row align-items-center flex-nowrap g-2 h-100 px-1">
                 {/* Left Title & Icon Column */}
                 <div className="col min-width-0">
                   <div className="d-flex align-items-center gap-2">
-                    <div className={`step-icon-box rounded-2 p-1 bg-body d-flex align-items-center justify-content-center flex-shrink-0 ${step.color}`} style={{ width: '26px', height: '28px' }}>
+                    <div className={`step-icon-box rounded-2 p-1 bg-body d-flex align-items-center justify-content-center flex-shrink-0 ${step.color}`} style={{ width: '26px', height: '26px' }}>
                       <i className={`bi ${step.icon} x-small`}></i>
                     </div>
                     <div className="min-width-0">
-                      <div className="fw-bold text-body text-truncate" style={{ fontSize: '0.76rem', lineHeight: '1.2' }}>{step.title}</div>
-                      <div className="text-body-secondary text-truncate" style={{ fontSize: '0.68rem', lineHeight: '1.2' }}>{step.desc}</div>
+                      <div className="fw-bold text-body text-truncate" style={{ fontSize: '0.75rem', lineHeight: '1.2' }}>{step.title}</div>
+                      <div className="text-body-secondary text-truncate" style={{ fontSize: '0.67rem', lineHeight: '1.2' }}>{step.desc}</div>
                     </div>
                   </div>
                 </div>
 
-                {/* Right Fixed-Width Perfectly Stacked Badge Column */}
-                <div className="col-auto text-end ps-0">
+                {/* Right Fixed-Width Single-Line Badge Column */}
+                <div className="col-auto text-end ps-0 flex-shrink-0">
                   <span 
                     className={`badge font-monospace text-nowrap d-inline-block text-center ${
                       isActive ? 'bg-primary text-white shadow-sm' : 'bg-body-secondary text-body-secondary'
                     }`}
-                    style={{ width: '125px', fontSize: '0.68rem', padding: '5px 0', letterSpacing: '0.02em' }}
+                    style={{ width: '115px', fontSize: '0.66rem', padding: '4px 4px', letterSpacing: '0.01em' }}
                   >
                     {step.badge}
                   </span>
