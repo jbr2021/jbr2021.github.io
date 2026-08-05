@@ -162,7 +162,7 @@ const AIPipelineVisualizer = () => {
               </div>
 
               {/* Console log display */}
-              <div className="console-window rounded-3 p-3 font-monospace text-light small shadow-sm">
+              <div className="console-window rounded-3 p-3 font-monospace small shadow-sm">
                 <div className="console-header d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom border-secondary">
                   <span className="text-cyan">
                     <i className="bi bi-terminal me-2"></i>

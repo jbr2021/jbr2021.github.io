@@ -13,9 +13,9 @@ const Hero = ({ profile }) => {
   }, [personal.usePersonalPhoto]);
 
   return (
-    <section id="hero" className="hero-section d-flex align-items-center position-relative min-vh-100 py-5">
+    <section id="hero" className="hero-section d-lg-flex align-items-lg-center position-relative min-vh-lg-100">
       <div className="container">
-        <div className="row align-items-center g-5">
+        <div className="row align-items-lg-center g-4 g-lg-5">
           {/* Main Hero Glass Panel Container */}
           <div className="col-lg-7">
             <div className="hero-content card border-0 glass-card p-4 p-md-5 rounded-4 shadow-lg position-relative">
@@ -40,8 +40,8 @@ const Hero = ({ profile }) => {
               {/* Tech Stack Pills */}
               <div className="hero-tech-pills d-flex flex-wrap gap-2 mb-4">
                 {['Azure OpenAI (gpt-5)', 'Agentic AI', 'RAG & Vector Search', 'Python FastAPI', 'Backstage IDP', 'Google Cloud Certified'].map((tech, i) => (
-                  <span key={i} className="tech-pill px-2.5 py-1 rounded-3 small border">
-                    <i className="bi bi-cpu me-1 text-cyan"></i>
+                  <span key={i} className="tech-pill px-2 py-1 rounded-3 small border">
+                    <i className="bi bi-cpu me-1 text-cyan me-2"></i>
                     {tech}
                   </span>
                 ))}
@@ -65,7 +65,7 @@ const Hero = ({ profile }) => {
                   onClick={() => setShowPhoto(!showPhoto)}
                   title="Toggle visual mode between Personal Photo and Azure RAG Cloud Topology Diagram"
                 >
-                  <i className={`bi ${showPhoto ? 'bi-diagram-3-fill text-cyan' : 'bi-person-square text-primary'}`}></i>
+                  <i className={`bi ${showPhoto ? 'bi-diagram-3-fill text-cyan me-2' : 'bi-person-square me-2 text-primary'}`}></i>
                   <span>{showPhoto ? 'View RAG Topology' : 'View Personal Photo'}</span>
                 </button>
               </div>

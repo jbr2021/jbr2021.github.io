@@ -16,7 +16,8 @@ const Navbar = ({ theme, toggleTheme }) => {
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) {
-      const y = el.getBoundingClientRect().top + window.scrollY - 75;
+      // Account for fixed navbar (~110px) + hero-content margin + extra breathing room
+      const y = el.getBoundingClientRect().top + window.scrollY - 135;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
     setMobileOpen(false);
