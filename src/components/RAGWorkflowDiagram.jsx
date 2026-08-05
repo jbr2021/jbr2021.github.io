@@ -69,10 +69,10 @@ const RAGWorkflowDiagram = () => {
       {/* Header */}
       <div className="d-flex align-items-center justify-content-between mb-2 pb-1.5 border-bottom px-1" style={{ height: '34px' }}>
         <div className="d-flex align-items-center gap-2 min-width-0">
-          <span className="pulse-dot flex-shrink-0 me-2"></span>
+          <span className="pulse-dot flex-shrink-0 me-1"></span>
           <span className="fw-bold text-body font-monospace text-uppercase text-truncate" style={{ fontSize: '0.72rem' }}>RAG Execution Flow</span>
         </div>
-        <span className="badge bg-primary-subtle text-primary border border-primary-subtle flex-shrink-0 text-nowrap me-2" style={{ fontSize: '0.68rem', padding: '3px 8px' }}>
+        <span className="badge bg-primary-subtle text-primary border border-primary-subtle flex-shrink-0 text-nowrap" style={{ fontSize: '0.68rem', padding: '3px 10px' }}>
           Runtime Sequence
         </span>
       </div>
@@ -92,25 +92,31 @@ const RAGWorkflowDiagram = () => {
               style={{ height: '50px', overflow: 'hidden' }}
               onClick={() => setActiveStep(idx)}
             >
-              <div className="d-flex align-items-center justify-content-between gap-2 h-100 pe-2">
-                {/* Left Title & Icon */}
-                <div className="d-flex align-items-center gap-2 flex-grow-1 min-width-0 me-2">
-                  <div className={`step-icon-box rounded-2 p-1 bg-body d-flex align-items-center justify-content-center flex-shrink-0 me-1 ${step.color}`} style={{ width: '26px', height: '28px' }}>
-                    <i className={`bi ${step.icon} x-small`}></i>
-                  </div>
-                  <div className="flex-grow-1 min-width-0">
-                    <div className="fw-bold text-body text-truncate" style={{ fontSize: '0.76rem', lineHeight: '1.2' }}>{step.title}</div>
-                    <div className="text-body-secondary text-truncate" style={{ fontSize: '0.68rem', lineHeight: '1.2' }}>{step.desc}</div>
+              <div className="row align-items-center g-2 h-100 px-1">
+                {/* Left Title & Icon Column */}
+                <div className="col min-width-0">
+                  <div className="d-flex align-items-center gap-2">
+                    <div className={`step-icon-box rounded-2 p-1 bg-body d-flex align-items-center justify-content-center flex-shrink-0 ${step.color}`} style={{ width: '26px', height: '28px' }}>
+                      <i className={`bi ${step.icon} x-small`}></i>
+                    </div>
+                    <div className="min-width-0">
+                      <div className="fw-bold text-body text-truncate" style={{ fontSize: '0.76rem', lineHeight: '1.2' }}>{step.title}</div>
+                      <div className="text-body-secondary text-truncate" style={{ fontSize: '0.68rem', lineHeight: '1.2' }}>{step.desc}</div>
+                    </div>
                   </div>
                 </div>
 
-                {/* Right Tag with Right Spacing Margin */}
-                <span 
-                  className={`badge flex-shrink-0 text-nowrap align-self-center me-2 ${isActive ? 'bg-primary text-white' : 'bg-body-secondary text-body-secondary'} font-monospace`}
-                  style={{ fontSize: '0.68rem', padding: '4px 8px', letterSpacing: '0.02em' }}
-                >
-                  {step.badge}
-                </span>
+                {/* Right Fixed-Width Perfectly Stacked Badge Column */}
+                <div className="col-auto text-end ps-0">
+                  <span 
+                    className={`badge font-monospace text-nowrap d-inline-block text-center ${
+                      isActive ? 'bg-primary text-white shadow-sm' : 'bg-body-secondary text-body-secondary'
+                    }`}
+                    style={{ width: '125px', fontSize: '0.68rem', padding: '5px 0', letterSpacing: '0.02em' }}
+                  >
+                    {step.badge}
+                  </span>
+                </div>
               </div>
             </div>
           );
@@ -119,13 +125,13 @@ const RAGWorkflowDiagram = () => {
 
       {/* Detail Display Area at Bottom */}
       <div className="rag-footer p-2 px-2.5 rounded-3 bg-body-tertiary border text-body-secondary style-leading" style={{ height: '65px', overflow: 'hidden' }}>
-        <div className="d-flex justify-content-between align-items-center mb-0.5 pe-1">
+        <div className="d-flex justify-content-between align-items-center mb-0.5">
           <strong className="text-body font-monospace text-truncate me-2" style={{ fontSize: '0.74rem' }}>{currentStep.badge}</strong>
-          <span className="text-success font-monospace flex-shrink-0 text-nowrap me-2" style={{ fontSize: '0.7rem' }}>
+          <span className="text-success font-monospace flex-shrink-0 text-nowrap" style={{ fontSize: '0.7rem' }}>
             <i className="bi bi-check-circle-fill me-1"></i> Latency: 120ms
           </span>
         </div>
-        <div className="text-truncate style-leading pe-2" style={{ fontSize: '0.72rem' }}>
+        <div className="text-truncate style-leading" style={{ fontSize: '0.72rem' }}>
           {currentStep.detail}
         </div>
       </div>
