@@ -70,18 +70,18 @@ const RAGResourceSetupDiagram = () => {
       className="rag-resource-card card border-0 glass-card p-2.5 p-sm-3 rounded-4 shadow-lg text-start w-100"
       style={{ height: '420px', minHeight: '420px', maxHeight: '420px', overflow: 'hidden' }}
     >
-      {/* Reduced Padding Header */}
+      {/* Header */}
       <div className="d-flex align-items-center justify-content-between mb-2 pb-1.5 border-bottom px-1" style={{ height: '34px' }}>
-        <div className="d-flex align-items-center gap-1.5 min-width-0">
-          <span className="pulse-dot flex-shrink-0"></span>
+        <div className="d-flex align-items-center gap-2 min-width-0">
+          <span className="pulse-dot flex-shrink-0 me-2"></span>
           <span className="fw-bold text-body font-monospace text-uppercase text-truncate" style={{ fontSize: '0.72rem' }}>Azure RAG Topology</span>
         </div>
-        <span className="badge bg-success-subtle text-success border border-success-subtle flex-shrink-0 text-nowrap" style={{ fontSize: '0.68rem', padding: '3px 8px' }}>
+        <span className="badge bg-success-subtle text-success border border-success-subtle flex-shrink-0 text-nowrap me-1" style={{ fontSize: '0.68rem', padding: '3px 8px' }}>
           <i className="bi bi-shield-check me-1"></i> Cloud Setup
         </span>
       </div>
 
-      {/* Reduced Outer Padding Grid List */}
+      {/* Grid List of Resources */}
       <div className="resources-list d-flex flex-column gap-1.5 mb-2" style={{ height: '275px' }}>
         {resources.map((res, idx) => {
           const isActive = idx === activeResource;
@@ -96,10 +96,10 @@ const RAGResourceSetupDiagram = () => {
               style={{ height: '50px', overflow: 'hidden' }}
               onClick={() => setActiveResource(idx)}
             >
-              <div className="d-flex align-items-center justify-content-between gap-2 h-100">
+              <div className="d-flex align-items-center justify-content-between gap-2 h-100 pe-1">
                 {/* Left Title & Icon */}
-                <div className="d-flex align-items-center gap-2 flex-grow-1 min-width-0">
-                  <div className={`icon-box rounded-2 p-1 bg-body d-flex align-items-center justify-content-center flex-shrink-0 ${res.color}`} style={{ width: '26px', height: '28px' }}>
+                <div className="d-flex align-items-center gap-2 flex-grow-1 min-width-0 me-2">
+                  <div className={`icon-box rounded-2 p-1 bg-body d-flex align-items-center justify-content-center flex-shrink-0 me-1 ${res.color}`} style={{ width: '26px', height: '28px' }}>
                     <i className={`bi ${res.icon} x-small`}></i>
                   </div>
                   <div className="flex-grow-1 min-width-0">
@@ -108,9 +108,9 @@ const RAGResourceSetupDiagram = () => {
                   </div>
                 </div>
 
-                {/* Right Properly Aligned Tag */}
+                {/* Right Tag with Margin From Border */}
                 <span 
-                  className={`badge flex-shrink-0 text-nowrap align-self-center ${isActive ? 'bg-primary text-white' : 'bg-body-secondary text-body-secondary'} font-monospace`}
+                  className={`badge flex-shrink-0 text-nowrap align-self-center me-1 ${isActive ? 'bg-primary text-white' : 'bg-body-secondary text-body-secondary'} font-monospace`}
                   style={{ fontSize: '0.68rem', padding: '4px 8px', letterSpacing: '0.02em' }}
                 >
                   {res.status}
@@ -125,9 +125,9 @@ const RAGResourceSetupDiagram = () => {
       <div className="resource-detail-box p-2 px-2.5 rounded-3 bg-body-tertiary border text-body-secondary style-leading" style={{ height: '65px', overflow: 'hidden' }}>
         <div className="d-flex justify-content-between align-items-center mb-0.5">
           <strong className="text-body font-monospace text-truncate me-2" style={{ fontSize: '0.74rem' }}>{current.tech}</strong>
-          <span className="text-cyan font-monospace flex-shrink-0 text-nowrap" style={{ fontSize: '0.7rem' }}>Node 0{current.id}/05</span>
+          <span className="text-cyan font-monospace flex-shrink-0 text-nowrap me-1" style={{ fontSize: '0.7rem' }}>Node 0{current.id}/05</span>
         </div>
-        <div className="text-truncate style-leading" style={{ fontSize: '0.72rem' }}>
+        <div className="text-truncate style-leading pe-2" style={{ fontSize: '0.72rem' }}>
           {current.desc}
         </div>
       </div>
