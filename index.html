@@ -1,1 +1,514 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Web site created using create-react-app"/><link rel="apple-touch-icon" href="/logo192.png"/><link rel="manifest" href="/manifest.json"/><title>React App</title><link href="/static/css/main.143592dc.chunk.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><script>!function(e){function t(t){for(var n,a,i=t[0],c=t[1],l=t[2],s=0,p=[];s<i.length;s++)a=i[s],Object.prototype.hasOwnProperty.call(o,a)&&o[a]&&p.push(o[a][0]),o[a]=0;for(n in c)Object.prototype.hasOwnProperty.call(c,n)&&(e[n]=c[n]);for(f&&f(t);p.length;)p.shift()();return u.push.apply(u,l||[]),r()}function r(){for(var e,t=0;t<u.length;t++){for(var r=u[t],n=!0,i=1;i<r.length;i++){var c=r[i];0!==o[c]&&(n=!1)}n&&(u.splice(t--,1),e=a(a.s=r[0]))}return e}var n={},o={1:0},u=[];function a(t){if(n[t])return n[t].exports;var r=n[t]={i:t,l:!1,exports:{}};return e[t].call(r.exports,r,r.exports,a),r.l=!0,r.exports}a.e=function(e){var t=[],r=o[e];if(0!==r)if(r)t.push(r[2]);else{var n=new Promise((function(t,n){r=o[e]=[t,n]}));t.push(r[2]=n);var u,i=document.createElement("script");i.charset="utf-8",i.timeout=120,a.nc&&i.setAttribute("nonce",a.nc),i.src=function(e){return a.p+"static/js/"+({}[e]||e)+"."+{3:"aecd6500"}[e]+".chunk.js"}(e);var c=new Error;u=function(t){i.onerror=i.onload=null,clearTimeout(l);var r=o[e];if(0!==r){if(r){var n=t&&("load"===t.type?"missing":t.type),u=t&&t.target&&t.target.src;c.message="Loading chunk "+e+" failed.\n("+n+": "+u+")",c.name="ChunkLoadError",c.type=n,c.request=u,r[1](c)}o[e]=void 0}};var l=setTimeout((function(){u({type:"timeout",target:i})}),12e4);i.onerror=i.onload=u,document.head.appendChild(i)}return Promise.all(t)},a.m=e,a.c=n,a.d=function(e,t,r){a.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},a.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},a.t=function(e,t){if(1&t&&(e=a(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(a.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var n in e)a.d(r,n,function(t){return e[t]}.bind(null,n));return r},a.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return a.d(t,"a",t),t},a.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},a.p="/",a.oe=function(e){throw console.error(e),e};var i=this["webpackJsonpreact-job-post"]=this["webpackJsonpreact-job-post"]||[],c=i.push.bind(i);i.push=t,i=i.slice();for(var l=0;l<i.length;l++)t(i[l]);var f=c;r()}([])</script><script src="/static/js/2.bb4e2702.chunk.js"></script><script src="/static/js/main.e8385445.chunk.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jaibir Singh is a Technical Architect, AI Engineer, and Python Developer building cloud-native, AI-powered applications and intelligent automation.">
+  <meta name="keywords" content="Jaibir Singh, AI Engineer, Python Developer, Technical Architect, Generative AI, Azure OpenAI, FastAPI, Azure AI Search, cloud-native applications">
+  <meta name="theme-color" content="#07101f" id="themeColor">
+  <meta name="color-scheme" content="dark light">
+  <title>Jaibir Singh — AI Engineer &amp; Python Developer</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>(()=>{try{const e=localStorage.getItem('jaibir-theme'),t=e||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);document.documentElement.setAttribute('data-bs-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','dark');document.documentElement.setAttribute('data-bs-theme','dark')}})()</script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="navbar navbar-expand-lg" aria-label="Primary navigation">
+      <div class="container">
+        <a class="navbar-brand brand-mark" href="#top" aria-label="Jaibir Singh — return to top">
+          <span class="brand-monogram" aria-hidden="true">JS</span>
+          <span class="brand-copy">
+            <strong>Jaibir Singh</strong>
+            <small>AI systems engineer</small>
+          </span>
+        </a>
+
+        <div class="d-flex align-items-center gap-2 order-lg-3">
+          <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" aria-pressed="false">
+            <svg class="icon" aria-hidden="true"><use id="themeIcon" href="#icon-sun"></use></svg>
+            <span class="visually-hidden">Switch color theme</span>
+          </button>
+          <button class="navbar-toggler" id="navToggle" type="button" aria-controls="primaryNav" aria-expanded="false" aria-label="Open navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse order-lg-2" id="primaryNav">
+          <ul class="navbar-nav ms-lg-auto align-items-lg-center">
+            <li class="nav-item"><a class="nav-link active" href="#about">Profile</a></li>
+            <li class="nav-item"><a class="nav-link" href="#systems">Systems</a></li>
+            <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+            <li class="nav-item"><a class="nav-link" href="#skills">Capabilities</a></li>
+            <li class="nav-item"><a class="nav-link nav-contact" href="#contact">Let’s connect <svg class="icon icon-xs" aria-hidden="true"><use href="#icon-arrow-up-right"></use></svg></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero-section" id="top" aria-labelledby="hero-title">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-one" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-two" aria-hidden="true"></div>
+
+      <div class="network-visual" aria-hidden="true">
+        <svg viewBox="0 0 900 680" preserveAspectRatio="xMidYMid slice" role="presentation">
+          <defs>
+            <linearGradient id="networkGradient" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0%" stop-color="#61d7ff"></stop>
+              <stop offset="52%" stop-color="#9c7cff"></stop>
+              <stop offset="100%" stop-color="#4ff0bd"></stop>
+            </linearGradient>
+            <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#e9fbff" stop-opacity="1"></stop>
+              <stop offset="35%" stop-color="#70d8ff" stop-opacity=".9"></stop>
+              <stop offset="100%" stop-color="#70d8ff" stop-opacity="0"></stop>
+            </radialGradient>
+            <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="7" result="blur"></feGaussianBlur>
+              <feMerge><feMergeNode in="blur"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+            </filter>
+          </defs>
+          <g class="network-lines">
+            <path d="M120 468 C210 358, 272 390, 362 290 S507 165, 604 228 S726 374, 826 264" pathLength="1"></path>
+            <path d="M83 246 C212 212, 249 293, 362 290 S498 400, 585 385 S691 262, 826 264" pathLength="1"></path>
+            <path d="M120 468 C228 506, 350 508, 442 451 S530 356, 604 228" pathLength="1"></path>
+            <path d="M362 290 C428 259, 475 253, 604 228" pathLength="1"></path>
+            <path d="M442 451 C531 497, 665 516, 759 438 S758 313, 826 264" pathLength="1"></path>
+          </g>
+          <g class="network-rings">
+            <circle cx="120" cy="468" r="42"></circle>
+            <circle cx="362" cy="290" r="65"></circle>
+            <circle cx="604" cy="228" r="50"></circle>
+            <circle cx="442" cy="451" r="36"></circle>
+            <circle cx="826" cy="264" r="39"></circle>
+          </g>
+          <g class="network-nodes" filter="url(#softGlow)">
+            <circle class="node node-a" cx="120" cy="468" r="12" fill="url(#nodeGlow)"></circle>
+            <circle class="node node-b" cx="362" cy="290" r="15" fill="url(#nodeGlow)"></circle>
+            <circle class="node node-c" cx="604" cy="228" r="13" fill="url(#nodeGlow)"></circle>
+            <circle class="node node-d" cx="442" cy="451" r="10" fill="url(#nodeGlow)"></circle>
+            <circle class="node node-e" cx="826" cy="264" r="12" fill="url(#nodeGlow)"></circle>
+          </g>
+          <g class="network-packets" fill="#effdff">
+            <circle class="packet packet-one" cx="220" cy="395" r="5"></circle>
+            <circle class="packet packet-two" cx="506" cy="258" r="4"></circle>
+            <circle class="packet packet-three" cx="662" cy="365" r="5"></circle>
+          </g>
+        </svg>
+        <span class="visual-label visual-label-prompt">prompt</span>
+        <span class="visual-label visual-label-retrieval">retrieve</span>
+        <span class="visual-label visual-label-reason">reason</span>
+        <span class="visual-label visual-label-action">action</span>
+      </div>
+
+      <div class="container hero-content">
+        <div class="row align-items-center min-vh-100 gy-5">
+          <div class="col-lg-8 col-xl-7">
+            <div class="hero-copy" data-reveal>
+              <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Technical Architect · AI Engineer · Python Developer</p>
+              <h1 id="hero-title">Intelligent systems,<br><span>designed to deliver.</span></h1>
+              <p class="hero-lead">I’m Jaibir Singh. I architect cloud-native applications and production AI workflows that turn complex information into useful, secure outcomes.</p>
+              <div class="hero-actions d-flex flex-wrap gap-3">
+                <a class="btn btn-primary btn-lg" href="#systems">Explore selected systems <svg class="icon icon-sm" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></a>
+                <a class="btn btn-quiet btn-lg" href="mailto:contact2jaibir@gmail.com">Start a conversation <svg class="icon icon-sm" aria-hidden="true"><use href="#icon-arrow-up-right"></use></svg></a>
+              </div>
+              <ul class="hero-signals list-unstyled mb-0">
+                <li><strong>14+ years</strong><span>engineering business-critical products</span></li>
+                <li><strong>AI + cloud</strong><span>Azure OpenAI, Search &amp; Functions</span></li>
+                <li><strong>Python-first</strong><span>FastAPI, APIs &amp; data workflows</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-xl-5 d-none d-lg-block">
+            <aside class="system-console" aria-label="AI solution architecture overview" data-reveal>
+              <div class="console-topline"><span>LIVE ARCHITECTURE</span><span class="console-status"><i></i> SYSTEMS READY</span></div>
+              <div class="console-flow">
+                <div class="flow-step flow-step-source"><span class="flow-index">01</span><div><strong>Knowledge</strong><small>Documents · data · APIs</small></div><svg class="icon" aria-hidden="true"><use href="#icon-database"></use></svg></div>
+                <div class="flow-connector" aria-hidden="true"><span></span></div>
+                <div class="flow-step flow-step-core"><span class="flow-index">02</span><div><strong>AI orchestration</strong><small>LLMs · retrieval · agents</small></div><svg class="icon" aria-hidden="true"><use href="#icon-spark"></use></svg></div>
+                <div class="flow-connector" aria-hidden="true"><span></span></div>
+                <div class="flow-step flow-step-outcome"><span class="flow-index">03</span><div><strong>Useful output</strong><small>Secure services · automation</small></div><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"></use></svg></div>
+              </div>
+              <div class="console-footer"><span>PYTHON / FASTAPI</span><span>AZURE AI</span><span>REST APIS</span></div>
+            </aside>
+          </div>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#about" aria-label="Scroll to profile"><span>SCROLL TO EXPLORE</span><i aria-hidden="true"></i></a>
+    </section>
+
+    <section class="section section-profile" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="row align-items-start gy-5">
+          <div class="col-lg-4" data-reveal>
+            <p class="section-kicker">01 / PROFILE</p>
+            <h2 class="section-title" id="about-title">A systems mindset for the AI era.</h2>
+            <div class="profile-mark" aria-hidden="true">
+              <span>JS</span>
+              <i></i><i></i><i></i>
+            </div>
+          </div>
+          <div class="col-lg-8" data-reveal>
+            <div class="profile-intro">
+              <p class="lead-copy">Technical Architect with 14+ years of experience delivering web, mobile, and business intelligence solutions. I bring together application architecture, backend engineering, cloud services, and Generative AI to build products that work in the real world.</p>
+              <p>My foundation spans Python, .NET Core, Angular, React.js, ASP.NET MVC, Android Studio, and SQL/NoSQL databases including MS SQL, MySQL, PostgreSQL, MongoDB, and Azure Cosmos DB. I work across Azure Web Apps, Functions, Service Bus, AI Search, SQL, API Gateway, VM Automation, Blob Storage, SendGrid, DevOps practices, Docker, and Kubernetes.</p>
+            </div>
+            <h3 class="visually-hidden">Professional details</h3>
+            <div class="identity-grid">
+              <div class="identity-item"><span class="identity-icon" aria-hidden="true"><svg class="icon"><use href="#icon-compass"></use></svg></span><div><small>Role</small><strong>Technical Architect</strong></div></div>
+              <div class="identity-item"><span class="identity-icon" aria-hidden="true"><svg class="icon"><use href="#icon-pin"></use></svg></span><div><small>Based in</small><strong>Ghaziabad, Uttar Pradesh, India</strong></div></div>
+              <div class="identity-item"><span class="identity-icon" aria-hidden="true"><svg class="icon"><use href="#icon-calendar"></use></svg></span><div><small>Born</small><strong>23 December 1987 · <span data-current-age>38</span> years</strong></div></div>
+              <div class="identity-item"><span class="identity-icon" aria-hidden="true"><svg class="icon"><use href="#icon-globe"></use></svg></span><div><small>Website</small><strong>jbr2021.github.io</strong></div></div>
+              <div class="identity-item"><span class="identity-icon" aria-hidden="true"><svg class="icon"><use href="#icon-phone"></use></svg></span><div><small>Phone</small><strong>+91-9999XXXXXX</strong></div></div>
+              <div class="identity-item"><span class="identity-icon" aria-hidden="true"><svg class="icon"><use href="#icon-briefcase"></use></svg></span><div><small>Freelance</small><strong>Not available</strong></div></div>
+            </div>
+            <blockquote class="approach-quote">“I bring my effort, knowledge, and curiosity to every engagement—always learning what will help the organization grow.”</blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section focus-section" aria-labelledby="focus-title">
+      <div class="container">
+        <div class="section-heading row align-items-end gy-3" data-reveal>
+          <div class="col-lg-7">
+            <p class="section-kicker">02 / ENGINEERING FOCUS</p>
+            <h2 class="section-title" id="focus-title">From AI capability to reliable product.</h2>
+          </div>
+          <div class="col-lg-5"><p class="section-description mb-0">Modern AI applications are only valuable when their data, orchestration, interfaces, and cloud foundations are designed as one dependable system.</p></div>
+        </div>
+        <div class="row g-4 focus-grid">
+          <div class="col-md-6 col-xl-3" data-reveal>
+            <article class="focus-card">
+              <span class="focus-number">01</span>
+              <span class="focus-icon" aria-hidden="true"><svg class="icon"><use href="#icon-spark"></use></svg></span>
+              <h3>Generative &amp; agentic AI</h3>
+              <p>LLM applications, prompt engineering, AI agents, multi-agent systems, and thoughtful workflows shaped around practical outcomes.</p>
+              <div class="focus-tags"><span>Generative AI</span><span>LLMs</span><span>AI Agents</span></div>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-3" data-reveal>
+            <article class="focus-card">
+              <span class="focus-number">02</span>
+              <span class="focus-icon" aria-hidden="true"><svg class="icon"><use href="#icon-search"></use></svg></span>
+              <h3>Retrieval intelligence</h3>
+              <p>RAG patterns, semantic search, embeddings, vector databases, and knowledge graphs for grounded answers.</p>
+              <div class="focus-tags"><span>RAG</span><span>Vector Search</span><span>Embeddings</span></div>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-3" data-reveal>
+            <article class="focus-card">
+              <span class="focus-number">03</span>
+              <span class="focus-icon" aria-hidden="true"><svg class="icon"><use href="#icon-code"></use></svg></span>
+              <h3>Production backend</h3>
+              <p>Python, FastAPI, REST APIs, backend engineering, integrations, and data processing pipelines built for maintainability.</p>
+              <div class="focus-tags"><span>Python</span><span>FastAPI</span><span>REST APIs</span></div>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-3" data-reveal>
+            <article class="focus-card">
+              <span class="focus-number">04</span>
+              <span class="focus-icon" aria-hidden="true"><svg class="icon"><use href="#icon-cloud"></use></svg></span>
+              <h3>Cloud AI solutions</h3>
+              <p>Azure OpenAI, Azure AI Search, Azure Functions, secure API services, and intelligent automation in cloud-native environments.</p>
+              <div class="focus-tags"><span>Azure AI</span><span>Automation</span><span>Cloud-native</span></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section systems-section" id="systems" aria-labelledby="systems-title">
+      <div class="container">
+        <div class="section-heading row align-items-end gy-3" data-reveal>
+          <div class="col-lg-7">
+            <p class="section-kicker">03 / SELECTED SYSTEMS</p>
+            <h2 class="section-title" id="systems-title">AI applied to high-value workflows.</h2>
+          </div>
+          <div class="col-lg-5"><p class="section-description mb-0">A selection of systems delivered through HCL Technologies for the World Bank Group and ANZ Bank.</p></div>
+        </div>
+
+        <div class="row g-4 systems-grid">
+          <div class="col-lg-6" data-reveal>
+            <article class="system-card system-card-featured">
+              <div class="system-card-head">
+                <span class="system-index">01</span>
+                <span class="system-symbol" aria-hidden="true"><svg class="icon"><use href="#icon-file-spark"></use></svg></span>
+              </div>
+              <p class="system-context">WORLD BANK GROUP · DOCUMENT INTELLIGENCE</p>
+              <h3>Project Approval Document <span>(PAD)</span></h3>
+              <p class="system-summary">An AI-powered system that generates a structured 15-section approval document from user prompts, compiles the content with an indexed table of contents, and makes the completed document available for download.</p>
+              <div class="system-role"><span>Contribution</span><p><strong>Full-Stack Developer.</strong> Built APIs, integrated Azure OpenAI, managed document generation and database operations, and delivered the end-to-end approval document system.</p></div>
+              <ul class="tech-list"><li>Azure OpenAI · GPT-4o</li><li>.NET Core</li><li>Python FastAPI</li><li>Aspose</li><li>Blob Storage</li><li>NumPy</li><li>MS SQL Server</li><li>Azure AI Search</li><li>AWS OpenSearch</li></ul>
+            </article>
+          </div>
+
+          <div class="col-lg-6" data-reveal>
+            <article class="system-card">
+              <div class="system-card-head">
+                <span class="system-index">02</span>
+                <span class="system-symbol" aria-hidden="true"><svg class="icon"><use href="#icon-pulse"></use></svg></span>
+              </div>
+              <p class="system-context">WORLD BANK GROUP · DATA &amp; INSIGHT</p>
+              <h3>Implementation Status &amp; Results Reports <span>(ISR)</span></h3>
+              <p class="system-summary">A system to monitor, track, and analyze issues across international projects, enabling stronger management and resolution strategies.</p>
+              <div class="system-role"><span>Contribution</span><p><strong>Full-Stack Developer.</strong> Contributed to frontend and backend development, data processing workflows, and AI-powered analysis for issue management.</p></div>
+              <ul class="tech-list"><li>Databricks</li><li>Blob Storage</li><li>MS SQL Server</li><li>Python FastAPI</li><li>Angular</li><li>Timer-triggered Azure Functions</li><li>Azure OpenAI · GPT-4o</li><li>Aspose</li></ul>
+            </article>
+          </div>
+
+          <div class="col-lg-6" data-reveal>
+            <article class="system-card">
+              <div class="system-card-head">
+                <span class="system-index">03</span>
+                <span class="system-symbol" aria-hidden="true"><svg class="icon"><use href="#icon-shield"></use></svg></span>
+              </div>
+              <p class="system-context">WORLD BANK GROUP · COMPLIANCE AUTOMATION</p>
+              <h3>Document Review Tool <span>(DRT)</span></h3>
+              <p class="system-summary">A compliance-focused application for reviewing Word, PDF, and PowerPoint files. It detects and highlights sensitive words, recommends alternatives, adds explanatory notes, summarizes usage, and provides a page-level keyword report.</p>
+              <div class="system-role"><span>Contribution</span><p><strong>Backend Developer.</strong> Implemented backend services, Azure OpenAI text analysis, Aspose-based keyword detection, GPT-4o summarization, and reporting.</p></div>
+              <ul class="tech-list"><li>Angular</li><li>.NET Core</li><li>Azure Service Bus</li><li>Azure Functions</li><li>Blob Storage</li><li>MS SQL Server · C#</li><li>Azure OpenAI · GPT-4o</li><li>Aspose</li></ul>
+            </article>
+          </div>
+
+          <div class="col-lg-6" data-reveal>
+            <article class="system-card">
+              <div class="system-card-head">
+                <span class="system-index">04</span>
+                <span class="system-symbol" aria-hidden="true"><svg class="icon"><use href="#icon-route"></use></svg></span>
+              </div>
+              <p class="system-context">WORLD BANK GROUP · KNOWLEDGE ACCESS</p>
+              <h3>Global Mobility Portal <span>(GMP)</span></h3>
+              <p class="system-summary">A knowledge and guidance portal for employees traveling abroad, bringing together processes, education, workspace setup, and key contacts in one accessible experience.</p>
+              <div class="system-role"><span>Contribution</span><p><strong>Backend Developer.</strong> Worked on backend automation, Azure Search indexing, and document processing to make information accurate and easy to access.</p></div>
+              <ul class="tech-list"><li>SharePoint folders &amp; collections</li><li>Azure AI Search</li><li>Azure Functions</li><li>Blob Storage</li><li>Aspose</li><li>.NET Core</li></ul>
+            </article>
+          </div>
+        </div>
+
+        <article class="platform-card" data-reveal>
+          <div class="platform-icon" aria-hidden="true"><svg class="icon"><use href="#icon-layers"></use></svg></div>
+          <div class="platform-copy">
+            <p class="system-context">ANZ BANK · DEVELOPER EXPERIENCE</p>
+            <h3>Internal Developer Portal <span>(Backstage)</span></h3>
+            <p>Built a centralized developer portal to unify service discovery, documentation, and infrastructure tools—improving developer productivity and onboarding.</p>
+          </div>
+          <div class="platform-detail"><span>Contribution</span><p><strong>Full-Stack Developer &amp; DevOps.</strong> Developed frontend features and custom plugins, containerized and deployed the platform on Kubernetes, automated CI/CD workflows, and integrated authentication and observability tools.</p></div>
+          <ul class="tech-list"><li>Backstage</li><li>Software Catalog</li><li>Scaffolder</li><li>TechDocs</li><li>React</li><li>TypeScript</li><li>Node.js</li><li>Docker</li><li>Kubernetes</li><li>CI/CD</li><li>Custom plugins</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section experience-section" id="experience" aria-labelledby="experience-title">
+      <div class="container">
+        <div class="section-heading row align-items-end gy-3" data-reveal>
+          <div class="col-lg-7">
+            <p class="section-kicker">04 / EXPERIENCE</p>
+            <h2 class="section-title" id="experience-title">A career built through delivery.</h2>
+          </div>
+          <div class="col-lg-5"><p class="section-description mb-0">Experienced in requirements analysis, design, development, testing, maintenance, enhancement, and production support of business applications. Skilled in architecting customized, data-driven solutions on-premise and in the cloud.</p></div>
+        </div>
+
+        <div class="timeline" data-reveal>
+          <article class="timeline-item timeline-item-current">
+            <div class="timeline-rail"><span></span></div>
+            <div class="timeline-period">SEP 2021 — TILL DATE</div>
+            <div class="timeline-content"><div class="timeline-title-row"><h3>HCL Technologies</h3><span class="current-badge">CURRENT</span></div><p class="timeline-location">Sector 126, Noida, Uttar Pradesh, India</p><p>Lead Developer across World Bank Group and ANZ Bank engagements, delivering AI-powered document systems, data and issue analysis workflows, compliance tooling, knowledge access, and a centralized developer platform.</p></div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-rail"><span></span></div>
+            <div class="timeline-period">APR 2017 — AUG 2021</div>
+            <div class="timeline-content"><h3>GetOn Infotech Pvt. Ltd.</h3><p class="timeline-location">Connaught Place, New Delhi, India</p><p><strong>Development Head.</strong> Delivered end-to-end application solutions covering DevOps deployments on Azure, automation workflows, and business-critical accounting and production systems.</p></div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-rail"><span></span></div>
+            <div class="timeline-period">APR 2014 — APR 2017</div>
+            <div class="timeline-content"><h3>ABL Online</h3><p class="timeline-location">Connaught Place, New Delhi, India</p><p><strong>Team Lead.</strong> Delivered business applications including AWS Cloud solutions, emailing systems, invoicing and taxation platforms, CRM, HRM, and salary distribution systems.</p></div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-rail"><span></span></div>
+            <div class="timeline-period">JUN 2011 — APR 2014</div>
+            <div class="timeline-content"><h3>ABL Online</h3><p class="timeline-location">Connaught Place, New Delhi, India</p><p><strong>Web Developer.</strong> Built applications for property portals, job portals, CRM, HRM, virtual numbers, and other company requirements.</p></div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-rail"><span></span></div>
+            <div class="timeline-period">APR 2010 — APR 2011</div>
+            <div class="timeline-content"><h3>IBM Daksh</h3><p class="timeline-location">Gurgaon, Haryana, India</p><p><strong>Customer Care Executive.</strong> Worked on healthcare back-end MS-DOS–based software.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section skills-section" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="section-heading row align-items-end gy-3" data-reveal>
+          <div class="col-lg-7">
+            <p class="section-kicker">05 / CAPABILITIES</p>
+            <h2 class="section-title" id="skills-title">The toolkit behind the architecture.</h2>
+          </div>
+          <div class="col-lg-5"><p class="section-description mb-0">A practical technical foundation spanning AI, cloud, application development, data, DevOps, and product delivery.</p></div>
+        </div>
+
+        <div class="row g-4 skills-matrix">
+          <div class="col-lg-4" data-reveal>
+            <article class="skill-group">
+              <div class="skill-group-head"><span class="group-icon" aria-hidden="true"><svg class="icon"><use href="#icon-spark"></use></svg></span><h3>AI, cloud &amp; delivery</h3></div>
+              <ul class="skill-list">
+                <li><span>Python</span><strong>90%</strong></li>
+                <li><span>Gen AI</span><strong>90%</strong></li>
+                <li><span>Azure Services <small>Web Apps, Functions, Service Bus, Storage, Search, AI, SQL, Cosmos DB, AD</small></span><strong>90%</strong></li>
+                <li><span>DevOps</span><strong>70%</strong></li>
+              </ul>
+            </article>
+          </div>
+          <div class="col-lg-4" data-reveal>
+            <article class="skill-group">
+              <div class="skill-group-head"><span class="group-icon" aria-hidden="true"><svg class="icon"><use href="#icon-code"></use></svg></span><h3>Application &amp; web</h3></div>
+              <ul class="skill-list">
+                <li><span>Angular 12.1.4</span><strong>90%</strong></li>
+                <li><span>ReactJS V17</span><strong>90%</strong></li>
+                <li><span>HTML</span><strong>90%</strong></li>
+                <li><span>CSS</span><strong>90%</strong></li>
+                <li><span>JavaScript</span><strong>90%</strong></li>
+                <li><span>jQuery</span><strong>90%</strong></li>
+                <li><span>Android Studio</span><strong>70%</strong></li>
+                <li><span>Ajax</span><strong>90%</strong></li>
+              </ul>
+            </article>
+          </div>
+          <div class="col-lg-4" data-reveal>
+            <article class="skill-group">
+              <div class="skill-group-head"><span class="group-icon" aria-hidden="true"><svg class="icon"><use href="#icon-database"></use></svg></span><h3>Backend &amp; data</h3></div>
+              <ul class="skill-list">
+                <li><span>.NET Core</span><strong>90%</strong></li>
+                <li><span>ASP.NET MVC</span><strong>90%</strong></li>
+                <li><span>ADO.NET</span><strong>90%</strong></li>
+                <li><span>Dapper</span><strong>90%</strong></li>
+                <li><span>LINQ</span><strong>90%</strong></li>
+                <li><span>MS SQL Server</span><strong>90%</strong></li>
+                <li><span>MongoDB</span><strong>90%</strong></li>
+                <li><span>Redis Server</span><strong>90%</strong></li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section credentials-section" aria-labelledby="credentials-title">
+      <div class="container">
+        <div class="section-heading row align-items-end gy-3" data-reveal>
+          <div class="col-lg-7">
+            <p class="section-kicker">06 / CREDENTIALS</p>
+            <h2 class="section-title" id="credentials-title">Continuous learning, grounded in delivery.</h2>
+          </div>
+          <div class="col-lg-5"><p class="section-description mb-0">Professional education and certification that support a cloud-native engineering practice.</p></div>
+        </div>
+        <div class="row g-4 credentials-grid">
+          <div class="col-md-6 col-xl-4" data-reveal>
+            <article class="credential-card credential-card-featured">
+              <div class="credential-icon" aria-hidden="true"><svg class="icon"><use href="#icon-badge"></use></svg></div>
+              <p>JULY 2022 · GOOGLE CLOUD PLATFORM</p>
+              <h3>Professional Cloud Developer <span>(English)</span></h3>
+              <p>Google-endorsed certification validating the ability to design, build, test, deploy, and integrate scalable, secure, cloud-native applications using Google-recommended tools and practices.</p>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-4" data-reveal>
+            <article class="credential-card">
+              <div class="credential-icon" aria-hidden="true"><svg class="icon"><use href="#icon-layers"></use></svg></div>
+              <p>2006 — 2009 · NIIT, SOUTH EX CAMPUS, DELHI</p>
+              <h3>GNIIT <span>(Software Engineer Course)</span></h3>
+              <p>Completed all terms and professional practice to earn the GNIIT Software Engineering recognition, with access to NIIT’s global alumni network.</p>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-4" data-reveal>
+            <article class="credential-card">
+              <div class="credential-icon" aria-hidden="true"><svg class="icon"><use href="#icon-book"></use></svg></div>
+              <p>2005 — 2008 · DELHI OPEN UNIVERSITY, DELHI</p>
+              <h3>BCom</h3>
+              <p>An undergraduate degree in commerce and related subjects, covering managerial understanding across finance, accounting, taxation, and management.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact-card" data-reveal>
+          <div class="contact-ambient" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="row align-items-center gy-5 position-relative">
+            <div class="col-lg-7">
+              <p class="section-kicker">07 / CONNECT</p>
+              <h2 id="contact-title">Have an AI workflow that needs to work in production?</h2>
+              <p>Let’s talk about AI application development, cloud-native platforms, intelligent document processing, backend services, or automation that can make a measurable difference.</p>
+              <div class="contact-actions d-flex flex-wrap gap-3">
+                <a class="btn btn-primary btn-lg" href="mailto:contact2jaibir@gmail.com">Email Jaibir <svg class="icon icon-sm" aria-hidden="true"><use href="#icon-mail"></use></svg></a>
+                <button class="btn btn-outline-quiet btn-lg" type="button" id="copyEmail" data-email="contact2jaibir@gmail.com">Copy email <svg class="icon icon-sm" aria-hidden="true"><use href="#icon-copy"></use></svg></button>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <dl class="contact-details">
+                <div><dt>Email</dt><dd><a href="mailto:contact2jaibir@gmail.com">contact2jaibir@gmail.com</a></dd></div>
+                <div><dt>Phone</dt><dd>+91-9999XXXXXX</dd></div>
+                <div><dt>Location</dt><dd>Ghaziabad, Uttar Pradesh, India</dd></div>
+                <div><dt>Availability</dt><dd>Freelance not available</dd></div>
+              </dl>
+              <a class="github-link" href="https://github.com/jbr2021" target="_blank" rel="noopener noreferrer">View GitHub <svg class="icon icon-xs" aria-hidden="true"><use href="#icon-arrow-up-right"></use></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+      <p class="mb-0">© <span data-current-year>2026</span> Jaibir Singh. Built with intention.</p>
+      <p class="footer-specialties mb-0">AI engineering <span>·</span> Cloud systems <span>·</span> Intelligent automation</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up"></use></svg></button>
+  <div class="site-toast" id="siteToast" role="status" aria-live="polite"><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg><span>Email copied to clipboard</span></div>
+
+  <svg class="svg-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></symbol>
+    <symbol id="icon-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></symbol>
+    <symbol id="icon-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2v2.2M12 19.8V22M4.93 4.93l1.55 1.55M17.52 17.52l1.55 1.55M2 12h2.2M19.8 12H22M4.93 19.07l1.55-1.55M17.52 6.48l1.55-1.55" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.7"/></symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20.4 15.2A8.8 8.8 0 0 1 8.8 3.6 8.8 8.8 0 1 0 20.4 15.2Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/></symbol>
+    <symbol id="icon-spark" viewBox="0 0 24 24"><path d="m12 2 1.7 6.3L20 10l-6.3 1.7L12 18l-1.7-6.3L4 10l6.3-1.7L12 2ZM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="10.7" cy="10.7" r="5.7" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m15 15 5 5M10.7 8v5.4M8 10.7h5.4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.7"/></symbol>
+    <symbol id="icon-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/></symbol>
+    <symbol id="icon-cloud" viewBox="0 0 24 24"><path d="M7 18.5h10.5a4.5 4.5 0 0 0 .6-8.96A6.2 6.2 0 0 0 6.2 8.1 5.2 5.2 0 0 0 7 18.5Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.7"/><path d="M12 9v6M9.7 12.3 12 10l2.3 2.3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></symbol>
+    <symbol id="icon-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="7" ry="3.1" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M5 5.5v6.4c0 1.7 3.1 3.1 7 3.1s7-1.4 7-3.1V5.5M5 11.9v6.4c0 1.7 3.1 3.1 7 3.1s7-1.4 7-3.1v-6.4" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="icon-file-spark" viewBox="0 0 24 24"><path d="M6.5 3.5h7l4 4v13h-11Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.7"/><path d="M13.5 3.5v4h4M11.5 10l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8.8-2.2Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.4"/></symbol>
+    <symbol id="icon-pulse" viewBox="0 0 24 24"><path d="M3 12h3l2-5 4 10 2-5h7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/><circle cx="19" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".65"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 3.2 19 6v5.1c0 4.6-3 7.8-7 9.7-4-1.9-7-5.1-7-9.7V6l7-2.8Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.7"/><path d="m8.8 12 2.1 2.1 4.4-4.4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/></symbol>
+    <symbol id="icon-route" viewBox="0 0 24 24"><circle cx="6" cy="17" r="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="18" cy="7" r="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M8.5 17c4.5 0 1-7.5 7-7.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.7"/></symbol>
+    <symbol id="icon-layers" viewBox="0 0 24 24"><path d="m12 3 8 4.3-8 4.3-8-4.3L12 3ZM4 12l8 4.3 8-4.3M4 16.7l8 4.3 8-4.3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/></symbol>
+    <symbol id="icon-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m15.8 8.2-2.2 5.4-5.4 2.2 2.2-5.4 5.4-2.2Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"/></symbol>
+    <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M19 10.5c0 5.4-7 10.3-7 10.3S5 15.9 5 10.5a7 7 0 1 1 14 0Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.7"/><circle cx="12" cy="10.5" r="2.2" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M7.5 3.5v4M16.5 3.5v4M3.5 10h17M8 14h3M8 17h6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.7"/></symbol>
+    <symbol id="icon-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3.8 12h16.4M12 3.5c2.2 2.3 3.3 5.1 3.3 8.5S14.2 18.2 12 20.5C9.8 18.2 8.7 15.4 8.7 12S9.8 5.8 12 3.5Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"/></symbol>
+    <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M7 3.8 4.9 5.2c-.8.5-1.1 1.5-.7 2.4 2.7 6.6 7.6 11.5 14.2 14.2.9.4 1.9.1 2.4-.7l1.4-2.1c.5-.8.3-1.8-.5-2.3l-3-1.8c-.7-.4-1.6-.3-2.1.3l-1.1 1.3a14.2 14.2 0 0 1-8-8l1.3-1.1c.6-.5.7-1.4.3-2.1l-1.8-3c-.5-.8-1.5-1-2.3-.5Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.7"/></symbol>
+    <symbol id="icon-briefcase" viewBox="0 0 24 24"><rect x="3.5" y="7.5" width="17" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M8.5 7.5V5.7c0-.9.7-1.7 1.7-1.7h3.6c.9 0 1.7.7 1.7 1.7v1.8M3.5 12.5h17M10 12.5v2h4v-2" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.7"/></symbol>
+    <symbol id="icon-badge" viewBox="0 0 24 24"><path d="m12 3 2 2.1 2.9-.5.5 2.9 2.6 1.4-1.4 2.6 1.4 2.6-2.6 1.4-.5 2.9-2.9-.5-2 2.1-2-2.1-2.9.5-.5-2.9L4.9 14l1.4-2.6-1.4-2.6 2.6-1.4.5-2.9 2.9.5L12 3Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"/><path d="m8.8 12 2.1 2.1 4.3-4.3" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/></symbol>
+    <symbol id="icon-book" viewBox="0 0 24 24"><path d="M4.5 5.5c2.5-1.4 5.3-1.2 7.5.7v13c-2.2-1.9-5-2.1-7.5-.7v-13ZM19.5 5.5c-2.5-1.4-5.3-1.2-7.5.7v13c2.2-1.9 5-2.1 7.5-.7v-13Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.7"/></symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m4.5 7 7.5 6 7.5-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/></symbol>
+    <symbol id="icon-copy" viewBox="0 0 24 24"><rect x="8" y="7" width="11" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M16 7V5.5c0-.8-.7-1.5-1.5-1.5h-9C4.7 4 4 4.7 4 5.5v10c0 .8.7 1.5 1.5 1.5H8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m8.2 12 2.4 2.4 5.2-5.2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"/></symbol>
+  </svg>
+
+  <script src="assets/js/main.min.js" defer></script>
+</body>
+</html>
