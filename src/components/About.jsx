@@ -2,74 +2,48 @@ import React from 'react';
 
 const About = () => {
   return (
-    <section id="about" className="about">
+    <section id="about">
       <div className="container">
         <div className="section-title">
-          <h2>About</h2>
-          <p>
-            Greetings!<br />
-            Technical Architect with 14+ years of experience delivering web, mobile, and business intelligence solutions. 
-            Proficient in Python, Generative AI, .NET Core, Angular, React.js, ASP.NET MVC, Android Studio, and SQL/NoSQL databases 
-            (MS SQL, MySQL, PostgreSQL, MongoDB, Azure CosmosDB). Expertise in Azure cloud services (Web Apps, Functions, Service Bus, 
-            AI Search, SQL, API Gateway, VM Automation, Blob Storage, SendGrid), DevOps practices, Docker and Kubernetes. 
-            Also certified as a Google Cloud Professional Cloud Developer.
-          </p>
+          <h2>About Me</h2>
         </div>
 
-        <div className="row">
-          <div className="col-lg-4" data-aos="fade-right">
-            <img 
-              src="/assets/img/Jaibir-Singh-03.jpg" 
-              className="img-fluid" 
-              alt="Jaibir Singh" 
-            />
+        <div className="row" style={{ marginTop: '2rem' }}>
+          <div className="col-lg-4">
+            <div className="card" style={{ textAlign: 'center' }}>
+              <img 
+                src="/assets/img/Jaibir-Singh-07.jpg" 
+                alt="Jaibir Singh" 
+                style={{ 
+                  width: '180px', 
+                  height: '180px', 
+                  borderRadius: '9999px', 
+                  objectFit: 'cover',
+                  margin: '0 auto 1.5rem',
+                  border: '4px solid var(--border)'
+                }} 
+              />
+              <h3 style={{ marginBottom: '0.5rem' }}>Jaibir Singh</h3>
+              <p className="text-muted" style={{ marginBottom: '1rem' }}>Technical Architect &amp; AI Engineer</p>
+            </div>
           </div>
-          <div className="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3>Technical Architect</h3>
-            <p className="fst-italic">
-              Being in an esteemed organization as valuable service provider and devote all my efforts and knowledge 
-              for the organization and learn all new things to implement in the organization for the sake of its growth.
-            </p>
-            <div className="row">
-              <div className="col-lg-6">
-                <ul className="list-unstyled">
-                  <li>
-                    <i className="bi bi-chevron-right"></i> 
-                    <strong>Profession:</strong> <span>Technical Architect</span>
-                  </li>
-                  <li>
-                    <i className="bi bi-chevron-right"></i> 
-                    <strong>Website:</strong> <span>jbr2021.github.io</span>
-                  </li>
-                  <li>
-                    <i className="bi bi-chevron-right"></i> 
-                    <strong>Phone:</strong> <span>+91-9999XXXXXX</span>
-                  </li>
-                  <li>
-                    <i className="bi bi-chevron-right"></i> 
-                    <strong>City:</strong> <span>Ghaziabad, Uttar Pradesh, India</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="col-lg-6">
-                <ul className="list-unstyled">
-                  <li>
-                    <i className="bi bi-chevron-right"></i> 
-                    <strong>Birthday:</strong> <span>23rd December, 1987</span>
-                  </li>
-                  <li>
-                    <i className="bi bi-chevron-right"></i> 
-                    <strong>Age:</strong> <span>38</span>
-                  </li>
-                  <li>
-                    <i className="bi bi-chevron-right"></i> 
-                    <strong>Email:</strong> <span>contact2jaibir@gmail.com</span>
-                  </li>
-                  <li>
-                    <i className="bi bi-chevron-right"></i> 
-                    <strong>Freelance:</strong> <span>Not Available</span>
-                  </li>
-                </ul>
+
+          <div className="col-lg-8">
+            <div className="card">
+              <p style={{ fontSize: '1.05rem', lineHeight: 1.7 }}>
+                Technical Architect with <strong>14+ years</strong> of experience delivering web, mobile, and business intelligence solutions.
+                Expert in building production-grade AI systems using <strong>Python, FastAPI, Azure OpenAI, RAG, and Multi-Agent architectures</strong>.
+              </p>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '1.5rem' }}>
+                <div>
+                  <div><strong>Current Focus</strong></div>
+                  <div className="text-muted">Generative AI • Agentic Systems • Azure AI</div>
+                </div>
+                <div>
+                  <div><strong>Certifications</strong></div>
+                  <div className="text-muted">Google Cloud Professional Cloud Developer</div>
+                </div>
               </div>
             </div>
           </div>

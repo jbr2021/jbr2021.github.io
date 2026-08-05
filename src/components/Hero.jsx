@@ -2,61 +2,109 @@ import React, { useEffect, useState } from 'react';
 
 const Hero = () => {
   const [typedText, setTypedText] = useState('');
-  const typedItems = [
-    'a Technical Architect',
-    'a GCP Professional Cloud Developer',
-    'well versed in Databases',
-    'well experienced in Azure Cloud',
-    'an AI Engineer',
-    'a Python & FastAPI Developer'
+  
+  const items = [
+    "Technical Architect",
+    "AI Engineer",
+    "Generative AI Specialist",
+    "Azure + Python Expert"
   ];
 
   useEffect(() => {
-    let currentIndex = 0;
-    let charIndex = 0;
+    let i = 0;
+    let j = 0;
     let isDeleting = false;
     let timeout;
 
     const type = () => {
-      const current = typedItems[currentIndex];
+      const current = items[i];
       
       if (!isDeleting) {
-        setTypedText(current.substring(0, charIndex + 1));
-        charIndex++;
+        setTypedText(current.substring(0, j + 1));
+        j++;
         
-        if (charIndex === current.length) {
+        if (j === current.length) {
           isDeleting = true;
-          timeout = setTimeout(type, 1800);
+          timeout = setTimeout(type, 1600);
         } else {
           timeout = setTimeout(type, 85);
         }
       } else {
-        setTypedText(current.substring(0, charIndex - 1));
-        charIndex--;
+        setTypedText(current.substring(0, j - 1));
+        j--;
         
-        if (charIndex === 0) {
+        if (j === 0) {
           isDeleting = false;
-          currentIndex = (currentIndex + 1) % typedItems.length;
+          i = (i + 1) % items.length;
           timeout = setTimeout(type, 450);
         } else {
-          timeout = setTimeout(type, 35);
+          timeout = setTimeout(type, 38);
         }
       }
     };
 
-    timeout = setTimeout(type, 1200);
-
+    timeout = setTimeout(type, 900);
     return () => clearTimeout(timeout);
   }, []);
 
   return (
-    <section id="hero" className="d-flex flex-column justify-content-center align-items-center">
-      <h1>Jaibir Singh</h1>
-      <div className="hero-container">
-        <p>
-          I'm <span className="typed-text">{typedText}</span>
-          <span className="cursor">|</span>
-        </p>
+    <section id="hero">
+      <div className="container">
+        <div className="hero-content">
+          <div style={{ marginBottom: '1rem' }}>
+            <span style={{
+              background: 'var(--primary)',
+              color: 'white',
+              padding: '4px 14px',
+              borderRadius: '9999px',
+              fontSize: '0.85rem',
+              fontWeight: 600
+            }}>
+              AI Engineer • 14+ Years
+            </span>
+          </div>
+
+          <h1>
+            Hi, I’m <span style={{color: 'var(--primary)'}}>Jaibir Singh</span>
+          </h1>
+          
+          <div className="subtitle">
+            I architect and build <strong>production-grade AI systems</strong> — 
+            from RAG pipelines to Multi-Agent platforms.
+          </div>
+
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '1.5rem' }}>
+            <a 
+              href="#about" 
+              style={{
+                background: 'var(--primary)', 
+                color: 'white', 
+                padding: '14px 32px', 
+                borderRadius: '9999px', 
+                textDecoration: 'none',
+                fontWeight: 600,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}
+            >
+              Get to know me <i className="bi bi-arrow-right"></i>
+            </a>
+            <a 
+              href="#resume" 
+              style={{
+                color: 'var(--text)',
+                padding: '14px 28px', 
+                borderRadius: '9999px', 
+                textDecoration: 'none',
+                fontWeight: 600,
+                border: '1px solid var(--border)'
+              }}
+            >
+              View Experience
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

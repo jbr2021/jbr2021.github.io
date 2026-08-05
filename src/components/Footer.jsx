@@ -2,12 +2,15 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer id="footer">
+    <footer style={{ 
+      padding: '2.5rem 0', 
+      borderTop: '1px solid var(--border)',
+      textAlign: 'center',
+      fontSize: '0.9rem',
+      color: 'var(--text-muted)'
+    }}>
       <div className="container">
-        <div className="credits">
-          Designed by <a href="https://bootstrapmade.com/" target="_blank" rel="noopener noreferrer">BootstrapMade</a>
-          &nbsp;•&nbsp; Built with React + Vite for GitHub Pages
-        </div>
+        Built with React + Vite • Deployed on GitHub Pages
       </div>
     </footer>
   );

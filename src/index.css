@@ -1,21 +1,229 @@
 /* =====================================================
-   Jaibir Singh Portfolio - React + Bootstrap 5
-   Static GitHub Pages Site
+   Jaibir Singh - Modern AI Engineer Portfolio
+   Dark/Light Mode + Subtle AI Background
    ===================================================== */
 
-/* Base */
 :root {
-  --primary: #149ddd;
-  --primary-dark: #0d7ab8;
+  /* Light Mode */
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --primary: #0ea5e9;
+  --primary-dark: #0284c8;
+  --border: #e2e8f0;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] {
+  /* Dark Mode */
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --primary: #38bdf8;
+  --primary-dark: #0ea5e9;
+  --border: #334155;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-  font-family: "Open Sans", system-ui, -apple-system, sans-serif;
-  color: #272829;
-  background: #fff;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  line-height: 1.6;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* AI Background Canvas - Prominent but professional */
+/* Modern Top Navigation */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 0;
+  transition: all 0.3s ease;
+}
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.navbar-brand span {
+  color: var(--primary);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+
+.theme-toggle:hover {
+  background: var(--bg);
+  color: var(--primary);
+}
+
+/* Hero Section - Modern */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 780px;
+  padding: 2rem 0;
+}
+
+.hero-content h1 {
+  font-size: 3.8rem;
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 1rem;
+  letter-spacing: -2px;
+}
+
+.hero-content .subtitle {
+  font-size: 1.35rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  max-width: 520px;
+}
+
+.hero-content .typed {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Modern Sections */
+section {
+  padding: 5rem 0;
+}
+
+.section-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 48px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 3px;
+}
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow);
+}
+
+/* Resume items */
+.resume-item {
+  border-left: 3px solid var(--primary);
+  padding-left: 1.5rem;
+  margin-bottom: 2.25rem;
+  position: relative;
+}
+
+.resume-item:last-child {
+  margin-bottom: 0;
+}
+
+.resume-item h4 {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.resume-item .company {
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* Skills */
+.skill-bar {
+  background: var(--border);
+  height: 8px;
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+
+.skill-bar .progress {
+  height: 100%;
+  background: linear-gradient(to right, var(--primary), #38bdf8);
+  border-radius: 9999px;
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* AI Background - Subtle & Beautiful */
 #ai-bg-canvas {
   position: fixed;
   top: 0;
@@ -24,332 +232,53 @@ body {
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.78;
+  opacity: 0.18; /* Very subtle in light mode */
+  transition: opacity 0.4s ease;
 }
 
-/* Layout */
-#main {
-  margin-left: 300px;
+[data-theme="dark"] #ai-bg-canvas {
+  opacity: 0.13; /* Even more subtle in dark mode */
 }
 
-@media (max-width: 1199px) {
-  #main {
-    margin-left: 0;
-  }
-}
-
-/* Header */
-#header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 300px;
-  z-index: 9997;
-  padding: 0 15px;
-  background: #040b14;
-  overflow-y: auto;
-  transition: all 0.5s;
-}
-
-#header .profile img {
-  margin: 15px auto;
-  display: block;
-  width: 120px;
-  border: 8px solid #2c2f3f;
-  border-radius: 50%;
-}
-
-#header .profile h1 {
-  font-size: 24px;
-  margin: 0;
-  padding: 0;
-  font-weight: 600;
-  text-align: center;
-  font-family: "Poppins", sans-serif;
-}
-
-#header .profile h1 a {
-  color: #fff;
-  text-decoration: none;
-}
-
-#header .profile .social-links a {
-  font-size: 18px;
-  display: inline-block;
-  background: #212431;
-  color: #fff;
-  padding: 8px 0;
-  margin-right: 4px;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  text-align: center;
-  transition: 0.3s;
-}
-
-#header .profile .social-links a:hover {
-  background: #149ddd;
-}
-
-/* Navigation */
-.nav-menu a {
-  display: flex;
-  align-items: center;
-  color: #a8a9b4;
-  padding: 12px 15px;
-  margin-bottom: 8px;
-  font-size: 15px;
-  transition: 0.3s;
-}
-
-.nav-menu a i {
-  font-size: 24px;
-  padding-right: 8px;
-  color: #6f7180;
-}
-
-.nav-menu a:hover,
-.nav-menu .active {
-  color: #fff;
-  text-decoration: none;
-}
-
-.nav-menu a:hover i,
-.nav-menu .active i {
-  color: #149ddd;
-}
-
-/* Hero */
-#hero {
-  width: 100%;
-  min-height: 100vh;
-  background: url("/assets/img/backgroud-clouds-1.jpg") top right;
-  background-size: cover;
-  background-color: rgba(4, 11, 20, 0.18);
-  background-blend-mode: multiply;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
-}
-
-#hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(5, 13, 24, 0.28);
-  z-index: 1;
-}
-
-#hero .hero-container {
-  position: relative;
-  z-index: 2;
-}
-
-#hero h1 {
-  margin: 0 0 10px 0;
-  font-size: 64px;
-  font-weight: 700;
-  line-height: 56px;
-  color: #fff;
-}
-
-#hero p {
-  color: #fff;
-  font-size: 26px;
-  font-family: "Poppins", sans-serif;
-  margin-bottom: 50px;
-}
-
-#hero p span {
-  color: #fff;
-  padding-bottom: 4px;
-  border-bottom: 3px solid #149ddd;
-}
-
+/* Responsive */
 @media (max-width: 768px) {
-  #hero h1 {
-    font-size: 32px;
-    line-height: 38px;
+  .hero-content h1 {
+    font-size: 2.75rem;
   }
-  #hero p {
-    font-size: 18px;
+  
+  .nav-links {
+    display: none;
+  }
+  
+  .mobile-nav-toggle {
+    display: block;
   }
 }
 
-/* Sections */
-section {
-  padding: 40px 0;
-  overflow: hidden;
-  position: relative;
-}
-
-.section-title h2 {
-  font-size: 32px;
-  font-weight: 700;
-  color: #173b6c;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  position: relative;
-}
-
-.section-title h2::after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 50px;
-  height: 3px;
-  background: #149ddd;
-  bottom: 0;
-  left: 0;
-}
-
-/* About */
-.about .content h3 {
-  font-weight: 700;
-  font-size: 26px;
-  color: #173b6c;
-}
-
-.about .content ul li {
-  margin-bottom: 18px;
-}
-
-.about .content ul i {
-  color: #149ddd;
-  margin-right: 8px;
-}
-
-/* Resume */
-.resume .resume-title {
-  font-size: 26px;
-  font-weight: 700;
-  color: #050d18;
-  margin-bottom: 20px;
-}
-
-.resume .resume-item {
-  padding: 0 0 20px 20px;
-  margin-top: -2px;
-  border-left: 2px solid #1f5297;
-  position: relative;
-}
-
-.resume .resume-item h4 {
-  font-size: 18px;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #050d18;
-}
-
-.resume .resume-item h5 {
-  font-size: 16px;
-  background: #e4edf9;
-  padding: 5px 15px;
-  display: inline-block;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.resume .resume-item::before {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  left: -9px;
-  top: 0;
-  background: #fff;
-  border: 2px solid #1f5297;
-}
-
-/* Skills */
-.skills .progress {
-  height: 60px;
-  background: none;
-}
-
-.skills .skill {
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  color: #050d18;
-}
-
-.skills .progress-bar-wrap {
-  background: #dce8f8;
-  height: 10px;
-}
-
-.skills .progress-bar {
-  height: 10px;
-  background-color: #149ddd;
-  transition: width 0.9s ease;
-}
-
-/* Footer */
-#footer {
-  padding: 15px;
-  color: #f4f6fd;
-  font-size: 14px;
-  background: #040b14;
-  text-align: center;
+/* Theme-aware text */
+.text-muted {
+  color: var(--text-muted) !important;
 }
 
 /* Back to top */
 .back-to-top {
   position: fixed;
-  right: 15px;
-  bottom: 15px;
-  z-index: 996;
-  background: #149ddd;
-  width: 40px;
-  height: 40px;
-  border-radius: 50px;
+  bottom: 2rem;
+  right: 2rem;
+  width: 44px;
+  height: 44px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  font-size: 22px;
-  transition: all 0.4s;
   text-decoration: none;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+  transition: transform 0.2s;
 }
 
 .back-to-top:hover {
-  background: #37b3ed;
-}
-
-/* Mobile nav */
-.mobile-nav-toggle {
-  position: fixed;
-  right: 15px;
-  top: 15px;
-  z-index: 9998;
-  background: #149ddd;
-  color: #fff;
-  border: 0;
-  width: 40px;
-  height: 40px;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-}
-
-/* AI Background integration */
-section, .about, .resume, .skills {
-  background-color: rgba(255, 255, 255, 0.02);
-}
-
-/* Responsive adjustments */
-@media (max-width: 1199px) {
-  #header {
-    left: -300px;
-  }
-  .mobile-nav-active #header {
-    left: 0;
-  }
+  transform: translateY(-3px);
 }
