@@ -46,7 +46,7 @@ const About = ({ profile }) => {
                 </div>
               </div>
             ) : (
-              <div className="about-diagram-wrapper mx-auto" style={{ maxWidth: '380px' }}>
+              <div className="about-diagram-wrapper mx-auto px-1" style={{ maxWidth: '410px' }}>
                 <RAGWorkflowDiagram />
               </div>
             )}

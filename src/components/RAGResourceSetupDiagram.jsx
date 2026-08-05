@@ -67,28 +67,28 @@ const RAGResourceSetupDiagram = () => {
 
   return (
     <div 
-      className="rag-resource-card card border-0 glass-card p-3 rounded-4 shadow-lg text-start"
+      className="rag-resource-card card border-0 glass-card p-3.5 p-md-4 rounded-4 shadow-lg text-start"
       style={{ height: '420px', minHeight: '420px', maxHeight: '420px', overflow: 'hidden' }}
     >
       {/* Fixed Header */}
-      <div className="d-flex align-items-center justify-content-between mb-2 pb-2 border-bottom" style={{ height: '36px' }}>
+      <div className="d-flex align-items-center justify-content-between mb-2.5 pb-2 border-bottom px-1" style={{ height: '36px' }}>
         <div className="d-flex align-items-center gap-2">
           <span className="pulse-dot"></span>
           <span className="fw-bold x-small text-body font-monospace text-uppercase">Azure RAG Cloud Topology</span>
         </div>
-        <span className="badge bg-success-subtle text-success border border-success-subtle x-small">
-          <i className="bi bi-shield-check me-1"></i> Scalable Infrastructure
+        <span className="badge bg-success-subtle text-success border border-success-subtle x-small flex-shrink-0">
+          <i className="bi bi-shield-check me-1"></i> Infrastructure
         </span>
       </div>
 
       {/* Fixed Grid List of Resources */}
-      <div className="resources-list d-flex flex-column gap-1.5 mb-2" style={{ height: '275px' }}>
+      <div className="resources-list d-flex flex-column gap-1.5 mb-2.5 px-1" style={{ height: '270px' }}>
         {resources.map((res, idx) => {
           const isActive = idx === activeResource;
           return (
             <div
               key={res.id}
-              className={`resource-item p-2 rounded-3 border transition-all cursor-pointer ${
+              className={`resource-item px-3 py-2 rounded-3 border transition-all cursor-pointer ${
                 isActive
                   ? 'border-cyan bg-cyan-glow'
                   : 'bg-body-tertiary border-secondary text-body-secondary opacity-80'
@@ -96,18 +96,18 @@ const RAGResourceSetupDiagram = () => {
               style={{ height: '50px', overflow: 'hidden' }}
               onClick={() => setActiveResource(idx)}
             >
-              <div className="d-flex align-items-center justify-content-between h-100">
-                <div className="d-flex align-items-center gap-2">
-                  <div className={`icon-box rounded-2 p-1 bg-body d-flex align-items-center justify-content-center ${res.color}`} style={{ width: '28px', height: '28px' }}>
+              <div className="d-flex align-items-center justify-content-between gap-2 h-100">
+                <div className="d-flex align-items-center gap-2.5 flex-grow-1 min-width-0 me-2">
+                  <div className={`icon-box rounded-2 p-1 bg-body d-flex align-items-center justify-content-center flex-shrink-0 ${res.color}`} style={{ width: '28px', height: '28px' }}>
                     <i className={`bi ${res.icon} x-small`}></i>
                   </div>
-                  <div>
-                    <div className="fw-bold x-small text-body text-truncate" style={{ maxWidth: '200px' }}>{res.title}</div>
-                    <div className="x-small text-body-secondary text-truncate" style={{ maxWidth: '200px', fontSize: '0.72rem' }}>{res.type}</div>
+                  <div className="flex-grow-1 min-width-0">
+                    <div className="fw-bold x-small text-body text-truncate">{res.title}</div>
+                    <div className="x-small text-body-secondary text-truncate" style={{ fontSize: '0.72rem' }}>{res.type}</div>
                   </div>
                 </div>
 
-                <span className={`badge ${isActive ? 'bg-primary text-white' : 'bg-body-secondary text-body-secondary'} x-small font-monospace`}>
+                <span className={`badge ${isActive ? 'bg-primary text-white' : 'bg-body-secondary text-body-secondary'} x-small font-monospace flex-shrink-0 ms-auto`}>
                   {res.status}
                 </span>
               </div>
@@ -117,12 +117,12 @@ const RAGResourceSetupDiagram = () => {
       </div>
 
       {/* Fixed Detail Display Area at Bottom */}
-      <div className="resource-detail-box p-2 rounded-3 bg-body-tertiary border text-body-secondary style-leading" style={{ height: '65px', overflow: 'hidden' }}>
+      <div className="resource-detail-box p-2.5 px-3 rounded-3 bg-body-tertiary border text-body-secondary style-leading" style={{ height: '65px', overflow: 'hidden' }}>
         <div className="d-flex justify-content-between align-items-center mb-0.5">
-          <strong className="x-small text-body font-monospace">{current.tech}</strong>
-          <span className="x-small text-cyan font-monospace">Resource 0{current.id}/05</span>
+          <strong className="x-small text-body font-monospace text-truncate me-2">{current.tech}</strong>
+          <span className="x-small text-cyan font-monospace flex-shrink-0">0{current.id}/05</span>
         </div>
-        <div className="x-small text-truncate style-leading" style={{ fontSize: '0.75rem' }}>
+        <div className="x-small text-truncate style-leading pe-1" style={{ fontSize: '0.75rem' }}>
           {current.desc}
         </div>
       </div>

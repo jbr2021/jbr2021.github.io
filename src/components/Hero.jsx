@@ -117,7 +117,7 @@ const Hero = ({ profile }) => {
                 </div>
               </div>
             ) : (
-              <div className="hero-diagram-wrapper position-relative mx-auto" style={{ maxWidth: '380px' }}>
+              <div className="hero-diagram-wrapper position-relative mx-auto px-1" style={{ maxWidth: '410px' }}>
                 <RAGResourceSetupDiagram />
               </div>
             )}
