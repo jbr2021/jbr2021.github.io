@@ -63,7 +63,28 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: 130px;
+}
+
+/* ============================================
+   FIXED NAVBAR - Prevent content overlap
+   ============================================ */
+:root {
+  --navbar-height: 110px;
+}
+
+.navbar-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  background: var(--surface-glass) !important;
+  min-height: var(--navbar-height);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 body {
@@ -210,20 +231,12 @@ body {
   }
 }
 
-/* Navbar */
+/* Navbar (base styles - the fixed positioning is handled by the block above) */
 .navbar-header {
-  z-index: 100;
   transition: all 0.3s ease;
-  /* Ensure visible top menu line on all viewports, especially mobile */
-  border-bottom: 1px solid var(--border-color);
-  background: var(--surface-glass);
 }
 
 .navbar-scrolled {
-  background: var(--surface-glass);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  /* border-bottom handled by .navbar-header to ensure always visible on mobile too */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
 }
 
@@ -297,48 +310,94 @@ body {
   font-size: 1.05rem;
 }
 
-/* Hero Section */
+/* ============================================
+   HERO-CONTENT OVERLAP FIX (with fixed .navbar-header)
+   Exact structure from Hero.jsx:
+     <section class="hero-section d-lg-flex align-items-lg-center position-relative min-vh-lg-100">
+       <div class="container">
+         <div class="row align-items-lg-center g-4 g-lg-5">
+           <div class="col-lg-7">
+             <div class="hero-content card ...">
+   Navbar: fixed-top, min-height ~110px (actual ~95-115px)
+   Strategy: 
+   - Target .hero-section + direct .hero-content (not parents only)
+   - Disable ALL vertical centering (flex + align + min-vh)
+   - Use section padding + direct margin-top on .hero-content
+   - No more padding-only hacks
+   ============================================ */
+
+/* Base rule (fallback) */
 .hero-section {
-  padding-top: 110px;
+  padding-top: 120px;
 }
 
-/* Hero Content Card */
+/* Direct rule on the card (always) */
 .hero-content {
-  margin-top: 0;
+  margin-top: 0 !important;
 }
 
-/* Extra safety: force hero-content near top on mobile */
-@media (max-width: 991.98px) {
+/* === DESKTOP (≥992px) — primary fix for "new desktop window" ===
+   Fully neutralizes d-lg-flex / align-items-lg-center / min-vh-lg-100
+   + gives breathing room directly to .hero-content
+*/
+@media (min-width: 992px) {
+  .hero-section {
+    padding-top: 130px !important;
+  }
+
+  /* Kill centering flex behaviors completely */
+  .hero-section,
+  .hero-section.d-lg-flex,
+  .hero-section.min-vh-lg-100,
+  .hero-section.align-items-lg-center,
+  .hero-section.position-relative {
+    display: block !important;          /* override d-lg-flex */
+    min-height: auto !important;
+    height: auto !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+  }
+
+  /* Also neutralize the inner row's lg centering */
+  .hero-section .row,
+  .hero-section .row.align-items-lg-center {
+    align-items: flex-start !important;
+  }
+
+  /* Direct margin on the hero-content card itself (per instructions) */
   .hero-content {
-    margin-top: 0 !important;
-    margin-bottom: 0.5rem !important;
+    margin-top: 22px !important;
+    padding-top: 0 !important;
+  }
+
+  .hero-section .container {
+    padding-top: 0 !important;
   }
 }
 
-/* ============================================
-   FIX: Hero top alignment issue on mobile
-   - Remove vertical centering (d-flex + align-items-center + min-vh-100)
-   - Make content start near the top on mobile/tablet
-   ============================================ */
+/* === TABLET + MOBILE (<992px) ===
+   Ensure no flex centering leaks through
+*/
 @media (max-width: 991.98px) {
   .hero-section,
   .hero-section.d-flex,
+  .hero-section.d-lg-flex,
   .hero-section.min-vh-100,
-  .hero-section.d-flex.align-items-center {
-    /* Kill all centering behaviors */
+  .hero-section.min-vh-lg-100,
+  .hero-section.align-items-center,
+  .hero-section.align-items-lg-center {
     display: block !important;
     align-items: flex-start !important;
     justify-content: flex-start !important;
     min-height: auto !important;
     height: auto !important;
-    
-    /* Much tighter top padding (navbar is ~68px tall) */
-    padding-top: 68px !important;
-    padding-bottom: 1.5rem !important;
+    padding-top: 125px !important;
+    padding-bottom: 1.25rem !important;
   }
 
   .hero-section .row,
-  .hero-section .row.align-items-center {
+  .hero-section .row.align-items-center,
+  .hero-section .row.align-items-lg-center {
     align-items: flex-start !important;
   }
 
@@ -346,14 +405,12 @@ body {
     padding-top: 0 !important;
   }
 
-  /* Hero content card */
+  /* Direct control on card */
   .hero-content {
-    padding: 1.15rem 1.1rem !important;
-    margin-top: 0 !important;
-    margin-bottom: 0.75rem;
+    margin-top: 8px !important;
   }
 
-  /* Stacked visual (photo or diagram) */
+  /* Stacked profile/diagram */
   .hero-profile-wrapper,
   .hero-diagram-wrapper {
     margin-top: 0.5rem;
@@ -361,27 +418,27 @@ body {
   }
 }
 
-/* Extra tight spacing on small phones */
+/* Phones — tighter but navbar-safe */
 @media (max-width: 576px) {
-  .hero-section,
-  .hero-section.d-flex {
-    padding-top: 62px !important;
-    padding-bottom: 1rem !important;
+  .hero-section {
+    padding-top: 118px !important;
+    padding-bottom: 0.75rem !important;
   }
 
   .hero-content {
-    padding: 0.95rem 0.9rem !important;
+    padding: 1rem 0.95rem !important;
+    margin-top: 4px !important;
   }
 
   .hero-content .hero-title {
-    font-size: 1.85rem !important;
-    line-height: 1.1 !important;
-    margin-bottom: 0.5rem !important;
+    font-size: 1.9rem !important;
+    line-height: 1.15 !important;
+    margin-bottom: 0.4rem !important;
   }
 
   .hero-content .hero-subtitle {
     font-size: 0.95rem !important;
-    margin-bottom: 0.85rem !important;
+    margin-bottom: 0.75rem !important;
   }
 }
 
