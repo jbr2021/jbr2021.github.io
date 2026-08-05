@@ -1,6 +1,6 @@
 # ============================
 # Git Ignore for jbr2021.github.io
-# React + Vite Static GitHub Pages Portfolio
+# Clean React + Vite Static GitHub Pages
 # ============================
 
 # Dependencies
@@ -8,7 +8,7 @@ node_modules/
 .pnp
 .pnp.js
 
-# Build output
+# Build output (NEVER commit)
 dist/
 build/
 out/
@@ -26,7 +26,7 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-# Editor
+# Editor / IDE
 .idea/
 .vscode/
 *.swp
@@ -42,18 +42,21 @@ yarn-error.log*
 Thumbs.db
 desktop.ini
 
-# Vite / React
+# Vite
 .vite/
 .cache/
+
+# Legacy / Unnecessary (old template + backups)
+assets/
+na/
+forms/
+backup/
+backups/
+old/
+archive/
 
 # Misc
 *.bak
 *.tmp
 *.temp
-
-# Backup folders (legacy)
-na/
-backup/
-backups/
-old/
-archive/
+*.patch
