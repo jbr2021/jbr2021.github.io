@@ -45,7 +45,7 @@ const LiveClock = ({ className = '' }) => {
 
   return (
     <div className={`live-clock-line d-inline-flex align-items-center gap-1.5 font-monospace text-body-secondary ${className}`} title={`System Local Timezone: ${timeState.tzStr}`}>
-      <i className="bi bi-clock-history text-cyan me-0.5"></i>
+      <i className="bi bi-clock-history text-cyan me-2"></i>
       <span className="fw-semibold text-body-secondary" style={{ fontSize: '0.74rem' }}>{timeState.dateStr}</span>
       <span className="text-muted">|</span>
       <span className="fw-bold text-cyan" style={{ fontSize: '0.76rem' }}>{timeState.timeStr}</span>

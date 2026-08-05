@@ -100,23 +100,26 @@ const RAGWorkflowDiagram = () => {
                       <i className={`bi ${step.icon} x-small`}></i>
                     </div>
                     <div className="min-width-0">
-                      <div className="fw-bold text-body text-truncate" style={{ fontSize: '0.75rem', lineHeight: '1.2' }}>{step.title}</div>
+                      <div className="fw-bold text-body text-truncate" style={{ fontSize: '0.75rem', lineHeight: '1.2' }}>
+                        {step.title}
+                        <span 
+                    className={`badge font-monospace text-nowrap d-inline-block text-center ${
+                      isActive ? 'bg-primary text-white shadow-sm' : 'bg-body-secondary text-body-secondary'
+                    }`}
+                    style={{ width: '115px', marginLeft: '10px', fontSize: '0.66rem', padding: '4px 4px', letterSpacing: '0.01em' }}
+                  >
+                    {step.badge}
+                  </span>
+                      </div>
                       <div className="text-body-secondary text-truncate" style={{ fontSize: '0.67rem', lineHeight: '1.2' }}>{step.desc}</div>
                     </div>
                   </div>
                 </div>
 
                 {/* Right Fixed-Width Single-Line Badge Column */}
-                <div className="col-auto text-end ps-0 flex-shrink-0">
-                  <span 
-                    className={`badge font-monospace text-nowrap d-inline-block text-center ${
-                      isActive ? 'bg-primary text-white shadow-sm' : 'bg-body-secondary text-body-secondary'
-                    }`}
-                    style={{ width: '115px', fontSize: '0.66rem', padding: '4px 4px', letterSpacing: '0.01em' }}
-                  >
-                    {step.badge}
-                  </span>
-                </div>
+                {/* <div className="col-auto text-end ps-0 flex-shrink-0">
+                  
+                </div> */}
               </div>
             </div>
           );
@@ -124,9 +127,9 @@ const RAGWorkflowDiagram = () => {
       </div>
 
       {/* Detail Display Area at Bottom */}
-      <div className="rag-footer p-2 px-2.5 rounded-3 bg-body-tertiary border text-body-secondary style-leading" style={{ height: '65px', overflow: 'hidden' }}>
+      <div className="rag-footer p-2 px-2.5 rounded-3 bg-body-tertiary border text-body-secondary style-leading" style={{ height: '75px', overflow: 'hidden' }}>
         <div className="d-flex justify-content-between align-items-center mb-0.5">
-          <strong className="text-body font-monospace text-truncate me-2" style={{ fontSize: '0.74rem' }}>{currentStep.badge}</strong>
+          <strong className="text-body font-monospace me-2" style={{ fontSize: '0.74rem' }}>{currentStep.badge}</strong>
           <span className="text-success font-monospace flex-shrink-0 text-nowrap" style={{ fontSize: '0.7rem' }}>
             <i className="bi bi-check-circle-fill me-1"></i> Latency: 120ms
           </span>
