@@ -25,6 +25,7 @@ function App() {
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.setAttribute('data-bs-theme', theme);
     localStorage.setItem('theme', theme);
   }, [theme]);
 
@@ -41,8 +42,8 @@ function App() {
     return (
       <div className="min-vh-100 d-flex align-items-center justify-content-center bg-dark text-white">
         <div className="text-center">
-          <div className="spinner-border text-cyan mb-3" role="status" style={{ width: '3rem', height: '3rem' }}></div>
-          <div className="font-monospace small text-cyan">Initializing AI Portfolio Engine...</div>
+          <div className="spinner-border text-info mb-3" role="status" style={{ width: '3rem', height: '3rem' }}></div>
+          <div className="font-monospace small text-info">Initializing AI Portfolio Engine...</div>
         </div>
       </div>
     );

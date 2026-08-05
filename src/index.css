@@ -1,6 +1,6 @@
 /* ==========================================================================
    Jaibir Singh — Premium AI Engineer Portfolio Stylesheet
-   Modern Glassmorphic Dark/Light Design with Intelligent Canvas Background
+   High Contrast Dark/Light Theme with Intelligent Canvas Background
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
@@ -10,38 +10,38 @@
   /* Light Theme Defaults */
   --bg-body: #f8fafc;
   --surface: #ffffff;
-  --surface-glass: rgba(255, 255, 255, 0.82);
+  --surface-glass: rgba(255, 255, 255, 0.9);
   --text-main: #0f172a;
-  --text-muted: #64748b;
-  --border-color: #e2e8f0;
+  --text-muted: #475569;
+  --border-color: #cbd5e1;
   
   --primary: #0284c7;
   --primary-hover: #0369a1;
-  --primary-subtle: rgba(2, 132, 199, 0.1);
+  --primary-subtle: rgba(2, 132, 199, 0.12);
   --cyan: #0d9488;
   --cyan-glow: rgba(13, 148, 136, 0.25);
   
   --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
-  --glass-border: 1px solid rgba(226, 232, 240, 0.8);
+  --glass-border: 1px solid rgba(203, 213, 225, 0.8);
 }
 
-[data-theme="dark"] {
-  /* Premium AI Dark Theme */
-  --bg-body: #0a0c10;
-  --surface: #11141c;
-  --surface-glass: rgba(17, 20, 28, 0.78);
-  --text-main: #f1f5f9;
-  --text-muted: #94a3b8;
-  --border-color: #1e2433;
+[data-theme="dark"], [data-bs-theme="dark"] {
+  /* Premium High-Contrast AI Dark Theme */
+  --bg-body: #0a0d16;
+  --surface: #121827;
+  --surface-glass: rgba(18, 24, 39, 0.88);
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+  --border-color: #2e3b52;
   
   --primary: #38bdf8;
   --primary-hover: #7dd3fc;
-  --primary-subtle: rgba(56, 189, 248, 0.12);
+  --primary-subtle: rgba(56, 189, 248, 0.18);
   --cyan: #22d3ee;
-  --cyan-glow: rgba(34, 211, 238, 0.25);
+  --cyan-glow: rgba(34, 211, 238, 0.3);
   
-  --card-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.5);
-  --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+  --card-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 /* Base resets */
@@ -60,13 +60,44 @@ body {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: var(--bg-body);
   color: var(--text-main);
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Typography Utilities */
+/* Typography & Dark Mode Contrast Overrides */
+[data-theme="dark"] .text-muted,
+[data-bs-theme="dark"] .text-muted,
+[data-theme="dark"] .text-body-secondary,
+[data-bs-theme="dark"] .text-body-secondary {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .text-body,
+[data-bs-theme="dark"] .text-body {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .bg-body-tertiary,
+[data-bs-theme="dark"] .bg-body-tertiary {
+  background-color: rgba(30, 41, 59, 0.85) !important;
+  color: #f8fafc !important;
+  border-color: #334155 !important;
+}
+
+[data-theme="dark"] .form-control,
+[data-bs-theme="dark"] .form-control {
+  background-color: rgba(30, 41, 59, 0.9) !important;
+  color: #f8fafc !important;
+  border-color: #475569 !important;
+}
+
+[data-theme="dark"] .form-control::placeholder,
+[data-bs-theme="dark"] .form-control::placeholder {
+  color: #94a3b8 !important;
+}
+
 .font-monospace {
   font-family: 'JetBrains Mono', monospace !important;
 }
@@ -133,7 +164,7 @@ body {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.78rem;
   color: var(--cyan);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
 }
 
 /* Pulse Dot */
@@ -178,7 +209,7 @@ body {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: var(--glass-border);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
 }
 
 .nav-link {
@@ -295,7 +326,7 @@ body {
 
 .hover-lift:hover {
   transform: translateY(-4px);
-  box-shadow: 0 15px 30px -5px rgba(0,0,0,0.15);
+  box-shadow: 0 15px 30px -5px rgba(0,0,0,0.2);
 }
 
 /* Timeline */
@@ -312,8 +343,8 @@ body {
 
 /* Pipeline Visualizer Console */
 .console-window {
-  background-color: #0d1117 !important;
-  border: 1px solid #30363d;
+  background-color: #0b0f19 !important;
+  border: 1px solid #334155;
 }
 
 .pipeline-tab-btn {
