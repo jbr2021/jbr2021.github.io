@@ -60,3 +60,5 @@ archive/
 *.tmp
 *.temp
 *.patch
+
+.vscode
