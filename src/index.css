@@ -250,17 +250,6 @@ section {
     display: none;
   }
   
-  .mobile-nav-toggle {
-    display: block;
-  }
-}
-
-/* Theme-aware text */
-.text-muted {
-  color: var(--text-muted) !important;
-}
-
-/* Back to top */
 .back-to-top {
   position: fixed;
   bottom: 2rem;
@@ -281,4 +270,5 @@ section {
 
 .back-to-top:hover {
   transform: translateY(-3px);
+}
 }
