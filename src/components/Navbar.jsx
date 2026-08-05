@@ -4,13 +4,10 @@ const Navbar = ({ theme, toggleTheme }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const scrollTo = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 78;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition - bodyRect - offset;
-      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    const el = document.getElementById(id);
+    if (el) {
+      const y = el.getBoundingClientRect().top + window.scrollY - 75;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
     setMobileOpen(false);
   };
@@ -22,41 +19,37 @@ const Navbar = ({ theme, toggleTheme }) => {
           Jaibir Singh <span>.</span>
         </a>
 
-        {/* Desktop nav */}
         <div className="nav-links">
           <a href="#about" onClick={(e) => { e.preventDefault(); scrollTo('about'); }}>About</a>
           <a href="#resume" onClick={(e) => { e.preventDefault(); scrollTo('resume'); }}>Experience</a>
           <a href="#skills" onClick={(e) => { e.preventDefault(); scrollTo('skills'); }}>Skills</a>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
           <button 
             className="theme-toggle" 
             onClick={toggleTheme}
-            aria-label="Toggle theme"
+            aria-label="Toggle dark/light mode"
           >
-            {theme === 'dark' ? (
-              <i className="bi bi-sun-fill"></i>
-            ) : (
-              <i className="bi bi-moon-fill"></i>
-            )}
+            {theme === 'dark' ? '☀︎' : '☾'}
           </button>
-
-          {/* Mobile hamburger */}
+          
           <button 
-            className="mobile-toggle"
+            className="mobile-toggle" 
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle navigation"
-            aria-expanded={mobileOpen}
+            aria-label="Toggle menu"
           >
-            <i className={`bi ${mobileOpen ? 'bi-x-lg' : 'bi-list'}`}></i>
+            {mobileOpen ? '✕' : '☰'}
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
       {mobileOpen && (
-        <div className="mobile-menu">
+        <div className="mobile-menu" style={{ 
+          position: 'absolute', top: '100%', left: 0, right: 0, 
+          background: 'var(--surface)', borderTop: '1px solid var(--border)', 
+          padding: '1rem 1.25rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' 
+        }}>
           <a href="#about" onClick={(e) => { e.preventDefault(); scrollTo('about'); }}>About</a>
           <a href="#resume" onClick={(e) => { e.preventDefault(); scrollTo('resume'); }}>Experience</a>
           <a href="#skills" onClick={(e) => { e.preventDefault(); scrollTo('skills'); }}>Skills</a>

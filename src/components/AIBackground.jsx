@@ -12,25 +12,28 @@ const AIBackground = () => {
     let height = window.innerHeight;
     let dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     let nodes = [];
+    let connections = [];
     let particles = [];
     let lastTime = performance.now();
 
-    // Subtle tech keywords for a few core nodes (visible only very faintly)
-    const techLabels = ['LLM', 'RAG', 'Agent', 'Vector', 'Embed', 'Py', 'Azure', 'KG'];
+    // Tech labels representing AI engineering domain (sparse)
+    const techLabels = ['LLM', 'RAG', 'Agent', 'Vector', 'Embed', 'Py', 'Azure', 'KG', 'API'];
 
     const getColors = () => {
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || !document.documentElement.hasAttribute('data-theme');
       if (isDark) {
         return {
-          dot: '#64748b',
-          line: '#475569',
-          glow: '#38bdf8',
-          particle: '#94a3b8',
+          node: '#475569',
+          nodeCore: '#64748b',
+          line: '#334155',
+          glow: '#22d3ee',
+          particle: '#64748b',
           label: '#94a3b8'
         };
       } else {
         return {
-          dot: '#475569',
+          node: '#94a3b8',
+          nodeCore: '#64748b',
           line: '#cbd5e1',
           glow: '#0ea5e9',
           particle: '#64748b',
@@ -40,7 +43,6 @@ const AIBackground = () => {
     };
 
     let colors = getColors();
-    let globalPhase = 0;
 
     function resize() {
       width = window.innerWidth;
@@ -52,20 +54,20 @@ const AIBackground = () => {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
 
-    function createNode(index) {
-      const isCore = Math.random() < 0.32;
-      const hasLabel = isCore && Math.random() < 0.65;
+    function createNode(i) {
+      const isCore = Math.random() < 0.35;
+      const hasLabel = isCore && Math.random() < 0.55;
       return {
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * (isCore ? 0.012 : 0.026),
-        vy: (Math.random() - 0.5) * (isCore ? 0.012 : 0.026),
-        baseR: isCore ? (Math.random() * 2.4 + 1.6) : (Math.random() * 1.35 + 0.65),
+        vx: (Math.random() - 0.5) * (isCore ? 0.018 : 0.035),
+        vy: (Math.random() - 0.5) * (isCore ? 0.018 : 0.035),
+        r: isCore ? 2.8 + Math.random() * 1.6 : 1.1 + Math.random() * 1.1,
         phase: Math.random() * Math.PI * 2,
-        speed: 0.0009 + Math.random() * 0.0016,
+        speed: 0.0008 + Math.random() * 0.0014,
         isCore,
-        label: hasLabel ? techLabels[index % techLabels.length] : null,
-        cluster: Math.floor(Math.random() * 4)
+        label: hasLabel ? techLabels[i % techLabels.length] : null,
+        id: i
       };
     }
 
@@ -73,142 +75,145 @@ const AIBackground = () => {
       return {
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.28,
-        vy: (Math.random() - 0.5) * 0.28,
-        size: Math.random() * 0.9 + 0.35,
-        life: 120 + Math.random() * 65,
-        maxLife: 120 + Math.random() * 65
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        size: 0.7 + Math.random() * 1.1,
+        life: 80 + Math.random() * 60,
+        maxLife: 80 + Math.random() * 60
       };
     }
 
     function init() {
       nodes = [];
       particles = [];
-      // Elegant sparse background: visible but non-overwhelming
-      const count = Math.min(29, Math.max(18, Math.floor((width * height) / 47000)));
-      for (let i = 0; i < count; i++) nodes.push(createNode(i));
-      // Subtle particles representing data/embedding flows
-      for (let i = 0; i < 11; i++) particles.push(createParticle());
+      // Sparse elegant graph — clean background look (reference style)
+      const nodeCount = Math.min(38, Math.max(22, Math.floor((width * height) / 38000)));
+      for (let i = 0; i < nodeCount; i++) {
+        nodes.push(createNode(i));
+      }
+      // Few flowing particles
+      for (let i = 0; i < 14; i++) {
+        particles.push(createParticle());
+      }
     }
 
     function draw() {
       ctx.clearRect(0, 0, width, height);
       colors = getColors();
-      globalPhase += 0.003;
 
-      // === Soft connections (knowledge graph / multi-agent / neural links) ===
+      // === Graph connections (code graph / knowledge graph style) ===
       ctx.strokeStyle = colors.line;
-      ctx.lineWidth = 0.65;
-      ctx.globalAlpha = 0.032;
+      ctx.lineWidth = 0.7;
+      ctx.globalAlpha = 0.045;
 
       for (let i = 0; i < nodes.length; i++) {
+        const n1 = nodes[i];
         for (let j = i + 1; j < nodes.length; j++) {
-          const dx = nodes[j].x - nodes[i].x;
-          const dy = nodes[j].y - nodes[i].y;
+          const n2 = nodes[j];
+          const dx = n2.x - n1.x;
+          const dy = n2.y - n1.y;
           const dist = Math.hypot(dx, dy);
-          if (dist < 98 && dist > 6) {
-            const alpha = (1 - dist / 98) * 0.052;
+          
+          if (dist < 135 && dist > 12) {
+            const alpha = (1 - dist / 135) * 0.065;
             ctx.globalAlpha = alpha;
             ctx.beginPath();
-            ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.moveTo(n1.x, n1.y);
+            ctx.lineTo(n2.x, n2.y);
             ctx.stroke();
           }
         }
       }
 
-      // === Elegant nodes: soft glow + breathing pulse ===
-      nodes.forEach((n) => {
-        const pulse = Math.sin(n.phase) * 0.28 + 0.72 + Math.sin(globalPhase * 0.6 + n.cluster) * 0.04;
-        const r = n.baseR * pulse;
+      // === Nodes: clean graph nodes ===
+      nodes.forEach(n => {
+        const pulse = Math.sin(n.phase) * 0.25 + 0.75;
+        const r = n.r * pulse;
 
-        // Soft glow ring (AI node representation)
-        ctx.globalAlpha = n.isCore ? 0.065 : 0.028;
+        // Soft outer glow (subtle)
+        ctx.globalAlpha = n.isCore ? 0.08 : 0.035;
         ctx.fillStyle = colors.glow;
         ctx.beginPath();
-        ctx.arc(n.x, n.y, r * 3.35, 0, Math.PI * 2);
+        ctx.arc(n.x, n.y, r * 3.6, 0, Math.PI * 2);
         ctx.fill();
 
-        // Core node dot
-        ctx.globalAlpha = n.isCore ? 0.21 : 0.105;
-        ctx.fillStyle = colors.dot;
+        // Main node
+        ctx.globalAlpha = n.isCore ? 0.28 : 0.16;
+        ctx.fillStyle = n.isCore ? colors.nodeCore : colors.node;
         ctx.beginPath();
         ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
         ctx.fill();
 
-        // Tiny bright core highlight
-        ctx.globalAlpha = 0.13;
+        // Inner highlight
+        ctx.globalAlpha = 0.15;
         ctx.fillStyle = '#fff';
         ctx.beginPath();
-        ctx.arc(n.x - r * 0.28, n.y - r * 0.28, Math.max(0.6, r * 0.28), 0, Math.PI * 2);
+        ctx.arc(n.x - r * 0.35, n.y - r * 0.35, r * 0.35, 0, Math.PI * 2);
         ctx.fill();
 
-        // Very subtle tech label (LLM / RAG / Agent / Vector / Azure / etc.)
+        // Very faint label on some core nodes (graph nodes style)
         if (n.label) {
-          ctx.globalAlpha = 0.07;
+          ctx.globalAlpha = 0.09;
           ctx.fillStyle = colors.label;
-          ctx.font = '10px Inter, system-ui, sans-serif';
+          ctx.font = '9.5px Inter, system-ui, sans-serif';
           ctx.textAlign = 'center';
-          ctx.fillText(n.label, n.x, n.y + n.baseR + 12.5);
+          ctx.fillText(n.label, n.x, n.y + r + 13);
         }
       });
 
-      // === Faint flowing particles (data flows, embeddings, token streams) ===
+      // === Particles: faint data flow (like edges in graph) ===
       particles.forEach(p => {
-        const alpha = (p.life / p.maxLife) * 0.22;
-        ctx.globalAlpha = Math.max(0.018, alpha);
+        const alpha = (p.life / p.maxLife) * 0.26;
+        ctx.globalAlpha = Math.max(0.02, alpha);
         ctx.fillStyle = colors.particle;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fill();
 
-        // soft trailing dot for motion
-        if (p.life > p.maxLife * 0.55) {
-          ctx.globalAlpha = alpha * 0.42;
+        // trailing effect
+        if (p.life > p.maxLife * 0.5) {
+          ctx.globalAlpha = alpha * 0.45;
           ctx.beginPath();
-          ctx.arc(p.x - p.vx * 3.2, p.y - p.vy * 3.2, p.size * 0.6, 0, Math.PI * 2);
+          ctx.arc(p.x - p.vx * 2.8, p.y - p.vy * 2.8, p.size * 0.55, 0, Math.PI * 2);
           ctx.fill();
         }
       });
 
-      ctx.globalAlpha = 1.0;
+      ctx.globalAlpha = 1;
     }
 
     function update(delta) {
-      const dt = Math.min(delta / 15.5, 1.05);
+      const dt = Math.min(delta / 15, 1.1);
 
       nodes.forEach(n => {
         n.x += n.vx * dt;
         n.y += n.vy * dt;
         n.phase += n.speed * dt;
 
-        // Soft boundary bounce with padding
-        const pad = 48;
-        if (n.x < pad) { n.x = pad; n.vx = Math.abs(n.vx) * 0.65; }
-        if (n.x > width - pad) { n.x = width - pad; n.vx = -Math.abs(n.vx) * 0.65; }
-        if (n.y < pad) { n.y = pad; n.vy = Math.abs(n.vy) * 0.65; }
-        if (n.y > height - pad) { n.y = height - pad; n.vy = -Math.abs(n.vy) * 0.65; }
+        const pad = 55;
+        if (n.x < pad) { n.x = pad; n.vx = Math.abs(n.vx) * 0.72; }
+        if (n.x > width - pad) { n.x = width - pad; n.vx = -Math.abs(n.vx) * 0.72; }
+        if (n.y < pad) { n.y = pad; n.vy = Math.abs(n.vy) * 0.72; }
+        if (n.y > height - pad) { n.y = height - pad; n.vy = -Math.abs(n.vy) * 0.72; }
       });
 
       particles.forEach(p => {
         p.x += p.vx * dt;
         p.y += p.vy * dt;
-        p.life -= dt * 0.95;
+        p.life -= dt * 0.9;
 
         if (p.life <= 0) {
-          // Respawn near a random node for "flow from AI nodes"
           const src = nodes[Math.floor(Math.random() * nodes.length)];
           if (src) {
-            p.x = src.x + (Math.random() - 0.5) * 38;
-            p.y = src.y + (Math.random() - 0.5) * 38;
+            p.x = src.x + (Math.random() - 0.5) * 32;
+            p.y = src.y + (Math.random() - 0.5) * 32;
           } else {
             p.x = Math.random() * width;
             p.y = Math.random() * height;
           }
           p.life = p.maxLife;
-          // gentle new direction
-          p.vx = (Math.random() - 0.5) * 0.26;
-          p.vy = (Math.random() - 0.5) * 0.26;
+          p.vx = (Math.random() - 0.5) * 0.32;
+          p.vy = (Math.random() - 0.5) * 0.32;
         }
       });
     }
@@ -221,13 +226,13 @@ const AIBackground = () => {
       requestAnimationFrame(loop);
     }
 
-    const resizeHandler = () => { 
-      resize(); 
-      init(); 
+    const resizeHandler = () => {
+      resize();
+      init();
     };
 
-    const themeObserver = new MutationObserver(() => { 
-      colors = getColors(); 
+    const themeObserver = new MutationObserver(() => {
+      colors = getColors();
     });
     themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
@@ -236,12 +241,12 @@ const AIBackground = () => {
     draw();
 
     window.addEventListener('resize', resizeHandler);
-    const raf = requestAnimationFrame(loop);
+    const rafId = requestAnimationFrame(loop);
 
     return () => {
       window.removeEventListener('resize', resizeHandler);
       themeObserver.disconnect();
-      cancelAnimationFrame(raf);
+      cancelAnimationFrame(rafId);
     };
   }, []);
 

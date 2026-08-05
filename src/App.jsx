@@ -9,10 +9,10 @@ import AIBackground from './components/AIBackground';
 
 function App() {
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || 'dark';
+    const saved = localStorage.getItem('theme');
+    return saved || 'dark';
   });
 
-  // Apply theme to document
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
@@ -24,27 +24,18 @@ function App() {
 
   return (
     <>
-      {/* Subtle AI Background Animation */}
       <AIBackground />
-
-      {/* Modern Top Navigation */}
       <Navbar theme={theme} toggleTheme={toggleTheme} />
-
-      {/* Hero */}
+      
       <Hero />
-
+      
       <main>
         <About />
         <Resume />
         <Skills />
       </main>
-
+      
       <Footer />
-
-      {/* Back to top */}
-      <a href="#hero" className="back-to-top">
-        <i className="bi bi-arrow-up"></i>
-      </a>
     </>
   );
 }
