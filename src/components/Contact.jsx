@@ -3,18 +3,11 @@ import React, { useState } from 'react';
 const Contact = ({ profile }) => {
   const personal = profile?.personal || {};
   const [copiedEmail, setCopiedEmail] = useState(false);
-  const [copiedPhone, setCopiedPhone] = useState(false);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(personal.email || 'contact2jaibir@gmail.com');
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2000);
-  };
-
-  const handleCopyPhone = () => {
-    navigator.clipboard.writeText(personal.phone || '+91-9999XXXXXX');
-    setCopiedPhone(true);
-    setTimeout(() => setCopiedPhone(false), 2000);
   };
 
   return (
@@ -91,17 +84,17 @@ const Contact = ({ profile }) => {
                   </div>
                 </div>
 
-                {/* LinkedIn Channel */}
+                {/* LinkedIn Channel (No Redirection Link) */}
                 <div className="col">
                   <div className="d-flex align-items-center gap-3 p-3 rounded-3 bg-body-tertiary border h-100">
                     <div className="icon-box bg-info-subtle text-info rounded-circle p-2.5 flex-shrink-0">
                       <i className="bi bi-linkedin fs-5"></i>
                     </div>
                     <div className="flex-grow-1 min-width-0">
-                      <div className="x-small text-muted">LinkedIn Network</div>
-                      <a href={personal.social?.linkedin || "https://linkedin.com/in/jaibirsingh"} target="_blank" rel="noreferrer" className="fw-semibold small text-decoration-none text-truncate d-block">
-                        linkedin.com/in/jaibirsingh
-                      </a>
+                      <div className="x-small text-muted">LinkedIn Profile</div>
+                      <span className="fw-semibold small text-body text-truncate d-block">
+                        LinkedIn (Jaibir Singh)
+                      </span>
                     </div>
                   </div>
                 </div>
