@@ -1,89 +1,59 @@
 # ============================
 # Git Ignore for jbr2021.github.io
-# Static GitHub Pages portfolio
+# React + Vite Static GitHub Pages Portfolio
 # ============================
 
-# --- OS generated files ---
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-desktop.ini
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
 
-# --- Editor / IDE ---
+# Build output
+dist/
+build/
+out/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor
 .idea/
 .vscode/
-*.sublime-project
-*.sublime-workspace
 *.swp
 *.swo
 *~
 .project
 .settings/
-*.code-workspace
 
-# --- Logs and temp files ---
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# OS
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+desktop.ini
+
+# Vite / React
+.vite/
+.cache/
+
+# Misc
+*.bak
 *.tmp
 *.temp
-.cache/
-tmp/
-temp/
 
-# --- Environment / Secrets ---
-.env
-.env.local
-.env.*.local
-*.pem
-*.key
-
-# --- Build / Dependency folders ---
-node_modules/
-dist/
-build/
-out/
-.parcel-cache/
-.next/
-.nuxt/
-.svelte-kit/
-
-# --- Backup / Duplicate folders (should not be published) ---
+# Backup folders (legacy)
 na/
 backup/
 backups/
 old/
 archive/
-
-# --- Large unnecessary assets (if any future uploads) ---
-*.zip
-*.tar.gz
-*.rar
-
-# --- macOS / Windows extras ---
-.AppleDouble
-.LSOverride
-
-# --- Python (in case local dev server used) ---
-__pycache__/
-*.py[cod]
-*$py.class
-.Python
-env/
-venv/
-ENV/
-.venv/
-
-# --- Misc ---
-*.bak
-*.orig
-*.rej
-*.patch
-
-# Keep the repo clean for GitHub Pages
-# Only commit source files that are actually used in production

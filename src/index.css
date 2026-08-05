@@ -1,0 +1,355 @@
+/* =====================================================
+   Jaibir Singh Portfolio - React + Bootstrap 5
+   Static GitHub Pages Site
+   ===================================================== */
+
+/* Base */
+:root {
+  --primary: #149ddd;
+  --primary-dark: #0d7ab8;
+}
+
+body {
+  font-family: "Open Sans", system-ui, -apple-system, sans-serif;
+  color: #272829;
+  background: #fff;
+}
+
+/* AI Background Canvas - Prominent but professional */
+#ai-bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.78;
+}
+
+/* Layout */
+#main {
+  margin-left: 300px;
+}
+
+@media (max-width: 1199px) {
+  #main {
+    margin-left: 0;
+  }
+}
+
+/* Header */
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  z-index: 9997;
+  padding: 0 15px;
+  background: #040b14;
+  overflow-y: auto;
+  transition: all 0.5s;
+}
+
+#header .profile img {
+  margin: 15px auto;
+  display: block;
+  width: 120px;
+  border: 8px solid #2c2f3f;
+  border-radius: 50%;
+}
+
+#header .profile h1 {
+  font-size: 24px;
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+#header .profile h1 a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#header .profile .social-links a {
+  font-size: 18px;
+  display: inline-block;
+  background: #212431;
+  color: #fff;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+#header .profile .social-links a:hover {
+  background: #149ddd;
+}
+
+/* Navigation */
+.nav-menu a {
+  display: flex;
+  align-items: center;
+  color: #a8a9b4;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.nav-menu a i {
+  font-size: 24px;
+  padding-right: 8px;
+  color: #6f7180;
+}
+
+.nav-menu a:hover,
+.nav-menu .active {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-menu a:hover i,
+.nav-menu .active i {
+  color: #149ddd;
+}
+
+/* Hero */
+#hero {
+  width: 100%;
+  min-height: 100vh;
+  background: url("/assets/img/backgroud-clouds-1.jpg") top right;
+  background-size: cover;
+  background-color: rgba(4, 11, 20, 0.18);
+  background-blend-mode: multiply;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+#hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 13, 24, 0.28);
+  z-index: 1;
+}
+
+#hero .hero-container {
+  position: relative;
+  z-index: 2;
+}
+
+#hero h1 {
+  margin: 0 0 10px 0;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #fff;
+}
+
+#hero p {
+  color: #fff;
+  font-size: 26px;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 50px;
+}
+
+#hero p span {
+  color: #fff;
+  padding-bottom: 4px;
+  border-bottom: 3px solid #149ddd;
+}
+
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 32px;
+    line-height: 38px;
+  }
+  #hero p {
+    font-size: 18px;
+  }
+}
+
+/* Sections */
+section {
+  padding: 40px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #173b6c;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #149ddd;
+  bottom: 0;
+  left: 0;
+}
+
+/* About */
+.about .content h3 {
+  font-weight: 700;
+  font-size: 26px;
+  color: #173b6c;
+}
+
+.about .content ul li {
+  margin-bottom: 18px;
+}
+
+.about .content ul i {
+  color: #149ddd;
+  margin-right: 8px;
+}
+
+/* Resume */
+.resume .resume-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #050d18;
+  margin-bottom: 20px;
+}
+
+.resume .resume-item {
+  padding: 0 0 20px 20px;
+  margin-top: -2px;
+  border-left: 2px solid #1f5297;
+  position: relative;
+}
+
+.resume .resume-item h4 {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #050d18;
+}
+
+.resume .resume-item h5 {
+  font-size: 16px;
+  background: #e4edf9;
+  padding: 5px 15px;
+  display: inline-block;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.resume .resume-item::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  left: -9px;
+  top: 0;
+  background: #fff;
+  border: 2px solid #1f5297;
+}
+
+/* Skills */
+.skills .progress {
+  height: 60px;
+  background: none;
+}
+
+.skills .skill {
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: #050d18;
+}
+
+.skills .progress-bar-wrap {
+  background: #dce8f8;
+  height: 10px;
+}
+
+.skills .progress-bar {
+  height: 10px;
+  background-color: #149ddd;
+  transition: width 0.9s ease;
+}
+
+/* Footer */
+#footer {
+  padding: 15px;
+  color: #f4f6fd;
+  font-size: 14px;
+  background: #040b14;
+  text-align: center;
+}
+
+/* Back to top */
+.back-to-top {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  z-index: 996;
+  background: #149ddd;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 22px;
+  transition: all 0.4s;
+  text-decoration: none;
+}
+
+.back-to-top:hover {
+  background: #37b3ed;
+}
+
+/* Mobile nav */
+.mobile-nav-toggle {
+  position: fixed;
+  right: 15px;
+  top: 15px;
+  z-index: 9998;
+  background: #149ddd;
+  color: #fff;
+  border: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+/* AI Background integration */
+section, .about, .resume, .skills {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1199px) {
+  #header {
+    left: -300px;
+  }
+  .mobile-nav-active #header {
+    left: 0;
+  }
+}
