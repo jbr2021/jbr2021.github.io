@@ -4,12 +4,13 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/', // Using HashRouter for GitHub Pages - no base path needed
+  // Relative base path ensures asset links work smoothly on GitHub Pages subpaths or custom domains
+  base: './',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: false,
-    minify: 'esbuild', // Use esbuild instead of terser (faster, no extra dep)
+    minify: 'esbuild',
     rollupOptions: {
       output: {
         manualChunks: {
@@ -20,7 +21,7 @@ export default defineConfig({
   },
   server: {
     port: 3000,
-    host: true,
+    host: '0.0.0.0',
     allowedHosts: ['.e2b.app', 'localhost']
   }
 })

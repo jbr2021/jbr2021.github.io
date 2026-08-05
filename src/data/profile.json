@@ -1,0 +1,238 @@
+{
+  "personal": {
+    "name": "Jaibir Singh",
+    "initials": "JBR",
+    "usePersonalPhoto": false,
+    "title": "Technical Architect & AI Engineer",
+    "yearsOfExperience": "14+",
+    "email": "contact2jaibir@gmail.com",
+    "phone": "+91-9999XXXXXX",
+    "location": "Ghaziabad, Uttar Pradesh, India",
+    "birthday": "23rd December, 1987",
+    "age": 38,
+    "website": "jbr2021.github.io",
+    "freelance": "Not Available",
+    "tagline": "Technical Architect specializing in production-grade AI systems, Agentic AI, RAG, Azure Cloud, and scalable Python FastAPI microservices.",
+    "social": {
+      "github": "https://github.com/jbr2021",
+      "linkedin": "#",
+      "email": "mailto:contact2jaibir@gmail.com"
+    },
+    "photos": {
+      "avatar": "/assets/img/Jaibir-Singh-07.jpg",
+      "featured": "/assets/img/Jaibir-Singh-03.jpg",
+      "background": "/assets/img/backgroud-clouds-1.jpg"
+    }
+  },
+  "summary": "Greetings! I am a Technical Architect with 14+ years of experience delivering web, mobile, business intelligence, and production-grade AI solutions. Proficient in Python, Generative AI, .NET Core, Angular, React.js, ASP.NET MVC, Android Studio, and SQL/NoSQL databases (MS SQL, MySQL, PostgreSQL, MongoDB, Azure CosmosDB). Highly experienced in Azure cloud services (Web Apps, Functions, Service Bus, AI Search, SQL, API Gateway, VM Automation, Blob Storage, SendGrid), DevOps practices, Docker and Kubernetes. Certified as a Google Cloud Professional Cloud Developer.",
+  "highlights": [
+    {
+      "title": "Generative AI & LLMs",
+      "description": "Architecting enterprise AI systems powered by Azure OpenAI GPT-5, automated content generation, prompt engineering, and structured output compilation."
+    },
+    {
+      "title": "RAG & Semantic Retrieval",
+      "description": "Designing high-accuracy Retrieval-Augmented Generation workflows using Azure AI Search, AWS OpenSearch, vector embeddings, and hybrid document indexing."
+    },
+    {
+      "title": "Agentic AI & Multi-Agent Systems",
+      "description": "Building multi-agent collaboration pipelines, intelligent routing, tool execution, and automated compliance auditing for complex enterprise workflows."
+    },
+    {
+      "title": "Python & Cloud Microservices",
+      "description": "Building high-performance Python FastAPI services, Databricks pipelines, serverless Azure Functions, and cloud-native Kubernetes architectures."
+    },
+    {
+      "title": "Internal Developer Portals",
+      "description": "Spearheading enterprise developer portals built on Spotify Backstage to streamline service discovery, automated scaffolding, and infrastructure governance."
+    }
+  ],
+  "skills": [
+    {
+      "category": "AI & Machine Learning",
+      "items": [
+        { "name": "Python", "level": 92, "category": "AI" },
+        { "name": "Generative AI / LLMs", "level": 90, "category": "AI" },
+        { "name": "Azure AI & OpenAI (GPT-5)", "level": 90, "category": "AI" },
+        { "name": "RAG & Vector Search Systems", "level": 88, "category": "AI" },
+        { "name": "Multi-Agent Systems & AI Agents", "level": 85, "category": "AI" },
+        { "name": "Prompt Engineering & Guardrails", "level": 92, "category": "AI" },
+        { "name": "Semantic Search & Embeddings", "level": 88, "category": "AI" },
+        { "name": "Vector Databases & OpenSearch", "level": 85, "category": "AI" },
+        { "name": "Knowledge Graphs & Graph RAG", "level": 82, "category": "AI" }
+      ]
+    },
+    {
+      "category": "Backend & Cloud Architecture",
+      "items": [
+        { "name": "FastAPI & Python Microservices", "level": 90, "category": "Backend" },
+        { "name": ".NET Core & C#", "level": 90, "category": "Backend" },
+        { "name": "ASP.NET MVC", "level": 90, "category": "Backend" },
+        { "name": "Azure Cloud Services (Functions, Bus, Search)", "level": 90, "category": "Cloud" },
+        { "name": "DevOps, Docker & Kubernetes", "level": 78, "category": "Cloud" },
+        { "name": "Databricks & Cloud Pipelines", "level": 82, "category": "Backend" },
+        { "name": "AWS Cloud Solutions", "level": 80, "category": "Cloud" }
+      ]
+    },
+    {
+      "category": "Frontend & Modern Platforms",
+      "items": [
+        { "name": "React.js & Modern Frontend", "level": 85, "category": "Frontend" },
+        { "name": "Angular (12.1.4)", "level": 90, "category": "Frontend" },
+        { "name": "Backstage IDP (Catalog, Scaffolder, TechDocs)", "level": 88, "category": "Platform" },
+        { "name": "TypeScript & ES6+ JavaScript", "level": 90, "category": "Frontend" },
+        { "name": "HTML5 / CSS3 / Glassmorphic UI", "level": 92, "category": "Frontend" },
+        { "name": "Bootstrap 5 & UI Frameworks", "level": 95, "category": "Frontend" }
+      ]
+    },
+    {
+      "category": "Databases & Storage",
+      "items": [
+        { "name": "MS SQL Server", "level": 92, "category": "Database" },
+        { "name": "PostgreSQL & MySQL", "level": 88, "category": "Database" },
+        { "name": "MongoDB & Azure CosmosDB", "level": 88, "category": "Database" },
+        { "name": "Azure Blob Storage & File Systems", "level": 90, "category": "Cloud" }
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "HCL Technologies",
+      "role": "Lead Developer & Technical Architect",
+      "period": "Sep 2021 — Present",
+      "location": "Sector 126, Noida, Uttar Pradesh, India",
+      "description": "Leading AI engineering and cloud architecture initiatives for premier international clients including the World Bank Group and ANZ Bank.",
+      "projects": [
+        {
+          "title": "Project Approval Document (PAD)",
+          "client": "World Bank Group",
+          "summary": "Generate a structured 15-section approval document using AI-powered content generation. Each section is created from user prompts, automatically compiled into a single document with an indexed table of contents, and made available for download.",
+          "technologies": ["Azure OpenAI (gpt-5)", ".NET Core", "Python FastAPI", "Aspose", "Blob Storage", "NumPy", "MS SQL Server", "Azure Search Index", "AWS Open Search"],
+          "badge": "Generative AI"
+        },
+        {
+          "title": "Implementation Status and Results Reports (ISR)",
+          "client": "World Bank Group",
+          "summary": "A system designed to monitor, track, and analyze issues across multiple international projects, enabling better management and resolution strategies.",
+          "technologies": ["Databricks", "Blob Storage", "MS SQL Server", "Python FastAPI", "Angular", "Timer-triggered Azure Functions", "Azure OpenAI GPT-5", "Aspose library"],
+          "badge": "Analytics & AI"
+        },
+        {
+          "title": "Document Review Tool (DRT)",
+          "client": "World Bank Group",
+          "summary": "A compliance-focused application to review uploaded documents (Word, PDF, PPT). It detects and highlights sensitive words, provides recommendations for better alternatives, adds explanatory notes, and generates a summary of sensitive words used. It also presents a tabular report of sensitive keywords with corresponding page numbers.",
+          "technologies": ["Angular", ".NET Core", "Azure Service Bus", "Azure Functions", "Blob Storage", "MS SQL Server (C#)", "Azure OpenAI GPT-5", "Aspose library"],
+          "badge": "Compliance AI"
+        },
+        {
+          "title": "Global Mobility Portal (GMP)",
+          "client": "World Bank Group",
+          "summary": "A knowledge and guidance portal for employees traveling abroad, providing detailed information about processes, education, workspace setup, and key contacts.",
+          "technologies": ["SharePoint (folders & collections)", "Azure Search Index", "Azure Functions", "Blob Storage", "Aspose library", ".NET Core"],
+          "badge": "RAG Portal"
+        },
+        {
+          "title": "Internal Developer Portal (Backstage)",
+          "client": "ANZ Bank",
+          "summary": "Built a centralized developer portal using Backstage to unify service discovery, documentation, and infrastructure tools, improving developer productivity and onboarding.",
+          "technologies": ["Backstage (Software Catalog, Scaffolder, TechDocs)", "React", "TypeScript", "Node.js", "Docker", "Kubernetes", "CI/CD pipelines", "Custom Plugins"],
+          "badge": "Developer Portal"
+        }
+      ]
+    },
+    {
+      "company": "GetOn Infotech Pvt. Ltd.",
+      "role": "Development Head",
+      "period": "Apr 2017 — Aug 2021",
+      "location": "Connaught Place, New Delhi, India",
+      "description": "Worked as Development Head delivering end-to-end application solutions, covering DevOps deployments on Azure, automation workflows, and business-critical systems for accounting and production.",
+      "projects": [
+        {
+          "title": "Enterprise ERP & DevOps Automation",
+          "summary": "Led multi-disciplinary teams in building cloud-native ERPs, automated accounting systems, and end-to-end Azure DevOps CI/CD pipelines.",
+          "technologies": ["Azure Cloud", ".NET Core", "SQL Server", "DevOps Pipelines", "REST APIs"],
+          "badge": "Leadership & Cloud"
+        }
+      ]
+    },
+    {
+      "company": "ABL Online",
+      "role": "Team Lead",
+      "period": "Apr 2014 — Apr 2017",
+      "location": "Connaught Place, New Delhi, India",
+      "description": "Worked as Team Lead on diverse applications tailored to business needs, including AWS Cloud solutions, emailing systems, invoicing and taxation platforms, CRM, HRM, and salary distribution systems.",
+      "projects": [
+        {
+          "title": "Taxation, Invoicing & Payroll Suite",
+          "summary": "Architected high-throughput transactional engines for automated invoicing, GST taxation compliance, and multi-tier salary distribution.",
+          "technologies": ["AWS Cloud", ".NET C#", "SQL Server", "Email Services", "HRM / CRM Modules"],
+          "badge": "FinTech & Cloud"
+        }
+      ]
+    },
+    {
+      "company": "ABL Online",
+      "role": "Web Developer",
+      "period": "June 2011 — Apr 2014",
+      "location": "Connaught Place, New Delhi, India",
+      "description": "Worked as a Web Developer on various applications based on company requirements viz. Property Portal, Job Portal, CRM, HRM, Virtual Number etc.",
+      "projects": [
+        {
+          "title": "Enterprise Web Applications Portal",
+          "summary": "Developed scale-ready web platforms including real estate property search engines, job recruitment portals, and telecom virtual number routing engines.",
+          "technologies": ["ASP.NET", "C#", "SQL Server", "JavaScript", "HTML/CSS"],
+          "badge": "Full Stack Development"
+        }
+      ]
+    },
+    {
+      "company": "IBM Daksh",
+      "role": "Customer Care Executive",
+      "period": "Apr 2010 — Apr 2011",
+      "location": "Gurgaon, Haryana, India",
+      "description": "Worked as Customer Care Executive operating healthcare backend MS-DOS based software.",
+      "projects": []
+    }
+  ],
+  "education": [
+    {
+      "degree": "Professional Cloud Developer (English)",
+      "institution": "Google Cloud Platform",
+      "period": "July 2022",
+      "description": "Certified as a Google-endorsed Professional Cloud Developer, proficient in designing, building, testing, deploying, and integrating scalable, secure, cloud-native applications using Google-recommended tools and best practices.",
+      "badge": "Certified"
+    },
+    {
+      "degree": "GNIIT (Software Engineer Course)",
+      "institution": "NIIT, South Ex Campus, Delhi, India",
+      "period": "2006 — 2009",
+      "description": "Completed all Terms and Professional Practice successfully to obtain this prestigious recognition from NIIT. Connected with a global network of accomplished NIIT Alumni. Widely recognized and valued as GNIIT - Software Engineering.",
+      "badge": "Software Engineering"
+    },
+    {
+      "degree": "BCom (Bachelor of Commerce)",
+      "institution": "Delhi Open University, Delhi, India",
+      "period": "2005 — 2008",
+      "description": "A Bachelor of Commerce, abbreviated as B.Com is an undergraduate degree in commerce and related subjects. Designed to provide students with managerial skills and understanding in finance, accounting, taxation and management.",
+      "badge": "Undergraduate Degree"
+    }
+  ],
+  "backstageCatalog": {
+    "tribes": [
+      { "name": "Banker Experience Tribe", "type": "Tribe", "parent": "HCL Technologies / ANZ" },
+      { "name": "Business Banker Desktop", "type": "Cluster", "parent": "Banker Experience Tribe" },
+      { "name": "KYC & Onboarding", "type": "Cluster", "parent": "Banker Experience Tribe" },
+      { "name": "Branch", "type": "Cluster", "parent": "Banker Experience Tribe" },
+      { "name": "Contact Centre", "type": "Cluster", "parent": "Banker Experience Tribe" },
+      { "name": "CRM", "type": "Cluster", "parent": "Banker Experience Tribe" }
+    ],
+    "components": [
+      { "name": "reference-service", "system": "csp", "type": "service", "owner": "platform-acceleration", "tech": "Java / Spring", "description": "Core reference data service across banking platform" },
+      { "name": "audit-service", "system": "csp", "type": "service", "owner": "platform-acceleration", "tech": "Java / Event Bus", "description": "Compliance and audit event logging microservice" },
+      { "name": "feature-toggle-services", "system": "csp", "type": "service", "owner": "business-banker-desktop", "tech": "Java / Config", "description": "Dynamic feature management and rollout flag platform" },
+      { "name": "comment-service", "system": "csp", "type": "service", "owner": "business-banker-desktop", "tech": "Java", "description": "Collaborative banker comment & notes microservice" },
+      { "name": "shoppingcart", "system": "csp", "type": "service", "owner": "aryabhata-squad", "tech": "Java", "description": "Banking product application shopping cart workflow" },
+      { "name": "address-service", "system": "csp", "type": "service", "owner": "discovery-banker-desktop", "tech": "Java", "description": "Address validation and geolocation lookup component" }
+    ]
+  }
+}
