@@ -13,9 +13,9 @@ const Hero = ({ profile }) => {
   }, [personal.usePersonalPhoto]);
 
   return (
-    <section id="hero" className="hero-section d-flex align-items-center position-relative min-vh-100 py-5">
+    <section id="hero" className="hero-section d-lg-flex align-items-lg-center position-relative min-vh-lg-100 py-4 py-lg-5">
       <div className="container">
-        <div className="row align-items-center g-5">
+        <div className="row align-items-lg-center g-4 g-lg-5">
           {/* Main Hero Glass Panel Container */}
           <div className="col-lg-7">
             <div className="hero-content card border-0 glass-card p-4 p-md-5 rounded-4 shadow-lg position-relative">

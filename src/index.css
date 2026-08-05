@@ -302,6 +302,89 @@ body {
   padding-top: 110px;
 }
 
+/* Hero Content Card */
+.hero-content {
+  margin-top: 0;
+}
+
+/* Extra safety: force hero-content near top on mobile */
+@media (max-width: 991.98px) {
+  .hero-content {
+    margin-top: 0 !important;
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+/* ============================================
+   FIX: Hero top alignment issue on mobile
+   - Remove vertical centering (d-flex + align-items-center + min-vh-100)
+   - Make content start near the top on mobile/tablet
+   ============================================ */
+@media (max-width: 991.98px) {
+  .hero-section,
+  .hero-section.d-flex,
+  .hero-section.min-vh-100,
+  .hero-section.d-flex.align-items-center {
+    /* Kill all centering behaviors */
+    display: block !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    min-height: auto !important;
+    height: auto !important;
+    
+    /* Much tighter top padding (navbar is ~68px tall) */
+    padding-top: 68px !important;
+    padding-bottom: 1.5rem !important;
+  }
+
+  .hero-section .row,
+  .hero-section .row.align-items-center {
+    align-items: flex-start !important;
+  }
+
+  .hero-section .container {
+    padding-top: 0 !important;
+  }
+
+  /* Hero content card */
+  .hero-content {
+    padding: 1.15rem 1.1rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Stacked visual (photo or diagram) */
+  .hero-profile-wrapper,
+  .hero-diagram-wrapper {
+    margin-top: 0.5rem;
+    max-width: 100% !important;
+  }
+}
+
+/* Extra tight spacing on small phones */
+@media (max-width: 576px) {
+  .hero-section,
+  .hero-section.d-flex {
+    padding-top: 62px !important;
+    padding-bottom: 1rem !important;
+  }
+
+  .hero-content {
+    padding: 0.95rem 0.9rem !important;
+  }
+
+  .hero-content .hero-title {
+    font-size: 1.85rem !important;
+    line-height: 1.1 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .hero-content .hero-subtitle {
+    font-size: 0.95rem !important;
+    margin-bottom: 0.85rem !important;
+  }
+}
+
 .badge-ai-status {
   background: var(--surface-glass);
   border: var(--glass-border);
