@@ -61,20 +61,10 @@ const Hero = ({ profile }) => {
                   <span>AI Architecture Lab</span>
                 </a>
 
-                <a href="./Jaibir-Singh-Resume.pdf" download className="btn btn-outline-secondary btn-lg rounded-pill px-4 py-2.5 d-inline-flex align-items-center gap-2">
+                <a href="./Jaibir-Singh-Resume.pdf" download className="btn btn-outline-primary btn-lg rounded-pill px-4 py-2.5 d-inline-flex align-items-center gap-2">
                   <i className="bi bi-file-earmark-arrow-down-fill"></i>
                   <span>Download Resume</span>
                 </a>
-
-                {/* Mode Toggle Button */}
-                <button 
-                  className="btn btn-sm btn-outline-secondary rounded-pill px-3 py-2 d-inline-flex align-items-center gap-1.5 x-small"
-                  onClick={() => setShowPhoto(!showPhoto)}
-                  title="Toggle visual mode between Personal Photo and Agentic AI RAG Topology Diagram"
-                >
-                  <i className={`bi ${showPhoto ? 'bi-diagram-3-fill text-cyan me-2' : 'bi-person-square me-2 text-primary'}`}></i>
-                  <span>{showPhoto ? 'View Agentic RAG Flow' : 'View Personal Photo'}</span>
-                </button>
               </div>
             </div>
           </div>
@@ -128,6 +118,16 @@ const Hero = ({ profile }) => {
                 <RAGResourceSetupDiagram />
               </div>
             )}
+
+            {/* Visual Mode Toggle */}
+            <button
+              className="btn btn-outline-secondary rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2 mt-4"
+              onClick={() => setShowPhoto(!showPhoto)}
+              title="Toggle visual mode between Personal Photo and Agentic AI RAG Topology Diagram"
+            >
+              <i className={`bi ${showPhoto ? 'bi-diagram-3-fill text-cyan' : 'bi-person-square text-primary'}`}></i>
+              <span>{showPhoto ? 'View Agentic RAG Flow' : 'View Personal Photo'}</span>
+            </button>
           </div>
         </div>
       </div>

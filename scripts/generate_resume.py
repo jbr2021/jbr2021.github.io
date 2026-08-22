@@ -107,11 +107,13 @@ def main():
     experience = PROFILE["experience"]
     story = []
 
+    website_url = f"https://{personal['website']}"
     story.append(p(personal["name"], "Name"))
     story.append(p("Forward Deployed AI Engineer | Senior Technical Specialist", "Headline"))
     story.append(p(
         f"{personal['location']}  |  {personal['email']}  |  {personal['phone']}  |  "
-        f"<link href=\"https://{personal['website']}\" color=\"#0284C7\">{personal['website']}</link>", "Contact"
+        f"Profile Website: "
+        f"<link href=\"{website_url}\" color=\"#0284C7\">{website_url}</link>", "Contact"
     ))
     story.append(Spacer(1, 8))
 
