@@ -105,14 +105,14 @@ const Hero = ({ profile }) => {
                     </div>
                     <div className="col-4">
                       <div className="p-2 rounded-3 bg-body-tertiary border">
-                        <div className="fw-extrabold text-primary">GPT-5</div>
-                        <div className="x-small text-muted">RAG &amp; AI</div>
+                        <div className="fw-extrabold text-primary">Agentic AI</div>
+                        <div className="x-small text-muted">RAG &amp; AI Agents</div>
                       </div>
                     </div>
                     <div className="col-4">
                       <div className="p-2 rounded-3 bg-body-tertiary border">
                         <div className="fw-extrabold text-success">Cloud</div>
-                        <div className="x-small text-muted">GCP &amp; Azure</div>
+                        <div className="x-small text-muted">Azure &amp; GCP</div>
                       </div>
                     </div>
                   </div>

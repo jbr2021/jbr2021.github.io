@@ -224,7 +224,8 @@
     {
       "degree": "Professional Cloud Developer (English)",
       "institution": "Google Cloud Platform",
-      "period": "July 2022",
+      "period": "Issued 1 Aug 2022",
+      "credentialId": "aeaduY",
       "description": "Certified as a Google-endorsed Professional Cloud Developer, proficient in designing, building, testing, deploying, and integrating scalable, secure, cloud-native applications using Google-recommended tools and best practices.",
       "badge": "Certified"
     },
