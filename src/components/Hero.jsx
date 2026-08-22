@@ -61,6 +61,11 @@ const Hero = ({ profile }) => {
                   <span>AI Architecture Lab</span>
                 </a>
 
+                <a href="./Jaibir-Singh-Resume.pdf" download className="btn btn-outline-secondary btn-lg rounded-pill px-4 py-2.5 d-inline-flex align-items-center gap-2">
+                  <i className="bi bi-file-earmark-arrow-down-fill"></i>
+                  <span>Download Resume</span>
+                </a>
+
                 {/* Mode Toggle Button */}
                 <button 
                   className="btn btn-sm btn-outline-secondary rounded-pill px-3 py-2 d-inline-flex align-items-center gap-1.5 x-small"
