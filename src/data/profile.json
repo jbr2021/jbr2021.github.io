@@ -104,6 +104,18 @@
       "description": "Leading AI engineering and cloud architecture initiatives for premier international clients including the World Bank Group and ANZ Bank.",
       "projects": [
         {
+          "title": "Review Agent",
+          "summary": "AI-powered document review agent that validates up to 15 uploaded documents (20 MB each), including two required Word primary documents. Configurable rules are evaluated per primary document with live, rule-by-rule Pass/Fail results, concise summaries, and a Word report with tracked changes.",
+          "technologies": ["Angular", "Python", "MS SQL", "Azure Blob Storage", "Azure OpenAI", "Azure Web Apps", "Azure Document Intelligence", "RAG", "GenAI", "Chatbot"],
+          "badge": "Generative AI"
+        },
+        {
+          "title": "Supplier Chatbot",
+          "summary": "Agentic AI-powered supplier support chatbot that helps suppliers understand bank policies for supplies and tenders. LangGraph intelligently routes queries to Azure AI Search to retrieve relevant, grounded guidance.",
+          "technologies": ["Angular", "Python", "SharePoint", "Azure AI Search", "Azure Blob Storage", "Azure OpenAI", "Azure Web Apps", "PostgreSQL", "LangGraph", "Agentic AI"],
+          "badge": "Agentic AI"
+        },
+        {
           "title": "Project Approval Document (PAD)",
           "client": "World Bank Group",
           "summary": "Generate a structured 15-section approval document using AI-powered content generation. Each section is created from user prompts, automatically compiled into a single document with an indexed table of contents, and made available for download.",
@@ -113,8 +125,8 @@
         {
           "title": "Implementation Status and Results Reports (ISR)",
           "client": "World Bank Group",
-          "summary": "A system designed to monitor, track, and analyze issues across multiple international projects, enabling better management and resolution strategies.",
-          "technologies": ["Databricks", "Blob Storage", "MS SQL Server", "Python FastAPI", "Angular", "Timer-triggered Azure Functions", "Azure OpenAI GPT-5", "Aspose library"],
+          "summary": "AI Agent-based project built with LangGraph/StateGraph and a simple node workflow to monitor, track, and analyze issues across international projects, enabling more effective management and resolution strategies.",
+          "technologies": ["LangGraph", "StateGraph", "Databricks", "Blob Storage", "MS SQL Server", "Python FastAPI", "Angular", "Timer-triggered Azure Functions", "Azure OpenAI GPT-5", "Aspose library"],
           "badge": "Analytics & AI"
         },
         {
@@ -123,6 +135,12 @@
           "summary": "A compliance-focused application to review uploaded documents (Word, PDF, PPT). It detects and highlights sensitive words, provides recommendations for better alternatives, adds explanatory notes, and generates a summary of sensitive words used. It also presents a tabular report of sensitive keywords with corresponding page numbers.",
           "technologies": ["Angular", ".NET Core", "Azure Service Bus", "Azure Functions", "Blob Storage", "MS SQL Server (C#)", "Azure OpenAI GPT-5", "Aspose library"],
           "badge": "Compliance AI"
+        },
+        {
+          "title": "Customize Microsoft App",
+          "summary": "Microsoft integration application that surfaces Planner, Lists, and Teams information and enables users to create or clone existing Planner and List items through Microsoft Graph APIs.",
+          "technologies": ["Angular", ".NET", "Azure Web Apps", "Microsoft Graph APIs"],
+          "badge": "Microsoft Integration"
         },
         {
           "title": "Global Mobility Portal (GMP)",
