@@ -6,48 +6,48 @@ const RAGWorkflowDiagram = () => {
   const ragSteps = [
     {
       id: 1,
-      title: '1. User Prompt Ingestion',
+      title: '1. Agent Request Intake',
       icon: 'bi-chat-left-quote-fill',
       color: 'text-primary',
       badge: 'FastAPI Input',
-      desc: 'User queries document repository via API endpoint',
-      detail: 'REST payload ingested into Python FastAPI router with rate-limiting & auth validation.'
+      desc: 'Capturing the user query, identity, and conversation context',
+      detail: 'FastAPI validates the request and provides the AI Agent with the query and approved session context.'
     },
     {
       id: 2,
-      title: '2. Chunking & Embedding',
-      icon: 'bi-scissors',
+      title: '2. Agent Intent Routing',
+      icon: 'bi-diagram-3-fill',
       color: 'text-info',
-      badge: 'text-embedding-3',
-      desc: 'Sliding window chunking into 1536-dim vectors',
-      detail: 'Overlapping text chunker converts PDF/Word files into 1536-dimensional dense embedding vectors.'
+      badge: 'LangGraph State',
+      desc: 'Selecting the next tool or retrieval path through agent state',
+      detail: 'A LangGraph/StateGraph node evaluates intent, maintains state, and routes the request through the Agentic workflow.'
     },
     {
       id: 3,
-      title: '3. Vector Similarity Search',
+      title: '3. Grounded RAG Retrieval',
       icon: 'bi-database-fill-gear',
       color: 'text-cyan',
       badge: 'Azure AI Search',
-      desc: 'Cosine distance top-K similarity retrieval',
-      detail: 'Hybrid search querying Azure AI Search & OpenSearch using HNSW indexing (cos_sim >= 0.88).'
+      desc: 'Agent invokes hybrid search for supporting evidence',
+      detail: 'The retrieval tool searches approved content with vector and keyword ranking to return relevant, traceable context.'
     },
     {
       id: 4,
-      title: '4. Context & LLM Synthesis',
+      title: '4. Agent Reasoning & Tools',
       icon: 'bi-robot',
       color: 'text-purple',
-      badge: 'Azure GPT-5 LLM',
-      desc: 'Prompt synthesis with retrieved chunk citations',
-      detail: 'GPT-5 model receives prompt augmented with retrieved document context & strict system guardrails.'
+      badge: 'Azure OpenAI',
+      desc: 'Reasoning over evidence and deciding whether another tool call is needed',
+      detail: 'Azure OpenAI synthesizes grounded context; the AI Agent can loop through tools until it has a complete response.'
     },
     {
       id: 5,
-      title: '5. Structured AI Output',
+      title: '5. Grounded Agent Response',
       icon: 'bi-file-earmark-check-fill',
       color: 'text-success',
-      badge: 'Aspose Output',
-      desc: 'Structured report generation & TOC compilation',
-      detail: 'Compiles response into structured 15-section Word/PDF documents with page citations.'
+      badge: 'Cited AI Output',
+      desc: 'Returning an actionable response with retrieved evidence',
+      detail: 'The workflow delivers a concise, policy-aware answer with source context and any approved next-step actions.'
     }
   ];
 
@@ -70,10 +70,10 @@ const RAGWorkflowDiagram = () => {
       <div className="d-flex align-items-center justify-content-between mb-2 pb-1.5 border-bottom px-1" style={{ height: '34px' }}>
         <div className="d-flex align-items-center gap-2 min-width-0">
           <span className="pulse-dot flex-shrink-0 me-1"></span>
-          <span className="fw-bold text-body font-monospace text-uppercase text-truncate" style={{ fontSize: '0.72rem' }}>RAG Execution Flow</span>
+          <span className="fw-bold text-body font-monospace text-uppercase text-truncate" style={{ fontSize: '0.72rem' }}>Agentic AI RAG Execution Flow</span>
         </div>
         <span className="badge bg-primary-subtle text-primary border border-primary-subtle flex-shrink-0 text-nowrap" style={{ fontSize: '0.68rem', padding: '3px 8px' }}>
-          Runtime Sequence
+          Agentic Runtime
         </span>
       </div>
 

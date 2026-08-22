@@ -3,7 +3,7 @@ import LiveClock from './LiveClock';
 
 const AIBackground = () => {
   const canvasRef = useRef(null);
-  const [activeConcept, setActiveConcept] = useState('Multi-Agent System Active');
+  const [activeConcept, setActiveConcept] = useState('Agentic AI & AI Agents Active');
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -17,7 +17,7 @@ const AIBackground = () => {
     // AI Engineering Concept Node Catalog
     const conceptCatalog = [
       { label: 'Azure OpenAI (gpt-5)', type: 'core', desc: 'LLM Reasoning Core' },
-      { label: 'Agentic Router', type: 'agent', desc: 'Autonomous Task Decomposition' },
+      { label: 'Agentic AI Router', type: 'agent', desc: 'Autonomous AI Agent Task Routing' },
       { label: 'RAG Pipeline', type: 'rag', desc: 'Hybrid Vector Retrieval' },
       { label: 'Vector Index', type: 'vector', desc: '1536-dim Embedding Space' },
       { label: 'Python FastAPI', type: 'api', desc: 'Async High-Throughput API' },

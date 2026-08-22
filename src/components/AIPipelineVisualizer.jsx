@@ -1,47 +1,50 @@
 import React, { useState } from 'react';
 
 const AIPipelineVisualizer = () => {
-  const [activePipeline, setActivePipeline] = useState('pad');
+  const [activePipeline, setActivePipeline] = useState('reviewAgent');
   const [isRunning, setIsRunning] = useState(false);
   const [logs, setLogs] = useState([
-    'System initialized. Azure OpenAI gpt-5 connected.',
-    'Vector Index ready: 1536-dimensional embeddings loaded.',
-    'Agentic Router standby.'
+    'AI agent workspace initialized. Azure OpenAI connected.',
+    'Azure AI Search index ready for grounded retrieval.',
+    'Review and supplier support workflows are standing by.'
   ]);
   const [activeStep, setActiveStep] = useState(0);
 
   const pipelines = {
-    pad: {
-      title: 'Project Approval Document (PAD) AI Generator',
-      client: 'World Bank Group',
-      tech: 'Azure OpenAI gpt-5 • Python FastAPI • Aspose • MS SQL • Azure AI Search',
+    reviewAgent: {
+      title: 'Review Agent',
+      shortTitle: 'Review Agent',
+      category: 'AI Agent',
+      tech: 'Angular • Python • Azure Document Intelligence • Azure OpenAI • RAG',
       steps: [
-        { label: 'Prompt Ingestion', desc: 'Accepting user section prompts & historical context' },
-        { label: 'Semantic Chunking & RAG', desc: 'Querying Azure Search Index & AWS OpenSearch' },
-        { label: 'LLM Parallel Generation', desc: 'Synthesizing 15 structured document sections via gpt-5' },
-        { label: 'Document Compilation', desc: 'Aspose library compiling TOC & exporting Word/PDF' }
+        { label: 'Secure Upload Intake', desc: 'Accepting up to 15 documents (20 MB each), with two required Word primary documents' },
+        { label: 'Document Intelligence', desc: 'Extracting content and structure from Word and PDF files for review' },
+        { label: 'Rule-by-Rule Validation', desc: 'Evaluating configurable primary-document rules and streaming Pass/Fail results live' },
+        { label: 'Tracked Report Output', desc: 'Generating summaries and Word tracked changes with the review report' }
       ]
     },
-    drt: {
-      title: 'Document Review Tool (DRT) Sensitive Word Audit',
-      client: 'World Bank Group',
-      tech: 'Angular • .NET Core • Azure Service Bus • Azure Functions • Azure OpenAI',
+    supplierChatbot: {
+      title: 'Supplier Chatbot',
+      shortTitle: 'Supplier Chatbot',
+      category: 'Agentic AI',
+      tech: 'Angular • Python • LangGraph • Azure AI Search • Azure OpenAI • PostgreSQL',
       steps: [
-        { label: 'Document Upload & Parsing', desc: 'Parsing Word, PDF, PPT via Aspose pipeline' },
-        { label: 'Sensitive Keyword Scan', desc: 'Regex & Semantic embedding search for compliance' },
-        { label: 'AI Alternatives & Notes', desc: 'Azure OpenAI generating context-aware replacements' },
-        { label: 'Tabular Audit Report', desc: 'Mapping sensitivity flags with page numbers & summary' }
+        { label: 'Supplier Query Intake', desc: 'Receiving a question about bank supply or tender policies' },
+        { label: 'LangGraph Routing', desc: 'Routing intent through the agentic workflow to the appropriate retrieval path' },
+        { label: 'Grounded Policy Retrieval', desc: 'Searching SharePoint-backed Azure AI Search content for relevant guidance' },
+        { label: 'Response & Follow-up', desc: 'Delivering a context-aware answer and handling the next supplier question' }
       ]
     },
-    agentic: {
-      title: 'Multi-Agent Enterprise Architecture & Backstage IDP',
-      client: 'ANZ Bank',
-      tech: 'Backstage IDP • React • TypeScript • Docker • Kubernetes • Python Agents',
+    isrAgent: {
+      title: 'ISR AI Agent',
+      shortTitle: 'ISR AI Agent',
+      category: 'AI Agent',
+      tech: 'Angular • Python FastAPI • LangGraph/StateGraph • Azure OpenAI • MS SQL',
       steps: [
-        { label: 'Intent Decomposition', desc: 'Orchestrator Agent parsing developer query' },
-        { label: 'Backstage Catalog Discovery', desc: 'Querying Software Catalog microservice graph' },
-        { label: 'Automated Scaffolding', desc: 'Executing Scaffolder template for K8s microservice' },
-        { label: 'CI/CD Pipeline Trigger', desc: 'Validating TechDocs & pushing Docker image to K8s' }
+        { label: 'Issue Data Intake', desc: 'Collecting project issues, updates, and supporting information' },
+        { label: 'StateGraph Workflow', desc: 'Moving data through a simple node-based AI agent workflow' },
+        { label: 'Issue Analysis', desc: 'Identifying priority issues, patterns, and recommended resolution actions' },
+        { label: 'ISR Insight Delivery', desc: 'Publishing actionable project monitoring and status insights' }
       ]
     }
   };
@@ -81,10 +84,10 @@ const AIPipelineVisualizer = () => {
         {/* Glass Section Header */}
         <div className="text-center mb-5">
           <div className="section-header card border-0 glass-card p-4 rounded-4 shadow-sm mx-auto">
-            <div className="badge-pill mb-2">Interactive AI Architecture Lab</div>
-            <h2 className="section-title text-body">Live AI System Workflow Visualizer</h2>
+            <div className="badge-pill mb-2">Interactive AI Agent Lab</div>
+            <h2 className="section-title text-body">Live AI Agent Workflow Visualizer</h2>
             <p className="section-subtitle text-body-secondary mb-0">
-              Simulate production-grade AI pipelines engineered by Jaibir Singh for World Bank Group &amp; ANZ Bank.
+              Simulate production-grade AI Agent and Agentic AI workflows for document validation, supplier support, and project insights.
             </p>
           </div>
         </div>
@@ -106,9 +109,9 @@ const AIPipelineVisualizer = () => {
                     }}
                   >
                     <div className="d-flex justify-content-between align-items-center mb-1">
-                      <span className="fw-bold text-body">{pipelines[key].title.split(' ')[0]} {pipelines[key].title.split(' ')[1]}</span>
+                      <span className="fw-bold text-body">{pipelines[key].shortTitle}</span>
                       <span className="badge bg-primary-subtle text-primary border border-primary-subtle">
-                        {pipelines[key].client}
+                        {pipelines[key].category}
                       </span>
                     </div>
                     <small className="text-body-secondary d-block">{pipelines[key].tech}</small>
@@ -130,7 +133,7 @@ const AIPipelineVisualizer = () => {
                   ) : (
                     <>
                       <i className="bi bi-play-circle-fill"></i>
-                      <span>Simulate {pipelines[activePipeline].title.split(' ')[0]} Pipeline</span>
+                      <span>Simulate {pipelines[activePipeline].shortTitle} Workflow</span>
                     </>
                   )}
                 </button>

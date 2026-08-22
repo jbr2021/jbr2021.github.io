@@ -3,16 +3,16 @@
     "name": "Jaibir Singh",
     "initials": "JBR",
     "usePersonalPhoto": false,
-    "title": "Technical Architect & AI Engineer",
-    "yearsOfExperience": "14+",
+    "title": "Senior Technical Specialist & AI Engineer",
+    "experienceStartDate": "2011-06-01",
     "email": "contact2jaibir@gmail.com",
-    "phone": "+91-9999XXXXXX",
+    "phone": "9999624552",
     "location": "Ghaziabad, Uttar Pradesh, India",
     "birthday": "23rd December, 1987",
     "age": 38,
     "website": "jbr2021.github.io",
     "freelance": "Not Available",
-    "tagline": "Technical Architect specializing in production-grade AI systems, Agentic AI, RAG, Azure Cloud, and scalable Python FastAPI microservices.",
+    "tagline": "Senior Technical Specialist specializing in production-grade AI systems, Agentic AI, AI Agents, RAG, Azure Cloud, and scalable Python FastAPI microservices.",
     "social": {
       "github": "https://github.com/jbr2021",
       "linkedin": "#",
@@ -24,7 +24,7 @@
       "background": "/assets/img/backgroud-clouds-1.jpg"
     }
   },
-  "summary": "Greetings! I am a Technical Architect with 14+ years of experience delivering web, mobile, business intelligence, and production-grade AI solutions. Proficient in Python, Generative AI, .NET Core, Angular, React.js, ASP.NET MVC, Android Studio, and SQL/NoSQL databases (MS SQL, MySQL, PostgreSQL, MongoDB, Azure CosmosDB). Highly experienced in Azure cloud services (Web Apps, Functions, Service Bus, AI Search, SQL, API Gateway, VM Automation, Blob Storage, SendGrid), DevOps practices, Docker and Kubernetes. Certified as a Google Cloud Professional Cloud Developer.",
+  "summary": "Greetings! I am a Senior Technical Specialist with {{yearsOfExperience}} years of experience delivering web, mobile, business intelligence, and production-grade AI solutions. Proficient in Python, Generative AI, Agentic AI, AI Agents, .NET Core, Angular, React.js, ASP.NET MVC, Android Studio, and SQL/NoSQL databases (MS SQL, MySQL, PostgreSQL, MongoDB, Azure CosmosDB). Highly experienced in Azure cloud services (Web Apps, Functions, Service Bus, AI Search, SQL, API Gateway, VM Automation, Blob Storage, SendGrid), DevOps practices, Docker and Kubernetes. Certified as a Google Cloud Professional Cloud Developer.",
   "highlights": [
     {
       "title": "Generative AI & LLMs",
@@ -35,8 +35,8 @@
       "description": "Designing high-accuracy Retrieval-Augmented Generation workflows using Azure AI Search, AWS OpenSearch, vector embeddings, and hybrid document indexing."
     },
     {
-      "title": "Agentic AI & Multi-Agent Systems",
-      "description": "Building multi-agent collaboration pipelines, intelligent routing, tool execution, and automated compliance auditing for complex enterprise workflows."
+      "title": "Agentic AI & AI Agents",
+      "description": "Building Agentic AI and AI Agent workflows for intelligent routing, tool execution, multi-agent collaboration, and automated compliance auditing."
     },
     {
       "title": "Python & Cloud Microservices",
@@ -55,7 +55,7 @@
         { "name": "Generative AI / LLMs", "level": 90, "category": "AI" },
         { "name": "Azure AI & OpenAI (GPT-5)", "level": 90, "category": "AI" },
         { "name": "RAG & Vector Search Systems", "level": 88, "category": "AI" },
-        { "name": "Multi-Agent Systems & AI Agents", "level": 85, "category": "AI" },
+        { "name": "Agentic AI & AI Agents", "level": 85, "category": "AI" },
         { "name": "Prompt Engineering & Guardrails", "level": 92, "category": "AI" },
         { "name": "Semantic Search & Embeddings", "level": 88, "category": "AI" },
         { "name": "Vector Databases & OpenSearch", "level": 85, "category": "AI" },
@@ -98,11 +98,23 @@
   "experience": [
     {
       "company": "HCL Technologies",
-      "role": "Lead Developer & Technical Architect",
-      "period": "Sep 2021 — Present",
+      "role": "Senior Technical Specialist",
+      "period": "Jan 2026 — Present",
       "location": "Sector 126, Noida, Uttar Pradesh, India",
       "description": "Leading AI engineering and cloud architecture initiatives for premier international clients including the World Bank Group and ANZ Bank.",
       "projects": [
+        {
+          "title": "Review Agent",
+          "summary": "AI Agent-powered document review agent that validates up to 15 uploaded documents (20 MB each), including two required Word primary documents. Configurable rules are evaluated per primary document with live, rule-by-rule Pass/Fail results, concise summaries, and a Word report with tracked changes.",
+          "technologies": ["Angular", "Python", "MS SQL", "Azure Blob Storage", "Azure OpenAI", "Azure Web Apps", "Azure Document Intelligence", "RAG", "GenAI", "AI Agent", "Chatbot"],
+          "badge": "AI Agent"
+        },
+        {
+          "title": "Supplier Chatbot",
+          "summary": "Agentic AI-powered supplier support chatbot that helps suppliers understand bank policies for supplies and tenders. LangGraph intelligently routes queries to Azure AI Search to retrieve relevant, grounded guidance.",
+          "technologies": ["Angular", "Python", "SharePoint", "Azure AI Search", "Azure Blob Storage", "Azure OpenAI", "Azure Web Apps", "PostgreSQL", "LangGraph", "Agentic AI"],
+          "badge": "Agentic AI"
+        },
         {
           "title": "Project Approval Document (PAD)",
           "client": "World Bank Group",
@@ -113,9 +125,9 @@
         {
           "title": "Implementation Status and Results Reports (ISR)",
           "client": "World Bank Group",
-          "summary": "A system designed to monitor, track, and analyze issues across multiple international projects, enabling better management and resolution strategies.",
-          "technologies": ["Databricks", "Blob Storage", "MS SQL Server", "Python FastAPI", "Angular", "Timer-triggered Azure Functions", "Azure OpenAI GPT-5", "Aspose library"],
-          "badge": "Analytics & AI"
+          "summary": "AI Agent-based project built with LangGraph/StateGraph and a simple node workflow to monitor, track, and analyze issues across international projects, enabling more effective management and resolution strategies.",
+          "technologies": ["LangGraph", "StateGraph", "Databricks", "Blob Storage", "MS SQL Server", "Python FastAPI", "Angular", "Timer-triggered Azure Functions", "Azure OpenAI GPT-5", "Aspose library"],
+          "badge": "AI Agent"
         },
         {
           "title": "Document Review Tool (DRT)",
@@ -123,6 +135,12 @@
           "summary": "A compliance-focused application to review uploaded documents (Word, PDF, PPT). It detects and highlights sensitive words, provides recommendations for better alternatives, adds explanatory notes, and generates a summary of sensitive words used. It also presents a tabular report of sensitive keywords with corresponding page numbers.",
           "technologies": ["Angular", ".NET Core", "Azure Service Bus", "Azure Functions", "Blob Storage", "MS SQL Server (C#)", "Azure OpenAI GPT-5", "Aspose library"],
           "badge": "Compliance AI"
+        },
+        {
+          "title": "Customize Microsoft App",
+          "summary": "Microsoft integration application that surfaces Planner, Lists, and Teams information and enables users to create or clone existing Planner and List items through Microsoft Graph APIs.",
+          "technologies": ["Angular", ".NET", "Azure Web Apps", "Microsoft Graph APIs"],
+          "badge": "Microsoft Integration"
         },
         {
           "title": "Global Mobility Portal (GMP)",
@@ -139,6 +157,14 @@
           "badge": "Developer Portal"
         }
       ]
+    },
+    {
+      "company": "HCL Technologies",
+      "role": "Technical Specialist",
+      "period": "Sep 2021 — Dec 2025",
+      "location": "Sector 126, Noida, Uttar Pradesh, India",
+      "description": "Delivered AI engineering and cloud architecture initiatives for premier international clients including the World Bank Group and ANZ Bank.",
+      "projects": []
     },
     {
       "company": "GetOn Infotech Pvt. Ltd.",
@@ -198,7 +224,8 @@
     {
       "degree": "Professional Cloud Developer (English)",
       "institution": "Google Cloud Platform",
-      "period": "July 2022",
+      "period": "Issued 1 Aug 2022",
+      "credentialId": "aeaduY",
       "description": "Certified as a Google-endorsed Professional Cloud Developer, proficient in designing, building, testing, deploying, and integrating scalable, secure, cloud-native applications using Google-recommended tools and best practices.",
       "badge": "Certified"
     },

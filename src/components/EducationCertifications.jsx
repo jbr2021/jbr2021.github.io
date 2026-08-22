@@ -31,7 +31,13 @@ const EducationCertifications = ({ profile }) => {
                 </div>
 
                 <h3 className="h6 fw-extrabold mb-1 text-body">{item.degree}</h3>
-                <div className="small fw-semibold text-primary mb-3">{item.institution}</div>
+                <div className="small fw-semibold text-primary mb-2">{item.institution}</div>
+
+                {item.credentialId && (
+                  <div className="x-small text-muted font-monospace mb-3">
+                    <i className="bi bi-patch-check me-1 text-success"></i> Certification ID: {item.credentialId}
+                  </div>
+                )}
 
                 <p className="x-small text-body-secondary mb-0 style-leading flex-grow-1">
                   {item.description}

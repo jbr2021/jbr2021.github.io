@@ -77,7 +77,7 @@ const Resume = () => {
 
         <div className="resume-item">
           <h3>Professional Cloud Developer (English)</h3>
-          <div className="meta">July 2022 • Google Cloud Platform</div>
+          <div className="meta">Issued 1 Aug 2022 • Google Cloud Platform • Certification ID: aeaduY</div>
           <p>Certified as a Google-endorsed Professional Cloud Developer, proficient in designing, building, testing, deploying, and integrating scalable, secure, cloud-native applications using Google-recommended tools and best practices.</p>
         </div>
 

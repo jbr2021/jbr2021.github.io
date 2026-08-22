@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import RAGResourceSetupDiagram from './RAGResourceSetupDiagram';
+import { getExperienceYearsLabel } from '../utils/experience';
 
 const Hero = ({ profile }) => {
   const personal = profile?.personal || {};
+  const experienceYears = getExperienceYearsLabel(personal.experienceStartDate);
   const [showPhoto, setShowPhoto] = useState(true);
 
   // Sync state with profile.json flag when loaded
@@ -23,7 +25,7 @@ const Hero = ({ profile }) => {
               <div className="d-inline-flex align-items-center gap-2 px-3 py-1.5 rounded-pill badge-ai-status mb-3 shadow-sm align-self-start">
                 <span className="pulse-dot"></span>
                 <span className="small fw-bold tracking-wide text-uppercase">
-                  AI Engineer &amp; Technical Architect • {personal.yearsOfExperience || '14+'} Years
+                  Forward Deployed AI Engineer &amp; Senior Technical Specialist • {experienceYears} Years
                 </span>
               </div>
 
@@ -33,13 +35,13 @@ const Hero = ({ profile }) => {
 
               <p className="hero-subtitle lead mb-4 text-body-secondary style-leading">
                 {personal.tagline || 
-                  "Technical Architect with deep expertise in building production-grade AI systems — Generative AI, RAG, Multi-Agent architectures, Azure, and Python."
+                  "Senior Technical Specialist with deep expertise in building production-grade AI systems — Generative AI, Agentic AI, AI Agents, RAG, Azure, and Python."
                 }
               </p>
 
               {/* Tech Stack Pills */}
               <div className="hero-tech-pills d-flex flex-wrap gap-2 mb-4">
-                {['Azure OpenAI (gpt-5)', 'Agentic AI', 'RAG & Vector Search', 'Python FastAPI', 'Backstage IDP', 'Google Cloud Certified'].map((tech, i) => (
+                {['Azure OpenAI (gpt-5)', 'Agentic AI', 'AI Agents', 'RAG & Vector Search', 'Python FastAPI', 'Backstage IDP', 'Google Cloud Certified'].map((tech, i) => (
                   <span key={i} className="tech-pill px-2 py-1 rounded-3 small border">
                     <i className="bi bi-cpu me-1 text-cyan me-2"></i>
                     {tech}
@@ -59,14 +61,19 @@ const Hero = ({ profile }) => {
                   <span>AI Architecture Lab</span>
                 </a>
 
+                <a href="./Jaibir-Singh-Resume.pdf" download className="btn btn-outline-secondary btn-lg rounded-pill px-4 py-2.5 d-inline-flex align-items-center gap-2">
+                  <i className="bi bi-file-earmark-arrow-down-fill"></i>
+                  <span>Download Resume</span>
+                </a>
+
                 {/* Mode Toggle Button */}
                 <button 
                   className="btn btn-sm btn-outline-secondary rounded-pill px-3 py-2 d-inline-flex align-items-center gap-1.5 x-small"
                   onClick={() => setShowPhoto(!showPhoto)}
-                  title="Toggle visual mode between Personal Photo and Azure RAG Cloud Topology Diagram"
+                  title="Toggle visual mode between Personal Photo and Agentic AI RAG Topology Diagram"
                 >
                   <i className={`bi ${showPhoto ? 'bi-diagram-3-fill text-cyan me-2' : 'bi-person-square me-2 text-primary'}`}></i>
-                  <span>{showPhoto ? 'View RAG Topology' : 'View Personal Photo'}</span>
+                  <span>{showPhoto ? 'View Agentic RAG Flow' : 'View Personal Photo'}</span>
                 </button>
               </div>
             </div>
@@ -88,7 +95,7 @@ const Hero = ({ profile }) => {
                       loading="eager"
                     />
                     <div className="profile-overlay-badge position-absolute bottom-0 start-0 end-0 p-2 text-start bg-gradient-dark text-white">
-                      <div className="fw-bold small">{personal.title || "Technical Architect & AI Engineer"}</div>
+                      <div className="fw-bold small">{personal.title || "Senior Technical Specialist & AI Engineer"}</div>
                       <div className="x-small opacity-75"><i className="bi bi-geo-alt-fill me-1"></i>{personal.location || "Noida / Delhi NCR, India"}</div>
                     </div>
                   </div>
@@ -97,20 +104,20 @@ const Hero = ({ profile }) => {
                   <div className="row g-2 text-center pt-1">
                     <div className="col-4">
                       <div className="p-2 rounded-3 bg-body-tertiary border">
-                        <div className="fw-extrabold text-cyan">14+</div>
+                        <div className="fw-extrabold text-cyan">{experienceYears}</div>
                         <div className="x-small text-muted">Years Exp</div>
                       </div>
                     </div>
                     <div className="col-4">
                       <div className="p-2 rounded-3 bg-body-tertiary border">
-                        <div className="fw-extrabold text-primary">GPT-5</div>
-                        <div className="x-small text-muted">RAG &amp; AI</div>
+                        <div className="fw-extrabold text-primary">Agentic AI</div>
+                        <div className="x-small text-muted">RAG &amp; AI Agents</div>
                       </div>
                     </div>
                     <div className="col-4">
                       <div className="p-2 rounded-3 bg-body-tertiary border">
                         <div className="fw-extrabold text-success">Cloud</div>
-                        <div className="x-small text-muted">GCP &amp; Azure</div>
+                        <div className="x-small text-muted">Azure &amp; GCP</div>
                       </div>
                     </div>
                   </div>
