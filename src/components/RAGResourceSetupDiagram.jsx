@@ -7,52 +7,52 @@ const RAGResourceSetupDiagram = () => {
     {
       id: 1,
       title: 'API Gateway & FastAPI',
-      type: 'Ingress & Microservice',
+      type: 'Agent Request Ingress',
       icon: 'bi-router-fill',
       color: 'text-primary',
-      status: 'Provisioned',
+      status: 'Requests Secured',
       tech: 'Python FastAPI • Azure API Mgmt',
-      desc: 'Secured entry point handling OAuth2, rate limits & payload routing'
+      desc: 'Secured entry point that authenticates requests and passes agent context into the workflow.'
     },
     {
       id: 2,
-      title: 'Blob Storage & Databricks',
-      type: 'Storage & ELT Pipeline',
+      title: 'Blob Storage & Documents',
+      type: 'Grounding Knowledge Source',
       icon: 'bi-folder-symlink-fill',
       color: 'text-warning',
-      status: 'Active Storage',
-      tech: 'Azure Blob • PySpark Databricks',
-      desc: 'Raw PDF/Word storage & distributed document extraction'
+      status: 'Content Synced',
+      tech: 'Azure Blob • Document Intelligence',
+      desc: 'Stores source documents and extracts content used to ground agent responses.'
     },
     {
       id: 3,
-      title: 'AI Search & OpenSearch',
-      type: 'Vector Index Store',
+      title: 'Azure AI Search',
+      type: 'Agent Retrieval Tool',
       icon: 'bi-database-fill-check',
       color: 'text-cyan',
-      status: 'HNSW Index Ready',
-      tech: 'Azure Search Index • HNSW Vector',
-      desc: '1536-dim vector store & hybrid semantic keyword index'
+      status: 'Hybrid Search Ready',
+      tech: 'Azure AI Search • Vector + Keyword',
+      desc: 'Provides hybrid semantic retrieval that the agent invokes when evidence is needed.'
     },
     {
       id: 4,
-      title: 'Azure OpenAI (gpt-5)',
-      type: 'AI Model Deployment',
-      icon: 'bi-cpu-fill',
+      title: 'LangGraph AI Agent',
+      type: 'Stateful Orchestrator',
+      icon: 'bi-diagram-3-fill',
       color: 'text-purple',
-      status: 'Endpoints Live',
-      tech: 'GPT-5 Managed Resource • VNet',
-      desc: 'Enterprise deployment in private VNet with zero data retention'
+      status: 'Agent Loop Active',
+      tech: 'LangGraph • StateGraph • Python',
+      desc: 'Routes intent, manages state, selects tools, and coordinates the Agentic AI RAG loop.'
     },
     {
       id: 5,
-      title: 'Service Bus & Functions',
-      type: 'Async Queue & Serverless',
-      icon: 'bi-lightning-charge-fill',
+      title: 'Azure OpenAI & Actions',
+      type: 'Reasoning & Response Layer',
+      icon: 'bi-cpu-fill',
       color: 'text-success',
-      status: 'Timer Triggered',
-      tech: 'Azure Functions • C# / Python',
-      desc: 'Background queue processing & automated report compilation'
+      status: 'Grounded Output',
+      tech: 'Azure OpenAI • Tool Calls',
+      desc: 'Reasons over retrieved evidence, invokes approved actions, and returns a cited response.'
     }
   ];
 
@@ -74,10 +74,10 @@ const RAGResourceSetupDiagram = () => {
       <div className="d-flex align-items-center justify-content-between mb-2 pb-1.5 border-bottom px-1" style={{ height: '34px' }}>
         <div className="d-flex align-items-center gap-2 min-width-0">
           <span className="pulse-dot flex-shrink-0 me-1"></span>
-          <span className="fw-bold text-body font-monospace text-uppercase text-truncate" style={{ fontSize: '0.72rem' }}>Azure RAG Topology</span>
+          <span className="fw-bold text-body font-monospace text-uppercase text-truncate" style={{ fontSize: '0.72rem' }}>Agentic AI RAG Topology</span>
         </div>
         <span className="badge bg-success-subtle text-success border border-success-subtle flex-shrink-0 text-nowrap" style={{ fontSize: '0.68rem', padding: '3px 8px' }}>
-          <i className="bi bi-shield-check me-1"></i> Cloud Setup
+          <i className="bi bi-diagram-3-fill me-1"></i> Agentic RAG
         </span>
       </div>
 

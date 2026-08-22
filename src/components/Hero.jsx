@@ -65,10 +65,10 @@ const Hero = ({ profile }) => {
                 <button 
                   className="btn btn-sm btn-outline-secondary rounded-pill px-3 py-2 d-inline-flex align-items-center gap-1.5 x-small"
                   onClick={() => setShowPhoto(!showPhoto)}
-                  title="Toggle visual mode between Personal Photo and Azure RAG Cloud Topology Diagram"
+                  title="Toggle visual mode between Personal Photo and Agentic AI RAG Topology Diagram"
                 >
                   <i className={`bi ${showPhoto ? 'bi-diagram-3-fill text-cyan me-2' : 'bi-person-square me-2 text-primary'}`}></i>
-                  <span>{showPhoto ? 'View RAG Topology' : 'View Personal Photo'}</span>
+                  <span>{showPhoto ? 'View Agentic RAG Flow' : 'View Personal Photo'}</span>
                 </button>
               </div>
             </div>
