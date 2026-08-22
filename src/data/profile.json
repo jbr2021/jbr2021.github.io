@@ -3,7 +3,7 @@
     "name": "Jaibir Singh",
     "initials": "JBR",
     "usePersonalPhoto": false,
-    "title": "Technical Architect & AI Engineer",
+    "title": "Senior Technical Specialist & AI Engineer",
     "yearsOfExperience": "14+",
     "email": "contact2jaibir@gmail.com",
     "phone": "+91-9999XXXXXX",
@@ -12,7 +12,7 @@
     "age": 38,
     "website": "jbr2021.github.io",
     "freelance": "Not Available",
-    "tagline": "Technical Architect specializing in production-grade AI systems, Agentic AI, RAG, Azure Cloud, and scalable Python FastAPI microservices.",
+    "tagline": "Senior Technical Specialist specializing in production-grade AI systems, Agentic AI, RAG, Azure Cloud, and scalable Python FastAPI microservices.",
     "social": {
       "github": "https://github.com/jbr2021",
       "linkedin": "#",
@@ -24,7 +24,7 @@
       "background": "/assets/img/backgroud-clouds-1.jpg"
     }
   },
-  "summary": "Greetings! I am a Technical Architect with 14+ years of experience delivering web, mobile, business intelligence, and production-grade AI solutions. Proficient in Python, Generative AI, .NET Core, Angular, React.js, ASP.NET MVC, Android Studio, and SQL/NoSQL databases (MS SQL, MySQL, PostgreSQL, MongoDB, Azure CosmosDB). Highly experienced in Azure cloud services (Web Apps, Functions, Service Bus, AI Search, SQL, API Gateway, VM Automation, Blob Storage, SendGrid), DevOps practices, Docker and Kubernetes. Certified as a Google Cloud Professional Cloud Developer.",
+  "summary": "Greetings! I am a Senior Technical Specialist with 14+ years of experience delivering web, mobile, business intelligence, and production-grade AI solutions. Proficient in Python, Generative AI, .NET Core, Angular, React.js, ASP.NET MVC, Android Studio, and SQL/NoSQL databases (MS SQL, MySQL, PostgreSQL, MongoDB, Azure CosmosDB). Highly experienced in Azure cloud services (Web Apps, Functions, Service Bus, AI Search, SQL, API Gateway, VM Automation, Blob Storage, SendGrid), DevOps practices, Docker and Kubernetes. Certified as a Google Cloud Professional Cloud Developer.",
   "highlights": [
     {
       "title": "Generative AI & LLMs",
@@ -98,8 +98,8 @@
   "experience": [
     {
       "company": "HCL Technologies",
-      "role": "Lead Developer & Technical Architect",
-      "period": "Sep 2021 — Present",
+      "role": "Senior Technical Specialist",
+      "period": "Jan 2026 — Present",
       "location": "Sector 126, Noida, Uttar Pradesh, India",
       "description": "Leading AI engineering and cloud architecture initiatives for premier international clients including the World Bank Group and ANZ Bank.",
       "projects": [
@@ -157,6 +157,14 @@
           "badge": "Developer Portal"
         }
       ]
+    },
+    {
+      "company": "HCL Technologies",
+      "role": "Technical Specialist",
+      "period": "Sep 2021 — Dec 2025",
+      "location": "Sector 126, Noida, Uttar Pradesh, India",
+      "description": "Delivered AI engineering and cloud architecture initiatives for premier international clients including the World Bank Group and ANZ Bank.",
+      "projects": []
     },
     {
       "company": "GetOn Infotech Pvt. Ltd.",

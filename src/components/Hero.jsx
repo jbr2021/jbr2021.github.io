@@ -23,7 +23,7 @@ const Hero = ({ profile }) => {
               <div className="d-inline-flex align-items-center gap-2 px-3 py-1.5 rounded-pill badge-ai-status mb-3 shadow-sm align-self-start">
                 <span className="pulse-dot"></span>
                 <span className="small fw-bold tracking-wide text-uppercase">
-                  AI Engineer &amp; Technical Architect • {personal.yearsOfExperience || '14+'} Years
+                  AI Engineer &amp; Senior Technical Specialist • {personal.yearsOfExperience || '14+'} Years
                 </span>
               </div>
 
@@ -33,7 +33,7 @@ const Hero = ({ profile }) => {
 
               <p className="hero-subtitle lead mb-4 text-body-secondary style-leading">
                 {personal.tagline || 
-                  "Technical Architect with deep expertise in building production-grade AI systems — Generative AI, RAG, Multi-Agent architectures, Azure, and Python."
+                  "Senior Technical Specialist with deep expertise in building production-grade AI systems — Generative AI, RAG, Multi-Agent architectures, Azure, and Python."
                 }
               </p>
 
@@ -88,7 +88,7 @@ const Hero = ({ profile }) => {
                       loading="eager"
                     />
                     <div className="profile-overlay-badge position-absolute bottom-0 start-0 end-0 p-2 text-start bg-gradient-dark text-white">
-                      <div className="fw-bold small">{personal.title || "Technical Architect & AI Engineer"}</div>
+                      <div className="fw-bold small">{personal.title || "Senior Technical Specialist & AI Engineer"}</div>
                       <div className="x-small opacity-75"><i className="bi bi-geo-alt-fill me-1"></i>{personal.location || "Noida / Delhi NCR, India"}</div>
                     </div>
                   </div>
