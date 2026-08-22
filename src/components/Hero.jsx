@@ -25,7 +25,7 @@ const Hero = ({ profile }) => {
               <div className="d-inline-flex align-items-center gap-2 px-3 py-1.5 rounded-pill badge-ai-status mb-3 shadow-sm align-self-start">
                 <span className="pulse-dot"></span>
                 <span className="small fw-bold tracking-wide text-uppercase">
-                  AI Engineer &amp; Senior Technical Specialist • {experienceYears} Years
+                  Forward Deployed AI Engineer &amp; Senior Technical Specialist • {experienceYears} Years
                 </span>
               </div>
 
