@@ -111,14 +111,14 @@ def main():
     story.append(p("Forward Deployed AI Engineer | Senior Technical Specialist", "Headline"))
     story.append(p(
         f"{personal['location']}  |  {personal['email']}  |  {personal['phone']}  |  "
-        f"{personal['website']}  |  github.com/jbr2021", "Contact"
+        f"<link href=\"https://{personal['website']}\" color=\"#0284C7\">{personal['website']}</link>", "Contact"
     ))
     story.append(Spacer(1, 8))
 
     story.append(section("Professional Summary"))
     story.append(Spacer(1, 3))
     story.append(p(
-        "Senior Technical Specialist and Forward Deployed AI Engineer with 15+ years of experience "
+        "Forward Deployed AI Engineer and Senior Technical Specialist with 15+ years of experience "
         "delivering enterprise web, cloud, and AI solutions. Specializes in Agentic AI, AI Agents, "
         "LangGraph/StateGraph, Azure OpenAI, RAG, document intelligence, and cloud-native integration. "
         "Experienced in translating complex operational requirements into production-ready applications."
