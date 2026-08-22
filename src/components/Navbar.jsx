@@ -107,6 +107,9 @@ const Navbar = ({ theme, toggleTheme }) => {
             <a className="mobile-nav-link" href="#backstage" onClick={(e) => { e.preventDefault(); scrollTo('backstage'); }}>Platform Mesh</a>
             <a className="mobile-nav-link" href="#education" onClick={(e) => { e.preventDefault(); scrollTo('education'); }}>Education</a>
             <a className="mobile-nav-link" href="#contact" onClick={(e) => { e.preventDefault(); scrollTo('contact'); }}>Contact</a>
+            <a className="mobile-nav-link" href="./Jaibir-Singh-Resume.pdf" download onClick={() => setMobileOpen(false)}>
+              <i className="bi bi-download me-2"></i>Download Resume
+            </a>
           </div>
         </div>
       )}
