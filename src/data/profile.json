@@ -4,7 +4,7 @@
     "initials": "JBR",
     "usePersonalPhoto": false,
     "title": "Senior Technical Specialist & AI Engineer",
-    "yearsOfExperience": "14+",
+    "experienceStartDate": "2011-06-01",
     "email": "contact2jaibir@gmail.com",
     "phone": "+91-9999XXXXXX",
     "location": "Ghaziabad, Uttar Pradesh, India",
@@ -24,7 +24,7 @@
       "background": "/assets/img/backgroud-clouds-1.jpg"
     }
   },
-  "summary": "Greetings! I am a Senior Technical Specialist with 14+ years of experience delivering web, mobile, business intelligence, and production-grade AI solutions. Proficient in Python, Generative AI, .NET Core, Angular, React.js, ASP.NET MVC, Android Studio, and SQL/NoSQL databases (MS SQL, MySQL, PostgreSQL, MongoDB, Azure CosmosDB). Highly experienced in Azure cloud services (Web Apps, Functions, Service Bus, AI Search, SQL, API Gateway, VM Automation, Blob Storage, SendGrid), DevOps practices, Docker and Kubernetes. Certified as a Google Cloud Professional Cloud Developer.",
+  "summary": "Greetings! I am a Senior Technical Specialist with {{yearsOfExperience}} years of experience delivering web, mobile, business intelligence, and production-grade AI solutions. Proficient in Python, Generative AI, .NET Core, Angular, React.js, ASP.NET MVC, Android Studio, and SQL/NoSQL databases (MS SQL, MySQL, PostgreSQL, MongoDB, Azure CosmosDB). Highly experienced in Azure cloud services (Web Apps, Functions, Service Bus, AI Search, SQL, API Gateway, VM Automation, Blob Storage, SendGrid), DevOps practices, Docker and Kubernetes. Certified as a Google Cloud Professional Cloud Developer.",
   "highlights": [
     {
       "title": "Generative AI & LLMs",

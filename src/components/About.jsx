@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import RAGWorkflowDiagram from './RAGWorkflowDiagram';
+import { getExperienceYearsLabel } from '../utils/experience';
 
 const About = ({ profile }) => {
   const personal = profile?.personal || {};
-  const summary = profile?.summary || '';
+  const experienceYears = getExperienceYearsLabel(personal.experienceStartDate);
+  const summary = (profile?.summary || '').replace('{{yearsOfExperience}}', experienceYears);
   const highlights = profile?.highlights || [];
   const [photoModal, setPhotoModal] = useState(false);
 

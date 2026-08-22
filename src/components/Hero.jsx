@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import RAGResourceSetupDiagram from './RAGResourceSetupDiagram';
+import { getExperienceYearsLabel } from '../utils/experience';
 
 const Hero = ({ profile }) => {
   const personal = profile?.personal || {};
+  const experienceYears = getExperienceYearsLabel(personal.experienceStartDate);
   const [showPhoto, setShowPhoto] = useState(true);
 
   // Sync state with profile.json flag when loaded
@@ -23,7 +25,7 @@ const Hero = ({ profile }) => {
               <div className="d-inline-flex align-items-center gap-2 px-3 py-1.5 rounded-pill badge-ai-status mb-3 shadow-sm align-self-start">
                 <span className="pulse-dot"></span>
                 <span className="small fw-bold tracking-wide text-uppercase">
-                  AI Engineer &amp; Senior Technical Specialist • {personal.yearsOfExperience || '14+'} Years
+                  AI Engineer &amp; Senior Technical Specialist • {experienceYears} Years
                 </span>
               </div>
 
@@ -97,7 +99,7 @@ const Hero = ({ profile }) => {
                   <div className="row g-2 text-center pt-1">
                     <div className="col-4">
                       <div className="p-2 rounded-3 bg-body-tertiary border">
-                        <div className="fw-extrabold text-cyan">14+</div>
+                        <div className="fw-extrabold text-cyan">{experienceYears}</div>
                         <div className="x-small text-muted">Years Exp</div>
                       </div>
                     </div>

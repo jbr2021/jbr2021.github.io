@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { getExperienceYearsLabel } from '../utils/experience';
 
 const Experience = ({ profile, onSelectProject }) => {
   const experiences = profile?.experience || [];
+  const experienceYears = getExperienceYearsLabel(profile?.personal?.experienceStartDate);
   const [activeFilter, setActiveFilter] = useState('All');
 
   const filterOptions = ['All', 'Generative AI', 'Compliance AI', 'Analytics & AI', 'RAG Portal', 'Developer Portal', 'Cloud & Architecture'];
@@ -12,7 +14,7 @@ const Experience = ({ profile, onSelectProject }) => {
         {/* Glass Section Header */}
         <div className="text-center mb-5">
           <div className="section-header card border-0 glass-card p-4 rounded-4 shadow-sm mx-auto">
-            <div className="badge-pill mb-2">14+ Years Track Record</div>
+            <div className="badge-pill mb-2">{experienceYears} Years Track Record</div>
             <h2 className="section-title text-body">Professional Experience</h2>
             <p className="section-subtitle text-body-secondary mb-0">
               Leading high-impact AI engineering, cloud microservices, and enterprise technical architectures.
