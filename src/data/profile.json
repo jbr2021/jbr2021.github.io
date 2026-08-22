@@ -12,7 +12,7 @@
     "age": 38,
     "website": "jbr2021.github.io",
     "freelance": "Not Available",
-    "tagline": "Senior Technical Specialist specializing in production-grade AI systems, Agentic AI, RAG, Azure Cloud, and scalable Python FastAPI microservices.",
+    "tagline": "Senior Technical Specialist specializing in production-grade AI systems, Agentic AI, AI Agents, RAG, Azure Cloud, and scalable Python FastAPI microservices.",
     "social": {
       "github": "https://github.com/jbr2021",
       "linkedin": "#",
@@ -24,7 +24,7 @@
       "background": "/assets/img/backgroud-clouds-1.jpg"
     }
   },
-  "summary": "Greetings! I am a Senior Technical Specialist with {{yearsOfExperience}} years of experience delivering web, mobile, business intelligence, and production-grade AI solutions. Proficient in Python, Generative AI, .NET Core, Angular, React.js, ASP.NET MVC, Android Studio, and SQL/NoSQL databases (MS SQL, MySQL, PostgreSQL, MongoDB, Azure CosmosDB). Highly experienced in Azure cloud services (Web Apps, Functions, Service Bus, AI Search, SQL, API Gateway, VM Automation, Blob Storage, SendGrid), DevOps practices, Docker and Kubernetes. Certified as a Google Cloud Professional Cloud Developer.",
+  "summary": "Greetings! I am a Senior Technical Specialist with {{yearsOfExperience}} years of experience delivering web, mobile, business intelligence, and production-grade AI solutions. Proficient in Python, Generative AI, Agentic AI, AI Agents, .NET Core, Angular, React.js, ASP.NET MVC, Android Studio, and SQL/NoSQL databases (MS SQL, MySQL, PostgreSQL, MongoDB, Azure CosmosDB). Highly experienced in Azure cloud services (Web Apps, Functions, Service Bus, AI Search, SQL, API Gateway, VM Automation, Blob Storage, SendGrid), DevOps practices, Docker and Kubernetes. Certified as a Google Cloud Professional Cloud Developer.",
   "highlights": [
     {
       "title": "Generative AI & LLMs",
@@ -35,8 +35,8 @@
       "description": "Designing high-accuracy Retrieval-Augmented Generation workflows using Azure AI Search, AWS OpenSearch, vector embeddings, and hybrid document indexing."
     },
     {
-      "title": "Agentic AI & Multi-Agent Systems",
-      "description": "Building multi-agent collaboration pipelines, intelligent routing, tool execution, and automated compliance auditing for complex enterprise workflows."
+      "title": "Agentic AI & AI Agents",
+      "description": "Building Agentic AI and AI Agent workflows for intelligent routing, tool execution, multi-agent collaboration, and automated compliance auditing."
     },
     {
       "title": "Python & Cloud Microservices",
@@ -55,7 +55,7 @@
         { "name": "Generative AI / LLMs", "level": 90, "category": "AI" },
         { "name": "Azure AI & OpenAI (GPT-5)", "level": 90, "category": "AI" },
         { "name": "RAG & Vector Search Systems", "level": 88, "category": "AI" },
-        { "name": "Multi-Agent Systems & AI Agents", "level": 85, "category": "AI" },
+        { "name": "Agentic AI & AI Agents", "level": 85, "category": "AI" },
         { "name": "Prompt Engineering & Guardrails", "level": 92, "category": "AI" },
         { "name": "Semantic Search & Embeddings", "level": 88, "category": "AI" },
         { "name": "Vector Databases & OpenSearch", "level": 85, "category": "AI" },
@@ -105,9 +105,9 @@
       "projects": [
         {
           "title": "Review Agent",
-          "summary": "AI-powered document review agent that validates up to 15 uploaded documents (20 MB each), including two required Word primary documents. Configurable rules are evaluated per primary document with live, rule-by-rule Pass/Fail results, concise summaries, and a Word report with tracked changes.",
-          "technologies": ["Angular", "Python", "MS SQL", "Azure Blob Storage", "Azure OpenAI", "Azure Web Apps", "Azure Document Intelligence", "RAG", "GenAI", "Chatbot"],
-          "badge": "Generative AI"
+          "summary": "AI Agent-powered document review agent that validates up to 15 uploaded documents (20 MB each), including two required Word primary documents. Configurable rules are evaluated per primary document with live, rule-by-rule Pass/Fail results, concise summaries, and a Word report with tracked changes.",
+          "technologies": ["Angular", "Python", "MS SQL", "Azure Blob Storage", "Azure OpenAI", "Azure Web Apps", "Azure Document Intelligence", "RAG", "GenAI", "AI Agent", "Chatbot"],
+          "badge": "AI Agent"
         },
         {
           "title": "Supplier Chatbot",
@@ -127,7 +127,7 @@
           "client": "World Bank Group",
           "summary": "AI Agent-based project built with LangGraph/StateGraph and a simple node workflow to monitor, track, and analyze issues across international projects, enabling more effective management and resolution strategies.",
           "technologies": ["LangGraph", "StateGraph", "Databricks", "Blob Storage", "MS SQL Server", "Python FastAPI", "Angular", "Timer-triggered Azure Functions", "Azure OpenAI GPT-5", "Aspose library"],
-          "badge": "Analytics & AI"
+          "badge": "AI Agent"
         },
         {
           "title": "Document Review Tool (DRT)",

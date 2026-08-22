@@ -35,13 +35,13 @@ const Hero = ({ profile }) => {
 
               <p className="hero-subtitle lead mb-4 text-body-secondary style-leading">
                 {personal.tagline || 
-                  "Senior Technical Specialist with deep expertise in building production-grade AI systems — Generative AI, RAG, Multi-Agent architectures, Azure, and Python."
+                  "Senior Technical Specialist with deep expertise in building production-grade AI systems — Generative AI, Agentic AI, AI Agents, RAG, Azure, and Python."
                 }
               </p>
 
               {/* Tech Stack Pills */}
               <div className="hero-tech-pills d-flex flex-wrap gap-2 mb-4">
-                {['Azure OpenAI (gpt-5)', 'Agentic AI', 'RAG & Vector Search', 'Python FastAPI', 'Backstage IDP', 'Google Cloud Certified'].map((tech, i) => (
+                {['Azure OpenAI (gpt-5)', 'Agentic AI', 'AI Agents', 'RAG & Vector Search', 'Python FastAPI', 'Backstage IDP', 'Google Cloud Certified'].map((tech, i) => (
                   <span key={i} className="tech-pill px-2 py-1 rounded-3 small border">
                     <i className="bi bi-cpu me-1 text-cyan me-2"></i>
                     {tech}

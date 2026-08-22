@@ -6,7 +6,7 @@ const Experience = ({ profile, onSelectProject }) => {
   const experienceYears = getExperienceYearsLabel(profile?.personal?.experienceStartDate);
   const [activeFilter, setActiveFilter] = useState('All');
 
-  const filterOptions = ['All', 'Generative AI', 'Compliance AI', 'Analytics & AI', 'RAG Portal', 'Developer Portal', 'Cloud & Architecture'];
+  const filterOptions = ['All', 'AI Agent', 'Agentic AI', 'Generative AI', 'Compliance AI', 'Analytics & AI', 'RAG Portal', 'Developer Portal', 'Cloud & Architecture'];
 
   return (
     <section id="experience" className="experience-section py-5">
