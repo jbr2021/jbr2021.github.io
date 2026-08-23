@@ -59,7 +59,7 @@ const About = ({ profile }) => {
             <div className="bio-content card border-0 glass-card p-4 p-md-5 rounded-4 shadow-sm">
               <h3 className="h4 fw-bold mb-3 d-flex align-items-center gap-2 text-body">
                 <i className="bi bi-person-badge text-primary"></i>
-                {personal.title || "Senior Technical Specialist & AI Engineer"}
+                {personal.title || "Senior Technical Specialist & Forward Deployed AI Engineer"}
               </h3>
 
               <p className="bio-text lead-sm text-body-secondary mb-4 style-leading">
@@ -72,7 +72,7 @@ const About = ({ profile }) => {
                   <i className="bi bi-briefcase text-primary fs-5"></i>
                   <div>
                     <span className="text-muted small d-block">Profession</span>
-                    <strong className="small text-body">{personal.title || "Senior Technical Specialist & AI Engineer"}</strong>
+                    <strong className="small text-body">{personal.title || "Senior Technical Specialist & Forward Deployed AI Engineer"}</strong>
                   </div>
                 </div>
 
@@ -174,7 +174,7 @@ const About = ({ profile }) => {
           <div className="modal-dialog modal-dialog-centered modal-lg" onClick={(e) => e.stopPropagation()}>
             <div className="modal-content bg-dark text-white border-secondary rounded-4 overflow-hidden">
               <div className="modal-header border-secondary py-2">
-                <h5 className="modal-title h6 fw-bold">{personal.name || "Jaibir Singh"} — {personal.title || "Senior Technical Specialist & AI Engineer"}</h5>
+                <h5 className="modal-title h6 fw-bold">{personal.name || "Jaibir Singh"} — {personal.title || "Senior Technical Specialist & Forward Deployed AI Engineer"}</h5>
                 <button type="button" className="btn-close btn-close-white" onClick={() => setPhotoModal(false)}></button>
               </div>
               <div className="modal-body p-0 text-center">

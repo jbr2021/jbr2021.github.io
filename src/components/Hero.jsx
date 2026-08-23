@@ -120,7 +120,7 @@ const Hero = ({ profile }) => {
                       loading="eager"
                     />
                     <div className="profile-overlay-badge position-absolute bottom-0 start-0 end-0 p-2 text-start bg-gradient-dark text-white">
-                      <div className="fw-bold small">{personal.title || "Senior Technical Specialist & AI Engineer"}</div>
+                      <div className="fw-bold small">{personal.title || "Senior Technical Specialist & Forward Deployed AI Engineer"}</div>
                       <div className="x-small opacity-75"><i className="bi bi-geo-alt-fill me-1"></i>{personal.location || "Noida / Delhi NCR, India"}</div>
                     </div>
                   </div>
