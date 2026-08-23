@@ -60,7 +60,7 @@ const Hero = ({ profile }) => {
 
               <p className="hero-subtitle lead mb-4 text-body-secondary style-leading">
                 {personal.tagline || 
-                  "Senior Technical Specialist with deep expertise in building production-grade AI systems — Generative AI, Agentic AI, AI Agents, RAG, Azure, and Python."
+                  "Forward Deployed AI Engineer & Senior Technical Specialist with deep expertise in building production-grade AI systems — Generative AI, Agentic AI, AI Agents, RAG, Azure, and Python."
                 }
               </p>
 
@@ -120,7 +120,7 @@ const Hero = ({ profile }) => {
                       loading="eager"
                     />
                     <div className="profile-overlay-badge position-absolute bottom-0 start-0 end-0 p-2 text-start bg-gradient-dark text-white">
-                      <div className="fw-bold small">{personal.title || "Senior Technical Specialist & Forward Deployed AI Engineer"}</div>
+                      <div className="fw-bold small">{personal.title || "Forward Deployed AI Engineer & Senior Technical Specialist"}</div>
                       <div className="x-small opacity-75"><i className="bi bi-geo-alt-fill me-1"></i>{personal.location || "Noida / Delhi NCR, India"}</div>
                     </div>
                   </div>

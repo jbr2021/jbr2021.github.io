@@ -3,7 +3,7 @@
     "name": "Jaibir Singh",
     "initials": "JBR",
     "usePersonalPhoto": false,
-    "title": "Senior Technical Specialist & Forward Deployed AI Engineer",
+    "title": "Forward Deployed AI Engineer & Senior Technical Specialist",
     "experienceStartDate": "2011-06-01",
     "email": "contact2jaibir@gmail.com",
     "phone": "9999624552",
@@ -13,7 +13,7 @@
     "website": "jbr2021.github.io",
     "freelance": "Not Available",
     "certifications": "Google Cloud PCD & MongoDB SI Associate",
-    "tagline": "Senior Technical Specialist specializing in production-grade AI systems, Agentic AI, AI Agents, RAG, Azure Cloud, and scalable Python FastAPI microservices.",
+    "tagline": "Forward Deployed AI Engineer & Senior Technical Specialist specializing in production-grade AI systems, Agentic AI, AI Agents, RAG, Azure Cloud, and scalable Python FastAPI microservices.",
     "social": {
       "github": "https://github.com/jbr2021",
       "linkedin": "#",
@@ -35,7 +35,7 @@
       "background": "/assets/img/backgroud-clouds-1.jpg"
     }
   },
-  "summary": "Greetings! I am a Senior Technical Specialist with {{yearsOfExperience}} years of experience delivering web, mobile, business intelligence, and production-grade AI solutions. Proficient in Python, Generative AI, Agentic AI, AI Agents, .NET Core, Angular, React.js, ASP.NET MVC, Android Studio, and SQL/NoSQL databases (MS SQL, MySQL, PostgreSQL, MongoDB, Azure CosmosDB). Highly experienced in Azure cloud services (Web Apps, Functions, Service Bus, AI Search, SQL, API Gateway, VM Automation, Blob Storage, SendGrid), DevOps practices, Docker and Kubernetes. Certified as a Google Cloud Professional Cloud Developer and MongoDB SI Associate.",
+  "summary": "Greetings! I am a Forward Deployed AI Engineer & Senior Technical Specialist with {{yearsOfExperience}} years of experience delivering web, mobile, business intelligence, and production-grade AI solutions. Proficient in Python, Generative AI, Agentic AI, AI Agents, .NET Core, Angular, React.js, ASP.NET MVC, Android Studio, and SQL/NoSQL databases (MS SQL, MySQL, PostgreSQL, MongoDB, Azure CosmosDB). Highly experienced in Azure cloud services (Web Apps, Functions, Service Bus, AI Search, SQL, API Gateway, VM Automation, Blob Storage, SendGrid), DevOps practices, Docker and Kubernetes. Certified as a Google Cloud Professional Cloud Developer and MongoDB SI Associate.",
   "highlights": [
     {
       "title": "Generative AI & LLMs",
