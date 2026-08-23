@@ -97,7 +97,7 @@ def footer(canvas, doc):
     canvas.line(doc.leftMargin, 1.25 * cm, A4[0] - doc.rightMargin, 1.25 * cm)
     canvas.setFont("Helvetica", 7.5)
     canvas.setFillColor(SLATE)
-    canvas.drawString(doc.leftMargin, 0.82 * cm, "Jaibir Singh | Forward Deployed AI Engineer")
+    canvas.drawString(doc.leftMargin, 0.82 * cm, "Jaibir Singh | Forward Deployed AI Engineer & Senior Technical Specialist")
     canvas.drawRightString(A4[0] - doc.rightMargin, 0.82 * cm, f"Page {doc.page}")
     canvas.restoreState()
 
