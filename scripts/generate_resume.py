@@ -97,7 +97,7 @@ def footer(canvas, doc):
     canvas.line(doc.leftMargin, 1.25 * cm, A4[0] - doc.rightMargin, 1.25 * cm)
     canvas.setFont("Helvetica", 7.5)
     canvas.setFillColor(SLATE)
-    canvas.drawString(doc.leftMargin, 0.82 * cm, "Jaibir Singh | Forward Deployed AI Engineer")
+    canvas.drawString(doc.leftMargin, 0.82 * cm, "Jaibir Singh | Forward Deployed AI Engineer & Senior Technical Specialist")
     canvas.drawRightString(A4[0] - doc.rightMargin, 0.82 * cm, f"Page {doc.page}")
     canvas.restoreState()
 
@@ -133,7 +133,8 @@ def main():
         "Enterprise RAG: Azure AI Search, SharePoint, vector retrieval, grounded responses",
         "GenAI & Document Intelligence: Azure OpenAI, document validation, summaries, tracked-change reports",
         "Cloud & Delivery: Azure Web Apps, Functions, Blob Storage, API Management, Docker, Kubernetes",
-        "Engineering: Python, FastAPI, Angular, .NET, React, MS SQL, PostgreSQL",
+        "Engineering & Databases: Python, FastAPI, Angular, .NET, React, MS SQL, PostgreSQL, MongoDB",
+        "Certifications: Google Cloud Professional Cloud Developer, MongoDB SI Associate Certification Program (26 June, 2022)",
     ]
     story.append(p("<br/>".join([f"• {item}" for item in expertise])))
 
@@ -180,6 +181,8 @@ def main():
     story.append(Spacer(1, 3))
     story.append(p("<b>Professional Cloud Developer (English)</b> | Google Cloud Platform<br/>"
                    "Issued 1 Aug 2022 | Certification ID: aeaduY"))
+    story.append(p("<b>MongoDB SI Associate Certification Program</b> | MongoDB<br/>"
+                   "Issued 26 June, 2022"))
     story.append(p("<b>GNIIT (Software Engineer Course)</b> | NIIT, South Ex Campus, Delhi | 2006 — 2009"))
     story.append(p("<b>Bachelor of Commerce (BCom)</b> | Delhi Open University | 2005 — 2008"))
 

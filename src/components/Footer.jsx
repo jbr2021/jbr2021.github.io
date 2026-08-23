@@ -15,7 +15,7 @@ const Footer = ({ profile }) => {
               <JBRLogo width={140} height={36} />
             </div>
             <p className="small text-muted mb-0 style-leading" style={{ maxWidth: '400px' }}>
-              {personal.name} — Senior Technical Specialist specializing in Generative AI, Agentic AI, AI Agents, RAG, Azure, and Python FastAPI microservices.
+              {personal.name} — Forward Deployed AI Engineer &amp; Senior Technical Specialist specializing in Generative AI, Agentic AI, AI Agents, RAG, Azure, and Python FastAPI microservices.
             </p>
           </div>
 

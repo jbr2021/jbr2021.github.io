@@ -73,12 +73,18 @@ const Resume = () => {
           </ul>
         </div>
 
-        <h2 className="section-title" style={{ marginTop: '3rem' }}>Education</h2>
+        <h2 className="section-title" style={{ marginTop: '3rem' }}>Education &amp; Certification</h2>
 
         <div className="resume-item">
           <h3>Professional Cloud Developer (English)</h3>
           <div className="meta">Issued 1 Aug 2022 • Google Cloud Platform • Certification ID: aeaduY</div>
           <p>Certified as a Google-endorsed Professional Cloud Developer, proficient in designing, building, testing, deploying, and integrating scalable, secure, cloud-native applications using Google-recommended tools and best practices.</p>
+        </div>
+
+        <div className="resume-item">
+          <h3>MongoDB SI Associate Certification Program</h3>
+          <div className="meta">Issued 26 June, 2022 • MongoDB</div>
+          <p>Completed the MongoDB SI Associate Certification Program, validating core competence in MongoDB data modeling, querying, indexing, aggregation framework, and developer best practices for enterprise applications.</p>
         </div>
 
         <div className="resume-item">
