@@ -12,19 +12,30 @@
     "age": 38,
     "website": "jbr2021.github.io",
     "freelance": "Not Available",
+    "certifications": "Google Cloud PCD & MongoDB SI Associate",
     "tagline": "Senior Technical Specialist specializing in production-grade AI systems, Agentic AI, AI Agents, RAG, Azure Cloud, and scalable Python FastAPI microservices.",
     "social": {
       "github": "https://github.com/jbr2021",
       "linkedin": "#",
       "email": "mailto:contact2jaibir@gmail.com"
     },
+    "techPills": [
+      { "name": "Azure OpenAI (gpt-5)", "icon": "bi-cpu text-cyan" },
+      { "name": "Agentic AI", "icon": "bi-diagram-3 text-cyan" },
+      { "name": "AI Agents", "icon": "bi-robot text-cyan" },
+      { "name": "RAG & Vector Search", "icon": "bi-search text-cyan" },
+      { "name": "Python FastAPI", "icon": "bi-code-slash text-cyan" },
+      { "name": "Backstage IDP", "icon": "bi-boxes text-cyan" },
+      { "name": "Google Cloud Certified", "icon": "bi-patch-check-fill text-primary" },
+      { "name": "MongoDB SI Associate", "icon": "bi-database-fill-check text-success" }
+    ],
     "photos": {
       "avatar": "/assets/img/Jaibir-Singh-07.jpg",
       "featured": "/assets/img/Jaibir-Singh-03.jpg",
       "background": "/assets/img/backgroud-clouds-1.jpg"
     }
   },
-  "summary": "Greetings! I am a Senior Technical Specialist with {{yearsOfExperience}} years of experience delivering web, mobile, business intelligence, and production-grade AI solutions. Proficient in Python, Generative AI, Agentic AI, AI Agents, .NET Core, Angular, React.js, ASP.NET MVC, Android Studio, and SQL/NoSQL databases (MS SQL, MySQL, PostgreSQL, MongoDB, Azure CosmosDB). Highly experienced in Azure cloud services (Web Apps, Functions, Service Bus, AI Search, SQL, API Gateway, VM Automation, Blob Storage, SendGrid), DevOps practices, Docker and Kubernetes. Certified as a Google Cloud Professional Cloud Developer.",
+  "summary": "Greetings! I am a Senior Technical Specialist with {{yearsOfExperience}} years of experience delivering web, mobile, business intelligence, and production-grade AI solutions. Proficient in Python, Generative AI, Agentic AI, AI Agents, .NET Core, Angular, React.js, ASP.NET MVC, Android Studio, and SQL/NoSQL databases (MS SQL, MySQL, PostgreSQL, MongoDB, Azure CosmosDB). Highly experienced in Azure cloud services (Web Apps, Functions, Service Bus, AI Search, SQL, API Gateway, VM Automation, Blob Storage, SendGrid), DevOps practices, Docker and Kubernetes. Certified as a Google Cloud Professional Cloud Developer and MongoDB SI Associate.",
   "highlights": [
     {
       "title": "Generative AI & LLMs",
@@ -227,21 +238,32 @@
       "period": "Issued 1 Aug 2022",
       "credentialId": "aeaduY",
       "description": "Certified as a Google-endorsed Professional Cloud Developer, proficient in designing, building, testing, deploying, and integrating scalable, secure, cloud-native applications using Google-recommended tools and best practices.",
-      "badge": "Certified"
+      "badge": "Certified",
+      "icon": "bi-patch-check-fill text-success"
+    },
+    {
+      "degree": "MongoDB SI Associate Certification Program",
+      "institution": "MongoDB",
+      "period": "Issued 26 June, 2022",
+      "description": "Completed the MongoDB SI Associate Certification Program on 26 June, 2022, demonstrating verified expertise in MongoDB data modeling, indexing strategies, aggregation framework, query optimization, and enterprise database architecture.",
+      "badge": "Certified",
+      "icon": "bi-database-fill-check text-success"
     },
     {
       "degree": "GNIIT (Software Engineer Course)",
       "institution": "NIIT, South Ex Campus, Delhi, India",
       "period": "2006 — 2009",
       "description": "Completed all Terms and Professional Practice successfully to obtain this prestigious recognition from NIIT. Connected with a global network of accomplished NIIT Alumni. Widely recognized and valued as GNIIT - Software Engineering.",
-      "badge": "Software Engineering"
+      "badge": "Software Engineering",
+      "icon": "bi-mortarboard-fill text-primary"
     },
     {
       "degree": "BCom (Bachelor of Commerce)",
       "institution": "Delhi Open University, Delhi, India",
       "period": "2005 — 2008",
       "description": "A Bachelor of Commerce, abbreviated as B.Com is an undergraduate degree in commerce and related subjects. Designed to provide students with managerial skills and understanding in finance, accounting, taxation and management.",
-      "badge": "Undergraduate Degree"
+      "badge": "Undergraduate Degree",
+      "icon": "bi-mortarboard-fill text-primary"
     }
   ],
   "backstageCatalog": {

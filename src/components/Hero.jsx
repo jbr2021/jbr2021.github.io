@@ -2,6 +2,29 @@ import React, { useState, useEffect } from 'react';
 import RAGResourceSetupDiagram from './RAGResourceSetupDiagram';
 import { getExperienceYearsLabel } from '../utils/experience';
 
+const DEFAULT_TECH_PILLS = [
+  { name: 'Azure OpenAI (gpt-5)', icon: 'bi-cpu text-cyan' },
+  { name: 'Agentic AI', icon: 'bi-diagram-3 text-cyan' },
+  { name: 'AI Agents', icon: 'bi-robot text-cyan' },
+  { name: 'RAG & Vector Search', icon: 'bi-search text-cyan' },
+  { name: 'Python FastAPI', icon: 'bi-code-slash text-cyan' },
+  { name: 'Backstage IDP', icon: 'bi-boxes text-cyan' },
+  { name: 'Google Cloud Certified', icon: 'bi-patch-check-fill text-primary' },
+  { name: 'MongoDB SI Associate', icon: 'bi-database-fill-check text-success' }
+];
+
+const getTechIcon = (name) => {
+  const lower = (name || '').toLowerCase();
+  if (lower.includes('mongodb')) return 'bi-database-fill-check text-success';
+  if (lower.includes('google') || lower.includes('cloud certified')) return 'bi-patch-check-fill text-primary';
+  if (lower.includes('backstage')) return 'bi-boxes text-cyan';
+  if (lower.includes('fastapi') || lower.includes('python')) return 'bi-code-slash text-cyan';
+  if (lower.includes('rag') || lower.includes('search')) return 'bi-search text-cyan';
+  if (lower.includes('agentic')) return 'bi-diagram-3 text-cyan';
+  if (lower.includes('agent') || lower.includes('openai') || lower.includes('ai')) return 'bi-cpu text-cyan';
+  return 'bi-cpu text-cyan';
+};
+
 const Hero = ({ profile }) => {
   const personal = profile?.personal || {};
   const experienceYears = getExperienceYearsLabel(personal.experienceStartDate);
@@ -13,6 +36,8 @@ const Hero = ({ profile }) => {
       setShowPhoto(personal.usePersonalPhoto);
     }
   }, [personal.usePersonalPhoto]);
+
+  const pills = personal.techPills || DEFAULT_TECH_PILLS;
 
   return (
     <section id="hero" className="hero-section d-lg-flex align-items-lg-center position-relative min-vh-lg-100">
@@ -41,12 +66,16 @@ const Hero = ({ profile }) => {
 
               {/* Tech Stack Pills */}
               <div className="hero-tech-pills d-flex flex-wrap gap-2 mb-4">
-                {['Azure OpenAI (gpt-5)', 'Agentic AI', 'AI Agents', 'RAG & Vector Search', 'Python FastAPI', 'Backstage IDP', 'Google Cloud Certified'].map((tech, i) => (
-                  <span key={i} className="tech-pill px-2 py-1 rounded-3 small border">
-                    <i className="bi bi-cpu me-1 text-cyan me-2"></i>
-                    {tech}
-                  </span>
-                ))}
+                {pills.map((tech, i) => {
+                  const name = typeof tech === 'string' ? tech : tech.name;
+                  const icon = typeof tech === 'object' && tech.icon ? tech.icon : getTechIcon(name);
+                  return (
+                    <span key={i} className="tech-pill px-2.5 py-1 rounded-3 small border d-inline-flex align-items-center">
+                      <i className={`bi ${icon} me-1.5`}></i>
+                      <span>{name}</span>
+                    </span>
+                  );
+                })}
               </div>
 
               {/* CTAs */}
@@ -112,8 +141,8 @@ const Hero = ({ profile }) => {
                     </div>
                     <div className="col-4">
                       <div className="p-2 rounded-3 bg-body-tertiary border">
-                        <div className="fw-extrabold text-success">Cloud</div>
-                        <div className="x-small text-muted">Azure &amp; GCP</div>
+                        <div className="fw-extrabold text-success">Certified</div>
+                        <div className="x-small text-muted">GCP &amp; MongoDB</div>
                       </div>
                     </div>
                   </div>
