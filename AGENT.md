@@ -93,6 +93,9 @@ each section component            → renders from profile data
   later be swapped for a real API/DB **without touching any component**.
 - Components receive `profile` as a prop and use safe fallbacks
   (e.g. `personal.name || 'Jaibir Singh'`).
+- `AIBackground.jsx` is also profile-driven: its labels, agent names, and
+  workflow terminology should be derived from `profile.json` (experience,
+  projects, skills, tech pills, etc.), not hard-coded to unrelated sample text.
 
 ---
 
@@ -111,6 +114,9 @@ each section component            → renders from profile data
   `.fw-extrabold`, etc. — all defined in `src/index.css`.
 - Many dark-mode overrides use `!important` (e.g. `.text-muted`). Respect them;
   do not remove them casually — they fix contrast in dark mode.
+- `AIBackground.jsx` uses a fixed `<canvas id="ai-bg-canvas">` with
+  theme-sensitive blending (`mix-blend-mode` changes between dark/light themes).
+  If you adjust its colors, opacity, or blend settings, test both themes.
 
 ### Anchor navigation
 - Sections are identified by `id`: `hero`, `about`, `experience`,
@@ -122,6 +128,48 @@ each section component            → renders from profile data
 - `.navbar-header` is `position: fixed`. `index.css` contains explicit
   `!important` rules to prevent hero-content overlap. Be cautious when
   changing navbar height or hero layout — test on desktop **and** mobile.
+
+### AI background graph (`AIBackground.jsx`)
+- The background is a **custom hierarchical Agentic AI workflow canvas** for
+  this portfolio site. Treat it as first-party project UI, not as an imported
+  concept from another app.
+- The component is intentionally **re-creatable from this file alone**. Its
+  architecture is:
+  1. `buildWorkflowSpec(profile)` derives a `{ nodes, edges }` graph from
+     `profile.json` content.
+  2. `nodes` are descriptor objects with fields like
+     `key`, `label`, `tier`, `row`, `type`, `alwaysLabel`, `mobileHidden`.
+  3. `edges` define directed connections between node keys.
+  4. `getTierX()` maps `tier` values into visual columns, while `row` (0..1)
+     controls the vertical position inside each column.
+- It should read left-to-right as an architecture flow such as:
+  `User Query → Copilot/AI Agent → Intent Router / Task Planner → LLM /
+  Guardrails / Tool Runner → RAG / Search / API → Storage / Platform / Trace`.
+- Prefer **short technical labels** (`Azure OpenAI`, `LangGraph`, `FastAPI`,
+  `Vector Index`, `Svc Bus`, `Eval + Trace`) over long prose. The goal is that
+  a viewer can immediately associate the graph with a real Agentic AI workflow.
+- Agent/project labels should be based on real portfolio content where possible
+  (e.g. `Review Agent`, `Supplier Bot`, `ISR Agent`). If profile data changes,
+  update the workflow labels via profile-derived logic before hard-coding new
+  names.
+- Node color semantics are meaningful and should stay consistent unless the
+  whole visual language is intentionally redesigned:
+  - `query` → green
+  - `mcp` / orchestrator / agent nodes → blue
+  - `symbol` / planning / guardrail / trace nodes → purple
+  - `file` / data / retrieval / runtime nodes → cyan
+- Motion model:
+  - nodes drift around `homeX/homeY` using spring + damping
+  - connection lines are always visible at low opacity
+  - query waves periodically radiate from upstream nodes
+  - particles travel **along graph edges** to imply tool/data flow
+  - shooting stars are decorative ambient accents only
+  - hierarchy rings are optional visual structure for tablet/desktop
+- The component intentionally supports **desktop and mobile** with different
+  visible-node densities. On mobile, some lower-priority nodes may be hidden,
+  but the main workflow must still remain readable and visibly animated.
+- It supports `prefers-reduced-motion`, pauses when the tab is hidden, and uses
+  theme-sensitive `mix-blend-mode`; preserve those behaviors when modifying it.
 
 ### Vite config
 - `base: './'` is set so asset paths are relative — this is **required** for
@@ -140,7 +188,7 @@ each section component            → renders from profile data
 | Component | Role |
 |---|---|
 | `App.jsx` | Root; handles theme state, profile loading, project modal selection; composes all sections in order |
-| `AIBackground.jsx` | Fixed animated canvas background (`#ai-bg-canvas`) |
+| `AIBackground.jsx` | Fixed animated hierarchical Agentic AI workflow canvas background (`#ai-bg-canvas`), built specifically for this portfolio and populated from profile data |
 | `Navbar.jsx` | Fixed header: logo, desktop links, theme toggle, "Get In Touch", mobile drawer (contains the **Download Resume** link) |
 | `Hero.jsx` | Name, tagline, tech pills, CTAs, and photo ⇄ RAG-diagram switcher |
 | `About.jsx` | Summary + highlights |
@@ -251,6 +299,9 @@ Before finishing any change, verify:
 - [ ] No `dist/`, `node_modules/`, or env files are staged in git.
 - [ ] Dark **and** light themes both render correctly.
 - [ ] Mobile (drawer nav) and desktop layouts still work.
+- [ ] If `AIBackground.jsx` changed, the workflow hierarchy still reads clearly,
+      labels remain short and profile-relevant, and the animation is visible on
+      both desktop and mobile.
 - [ ] If the resume PDF changed, it was regenerated via
       `scripts/generate_resume.py` (and `public/Jaibir-Singh-Resume.pdf` updated).
 - [ ] If you touched `AIPipelineVisualizer`, step numbers stay within `1..4`

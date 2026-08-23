@@ -64,7 +64,7 @@ function App() {
   return (
     <div className="app-container overflow-hidden position-relative">
       {/* Intelligent Animated Canvas Background */}
-      <AIBackground />
+      <AIBackground profile={profile} />
 
       {/* Top Navbar */}
       <Navbar theme={theme} toggleTheme={toggleTheme} />
