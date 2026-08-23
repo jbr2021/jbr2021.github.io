@@ -189,21 +189,23 @@ const AIBackground = ({ profile }) => {
 
       if (innerWidth < 768) {
         return {
-          nodeCount: 14,
-          connectionDistance: 100,
-          showLabels: false,
-          labelModulo: 5,
-          enableParticles: false,
-          enableWaves: false,
+          isMobile: true,
+          nodeCount: 16,
+          connectionDistance: 115,
+          showLabels: true,
+          labelModulo: 6,
+          enableParticles: true,
+          enableWaves: true,
           enableShield: false,
-          enableShootingStars: false,
-          particleLimit: 0,
-          starLimit: 0
+          enableShootingStars: true,
+          particleLimit: 1,
+          starLimit: 1
         };
       }
 
       if (innerWidth < 1024) {
         return {
+          isMobile: false,
           nodeCount: 24,
           connectionDistance: 130,
           showLabels: true,
@@ -218,6 +220,7 @@ const AIBackground = ({ profile }) => {
       }
 
       return {
+        isMobile: false,
         nodeCount: 38,
         connectionDistance: 180,
         showLabels: true,
@@ -272,11 +275,11 @@ const AIBackground = ({ profile }) => {
           }
         }
 
-        const radius = type === 'mcp' ? 6 : type === 'query' ? 5 : 4;
-        const baseOpacity = type === 'mcp' || type === 'query' ? 0.35 : 0.2;
+        const radius = (type === 'mcp' ? 6 : type === 'query' ? 5 : 4) + (config.isMobile ? 0.5 : 0);
+        const baseOpacity = (type === 'mcp' || type === 'query' ? 0.35 : 0.2) + (config.isMobile ? 0.08 : 0);
         const x = Math.random() * (width - 100) + 50;
         const y = Math.random() * (height - 100) + 50;
-        const maxSpeed = type === 'mcp' ? 0.08 : 0.15;
+        const maxSpeed = type === 'mcp' ? 0.08 : config.isMobile ? 0.18 : 0.15;
 
         nodes.push({
           id: i,
@@ -487,9 +490,11 @@ const AIBackground = ({ profile }) => {
           && (node.type === 'mcp' || node.type === 'query' || index % config.labelModulo === 0);
 
         if (showLabel) {
-          const textAlpha = 0.18 + node.glow * 0.45;
+          const textAlpha = 0.18 + node.glow * 0.45 + (config.isMobile ? 0.08 : 0);
           ctx.fillStyle = `rgba(148, 163, 184, ${textAlpha})`;
-          ctx.font = node.type === 'query' ? 'italic 10px sans-serif' : '9px monospace';
+          ctx.font = config.isMobile
+            ? (node.type === 'query' ? 'italic 9px sans-serif' : '8.5px monospace')
+            : (node.type === 'query' ? 'italic 10px sans-serif' : '9px monospace');
           ctx.fillText(node.label, node.x + drawRadius + 6, node.y + 3);
 
           if (node.glow > 0.4) {
@@ -718,6 +723,7 @@ const AIBackground = ({ profile }) => {
 
       if (prefersReducedMotion) {
         drawStaticGraph(config);
+        animationId = window.requestAnimationFrame(animate);
         return;
       }
 
