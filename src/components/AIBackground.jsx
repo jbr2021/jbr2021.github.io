@@ -1,161 +1,123 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import LiveClock from './LiveClock';
+import React, { useEffect, useMemo, useRef } from 'react';
 
-const FRAME_INTERVAL = 25;
-const SCROLL_IDLE_DELAY = 100;
-const MAX_NODES = 12;
-const DEFAULT_ACTIVE_CONCEPT = 'JBR portfolio intelligence mesh active';
+const FALLBACK_POOLS = {
+  fileLabels: [
+    'projects/review-agent.tsx',
+    'projects/supplier-chatbot.tsx',
+    'skills/python-fastapi.ts',
+    'platform/backstage-idp.yaml',
+    'cloud/azure-openai.json',
+    'search/vector-search.ts'
+  ],
+  symbolLabels: [
+    'buildAgenticAIWorkflow()',
+    'deployRAGPipeline()',
+    'optimizePromptGuardrails()',
+    'reviewComplianceDocuments()',
+    'scaleFastAPIMicroservices()',
+    'designBackstagePortal()'
+  ],
+  mcpLabels: [
+    'JBR Portfolio Hub',
+    'Forward Deployed AI Engineer',
+    'World Bank Group',
+    'ANZ Bank'
+  ],
+  queryLabels: [
+    '🔍 "agentic ai projects"',
+    '🔍 "rag vector search"',
+    '🔍 "azure openai solutions"',
+    '🔍 "backstage platform mesh"'
+  ]
+};
 
-const DEFAULT_CONCEPT_CATALOG = [
-  { label: 'Forward Deployed AI Engineer', type: 'core', desc: 'Production AI systems' },
-  { label: 'Agentic AI', type: 'agent', desc: 'Autonomous task routing' },
-  { label: 'AI Agents', type: 'agent', desc: 'Multi-step orchestration' },
-  { label: 'RAG Pipelines', type: 'rag', desc: 'Grounded retrieval flows' },
-  { label: 'Azure OpenAI', type: 'core', desc: 'LLM reasoning stack' },
-  { label: 'Vector Search', type: 'vector', desc: 'Semantic retrieval' },
-  { label: 'Python FastAPI', type: 'api', desc: 'Cloud microservices' },
-  { label: 'Backstage IDP', type: 'graph', desc: 'Developer platform mesh' },
-  { label: 'Databricks ML', type: 'rag', desc: 'Analytics pipelines' },
-  { label: 'World Bank AI', type: 'core', desc: 'Enterprise AI delivery' },
-  { label: 'Compliance Review', type: 'agent', desc: 'Sensitive content checks' },
-  { label: 'Cloud Architecture', type: 'api', desc: 'Scalable platform design' }
-];
-
-const TECH_TYPE_RULES = [
-  { type: 'agent', keywords: ['agent', 'langgraph', 'workflow', 'orchestr', 'review'] },
-  { type: 'vector', keywords: ['vector', 'embedding', 'semantic', 'search'] },
-  { type: 'rag', keywords: ['rag', 'document', 'retrieval', 'knowledge'] },
-  { type: 'api', keywords: ['api', 'fastapi', 'azure', 'cloud', 'service', 'backstage', 'portal'] },
-  { type: 'graph', keywords: ['graph', 'catalog', 'mesh', 'platform'] },
-  { type: 'core', keywords: ['ai', 'llm', 'openai', 'gpt', 'engineer'] }
-];
-
-const truncateText = (value, max = 34) => {
+const truncateText = (value, max = 32) => {
   if (!value) return '';
   return value.length > max ? `${value.slice(0, max - 1)}…` : value;
 };
 
-const inferConceptType = (text = '') => {
-  const normalized = text.toLowerCase();
-  for (const rule of TECH_TYPE_RULES) {
-    if (rule.keywords.some((keyword) => normalized.includes(keyword))) {
-      return rule.type;
-    }
-  }
-  return 'core';
+const unique = (items) => [...new Set(items.filter(Boolean).map((item) => item.trim()).filter(Boolean))];
+
+const toKebab = (value = '') => value
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, '-')
+  .replace(/^-+|-+$/g, '') || 'item';
+
+const toPascal = (value = '') => {
+  const parts = value
+    .replace(/[()]/g, '')
+    .split(/[^a-zA-Z0-9]+/)
+    .filter(Boolean)
+    .slice(0, 5);
+
+  return parts.map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join('') || 'ProfileSignal';
 };
 
-const buildConceptCatalog = (profile) => {
+const buildLabelPools = (profile) => {
   const personal = profile?.personal ?? {};
-  const highlights = profile?.highlights ?? [];
-  const skills = profile?.skills ?? [];
-  const experience = profile?.experience ?? [];
-  const education = profile?.education ?? [];
-  const techPills = personal.techPills ?? [];
+  const techPills = (personal.techPills ?? []).map((pill) => pill.name);
+  const highlights = (profile?.highlights ?? []).map((item) => item.title);
+  const skills = (profile?.skills ?? []).flatMap((group) => (group.items ?? []).map((item) => item.name));
+  const companies = (profile?.experience ?? []).map((item) => item.company);
+  const projects = (profile?.experience ?? []).flatMap((item) => (item.projects ?? []).map((project) => project.title));
+  const certifications = (profile?.education ?? []).map((item) => item.degree);
 
-  const flattenedSkills = skills.flatMap((group) => group.items ?? []);
-  const featuredProjects = experience.flatMap((company) =>
-    (company.projects ?? []).slice(0, 2).map((project) => ({
-      label: project.title,
-      desc: project.badge || company.company || 'Enterprise project',
-      type: inferConceptType(`${project.title} ${project.badge || ''}`)
-    }))
-  );
+  const baseTerms = unique([
+    personal.name,
+    personal.title,
+    ...techPills,
+    ...highlights,
+    ...skills,
+    ...projects,
+    ...companies,
+    ...certifications
+  ]);
 
-  const candidates = [
-    personal.title && {
-      label: personal.title,
-      desc: 'Core portfolio identity',
-      type: 'core'
-    },
-    personal.tagline && {
-      label: truncateText(personal.tagline, 48),
-      desc: 'Signature AI focus',
-      type: 'core'
-    },
-    ...techPills.map((pill) => ({
-      label: pill.name,
-      desc: 'Core technology lane',
-      type: inferConceptType(pill.name)
-    })),
-    ...highlights.map((item) => ({
-      label: item.title,
-      desc: item.description,
-      type: inferConceptType(`${item.title} ${item.description}`)
-    })),
-    ...flattenedSkills.slice(0, 8).map((item) => ({
-      label: item.name,
-      desc: `${item.level}% capability`,
-      type: inferConceptType(item.name)
-    })),
-    ...featuredProjects,
-    ...education.slice(0, 2).map((item) => ({
-      label: item.degree,
-      desc: item.institution,
-      type: 'graph'
-    }))
-  ].filter(Boolean);
-
-  const seenLabels = new Set();
-  const normalizedCatalog = [];
-
-  for (const item of candidates) {
-    const cleanLabel = truncateText(item.label?.trim(), 36);
-    if (!cleanLabel) continue;
-
-    const dedupeKey = cleanLabel.toLowerCase();
-    if (seenLabels.has(dedupeKey)) continue;
-    seenLabels.add(dedupeKey);
-
-    normalizedCatalog.push({
-      label: cleanLabel,
-      desc: truncateText(item.desc?.trim(), 56) || 'Portfolio signal',
-      type: item.type || inferConceptType(`${cleanLabel} ${item.desc || ''}`)
-    });
-
-    if (normalizedCatalog.length >= MAX_NODES) break;
+  if (!baseTerms.length) {
+    return FALLBACK_POOLS;
   }
 
-  return normalizedCatalog.length ? normalizedCatalog : DEFAULT_CONCEPT_CATALOG;
-};
+  const fileSeeds = unique([...projects, ...techPills, ...skills, ...companies, ...certifications]).slice(0, 12);
+  const symbolSeeds = unique([...highlights, ...skills, ...projects, ...techPills]).slice(0, 12);
+  const mcpSeeds = unique([
+    personal.initials ? `${personal.initials} Portfolio Hub` : null,
+    personal.title,
+    ...companies,
+    ...certifications,
+    ...highlights
+  ]).slice(0, 6);
+  const querySeeds = unique([...projects, ...highlights, ...techPills, ...skills]).slice(0, 8);
 
-const getHubContent = (profile) => {
-  const personal = profile?.personal ?? {};
+  const folders = ['projects', 'skills', 'experience', 'platform', 'cloud', 'search'];
+  const extensions = ['.tsx', '.ts', '.md', '.yaml', '.json', '.py'];
+  const verbs = ['build', 'deploy', 'optimize', 'orchestrate', 'review', 'analyze', 'design', 'index'];
+
+  const fileLabels = fileSeeds.map((text, index) => (
+    `${folders[index % folders.length]}/${toKebab(truncateText(text, 28))}${extensions[index % extensions.length]}`
+  ));
+
+  const symbolLabels = symbolSeeds.map((text, index) => (
+    `${verbs[index % verbs.length]}${toPascal(truncateText(text, 30))}()`
+  ));
+
+  const mcpLabels = mcpSeeds.map((text) => truncateText(text, 28));
+  const queryLabels = querySeeds.map((text) => `🔍 "${truncateText(text.toLowerCase(), 24)}"`);
+
   return {
-    initials: personal.initials || 'JBR',
-    name: truncateText(personal.name || 'Jaibir Singh', 26),
-    title: truncateText(personal.title || 'Forward Deployed AI Engineer', 34)
+    fileLabels: fileLabels.length ? fileLabels : FALLBACK_POOLS.fileLabels,
+    symbolLabels: symbolLabels.length ? symbolLabels : FALLBACK_POOLS.symbolLabels,
+    mcpLabels: mcpLabels.length ? mcpLabels : FALLBACK_POOLS.mcpLabels,
+    queryLabels: queryLabels.length ? queryLabels : FALLBACK_POOLS.queryLabels
   };
 };
 
-const buildStatusLine = (item, fallback = DEFAULT_ACTIVE_CONCEPT) => {
-  if (!item) return fallback;
-  return `${item.label} • ${item.desc}`;
-};
-
-const hexToRgba = (hex, alpha) => {
-  if (!hex || !hex.startsWith('#')) return `rgba(56, 189, 248, ${alpha})`;
-  const normalized = hex.replace('#', '');
-  const fullHex = normalized.length === 3
-    ? normalized.split('').map((char) => `${char}${char}`).join('')
-    : normalized;
-
-  const int = Number.parseInt(fullHex, 16);
-  const r = (int >> 16) & 255;
-  const g = (int >> 8) & 255;
-  const b = int & 255;
-  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-};
+const getBlendMode = () => (
+  document.documentElement.getAttribute('data-theme') === 'light' ? 'multiply' : 'screen'
+);
 
 const AIBackground = ({ profile }) => {
   const canvasRef = useRef(null);
-  const conceptCatalog = useMemo(() => buildConceptCatalog(profile), [profile]);
-  const hubContent = useMemo(() => getHubContent(profile), [profile]);
-  const [activeConcept, setActiveConcept] = useState(DEFAULT_ACTIVE_CONCEPT);
-
-  useEffect(() => {
-    setActiveConcept(buildStatusLine(conceptCatalog[0], `${hubContent.name} • ${hubContent.title}`));
-  }, [conceptCatalog, hubContent]);
+  const labelPools = useMemo(() => buildLabelPools(profile), [profile]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -164,575 +126,528 @@ const AIBackground = ({ profile }) => {
     const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
 
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-    let dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-    let colors;
-    let nodes = [];
-    let queryPackets = [];
-    let neuralWaves = [];
-    let mouse = { x: -1000, y: -1000, active: false };
-    let lastFrameTime = performance.now();
-    let animationFrameId = null;
-    let scrollTimeoutId = null;
-    let mouseMoveFrameId = null;
-    let pendingMousePosition = null;
-    let destroyed = false;
-    let isScrolling = false;
-    let isTabHidden = document.hidden;
-    let prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    const getThemeColors = () => {
-      const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
-      return isDark
-        ? {
-            bg: '#0a0c10',
-            bgGlow: 'rgba(56, 189, 248, 0.08)',
-            grid: 'rgba(148, 163, 184, 0.05)',
-            nodeCore: '#38bdf8',
-            nodeAgent: '#a855f7',
-            nodeVector: '#22d3ee',
-            nodeApi: '#f59e0b',
-            nodeGraph: '#34d399',
-            line: 'rgba(56, 189, 248, 0.08)',
-            lineActive: 'rgba(34, 211, 238, 0.35)',
-            hubRing: 'rgba(125, 211, 252, 0.2)',
-            textMuted: '#7c8aa1',
-            textHighlight: '#dbe7f5',
-            packetCore: '#38bdf8',
-            packetAgent: '#c084fc',
-            packetVector: '#34d399',
-            pillBg: 'rgba(9, 14, 25, 0.72)',
-            halo: 'rgba(56, 189, 248, 0.05)'
-          }
-        : {
-            bg: '#f8fafc',
-            bgGlow: 'rgba(14, 165, 233, 0.07)',
-            grid: 'rgba(14, 165, 233, 0.05)',
-            nodeCore: '#0284c7',
-            nodeAgent: '#7e22ce',
-            nodeVector: '#0d9488',
-            nodeApi: '#d97706',
-            nodeGraph: '#059669',
-            line: 'rgba(14, 165, 233, 0.08)',
-            lineActive: 'rgba(14, 165, 233, 0.28)',
-            hubRing: 'rgba(14, 165, 233, 0.16)',
-            textMuted: '#64748b',
-            textHighlight: '#1e293b',
-            packetCore: '#0284c7',
-            packetAgent: '#9333ea',
-            packetVector: '#059669',
-            pillBg: 'rgba(255, 255, 255, 0.8)',
-            halo: 'rgba(14, 165, 233, 0.04)'
-          };
+    let prefersReducedMotion = reducedMotionQuery.matches;
+    let animationId = 0;
+    let width = 0;
+    let height = 0;
+    let devicePixelRatio = window.devicePixelRatio || 1;
+    let lastTime = performance.now();
+    let isTabActive = !document.hidden;
+    let lastQueryTime = 0;
+    let shieldRotation = 0;
+
+    let nodes = [];
+    let waves = [];
+    let particles = [];
+
+    const { fileLabels, symbolLabels, mcpLabels, queryLabels } = labelPools;
+
+    const setCanvasTheme = () => {
+      canvas.style.mixBlendMode = getBlendMode();
     };
 
-    const getColorForType = (type) => {
-      switch (type) {
-        case 'agent':
-          return colors.nodeAgent;
-        case 'vector':
-          return colors.nodeVector;
-        case 'rag':
-          return colors.nodeVector;
-        case 'api':
-          return colors.nodeApi;
-        case 'graph':
-          return colors.nodeGraph;
-        case 'core':
-        default:
-          return colors.nodeCore;
+    function getResponsiveConfig() {
+      const innerWidth = window.innerWidth;
+      if (innerWidth < 768) {
+        return {
+          nodeCount: 14,
+          connectionDistance: 100,
+          showLabels: false,
+          enableParticles: false,
+          enableWaves: false,
+          enableShield: false,
+          particleLimit: 0
+        };
       }
-    };
 
-    const drawGlowCircles = (x, y, radius, color, layers) => {
-      const previousAlpha = ctx.globalAlpha;
-      ctx.fillStyle = color;
-
-      layers.forEach(({ scale, alpha }) => {
-        ctx.globalAlpha = alpha;
-        ctx.beginPath();
-        ctx.arc(x, y, radius * scale, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
-      ctx.globalAlpha = previousAlpha;
-    };
-
-    const drawLabelChip = (node, nodeColor) => {
-      const chipHeight = 24;
-      const chipWidth = Math.max(120, Math.min(node.labelWidth + 28, 230));
-      const x = node.x - chipWidth / 2;
-      const y = node.y + node.radius + 14;
-
-      ctx.fillStyle = colors.pillBg;
-      ctx.strokeStyle = hexToRgba(nodeColor, 0.3);
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.roundRect(x, y, chipWidth, chipHeight, 12);
-      ctx.fill();
-      ctx.stroke();
-
-      ctx.fillStyle = nodeColor;
-      ctx.beginPath();
-      ctx.arc(x + 12, y + chipHeight / 2, 3, 0, Math.PI * 2);
-      ctx.fill();
-
-      ctx.fillStyle = colors.textHighlight;
-      ctx.font = '600 10.5px Inter, sans-serif';
-      ctx.textAlign = 'left';
-      ctx.fillText(node.label, x + 22, y + 15);
-    };
-
-    const drawBackgroundField = () => {
-      ctx.fillStyle = colors.bgGlow;
-      ctx.beginPath();
-      ctx.arc(width * 0.25, height * 0.2, Math.min(width, height) * 0.22, 0, Math.PI * 2);
-      ctx.fill();
-
-      ctx.beginPath();
-      ctx.arc(width * 0.76, height * 0.72, Math.min(width, height) * 0.28, 0, Math.PI * 2);
-      ctx.fill();
-
-      ctx.strokeStyle = colors.grid;
-      ctx.lineWidth = 1;
-      const spacing = width < 768 ? 140 : 180;
-
-      for (let x = (Math.sin(lastFrameTime * 0.0001) * 18); x < width + spacing; x += spacing) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x - height * 0.16, height);
-        ctx.stroke();
+      if (innerWidth < 1024) {
+        return {
+          nodeCount: 24,
+          connectionDistance: 130,
+          showLabels: true,
+          enableParticles: true,
+          enableWaves: true,
+          enableShield: true,
+          particleLimit: 3
+        };
       }
-    };
 
-    function resize() {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-      canvas.width = Math.floor(width * dpr);
-      canvas.height = Math.floor(height * dpr);
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      return {
+        nodeCount: 38,
+        connectionDistance: 180,
+        showLabels: true,
+        enableParticles: true,
+        enableWaves: true,
+        enableShield: true,
+        particleLimit: 7
+      };
     }
 
     function initNodes() {
+      const config = getResponsiveConfig();
       nodes = [];
-      queryPackets = [];
-      neuralWaves = [];
+      waves = [];
+      particles = [];
 
-      const count = Math.min(conceptCatalog.length, width < 600 ? 6 : width < 1024 ? 9 : MAX_NODES);
-      const orbitBase = Math.min(width, height) * (width < 600 ? 0.26 : 0.3);
-      const centerX = width / 2;
-      const centerY = height / 2;
+      for (let i = 0; i < config.nodeCount; i += 1) {
+        let type = 'file';
+        let label = '';
+        let color = '#38bdf8';
 
-      for (let i = 0; i < count; i += 1) {
-        const item = conceptCatalog[i % conceptCatalog.length];
-        const angle = (i / count) * Math.PI * 2 + Math.random() * 0.25;
-        const orbit = orbitBase + (i % 3) * 28 + Math.random() * 26;
-        const labelWidth = ctx.measureText(item.label).width;
+        if (i === 0 && config.enableShield) {
+          type = 'mcp';
+          label = mcpLabels[0] || 'JBR Portfolio Hub';
+          color = '#a78bfa';
+        } else if (i === 1 && config.enableWaves) {
+          type = 'query';
+          label = queryLabels[Math.floor(Math.random() * queryLabels.length)] || FALLBACK_POOLS.queryLabels[0];
+          color = '#34d399';
+        } else {
+          const random = Math.random();
+          if (random < 0.45) {
+            type = 'file';
+            label = fileLabels[Math.floor(Math.random() * fileLabels.length)] || FALLBACK_POOLS.fileLabels[0];
+            color = '#38bdf8';
+          } else if (random < 0.8) {
+            type = 'symbol';
+            label = symbolLabels[Math.floor(Math.random() * symbolLabels.length)] || FALLBACK_POOLS.symbolLabels[0];
+            color = '#7c3aed';
+          } else if (random < 0.9) {
+            type = 'mcp';
+            label = mcpLabels[Math.floor(Math.random() * mcpLabels.length)] || FALLBACK_POOLS.mcpLabels[0];
+            color = '#60a5fa';
+          } else {
+            type = 'query';
+            label = queryLabels[Math.floor(Math.random() * queryLabels.length)] || FALLBACK_POOLS.queryLabels[0];
+            color = '#34d399';
+          }
+        }
+
+        const radius = type === 'mcp' ? 6 : type === 'query' ? 5 : 4;
+        const baseOpacity = type === 'mcp' || type === 'query' ? 0.35 : 0.2;
+        const x = Math.random() * (width - 100) + 50;
+        const y = Math.random() * (height - 100) + 50;
+        const maxSpeed = type === 'mcp' ? 0.08 : 0.15;
 
         nodes.push({
           id: i,
-          x: centerX + Math.cos(angle) * orbit,
-          y: centerY + Math.sin(angle) * orbit * 0.72,
-          vx: (Math.random() - 0.5) * 0.12,
-          vy: (Math.random() - 0.5) * 0.12,
-          radius: item.type === 'core' ? 15 : item.type === 'agent' ? 13 : 11,
-          label: item.label,
-          desc: item.desc,
-          labelWidth,
-          type: item.type,
-          orbit,
-          pulse: Math.random() * Math.PI * 2,
-          pulseSpeed: 0.012 + Math.random() * 0.012
+          x,
+          y,
+          vx: (Math.random() - 0.5) * maxSpeed,
+          vy: (Math.random() - 0.5) * maxSpeed,
+          radius,
+          label,
+          type,
+          baseOpacity,
+          opacity: baseOpacity,
+          glow: 0,
+          color
         });
       }
-
-      neuralWaves.push({
-        x: centerX,
-        y: centerY,
-        r: 34,
-        maxR: Math.max(width, height) * 0.48,
-        speed: 1.2,
-        alpha: 0.18
-      });
     }
 
-    function spawnQueryPacket() {
-      if (nodes.length < 2) return;
+    function triggerSemanticQuery() {
+      const config = getResponsiveConfig();
+      if (!config.enableWaves) return;
 
-      const srcIdx = Math.floor(Math.random() * nodes.length);
-      let targetIdx = Math.floor(Math.random() * nodes.length);
-      while (targetIdx === srcIdx) {
-        targetIdx = Math.floor(Math.random() * nodes.length);
+      const sourceNodes = nodes.filter((node) => node.type === 'query' || node.type === 'mcp');
+      if (!sourceNodes.length) return;
+
+      const source = sourceNodes[Math.floor(Math.random() * sourceNodes.length)];
+      if (source.type === 'query') {
+        source.label = queryLabels[Math.floor(Math.random() * queryLabels.length)] || source.label;
       }
 
-      const src = nodes[srcIdx];
-      const target = nodes[targetIdx];
-      const packetColor = src.type === 'agent'
-        ? colors.packetAgent
-        : src.type === 'vector' || src.type === 'rag' || src.type === 'graph'
-          ? colors.packetVector
-          : colors.packetCore;
-
-      queryPackets.push({
-        x: src.x,
-        y: src.y,
-        targetX: target.x,
-        targetY: target.y,
-        progress: 0,
-        speed: 0.006 + Math.random() * 0.008,
-        color: packetColor
+      waves.push({
+        x: source.x,
+        y: source.y,
+        radius: 10,
+        maxRadius: Math.max(width, height) * 0.45,
+        speed: 1.8,
+        opacity: 0.6,
+        color: source.color,
+        sourceNodeId: source.id
       });
-    }
 
-    const packetInterval = window.setInterval(() => {
-      if (isScrolling || isTabHidden || prefersReducedMotion) return;
-      if (queryPackets.length < 3) {
-        spawnQueryPacket();
-      }
-    }, 2400);
+      source.glow = 1;
 
-    const drawHub = () => {
-      const centerX = width / 2;
-      const centerY = height / 2;
-
-      drawGlowCircles(centerX, centerY, 54, colors.nodeCore, [
-        { scale: 2.7, alpha: 0.05 },
-        { scale: 1.9, alpha: 0.1 },
-        { scale: 1.25, alpha: 0.2 }
-      ]);
-
-      ctx.strokeStyle = colors.hubRing;
-      ctx.lineWidth = 1.2;
-      [72, 104, 138].forEach((radius, index) => {
-        ctx.globalAlpha = 0.6 - index * 0.12;
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-        ctx.stroke();
-      });
-      ctx.globalAlpha = 1;
-
-      ctx.fillStyle = colors.textHighlight;
-      ctx.textAlign = 'center';
-      ctx.font = '800 28px Inter, sans-serif';
-      ctx.fillText(hubContent.initials, centerX, centerY - 4);
-
-      ctx.font = '600 12px Inter, sans-serif';
-      ctx.fillText(hubContent.name, centerX, centerY + 18);
-
-      ctx.fillStyle = colors.textMuted;
-      ctx.font = '500 11px Inter, sans-serif';
-      ctx.fillText(hubContent.title, centerX, centerY + 36);
-    };
-
-    function draw() {
-      ctx.clearRect(0, 0, width, height);
-      drawBackgroundField();
-      drawHub();
-
-      for (let i = 0; i < nodes.length; i += 1) {
-        const n1 = nodes[i];
-
-        ctx.strokeStyle = colors.line;
-        ctx.lineWidth = 0.9;
-        ctx.beginPath();
-        ctx.moveTo(width / 2, height / 2);
-        ctx.lineTo(n1.x, n1.y);
-        ctx.stroke();
-
-        for (let j = i + 1; j < nodes.length; j += 1) {
-          const n2 = nodes[j];
-          const dx = n2.x - n1.x;
-          const dy = n2.y - n1.y;
-          const dist = Math.hypot(dx, dy);
-          if (dist < (width < 600 ? 200 : 260)) {
-            ctx.strokeStyle = colors.line;
-            ctx.beginPath();
-            ctx.moveTo(n1.x, n1.y);
-            ctx.lineTo(n2.x, n2.y);
-            ctx.stroke();
-          }
+      if (config.enableParticles) {
+        const potentialTargets = nodes.filter((node) => node.id !== source.id && node.type !== 'query');
+        const numTargets = Math.min(3, potentialTargets.length);
+        for (let j = 0; j < numTargets; j += 1) {
+          const target = potentialTargets[Math.floor(Math.random() * potentialTargets.length)];
+          if (!target) continue;
+          particles.push({
+            fromNodeId: source.id,
+            toNodeId: target.id,
+            progress: 0,
+            speed: 0.008 + Math.random() * 0.008,
+            color: source.color,
+            size: 2 + Math.random() * 1.5
+          });
         }
       }
-
-      neuralWaves.forEach((wave) => {
-        ctx.strokeStyle = colors.lineActive;
-        ctx.lineWidth = 1.1;
-        ctx.globalAlpha = wave.alpha;
-        ctx.beginPath();
-        ctx.arc(wave.x, wave.y, wave.r, 0, Math.PI * 2);
-        ctx.stroke();
-        ctx.globalAlpha = 1;
-      });
-
-      queryPackets.forEach((packet) => {
-        const currX = packet.x + (packet.targetX - packet.x) * packet.progress;
-        const currY = packet.y + (packet.targetY - packet.y) * packet.progress;
-
-        ctx.strokeStyle = packet.color;
-        ctx.lineWidth = 1.8;
-        ctx.globalAlpha = 0.7;
-        ctx.beginPath();
-        ctx.moveTo(currX - (packet.targetX - packet.x) * 0.05, currY - (packet.targetY - packet.y) * 0.05);
-        ctx.lineTo(currX, currY);
-        ctx.stroke();
-
-        drawGlowCircles(currX, currY, 3, packet.color, [
-          { scale: 3.2, alpha: 0.08 },
-          { scale: 2.2, alpha: 0.16 },
-          { scale: 1.4, alpha: 0.26 }
-        ]);
-
-        ctx.globalAlpha = 0.95;
-        ctx.fillStyle = packet.color;
-        ctx.beginPath();
-        ctx.arc(currX, currY, 3, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.globalAlpha = 1;
-      });
-
-      nodes.forEach((node) => {
-        const pulseScale = 1 + Math.sin(node.pulse) * 0.1;
-        const nodeColor = getColorForType(node.type);
-        const isNearMouse = mouse.active && Math.hypot(mouse.x - node.x, mouse.y - node.y) < 110;
-
-        ctx.fillStyle = colors.halo;
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, node.radius * pulseScale * 2.1, 0, Math.PI * 2);
-        ctx.fill();
-
-        drawGlowCircles(node.x, node.y, node.radius * pulseScale, nodeColor, isNearMouse
-          ? [
-              { scale: 2.6, alpha: 0.08 },
-              { scale: 1.9, alpha: 0.15 },
-              { scale: 1.35, alpha: 0.22 }
-            ]
-          : [
-              { scale: 2.2, alpha: 0.05 },
-              { scale: 1.55, alpha: 0.1 }
-            ]);
-
-        ctx.fillStyle = nodeColor;
-
-        if (node.type === 'agent') {
-          ctx.beginPath();
-          for (let side = 0; side < 6; side += 1) {
-            const angle = (side / 6) * Math.PI * 2;
-            const hexX = node.x + Math.cos(angle) * node.radius * pulseScale;
-            const hexY = node.y + Math.sin(angle) * node.radius * pulseScale;
-            if (side === 0) ctx.moveTo(hexX, hexY);
-            else ctx.lineTo(hexX, hexY);
-          }
-          ctx.closePath();
-          ctx.fill();
-        } else if (node.type === 'vector' || node.type === 'rag' || node.type === 'graph') {
-          const size = node.radius * pulseScale * 1.55;
-          ctx.beginPath();
-          ctx.roundRect(node.x - size / 2, node.y - size / 2, size, size, 5);
-          ctx.fill();
-        } else {
-          ctx.beginPath();
-          ctx.arc(node.x, node.y, node.radius * pulseScale, 0, Math.PI * 2);
-          ctx.fill();
-        }
-
-        drawLabelChip(node, nodeColor);
-      });
     }
 
-    function update(delta) {
-      const dt = Math.min(delta / 16, 1.2);
+    function handleResize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      devicePixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
 
-      if (prefersReducedMotion) return;
+      canvas.width = width * devicePixelRatio;
+      canvas.height = height * devicePixelRatio;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
 
-      nodes.forEach((node) => {
+      initNodes();
+    }
+
+    function drawBackgroundGlows() {
+      const gradientOne = ctx.createRadialGradient(
+        width * 0.15,
+        0,
+        0,
+        width * 0.15,
+        0,
+        Math.max(width, height) * 0.5
+      );
+      gradientOne.addColorStop(0, 'rgba(124, 58, 237, 0.11)');
+      gradientOne.addColorStop(0.6, 'rgba(124, 58, 237, 0.02)');
+      gradientOne.addColorStop(1, 'transparent');
+      ctx.fillStyle = gradientOne;
+      ctx.fillRect(0, 0, width, height);
+
+      const gradientTwo = ctx.createRadialGradient(
+        width * 0.85,
+        height * 0.1,
+        0,
+        width * 0.85,
+        height * 0.1,
+        Math.max(width, height) * 0.45
+      );
+      gradientTwo.addColorStop(0, 'rgba(37, 99, 235, 0.09)');
+      gradientTwo.addColorStop(0.6, 'rgba(37, 99, 235, 0.015)');
+      gradientTwo.addColorStop(1, 'transparent');
+      ctx.fillStyle = gradientTwo;
+      ctx.fillRect(0, 0, width, height);
+    }
+
+    function drawPrivacyShield(dt) {
+      shieldRotation += 0.001 * dt;
+      const centerX = width * 0.55;
+      const centerY = height * 0.5;
+      const radius = Math.min(width, height) * 0.22;
+
+      ctx.save();
+      ctx.translate(centerX, centerY);
+      ctx.rotate(shieldRotation);
+
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.04)';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([6, 12]);
+      ctx.beginPath();
+      ctx.arc(0, 0, radius, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.rotate(-shieldRotation * 1.5);
+      ctx.strokeStyle = 'rgba(124, 58, 237, 0.03)';
+      ctx.beginPath();
+      ctx.arc(0, 0, radius + 25, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.restore();
+
+      if (width > 768) {
+        ctx.fillStyle = 'rgba(148, 163, 184, 0.18)';
+        ctx.font = '9px monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText(`${(mcpLabels[0] || 'JBR Portfolio Hub').toUpperCase()} · LOCAL PROFILE GRAPH`, centerX, centerY + radius + 15);
+        ctx.textAlign = 'left';
+      }
+    }
+
+    function updateAndDrawNodes(dt, config) {
+      nodes.forEach((node, index) => {
         node.x += node.vx * dt;
         node.y += node.vy * dt;
 
-        if (mouse.active) {
-          const dx = node.x - mouse.x;
-          const dy = node.y - mouse.y;
-          const dist = Math.hypot(dx, dy);
-          if (dist < 110 && dist > 0) {
-            const force = (110 - dist) / 110;
-            node.x += (dx / dist) * force * 1.1;
-            node.y += (dy / dist) * force * 1.1;
+        const margin = 20;
+        if (node.x < margin) {
+          node.x = margin;
+          node.vx *= -1;
+        }
+        if (node.x > width - margin) {
+          node.x = width - margin;
+          node.vx *= -1;
+        }
+        if (node.y < margin) {
+          node.y = margin;
+          node.vy *= -1;
+        }
+        if (node.y > height - margin) {
+          node.y = height - margin;
+          node.vy *= -1;
+        }
+
+        if (node.glow > 0) {
+          node.glow -= 0.015 * dt;
+          if (node.glow < 0) node.glow = 0;
+        }
+
+        node.opacity = node.baseOpacity + node.glow * 0.45;
+        const drawRadius = node.radius + node.glow * 3;
+
+        if (node.glow > 0.01) {
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, drawRadius * 2.5, 0, Math.PI * 2);
+          ctx.fillStyle = node.color;
+          ctx.globalAlpha = node.glow * 0.18;
+          ctx.fill();
+        }
+
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, drawRadius, 0, Math.PI * 2);
+        ctx.fillStyle = node.color;
+        ctx.globalAlpha = node.opacity;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+
+        if (config.showLabels && node.label && index % (config.nodeCount > 25 ? 3 : 4) === 0) {
+          const textAlpha = 0.14 + node.glow * 0.45;
+          ctx.fillStyle = `rgba(148, 163, 184, ${textAlpha})`;
+          ctx.font = node.type === 'query' ? 'italic 10px sans-serif' : '9px monospace';
+          ctx.fillText(node.label, node.x + drawRadius + 6, node.y + 3);
+
+          if (node.glow > 0.4) {
+            ctx.strokeStyle = `rgba(56, 189, 248, ${node.glow * 0.25})`;
+            ctx.lineWidth = 0.5;
+            ctx.strokeText(node.label, node.x + drawRadius + 6, node.y + 3);
           }
         }
-
-        const padX = 90;
-        const padY = 80;
-        if (node.x < padX) {
-          node.x = padX;
-          node.vx *= -1;
-        }
-        if (node.x > width - padX) {
-          node.x = width - padX;
-          node.vx *= -1;
-        }
-        if (node.y < padY) {
-          node.y = padY;
-          node.vy *= -1;
-        }
-        if (node.y > height - padY) {
-          node.y = height - padY;
-          node.vy *= -1;
-        }
-
-        node.pulse += node.pulseSpeed;
       });
-
-      neuralWaves = neuralWaves
-        .map((wave) => ({
-          ...wave,
-          r: wave.r + wave.speed,
-          alpha: Math.max(0, 0.18 * (1 - (wave.r + wave.speed) / wave.maxR))
-        }))
-        .filter((wave) => wave.r < wave.maxR && wave.alpha > 0);
-
-      queryPackets = queryPackets
-        .map((packet) => ({
-          ...packet,
-          progress: Math.min(1, packet.progress + packet.speed * dt)
-        }))
-        .filter((packet) => packet.progress < 1);
     }
 
-    function loop(ts = performance.now()) {
-      if (destroyed) return;
+    function drawConnections(config) {
+      for (let i = 0; i < nodes.length; i += 1) {
+        const source = nodes[i];
+        let connectionCount = 0;
 
-      animationFrameId = window.requestAnimationFrame(loop);
+        for (let j = i + 1; j < nodes.length; j += 1) {
+          if (connectionCount >= (config.nodeCount > 25 ? 3 : 2)) break;
 
-      if (isTabHidden || isScrolling) {
-        lastFrameTime = ts;
+          const target = nodes[j];
+          const distance = Math.hypot(source.x - target.x, source.y - target.y);
+          if (distance >= config.connectionDistance) continue;
+
+          const glowFactor = Math.max(source.glow, target.glow);
+          const lineOpacity = 0.05 + glowFactor * 0.25;
+
+          if (glowFactor > 0.1) {
+            const gradient = ctx.createLinearGradient(source.x, source.y, target.x, target.y);
+            gradient.addColorStop(0, source.glow > 0.1 ? source.color : 'rgba(42, 55, 87, 0.05)');
+            gradient.addColorStop(1, target.glow > 0.1 ? target.color : 'rgba(42, 55, 87, 0.05)');
+            ctx.strokeStyle = gradient;
+            ctx.lineWidth = 1.2;
+          } else {
+            ctx.strokeStyle = `rgba(42, 55, 87, ${lineOpacity})`;
+            ctx.lineWidth = 0.85;
+          }
+
+          ctx.beginPath();
+          ctx.moveTo(source.x, source.y);
+          ctx.lineTo(target.x, target.y);
+          ctx.stroke();
+          connectionCount += 1;
+        }
+      }
+    }
+
+    function updateAndDrawWaves(dt) {
+      for (let i = waves.length - 1; i >= 0; i -= 1) {
+        const wave = waves[i];
+        wave.radius += wave.speed * dt;
+        wave.opacity -= 0.0075 * dt;
+
+        if (wave.opacity <= 0 || wave.radius >= wave.maxRadius) {
+          waves.splice(i, 1);
+          continue;
+        }
+
+        ctx.strokeStyle = wave.color;
+        ctx.globalAlpha = wave.opacity * 0.25;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(wave.x, wave.y, wave.radius, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+
+        nodes.forEach((node) => {
+          if (node.id === wave.sourceNodeId) return;
+          const distance = Math.hypot(node.x - wave.x, node.y - wave.y);
+          if (Math.abs(distance - wave.radius) < 8) {
+            node.glow = Math.max(node.glow, wave.opacity * 0.95);
+          }
+        });
+      }
+    }
+
+    function updateAndDrawParticles(dt, config) {
+      if (particles.length < config.particleLimit && Math.random() < 0.02) {
+        const fromIndex = Math.floor(Math.random() * nodes.length);
+        const fromNode = nodes[fromIndex];
+        const targets = nodes.filter((node, index) => {
+          if (index === fromIndex) return false;
+          const distance = Math.hypot(node.x - fromNode.x, node.y - fromNode.y);
+          return distance < config.connectionDistance * 1.5;
+        });
+
+        if (targets.length) {
+          const target = targets[Math.floor(Math.random() * targets.length)];
+          particles.push({
+            fromNodeId: fromNode.id,
+            toNodeId: target.id,
+            progress: 0,
+            speed: 0.003 + Math.random() * 0.005,
+            color: Math.random() > 0.5 ? fromNode.color : target.color,
+            size: 1.5 + Math.random() * 1.5
+          });
+        }
+      }
+
+      for (let i = particles.length - 1; i >= 0; i -= 1) {
+        const particle = particles[i];
+        particle.progress += particle.speed * dt;
+
+        const source = nodes.find((node) => node.id === particle.fromNodeId);
+        const target = nodes.find((node) => node.id === particle.toNodeId);
+
+        if (!source || !target || particle.progress >= 1) {
+          if (target) {
+            target.glow = Math.max(target.glow, 0.45);
+          }
+          particles.splice(i, 1);
+          continue;
+        }
+
+        const px = source.x + (target.x - source.x) * particle.progress;
+        const py = source.y + (target.y - source.y) * particle.progress;
+
+        ctx.beginPath();
+        ctx.arc(px, py, particle.size * 2, 0, Math.PI * 2);
+        ctx.fillStyle = particle.color;
+        ctx.globalAlpha = 0.18;
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(px, py, particle.size, 0, Math.PI * 2);
+        ctx.fillStyle = particle.color;
+        ctx.globalAlpha = 0.7;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    function drawStaticGraph(config) {
+      drawBackgroundGlows();
+      if (config.enableShield) {
+        drawPrivacyShield(1);
+      }
+
+      ctx.strokeStyle = 'rgba(42, 55, 87, 0.12)';
+      ctx.lineWidth = 1;
+      for (let i = 0; i < nodes.length; i += 1) {
+        const source = nodes[i];
+        let connectionCount = 0;
+        for (let j = i + 1; j < nodes.length; j += 1) {
+          if (connectionCount > 2) break;
+          const target = nodes[j];
+          const distance = Math.hypot(source.x - target.x, source.y - target.y);
+          if (distance < config.connectionDistance) {
+            ctx.beginPath();
+            ctx.moveTo(source.x, source.y);
+            ctx.lineTo(target.x, target.y);
+            ctx.stroke();
+            connectionCount += 1;
+          }
+        }
+      }
+
+      nodes.forEach((node, index) => {
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+        ctx.fillStyle = node.color;
+        ctx.globalAlpha = node.baseOpacity;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+
+        if (config.showLabels && index % 3 === 0) {
+          ctx.fillStyle = 'rgba(148, 163, 184, 0.4)';
+          ctx.font = '9px monospace';
+          ctx.fillText(node.label, node.x + node.radius + 6, node.y + 3);
+        }
+      });
+    }
+
+    function animate(now) {
+      if (!isTabActive) {
+        animationId = window.requestAnimationFrame(animate);
         return;
       }
 
-      const delta = ts - lastFrameTime;
-      if (delta < FRAME_INTERVAL) return;
+      const deltaTime = now - lastTime;
+      lastTime = now;
+      const dt = Math.min(deltaTime, 35) / 16.666;
 
-      lastFrameTime = ts;
-      update(delta);
-      draw();
-    }
+      ctx.clearRect(0, 0, width, height);
+      const config = getResponsiveConfig();
 
-    const handleCanvasClick = (event) => {
-      const rect = canvas.getBoundingClientRect();
-      const clickX = event.clientX - rect.left;
-      const clickY = event.clientY - rect.top;
-
-      neuralWaves.push({
-        x: clickX,
-        y: clickY,
-        r: 6,
-        maxR: 280,
-        speed: 2.8,
-        alpha: 0.24
-      });
-
-      let closestNode = null;
-      let minDist = Infinity;
-      nodes.forEach((node) => {
-        const distance = Math.hypot(clickX - node.x, clickY - node.y);
-        if (distance < minDist) {
-          minDist = distance;
-          closestNode = node;
-        }
-      });
-
-      if (closestNode && minDist < 160) {
-        setActiveConcept(buildStatusLine(closestNode));
-        spawnQueryPacket();
-      } else {
-        setActiveConcept(`${hubContent.name} • ${hubContent.title}`);
-      }
-
-      if (!isScrolling && !isTabHidden) {
-        draw();
-      }
-    };
-
-    const flushMouseMove = () => {
-      if (!pendingMousePosition) {
-        mouseMoveFrameId = null;
+      if (prefersReducedMotion) {
+        drawStaticGraph(config);
         return;
       }
 
-      const rect = canvas.getBoundingClientRect();
-      mouse.x = pendingMousePosition.clientX - rect.left;
-      mouse.y = pendingMousePosition.clientY - rect.top;
-      mouse.active = true;
-      pendingMousePosition = null;
-      mouseMoveFrameId = null;
-    };
+      drawBackgroundGlows();
 
-    const handleMouseMove = (event) => {
-      pendingMousePosition = { clientX: event.clientX, clientY: event.clientY };
-      if (mouseMoveFrameId === null) {
-        mouseMoveFrameId = window.requestAnimationFrame(flushMouseMove);
-      }
-    };
-
-    const handleMouseLeave = () => {
-      pendingMousePosition = null;
-      mouse.active = false;
-    };
-
-    const handleScroll = () => {
-      isScrolling = true;
-      if (scrollTimeoutId) {
-        window.clearTimeout(scrollTimeoutId);
+      if (config.enableShield) {
+        drawPrivacyShield(dt);
       }
 
-      scrollTimeoutId = window.setTimeout(() => {
-        isScrolling = false;
-        lastFrameTime = performance.now();
-      }, SCROLL_IDLE_DELAY);
-    };
+      updateAndDrawNodes(dt, config);
+      drawConnections(config);
+      updateAndDrawWaves(dt);
 
-    const resizeHandler = () => {
-      resize();
-      initNodes();
-      if (!isScrolling && !isTabHidden) {
-        draw();
+      if (config.enableParticles) {
+        updateAndDrawParticles(dt, config);
       }
-    };
+
+      if (config.enableWaves && now - lastQueryTime > 6000) {
+        triggerSemanticQuery();
+        lastQueryTime = now;
+      }
+
+      animationId = window.requestAnimationFrame(animate);
+    }
 
     const handleVisibilityChange = () => {
-      isTabHidden = document.hidden;
-      if (!isTabHidden) {
-        lastFrameTime = performance.now();
-        if (!isScrolling) {
-          draw();
-        }
+      isTabActive = !document.hidden;
+      if (isTabActive) {
+        lastTime = performance.now();
       }
     };
 
     const handleReducedMotionChange = (event) => {
       prefersReducedMotion = event.matches;
-      lastFrameTime = performance.now();
-      if (!isScrolling && !isTabHidden) {
-        draw();
-      }
+      lastTime = performance.now();
     };
 
-    const themeObserver = new MutationObserver(() => {
-      colors = getThemeColors();
-      if (!isScrolling && !isTabHidden) {
-        draw();
-      }
-    });
+    const themeObserver = new MutationObserver(setCanvasTheme);
 
-    colors = getThemeColors();
-    resize();
-    initNodes();
-    draw();
-
+    setCanvasTheme();
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
     themeObserver.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ['data-theme', 'data-bs-theme']
@@ -744,58 +659,37 @@ const AIBackground = ({ profile }) => {
       reducedMotionQuery.addListener(handleReducedMotionChange);
     }
 
-    window.addEventListener('resize', resizeHandler, { passive: true });
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    window.addEventListener('mouseleave', handleMouseLeave, { passive: true });
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    canvas.addEventListener('click', handleCanvasClick);
-
-    animationFrameId = window.requestAnimationFrame(loop);
+    animationId = window.requestAnimationFrame(animate);
 
     return () => {
-      destroyed = true;
-      window.clearInterval(packetInterval);
-      if (scrollTimeoutId) {
-        window.clearTimeout(scrollTimeoutId);
-      }
-      if (mouseMoveFrameId !== null) {
-        window.cancelAnimationFrame(mouseMoveFrameId);
-      }
-      if (animationFrameId !== null) {
-        window.cancelAnimationFrame(animationFrameId);
-      }
-      window.removeEventListener('resize', resizeHandler);
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseleave', handleMouseLeave);
+      window.cancelAnimationFrame(animationId);
+      window.removeEventListener('resize', handleResize);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
-      canvas.removeEventListener('click', handleCanvasClick);
+      themeObserver.disconnect();
       if (typeof reducedMotionQuery.removeEventListener === 'function') {
         reducedMotionQuery.removeEventListener('change', handleReducedMotionChange);
       } else {
         reducedMotionQuery.removeListener(handleReducedMotionChange);
       }
-      themeObserver.disconnect();
     };
-  }, [conceptCatalog, hubContent]);
+  }, [labelPools]);
 
   return (
-    <>
-      <canvas
-        ref={canvasRef}
-        id="ai-bg-canvas"
-        aria-label="Interactive AI portfolio background visualizing profile-driven AI systems, agents, projects, and technical capabilities"
-      />
-
-      <div className="ai-bg-status-badge d-none d-md-flex flex-column align-items-start gap-1">
-        <div className="d-flex align-items-center gap-2">
-          <span className="pulse-dot flex-shrink-0 me-1"></span>
-          <span className="concept-text fw-semibold text-body">{activeConcept}</span>
-        </div>
-        <LiveClock />
-      </div>
-    </>
+    <canvas
+      ref={canvasRef}
+      id="ai-bg-canvas"
+      aria-hidden="true"
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        zIndex: 0,
+        pointerEvents: 'none',
+        mixBlendMode: 'screen'
+      }}
+    />
   );
 };
 
