@@ -93,6 +93,9 @@ each section component            → renders from profile data
   later be swapped for a real API/DB **without touching any component**.
 - Components receive `profile` as a prop and use safe fallbacks
   (e.g. `personal.name || 'Jaibir Singh'`).
+- `AIBackground.jsx` is also profile-driven: its labels, agent names, and
+  workflow terminology should be derived from `profile.json` (experience,
+  projects, skills, tech pills, etc.), not hard-coded to unrelated sample text.
 
 ---
 
@@ -111,6 +114,9 @@ each section component            → renders from profile data
   `.fw-extrabold`, etc. — all defined in `src/index.css`.
 - Many dark-mode overrides use `!important` (e.g. `.text-muted`). Respect them;
   do not remove them casually — they fix contrast in dark mode.
+- `AIBackground.jsx` uses a fixed `<canvas id="ai-bg-canvas">` with
+  theme-sensitive blending (`mix-blend-mode` changes between dark/light themes).
+  If you adjust its colors, opacity, or blend settings, test both themes.
 
 ### Anchor navigation
 - Sections are identified by `id`: `hero`, `about`, `experience`,
@@ -122,6 +128,23 @@ each section component            → renders from profile data
 - `.navbar-header` is `position: fixed`. `index.css` contains explicit
   `!important` rules to prevent hero-content overlap. Be cautious when
   changing navbar height or hero layout — test on desktop **and** mobile.
+
+### AI background graph (`AIBackground.jsx`)
+- The background is no longer a generic particle field. It is a **hierarchical
+  Agentic AI workflow graph** inspired by the `mcp-code-graph-app` landing page
+  aesthetic.
+- It should read left-to-right as an architecture flow such as:
+  `User Query → Copilot/AI Agent → Intent Router / Task Planner → LLM /
+  Guardrails / Tool Runner → RAG / Search / API → Storage / Platform / Trace`.
+- Prefer **short technical labels** (`Azure OpenAI`, `LangGraph`, `FastAPI`,
+  `Vector Index`, `Svc Bus`, `Eval + Trace`) over long prose.
+- Agent/project labels should be based on real portfolio content where possible
+  (e.g. `Review Agent`, `Supplier Bot`, `ISR Agent`).
+- The component intentionally supports **desktop and mobile** with different
+  visible-node densities; if you change layout or label density, verify that the
+  animation remains visible on small screens.
+- It also supports `prefers-reduced-motion` and pauses when the tab is hidden;
+  preserve those behaviors.
 
 ### Vite config
 - `base: './'` is set so asset paths are relative — this is **required** for
@@ -140,7 +163,7 @@ each section component            → renders from profile data
 | Component | Role |
 |---|---|
 | `App.jsx` | Root; handles theme state, profile loading, project modal selection; composes all sections in order |
-| `AIBackground.jsx` | Fixed animated canvas background (`#ai-bg-canvas`) |
+| `AIBackground.jsx` | Fixed animated hierarchical Agentic AI workflow canvas background (`#ai-bg-canvas`), visually inspired by `mcp-code-graph-app` and populated from profile data |
 | `Navbar.jsx` | Fixed header: logo, desktop links, theme toggle, "Get In Touch", mobile drawer (contains the **Download Resume** link) |
 | `Hero.jsx` | Name, tagline, tech pills, CTAs, and photo ⇄ RAG-diagram switcher |
 | `About.jsx` | Summary + highlights |
@@ -251,6 +274,9 @@ Before finishing any change, verify:
 - [ ] No `dist/`, `node_modules/`, or env files are staged in git.
 - [ ] Dark **and** light themes both render correctly.
 - [ ] Mobile (drawer nav) and desktop layouts still work.
+- [ ] If `AIBackground.jsx` changed, the workflow hierarchy still reads clearly,
+      labels remain short and profile-relevant, and the animation is visible on
+      both desktop and mobile.
 - [ ] If the resume PDF changed, it was regenerated via
       `scripts/generate_resume.py` (and `public/Jaibir-Singh-Resume.pdf` updated).
 - [ ] If you touched `AIPipelineVisualizer`, step numbers stay within `1..4`
