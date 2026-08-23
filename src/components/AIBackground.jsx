@@ -1,33 +1,40 @@
 import React, { useEffect, useMemo, useRef } from 'react';
 
-const FALLBACK_POOLS = {
+const STATIC_LABELS = {
   fileLabels: [
-    'projects/review-agent.tsx',
-    'projects/supplier-chatbot.tsx',
-    'skills/python-fastapi.ts',
-    'platform/backstage-idp.yaml',
-    'cloud/azure-openai.json',
-    'search/vector-search.ts'
+    'src/App.jsx',
+    'src/components/Hero.jsx',
+    'src/data/profile.json',
+    'package.json',
+    'vite.config.js',
+    'public/Jaibir-Singh-Resume.pdf',
+    'mcp_graph.db',
+    'portfolio-index.ts'
   ],
   symbolLabels: [
-    'buildAgenticAIWorkflow()',
-    'deployRAGPipeline()',
-    'optimizePromptGuardrails()',
-    'reviewComplianceDocuments()',
-    'scaleFastAPIMicroservices()',
-    'designBackstagePortal()'
+    'trace_dependencies()',
+    'search_symbols()',
+    'Copilot Agent',
+    'AI Agent',
+    'Local Inference',
+    'get_codebase_summary()',
+    'review_agent()',
+    'vector_search()'
   ],
   mcpLabels: [
-    'JBR Portfolio Hub',
-    'Forward Deployed AI Engineer',
-    'World Bank Group',
-    'ANZ Bank'
+    'MCP Server',
+    'Copilot Agent',
+    'Cursor Client',
+    'AI Agent',
+    'Local Inference',
+    'Azure OpenAI'
   ],
   queryLabels: [
-    '🔍 "agentic ai projects"',
-    '🔍 "rag vector search"',
-    '🔍 "azure openai solutions"',
-    '🔍 "backstage platform mesh"'
+    '🔍 "ai agent projects"',
+    '🔍 "rag pipeline"',
+    '🔍 "azure openai"',
+    '🔍 "backstage portal"',
+    '🔍 "fastapi services"'
   ]
 };
 
@@ -36,7 +43,14 @@ const truncateText = (value, max = 32) => {
   return value.length > max ? `${value.slice(0, max - 1)}…` : value;
 };
 
-const unique = (items) => [...new Set(items.filter(Boolean).map((item) => item.trim()).filter(Boolean))];
+const unique = (items) => [
+  ...new Set(
+    items
+      .filter(Boolean)
+      .map((item) => String(item).trim())
+      .filter(Boolean)
+  )
+];
 
 const toKebab = (value = '') => value
   .toLowerCase()
@@ -62,52 +76,72 @@ const buildLabelPools = (profile) => {
   const projects = (profile?.experience ?? []).flatMap((item) => (item.projects ?? []).map((project) => project.title));
   const certifications = (profile?.education ?? []).map((item) => item.degree);
 
-  const baseTerms = unique([
-    personal.name,
-    personal.title,
+  const fileSeeds = unique([
+    ...STATIC_LABELS.fileLabels,
+    ...projects,
     ...techPills,
+    ...skills,
+    ...companies,
+    ...certifications
+  ]).slice(0, 18);
+
+  const symbolSeeds = unique([
+    ...STATIC_LABELS.symbolLabels,
     ...highlights,
     ...skills,
     ...projects,
-    ...companies,
-    ...certifications
-  ]);
+    ...techPills,
+    personal.title
+  ]).slice(0, 18);
 
-  if (!baseTerms.length) {
-    return FALLBACK_POOLS;
-  }
-
-  const fileSeeds = unique([...projects, ...techPills, ...skills, ...companies, ...certifications]).slice(0, 12);
-  const symbolSeeds = unique([...highlights, ...skills, ...projects, ...techPills]).slice(0, 12);
   const mcpSeeds = unique([
-    personal.initials ? `${personal.initials} Portfolio Hub` : null,
+    ...STATIC_LABELS.mcpLabels,
+    'AI Agent',
+    'Copilot Agent',
+    'Cursor Agent',
     personal.title,
-    ...companies,
-    ...certifications,
-    ...highlights
-  ]).slice(0, 6);
-  const querySeeds = unique([...projects, ...highlights, ...techPills, ...skills]).slice(0, 8);
+    ...companies.slice(0, 3),
+    ...techPills.slice(0, 4),
+    ...certifications.slice(0, 2)
+  ]).slice(0, 12);
 
-  const folders = ['projects', 'skills', 'experience', 'platform', 'cloud', 'search'];
-  const extensions = ['.tsx', '.ts', '.md', '.yaml', '.json', '.py'];
-  const verbs = ['build', 'deploy', 'optimize', 'orchestrate', 'review', 'analyze', 'design', 'index'];
+  const querySeeds = unique([
+    ...STATIC_LABELS.queryLabels,
+    ...projects,
+    ...highlights,
+    ...techPills,
+    ...skills.slice(0, 6)
+  ]).slice(0, 14);
 
-  const fileLabels = fileSeeds.map((text, index) => (
-    `${folders[index % folders.length]}/${toKebab(truncateText(text, 28))}${extensions[index % extensions.length]}`
-  ));
+  const folders = ['projects', 'skills', 'experience', 'platform', 'cloud', 'search', 'agents', 'portfolio'];
+  const extensions = ['.jsx', '.ts', '.md', '.yaml', '.json', '.py', '.tsx'];
+  const verbs = ['build', 'deploy', 'optimize', 'orchestrate', 'review', 'analyze', 'design', 'index', 'compose'];
 
-  const symbolLabels = symbolSeeds.map((text, index) => (
-    `${verbs[index % verbs.length]}${toPascal(truncateText(text, 30))}()`
-  ));
+  const fileLabels = unique(fileSeeds.map((text, index) => {
+    if (String(text).includes('/') || String(text).includes('.')) {
+      return truncateText(String(text), 34);
+    }
+    return `${folders[index % folders.length]}/${toKebab(truncateText(String(text), 26))}${extensions[index % extensions.length]}`;
+  }));
 
-  const mcpLabels = mcpSeeds.map((text) => truncateText(text, 28));
-  const queryLabels = querySeeds.map((text) => `🔍 "${truncateText(text.toLowerCase(), 24)}"`);
+  const symbolLabels = unique(symbolSeeds.map((text, index) => {
+    if (/\(|\)|Agent|OpenAI|Cursor|Copilot|Inference/i.test(String(text))) {
+      return truncateText(String(text), 30);
+    }
+    return `${verbs[index % verbs.length]}${toPascal(truncateText(String(text), 28))}()`;
+  }));
+
+  const mcpLabels = unique(mcpSeeds.map((text) => truncateText(String(text), 28)));
+  const queryLabels = unique(querySeeds.map((text) => {
+    const clean = truncateText(String(text).toLowerCase(), 24);
+    return clean.startsWith('🔍') ? clean : `🔍 "${clean}"`;
+  }));
 
   return {
-    fileLabels: fileLabels.length ? fileLabels : FALLBACK_POOLS.fileLabels,
-    symbolLabels: symbolLabels.length ? symbolLabels : FALLBACK_POOLS.symbolLabels,
-    mcpLabels: mcpLabels.length ? mcpLabels : FALLBACK_POOLS.mcpLabels,
-    queryLabels: queryLabels.length ? queryLabels : FALLBACK_POOLS.queryLabels
+    fileLabels: fileLabels.length ? fileLabels : STATIC_LABELS.fileLabels,
+    symbolLabels: symbolLabels.length ? symbolLabels : STATIC_LABELS.symbolLabels,
+    mcpLabels: mcpLabels.length ? mcpLabels : STATIC_LABELS.mcpLabels,
+    queryLabels: queryLabels.length ? queryLabels : STATIC_LABELS.queryLabels
   };
 };
 
@@ -132,15 +166,17 @@ const AIBackground = ({ profile }) => {
     let animationId = 0;
     let width = 0;
     let height = 0;
-    let devicePixelRatio = window.devicePixelRatio || 1;
+    let devicePixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
     let lastTime = performance.now();
     let isTabActive = !document.hidden;
     let lastQueryTime = 0;
+    let lastStarTime = 0;
     let shieldRotation = 0;
 
     let nodes = [];
     let waves = [];
     let particles = [];
+    let shootingStars = [];
 
     const { fileLabels, symbolLabels, mcpLabels, queryLabels } = labelPools;
 
@@ -150,15 +186,19 @@ const AIBackground = ({ profile }) => {
 
     function getResponsiveConfig() {
       const innerWidth = window.innerWidth;
+
       if (innerWidth < 768) {
         return {
           nodeCount: 14,
           connectionDistance: 100,
           showLabels: false,
+          labelModulo: 5,
           enableParticles: false,
           enableWaves: false,
           enableShield: false,
-          particleLimit: 0
+          enableShootingStars: false,
+          particleLimit: 0,
+          starLimit: 0
         };
       }
 
@@ -167,10 +207,13 @@ const AIBackground = ({ profile }) => {
           nodeCount: 24,
           connectionDistance: 130,
           showLabels: true,
+          labelModulo: 3,
           enableParticles: true,
           enableWaves: true,
           enableShield: true,
-          particleLimit: 3
+          enableShootingStars: true,
+          particleLimit: 3,
+          starLimit: 2
         };
       }
 
@@ -178,10 +221,13 @@ const AIBackground = ({ profile }) => {
         nodeCount: 38,
         connectionDistance: 180,
         showLabels: true,
+        labelModulo: 2,
         enableParticles: true,
         enableWaves: true,
         enableShield: true,
-        particleLimit: 7
+        enableShootingStars: true,
+        particleLimit: 7,
+        starLimit: 3
       };
     }
 
@@ -190,6 +236,7 @@ const AIBackground = ({ profile }) => {
       nodes = [];
       waves = [];
       particles = [];
+      shootingStars = [];
 
       for (let i = 0; i < config.nodeCount; i += 1) {
         let type = 'file';
@@ -198,29 +245,29 @@ const AIBackground = ({ profile }) => {
 
         if (i === 0 && config.enableShield) {
           type = 'mcp';
-          label = mcpLabels[0] || 'JBR Portfolio Hub';
+          label = mcpLabels[0] || 'MCP Server';
           color = '#a78bfa';
         } else if (i === 1 && config.enableWaves) {
           type = 'query';
-          label = queryLabels[Math.floor(Math.random() * queryLabels.length)] || FALLBACK_POOLS.queryLabels[0];
+          label = queryLabels[Math.floor(Math.random() * queryLabels.length)] || '🔍 "ai agent"';
           color = '#34d399';
         } else {
           const random = Math.random();
           if (random < 0.45) {
             type = 'file';
-            label = fileLabels[Math.floor(Math.random() * fileLabels.length)] || FALLBACK_POOLS.fileLabels[0];
+            label = fileLabels[Math.floor(Math.random() * fileLabels.length)] || 'src/App.jsx';
             color = '#38bdf8';
           } else if (random < 0.8) {
             type = 'symbol';
-            label = symbolLabels[Math.floor(Math.random() * symbolLabels.length)] || FALLBACK_POOLS.symbolLabels[0];
+            label = symbolLabels[Math.floor(Math.random() * symbolLabels.length)] || 'Copilot Agent';
             color = '#7c3aed';
           } else if (random < 0.9) {
             type = 'mcp';
-            label = mcpLabels[Math.floor(Math.random() * mcpLabels.length)] || FALLBACK_POOLS.mcpLabels[0];
+            label = mcpLabels[Math.floor(Math.random() * mcpLabels.length)] || 'AI Agent';
             color = '#60a5fa';
           } else {
             type = 'query';
-            label = queryLabels[Math.floor(Math.random() * queryLabels.length)] || FALLBACK_POOLS.queryLabels[0];
+            label = queryLabels[Math.floor(Math.random() * queryLabels.length)] || '🔍 "azure openai"';
             color = '#34d399';
           }
         }
@@ -276,7 +323,8 @@ const AIBackground = ({ profile }) => {
       if (config.enableParticles) {
         const potentialTargets = nodes.filter((node) => node.id !== source.id && node.type !== 'query');
         const numTargets = Math.min(3, potentialTargets.length);
-        for (let j = 0; j < numTargets; j += 1) {
+
+        for (let index = 0; index < numTargets; index += 1) {
           const target = potentialTargets[Math.floor(Math.random() * potentialTargets.length)];
           if (!target) continue;
           particles.push({
@@ -289,6 +337,26 @@ const AIBackground = ({ profile }) => {
           });
         }
       }
+    }
+
+    function spawnShootingStar() {
+      const startFromRight = Math.random() > 0.5;
+      const startX = startFromRight ? width + 120 : Math.random() * width * 0.4;
+      const startY = Math.random() * height * 0.35;
+      const speedX = startFromRight ? -(4.5 + Math.random() * 2.2) : 4 + Math.random() * 2;
+      const speedY = 1.4 + Math.random() * 1.4;
+      const color = Math.random() > 0.45 ? '#38bdf8' : '#a78bfa';
+
+      shootingStars.push({
+        x: startX,
+        y: startY,
+        vx: speedX,
+        vy: speedY,
+        length: 70 + Math.random() * 75,
+        width: 1.1 + Math.random() * 1.1,
+        opacity: 0.28 + Math.random() * 0.22,
+        color
+      });
     }
 
     function handleResize() {
@@ -363,7 +431,7 @@ const AIBackground = ({ profile }) => {
         ctx.fillStyle = 'rgba(148, 163, 184, 0.18)';
         ctx.font = '9px monospace';
         ctx.textAlign = 'center';
-        ctx.fillText(`${(mcpLabels[0] || 'JBR Portfolio Hub').toUpperCase()} · LOCAL PROFILE GRAPH`, centerX, centerY + radius + 15);
+        ctx.fillText('COPILOT AGENT · AI AGENT · LOCAL PROFILE GRAPH', centerX, centerY + radius + 15);
         ctx.textAlign = 'left';
       }
     }
@@ -414,8 +482,12 @@ const AIBackground = ({ profile }) => {
         ctx.fill();
         ctx.globalAlpha = 1;
 
-        if (config.showLabels && node.label && index % (config.nodeCount > 25 ? 3 : 4) === 0) {
-          const textAlpha = 0.14 + node.glow * 0.45;
+        const showLabel = config.showLabels
+          && node.label
+          && (node.type === 'mcp' || node.type === 'query' || index % config.labelModulo === 0);
+
+        if (showLabel) {
+          const textAlpha = 0.18 + node.glow * 0.45;
           ctx.fillStyle = `rgba(148, 163, 184, ${textAlpha})`;
           ctx.font = node.type === 'query' ? 'italic 10px sans-serif' : '9px monospace';
           ctx.fillText(node.label, node.x + drawRadius + 6, node.y + 3);
@@ -465,13 +537,13 @@ const AIBackground = ({ profile }) => {
     }
 
     function updateAndDrawWaves(dt) {
-      for (let i = waves.length - 1; i >= 0; i -= 1) {
-        const wave = waves[i];
+      for (let index = waves.length - 1; index >= 0; index -= 1) {
+        const wave = waves[index];
         wave.radius += wave.speed * dt;
         wave.opacity -= 0.0075 * dt;
 
         if (wave.opacity <= 0 || wave.radius >= wave.maxRadius) {
-          waves.splice(i, 1);
+          waves.splice(index, 1);
           continue;
         }
 
@@ -516,8 +588,8 @@ const AIBackground = ({ profile }) => {
         }
       }
 
-      for (let i = particles.length - 1; i >= 0; i -= 1) {
-        const particle = particles[i];
+      for (let index = particles.length - 1; index >= 0; index -= 1) {
+        const particle = particles[index];
         particle.progress += particle.speed * dt;
 
         const source = nodes.find((node) => node.id === particle.fromNodeId);
@@ -527,7 +599,7 @@ const AIBackground = ({ profile }) => {
           if (target) {
             target.glow = Math.max(target.glow, 0.45);
           }
-          particles.splice(i, 1);
+          particles.splice(index, 1);
           continue;
         }
 
@@ -546,6 +618,47 @@ const AIBackground = ({ profile }) => {
         ctx.globalAlpha = 0.7;
         ctx.fill();
         ctx.globalAlpha = 1;
+      }
+    }
+
+    function updateAndDrawShootingStars(dt) {
+      for (let index = shootingStars.length - 1; index >= 0; index -= 1) {
+        const star = shootingStars[index];
+        star.x += star.vx * dt;
+        star.y += star.vy * dt;
+        star.opacity -= 0.0035 * dt;
+
+        const angle = Math.atan2(star.vy, star.vx);
+        const tailX = star.x - Math.cos(angle) * star.length;
+        const tailY = star.y - Math.sin(angle) * star.length;
+
+        const gradient = ctx.createLinearGradient(star.x, star.y, tailX, tailY);
+        gradient.addColorStop(0, star.color);
+        gradient.addColorStop(0.28, 'rgba(255,255,255,0.32)');
+        gradient.addColorStop(1, 'rgba(255,255,255,0)');
+
+        ctx.strokeStyle = gradient;
+        ctx.globalAlpha = Math.max(0, star.opacity);
+        ctx.lineWidth = star.width;
+        ctx.beginPath();
+        ctx.moveTo(star.x, star.y);
+        ctx.lineTo(tailX, tailY);
+        ctx.stroke();
+
+        ctx.fillStyle = star.color;
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.width * 1.2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+
+        if (
+          star.opacity <= 0
+          || star.x < -200
+          || star.x > width + 200
+          || star.y > height + 200
+        ) {
+          shootingStars.splice(index, 1);
+        }
       }
     }
 
@@ -582,7 +695,7 @@ const AIBackground = ({ profile }) => {
         ctx.fill();
         ctx.globalAlpha = 1;
 
-        if (config.showLabels && index % 3 === 0) {
+        if (config.showLabels && (node.type === 'mcp' || node.type === 'query' || index % 3 === 0)) {
           ctx.fillStyle = 'rgba(148, 163, 184, 0.4)';
           ctx.font = '9px monospace';
           ctx.fillText(node.label, node.x + node.radius + 6, node.y + 3);
@@ -622,6 +735,14 @@ const AIBackground = ({ profile }) => {
         updateAndDrawParticles(dt, config);
       }
 
+      if (config.enableShootingStars) {
+        if (shootingStars.length < config.starLimit && now - lastStarTime > 2200 + Math.random() * 2600) {
+          spawnShootingStar();
+          lastStarTime = now;
+        }
+        updateAndDrawShootingStars(dt);
+      }
+
       if (config.enableWaves && now - lastQueryTime > 6000) {
         triggerSemanticQuery();
         lastQueryTime = now;
@@ -646,7 +767,7 @@ const AIBackground = ({ profile }) => {
 
     setCanvasTheme();
     handleResize();
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize, { passive: true });
     document.addEventListener('visibilitychange', handleVisibilityChange);
     themeObserver.observe(document.documentElement, {
       attributes: true,
