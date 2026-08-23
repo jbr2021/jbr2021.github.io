@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import JBRLogo from './JBRLogo';
 
 const Navbar = ({ theme, toggleTheme }) => {
@@ -6,11 +6,37 @@ const Navbar = ({ theme, toggleTheme }) => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
+    let rafId = null;
+    let ticking = false;
+    let lastScrolledState = window.scrollY > 30;
+
+    setScrolled(lastScrolledState);
+
+    const updateScrolledState = () => {
+      ticking = false;
+      const nextScrolledState = window.scrollY > 30;
+
+      if (nextScrolledState !== lastScrolledState) {
+        lastScrolledState = nextScrolledState;
+        setScrolled(nextScrolledState);
+      }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    const handleScroll = () => {
+      if (ticking) return;
+
+      ticking = true;
+      rafId = window.requestAnimationFrame(updateScrolledState);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId !== null) {
+        window.cancelAnimationFrame(rafId);
+      }
+    };
   }, []);
 
   const scrollTo = (id) => {
@@ -62,8 +88,8 @@ const Navbar = ({ theme, toggleTheme }) => {
           {/* Right Action Controls */}
           <div className="d-flex align-items-center gap-2">
             {/* Theme Toggle Button */}
-            <button 
-              className="theme-toggle-btn rounded-circle d-flex align-items-center justify-content-center" 
+            <button
+              className="theme-toggle-btn rounded-circle d-flex align-items-center justify-content-center"
               onClick={toggleTheme}
               aria-label="Toggle dark/light mode"
               title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
@@ -76,8 +102,8 @@ const Navbar = ({ theme, toggleTheme }) => {
             </button>
 
             {/* CTA Button */}
-            <a 
-              href="#contact" 
+            <a
+              href="#contact"
               className="btn btn-sm btn-outline-primary rounded-pill d-none d-sm-inline-flex align-items-center gap-1 px-3"
               onClick={(e) => { e.preventDefault(); scrollTo('contact'); }}
             >
@@ -85,8 +111,8 @@ const Navbar = ({ theme, toggleTheme }) => {
             </a>
 
             {/* Mobile Drawer Toggle */}
-            <button 
-              className="mobile-toggle-btn d-lg-none rounded-3 border-0 bg-transparent p-2" 
+            <button
+              className="mobile-toggle-btn d-lg-none rounded-3 border-0 bg-transparent p-2"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle navigation menu"
             >
