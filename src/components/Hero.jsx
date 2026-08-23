@@ -30,7 +30,7 @@ const Hero = ({ profile }) => {
               </div>
 
               <h1 className="hero-title display-3 fw-extrabold mb-3 text-body">
-                Hi, I’m <span className="gradient-text">{personal.name || 'Jaibir Singh'}</span>
+                Hi, I'm <span className="gradient-text">{personal.name || 'Jaibir Singh'}</span>
               </h1>
 
               <p className="hero-subtitle lead mb-4 text-body-secondary style-leading">
@@ -51,9 +51,10 @@ const Hero = ({ profile }) => {
 
               {/* CTAs */}
               <div className="hero-cta d-flex flex-wrap align-items-center gap-3">
-                <a href="#experience" className="btn btn-primary btn-lg rounded-pill px-4 py-2.5 d-inline-flex align-items-center gap-2 shadow-cyan">
+                <a href="#experience" className="btn btn-outline-primary btn-lg rounded-pill px-4 py-2.5 d-inline-flex align-items-center gap-2">
+                  <i className="bi bi-briefcase"></i>
                   <span>Explore Experience</span>
-                  <i className="bi bi-arrow-right"></i>
+                  {/* <i className="bi bi-arrow-right"></i> */}
                 </a>
 
                 <a href="#ai-pipeline" className="btn btn-outline-primary btn-lg rounded-pill px-4 py-2.5 d-inline-flex align-items-center gap-2">
@@ -65,6 +66,11 @@ const Hero = ({ profile }) => {
                   <i className="bi bi-file-earmark-arrow-down-fill"></i>
                   <span>Download Resume</span>
                 </a>
+
+                <a href="#" onClick={() => setShowPhoto(!showPhoto)} className="btn btn-outline-primary btn-lg rounded-pill px-4 py-2.5 d-inline-flex align-items-center gap-2">
+                  <i className={`bi ${showPhoto ? 'bi-diagram-3-fill text-cyan' : 'bi-person-square text-primary'}`}></i>
+                  <span>{showPhoto ? 'View Agentic RAG Flow' : 'View Personal Photo'}</span>
+                </a>                
               </div>
             </div>
           </div>
@@ -72,7 +78,7 @@ const Hero = ({ profile }) => {
           {/* Right Column: Dynamic Switcher (Photo vs Azure RAG Cloud Topology Diagram) */}
           <div className="col-lg-5 text-center">
             {showPhoto ? (
-              <div className="hero-profile-wrapper position-relative mx-auto" style={{ maxWidth: '340px' }}>
+              <div className="hero-profile-wrapper position-relative mx-auto" style={{ maxWidth: '400px' }}>
                 {/* Outer Ambient Glow Ring */}
                 <div className="profile-glow-ring position-absolute top-50 start-50 translate-middle w-100 h-100 rounded-circle opacity-75 blur-3xl"></div>
                 
@@ -120,14 +126,14 @@ const Hero = ({ profile }) => {
             )}
 
             {/* Visual Mode Toggle */}
-            <button
+            {/* <button
               className="btn btn-outline-secondary rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2 mt-4"
               onClick={() => setShowPhoto(!showPhoto)}
               title="Toggle visual mode between Personal Photo and Agentic AI RAG Topology Diagram"
             >
               <i className={`bi ${showPhoto ? 'bi-diagram-3-fill text-cyan' : 'bi-person-square text-primary'}`}></i>
               <span>{showPhoto ? 'View Agentic RAG Flow' : 'View Personal Photo'}</span>
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
