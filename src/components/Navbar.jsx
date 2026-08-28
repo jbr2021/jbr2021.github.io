@@ -74,9 +74,6 @@ const Navbar = ({ theme, toggleTheme }) => {
                 <a className="nav-link" href="#skills" onClick={(e) => { e.preventDefault(); scrollTo('skills'); }}>Skills</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#backstage" onClick={(e) => { e.preventDefault(); scrollTo('backstage'); }}>Platform Mesh</a>
-              </li>
-              <li className="nav-item">
                 <a className="nav-link" href="#education" onClick={(e) => { e.preventDefault(); scrollTo('education'); }}>Education</a>
               </li>
               <li className="nav-item">
@@ -130,7 +127,6 @@ const Navbar = ({ theme, toggleTheme }) => {
             <a className="mobile-nav-link" href="#experience" onClick={(e) => { e.preventDefault(); scrollTo('experience'); }}>Experience</a>
             <a className="mobile-nav-link" href="#ai-pipeline" onClick={(e) => { e.preventDefault(); scrollTo('ai-pipeline'); }}>AI Architecture</a>
             <a className="mobile-nav-link" href="#skills" onClick={(e) => { e.preventDefault(); scrollTo('skills'); }}>Skills</a>
-            <a className="mobile-nav-link" href="#backstage" onClick={(e) => { e.preventDefault(); scrollTo('backstage'); }}>Platform Mesh</a>
             <a className="mobile-nav-link" href="#education" onClick={(e) => { e.preventDefault(); scrollTo('education'); }}>Education</a>
             <a className="mobile-nav-link" href="#contact" onClick={(e) => { e.preventDefault(); scrollTo('contact'); }}>Contact</a>
             <a className="mobile-nav-link" href="./Jaibir-Singh-Resume.pdf" download onClick={() => setMobileOpen(false)}>

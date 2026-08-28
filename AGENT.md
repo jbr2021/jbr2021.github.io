@@ -86,9 +86,8 @@ each section component            → renders from profile data
 
 **Rules:**
 - `profile.json` is the **single source of truth**. To change name, title,
-  tagline, skills, experience, education, social links, photos, or the
-  Backstage catalog, edit `profile.json` — do **not** hard-code content in
-  components.
+  tagline, skills, experience, education, social links, or photos, edit
+  `profile.json` — do **not** hard-code content in components.
 - `profileService.js` is deliberately async (simulated 10 ms delay) so it can
   later be swapped for a real API/DB **without touching any component**.
 - Components receive `profile` as a prop and use safe fallbacks
@@ -120,7 +119,7 @@ each section component            → renders from profile data
 
 ### Anchor navigation
 - Sections are identified by `id`: `hero`, `about`, `experience`,
-  `ai-pipeline`, `skills`, `backstage`, `education`, `contact`, `resume`.
+  `ai-pipeline`, `skills`, `education`, `contact`, `resume`.
 - The `Navbar` uses a `scrollTo(id)` helper that **offsets ~135px** to account
   for the fixed navbar. Keep that offset in mind if you change navbar height.
 
@@ -213,7 +212,6 @@ each section component            → renders from profile data
 | `Experience.jsx` | Timeline of roles/projects; opens `ProjectModal` on selection |
 | `AIPipelineVisualizer.jsx` | **"Live AI Agent Workflow Visualizer"** — interactive step/console simulator |
 | `Skills.jsx` | Skill bars grouped by category |
-| `BackstageCatalog.jsx` | Renders Backstage catalog data (tribes/clusters + components) |
 | `EducationCertifications.jsx` | Education & certifications |
 | `Contact.jsx` | Contact info & channels |
 | `Footer.jsx` | Footer |
@@ -298,13 +296,21 @@ npm run deploy       # gh-pages -d dist (manual deploy)
 
 ---
 
-## 11. Backstage catalog files
+## 11. Backstage catalog files (currently unrendered)
 
-- `org.yaml` and `components.yaml` are **Backstage entity catalog** example
-  data (groups/teams and components). They are mirrored in
-  `profile.json` → `backstageCatalog` and rendered by `BackstageCatalog.jsx`.
-- Keep `org.yaml` / `components.yaml` and the `profile.json` catalog data in
-  sync if you add/remove entries.
+- The **"Backstage IDP Platform"** section (`BackstageCatalog.jsx`, section id
+  `backstage`, nav label "Platform Mesh") has been **removed** from the site,
+  together with its desktop and mobile `Navbar` links. Do **not** re-add it
+  unless explicitly asked.
+- `org.yaml`, `components.yaml`, and `profile.json` → `backstageCatalog` are
+  now **orphaned** — nothing imports or renders them. They mirror a client's
+  internal org structure, so treat them as sensitive (see "Client
+  confidentiality" in §5); prefer deleting them over extending them.
+- Other Backstage **mentions** are intentionally kept — the `Backstage IDP`
+  tech pill, the `Backstage IDP (Catalog, Scaffolder, TechDocs)` skill bar, the
+  "Internal Developer Portal (Backstage)" experience entry, and the
+  `platformLabel` in `AIBackground.jsx`. Those describe skills and experience,
+  not the removed section.
 
 ---
 
