@@ -265,23 +265,5 @@
       "badge": "Undergraduate Degree",
       "icon": "bi-mortarboard-fill text-primary"
     }
-  ],
-  "backstageCatalog": {
-    "tribes": [
-      { "name": "Banker Experience Tribe", "type": "Tribe", "parent": "HCL Technologies / ANZ" },
-      { "name": "Business Banker Desktop", "type": "Cluster", "parent": "Banker Experience Tribe" },
-      { "name": "KYC & Onboarding", "type": "Cluster", "parent": "Banker Experience Tribe" },
-      { "name": "Branch", "type": "Cluster", "parent": "Banker Experience Tribe" },
-      { "name": "Contact Centre", "type": "Cluster", "parent": "Banker Experience Tribe" },
-      { "name": "CRM", "type": "Cluster", "parent": "Banker Experience Tribe" }
-    ],
-    "components": [
-      { "name": "reference-service", "system": "csp", "type": "service", "owner": "platform-acceleration", "tech": "Java / Spring", "description": "Core reference data service across banking platform" },
-      { "name": "audit-service", "system": "csp", "type": "service", "owner": "platform-acceleration", "tech": "Java / Event Bus", "description": "Compliance and audit event logging microservice" },
-      { "name": "feature-toggle-services", "system": "csp", "type": "service", "owner": "business-banker-desktop", "tech": "Java / Config", "description": "Dynamic feature management and rollout flag platform" },
-      { "name": "comment-service", "system": "csp", "type": "service", "owner": "business-banker-desktop", "tech": "Java", "description": "Collaborative banker comment & notes microservice" },
-      { "name": "shoppingcart", "system": "csp", "type": "service", "owner": "aryabhata-squad", "tech": "Java", "description": "Banking product application shopping cart workflow" },
-      { "name": "address-service", "system": "csp", "type": "service", "owner": "discovery-banker-desktop", "tech": "Java", "description": "Address validation and geolocation lookup component" }
-    ]
-  }
+  ]
 }

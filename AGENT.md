@@ -46,8 +46,6 @@ jbr2021.github.io/
 ├── vite.config.js              # Vite config — IMPORTANT: base: './'
 ├── package.json                # Scripts + dependencies
 ├── .github/workflows/main.yml  # GitHub Actions deploy to GitHub Pages
-├── components.yaml             # Backstage "Component" catalog example data
-├── org.yaml                    # Backstage "Group" catalog example data
 ├── public/                     # Static assets copied verbatim to dist/
 │   ├── Jaibir-Singh-Resume.pdf # GENERATED resume (see §7 — do not hand-edit)
 │   ├── favicon.svg / favicon.png / apple-touch-icon.png
@@ -195,8 +193,10 @@ each section component            → renders from profile data
   `shortProjectName()` in `AIBackground.jsx` (its matchers key off the title
   string), `AIPipelineVisualizer.jsx` if the project has a pipeline, and
   `scripts/generate_resume.py` output — then **regenerate the PDF** (§7).
-- Do **not** add client names back in comments, commit messages, `AGENT.md`,
-  `org.yaml`, or `components.yaml`.
+- Do **not** add client names back in comments, commit messages, or
+  `AGENT.md`, and do **not** re-introduce a client's internal org structure
+  (tribe/squad names, service catalogs, internal Jira keys) anywhere in the
+  repo.
 
 ---
 
@@ -296,16 +296,22 @@ npm run deploy       # gh-pages -d dist (manual deploy)
 
 ---
 
-## 11. Backstage catalog files (currently unrendered)
+## 11. Backstage catalog (removed)
 
 - The **"Backstage IDP Platform"** section (`BackstageCatalog.jsx`, section id
   `backstage`, nav label "Platform Mesh") has been **removed** from the site,
   together with its desktop and mobile `Navbar` links. Do **not** re-add it
   unless explicitly asked.
-- `org.yaml`, `components.yaml`, and `profile.json` → `backstageCatalog` are
-  now **orphaned** — nothing imports or renders them. They mirror a client's
-  internal org structure, so treat them as sensitive (see "Client
-  confidentiality" in §5); prefer deleting them over extending them.
+- Its data sources were **deleted** as well: `org.yaml`, `components.yaml`, and
+  the `backstageCatalog` block in `profile.json`. They mirrored a client's
+  internal org structure (tribe/squad names, service catalog, internal Jira
+  keys) and had no remaining consumer. They remain in git history if genuinely
+  needed — find the deleting commit with
+  `git log --diff-filter=D --oneline -- org.yaml`, then restore with
+  `git show <commit>^:org.yaml`. Re-check anything recovered against the
+  confidentiality rules in §5 **before** committing it.
+- `profile.json` top-level keys are now: `personal`, `summary`, `highlights`,
+  `skills`, `experience`, `education`.
 - Other Backstage **mentions** are intentionally kept — the `Backstage IDP`
   tech pill, the `Backstage IDP (Catalog, Scaffolder, TechDocs)` skill bar, the
   "Internal Developer Portal (Backstage)" experience entry, and the
