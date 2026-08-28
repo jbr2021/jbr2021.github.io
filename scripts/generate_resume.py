@@ -153,7 +153,7 @@ def main():
     story.append(experience_entry(
         "HCL Technologies", "Technical Specialist", "Sep 2021 — Dec 2025",
         "Sector 126, Noida, Uttar Pradesh, India",
-        "Delivered AI engineering and cloud architecture initiatives for premier international clients including the World Bank Group and ANZ Bank.",
+        "Delivered AI engineering and cloud architecture initiatives for premier international clients, including a multilateral development institution and ANZ Bank.",
         [experience[0]["projects"][2], experience[0]["projects"][4], experience[0]["projects"][5]],
     ))
     story.append(experience_entry(

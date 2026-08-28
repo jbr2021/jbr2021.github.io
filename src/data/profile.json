@@ -112,50 +112,50 @@
       "role": "Senior Technical Specialist",
       "period": "Jan 2026 — Present",
       "location": "Sector 126, Noida, Uttar Pradesh, India",
-      "description": "Leading AI engineering and cloud architecture initiatives for premier international clients including the World Bank Group and ANZ Bank.",
+      "description": "Leading AI engineering and cloud architecture initiatives for premier international clients, including a multilateral development institution and ANZ Bank.",
       "projects": [
         {
-          "title": "Review Agent",
-          "summary": "AI Agent-powered document review agent that validates up to 15 uploaded documents (20 MB each), including two required Word primary documents. Configurable rules are evaluated per primary document with live, rule-by-rule Pass/Fail results, concise summaries, and a Word report with tracked changes.",
+          "title": "Document Compliance Review Agent",
+          "summary": "AI Agent-powered document review service that validates batches of uploaded documents, including mandatory Word primary documents. Configurable rules are evaluated per primary document with live, rule-by-rule Pass/Fail results, concise summaries, and a Word report with tracked changes.",
           "technologies": ["Angular", "Python", "MS SQL", "Azure Blob Storage", "Azure OpenAI", "Azure Web Apps", "Azure Document Intelligence", "RAG", "GenAI", "AI Agent", "Chatbot"],
           "badge": "AI Agent"
         },
         {
-          "title": "Supplier Chatbot",
-          "summary": "Agentic AI-powered supplier support chatbot that helps suppliers understand bank policies for supplies and tenders. LangGraph intelligently routes queries to Azure AI Search to retrieve relevant, grounded guidance.",
+          "title": "Procurement Policy Assistant",
+          "summary": "Agentic AI-powered support assistant that helps external stakeholders understand procurement, supply, and tender policies. LangGraph intelligently routes queries to Azure AI Search to retrieve relevant, grounded guidance.",
           "technologies": ["Angular", "Python", "SharePoint", "Azure AI Search", "Azure Blob Storage", "Azure OpenAI", "Azure Web Apps", "PostgreSQL", "LangGraph", "Agentic AI"],
           "badge": "Agentic AI"
         },
         {
-          "title": "Project Approval Document (PAD)",
-          "client": "World Bank Group",
-          "summary": "Generate a structured 15-section approval document using AI-powered content generation. Each section is created from user prompts, automatically compiled into a single document with an indexed table of contents, and made available for download.",
+          "title": "Structured Approval Document Generator",
+          "client": "Multilateral Development Institution",
+          "summary": "Generates a structured multi-section approval document using AI-powered content generation. Each section is created from user prompts, automatically compiled into a single document with an indexed table of contents, and made available for download.",
           "technologies": ["Azure OpenAI (gpt-5)", ".NET Core", "Python FastAPI", "Aspose", "Blob Storage", "NumPy", "MS SQL Server", "Azure Search Index", "AWS Open Search"],
           "badge": "Generative AI"
         },
         {
-          "title": "Implementation Status and Results Reports (ISR)",
-          "client": "World Bank Group",
-          "summary": "AI Agent-based project built with LangGraph/StateGraph and a simple node workflow to monitor, track, and analyze issues across international projects, enabling more effective management and resolution strategies.",
+          "title": "Portfolio Monitoring & Results Agent",
+          "client": "Multilateral Development Institution",
+          "summary": "AI Agent-based system built with LangGraph/StateGraph and a simple node workflow to monitor, track, and analyze issues across a portfolio of international programs, enabling more effective management and resolution strategies.",
           "technologies": ["LangGraph", "StateGraph", "Databricks", "Blob Storage", "MS SQL Server", "Python FastAPI", "Angular", "Timer-triggered Azure Functions", "Azure OpenAI GPT-5", "Aspose library"],
           "badge": "AI Agent"
         },
         {
-          "title": "Document Review Tool (DRT)",
-          "client": "World Bank Group",
+          "title": "Compliance Language Screening Tool",
+          "client": "Multilateral Development Institution",
           "summary": "A compliance-focused application to review uploaded documents (Word, PDF, PPT). It detects and highlights sensitive words, provides recommendations for better alternatives, adds explanatory notes, and generates a summary of sensitive words used. It also presents a tabular report of sensitive keywords with corresponding page numbers.",
           "technologies": ["Angular", ".NET Core", "Azure Service Bus", "Azure Functions", "Blob Storage", "MS SQL Server (C#)", "Azure OpenAI GPT-5", "Aspose library"],
           "badge": "Compliance AI"
         },
         {
-          "title": "Customize Microsoft App",
+          "title": "Microsoft 365 Productivity Integrator",
           "summary": "Microsoft integration application that surfaces Planner, Lists, and Teams information and enables users to create or clone existing Planner and List items through Microsoft Graph APIs.",
           "technologies": ["Angular", ".NET", "Azure Web Apps", "Microsoft Graph APIs"],
           "badge": "Microsoft Integration"
         },
         {
-          "title": "Global Mobility Portal (GMP)",
-          "client": "World Bank Group",
+          "title": "Global Mobility Knowledge Portal",
+          "client": "Multilateral Development Institution",
           "summary": "A knowledge and guidance portal for employees traveling abroad, providing detailed information about processes, education, workspace setup, and key contacts.",
           "technologies": ["SharePoint (folders & collections)", "Azure Search Index", "Azure Functions", "Blob Storage", "Aspose library", ".NET Core"],
           "badge": "RAG Portal"
@@ -174,7 +174,7 @@
       "role": "Technical Specialist",
       "period": "Sep 2021 — Dec 2025",
       "location": "Sector 126, Noida, Uttar Pradesh, India",
-      "description": "Delivered AI engineering and cloud architecture initiatives for premier international clients including the World Bank Group and ANZ Bank.",
+      "description": "Delivered AI engineering and cloud architecture initiatives for premier international clients, including a multilateral development institution and ANZ Bank.",
       "projects": []
     },
     {

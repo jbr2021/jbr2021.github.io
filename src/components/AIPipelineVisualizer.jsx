@@ -3,40 +3,40 @@ import React, { useState, useEffect, useRef } from 'react';
 // Static pipeline definitions (hoisted out of the component so they are not
 // recreated on every render, which keeps effect deps stable).
 const PIPELINES = {
-  reviewAgent: {
-    title: 'Review Agent',
-    shortTitle: 'Review Agent',
+  docReviewAgent: {
+    title: 'Document Compliance Review Agent',
+    shortTitle: 'Doc Review Agent',
     category: 'AI Agent',
     tech: 'Angular • Python • Azure Document Intelligence • Azure OpenAI • RAG',
     steps: [
-      { label: 'Secure Upload Intake', desc: 'Accepting up to 15 documents (20 MB each), with two required Word primary documents' },
+      { label: 'Secure Upload Intake', desc: 'Accepting a batch of uploaded documents, including mandatory Word primary documents' },
       { label: 'Document Intelligence', desc: 'Extracting content and structure from Word and PDF files for review' },
       { label: 'Rule-by-Rule Validation', desc: 'Evaluating configurable primary-document rules and streaming Pass/Fail results live' },
       { label: 'Tracked Report Output', desc: 'Generating summaries and Word tracked changes with the review report' }
     ]
   },
-  supplierChatbot: {
-    title: 'Supplier Chatbot',
-    shortTitle: 'Supplier Chatbot',
+  procurementAssistant: {
+    title: 'Procurement Policy Assistant',
+    shortTitle: 'Procurement Assistant',
     category: 'Agentic AI',
     tech: 'Angular • Python • LangGraph • Azure AI Search • Azure OpenAI • PostgreSQL',
     steps: [
-      { label: 'Supplier Query Intake', desc: 'Receiving a question about bank supply or tender policies' },
+      { label: 'Policy Query Intake', desc: 'Receiving a question about procurement, supply, and tender policies' },
       { label: 'LangGraph Routing', desc: 'Routing intent through the agentic workflow to the appropriate retrieval path' },
       { label: 'Grounded Policy Retrieval', desc: 'Searching SharePoint-backed Azure AI Search content for relevant guidance' },
-      { label: 'Response & Follow-up', desc: 'Delivering a context-aware answer and handling the next supplier question' }
+      { label: 'Response & Follow-up', desc: 'Delivering a context-aware answer and handling the next policy question' }
     ]
   },
-  isrAgent: {
-    title: 'ISR AI Agent',
-    shortTitle: 'ISR AI Agent',
+  portfolioAgent: {
+    title: 'Portfolio Monitoring & Results Agent',
+    shortTitle: 'Portfolio Agent',
     category: 'AI Agent',
     tech: 'Angular • Python FastAPI • LangGraph/StateGraph • Azure OpenAI • MS SQL',
     steps: [
       { label: 'Issue Data Intake', desc: 'Collecting project issues, updates, and supporting information' },
       { label: 'StateGraph Workflow', desc: 'Moving data through a simple node-based AI agent workflow' },
       { label: 'Issue Analysis', desc: 'Identifying priority issues, patterns, and recommended resolution actions' },
-      { label: 'ISR Insight Delivery', desc: 'Publishing actionable project monitoring and status insights' }
+      { label: 'Monitoring Insight Delivery', desc: 'Publishing actionable portfolio monitoring and status insights' }
     ]
   }
 };
@@ -44,11 +44,11 @@ const PIPELINES = {
 const IDLE_LOGS = [
   'AI agent workspace initialized. Azure OpenAI connected.',
   'Azure AI Search index ready for grounded retrieval.',
-  'Review and supplier support workflows are standing by.'
+  'Document review and procurement support workflows are standing by.'
 ];
 
 const AIPipelineVisualizer = () => {
-  const [activePipeline, setActivePipeline] = useState('reviewAgent');
+  const [activePipeline, setActivePipeline] = useState('docReviewAgent');
   const [isRunning, setIsRunning] = useState(false);
   const [logs, setLogs] = useState(IDLE_LOGS);
   // Single source of truth for the current step index:
@@ -117,7 +117,7 @@ const AIPipelineVisualizer = () => {
             <div className="badge-pill mb-2">Interactive AI Agent Lab</div>
             <h2 className="section-title text-body">Live AI Agent Workflow Visualizer</h2>
             <p className="section-subtitle text-body-secondary mb-0">
-              Simulate production-grade AI Agent and Agentic AI workflows for document validation, supplier support, and project insights.
+              Simulate production-grade AI Agent and Agentic AI workflows for document validation, procurement policy support, and portfolio insights.
             </p>
           </div>
         </div>

@@ -12,21 +12,21 @@ const Resume = () => {
 
           <ul>
             <li>
-              <strong>Lead Developer at World Bank Group</strong><br />
-              <strong>Project Approval Document (PAD)</strong>: Generate a structured 15-section approval document using AI-powered content generation. 
+              <strong>Lead Developer — Multilateral Development Institution</strong><br />
+              <strong>Structured Approval Document Generator</strong>: Generates a structured multi-section approval document using AI-powered content generation. 
               Each section is created from user prompts, automatically compiled into a single document with an indexed table of contents, and made available for download.<br />
               <span className="tech">Tech: Azure OpenAI (gpt-4o), .NET Core, Python FastAPI, Aspose, Blob storage, NumPy, MS SQL Server, Azure Search Index, AWS Open Search</span>
             </li>
             <li>
-              <strong>Implementation Status and Results Reports (ISR)</strong>: A system designed to monitor, track, and analyze issues across multiple international projects, enabling better management and resolution strategies.<br />
+              <strong>Portfolio Monitoring &amp; Results Agent</strong>: An AI Agent-based system designed to monitor, track, and analyze issues across a portfolio of international programs, enabling better management and resolution strategies.<br />
               <span className="tech">Tech: Databricks, Blob Storage, MS SQL Server, Python FastAPI, Angular, Timer-triggered Azure Functions, Azure OpenAI GPT-4o, Aspose library</span>
             </li>
             <li>
-              <strong>Document Review Tool (DRT)</strong>: A compliance-focused application to review uploaded documents (Word, PDF, PPT). It detects and highlights sensitive words, provides recommendations for better alternatives, adds explanatory notes, and generates a summary of sensitive words used. It also presents a tabular report of sensitive keywords with corresponding page numbers.<br />
+              <strong>Compliance Language Screening Tool</strong>: A compliance-focused application to review uploaded documents (Word, PDF, PPT). It detects and highlights sensitive words, provides recommendations for better alternatives, adds explanatory notes, and generates a summary of sensitive words used. It also presents a tabular report of sensitive keywords with corresponding page numbers.<br />
               <span className="tech">Tech: Angular, .NET Core, Azure Service Bus, Azure Functions, Blob Storage, MS SQL Server (C#), Azure OpenAI GPT-4o, Aspose library</span>
             </li>
             <li>
-              <strong>Global Mobility Portal (GMP)</strong>: A knowledge and guidance portal for employees traveling abroad, providing detailed information about processes, education, workspace setup, and key contacts.<br />
+              <strong>Global Mobility Knowledge Portal</strong>: A knowledge and guidance portal for employees traveling abroad, providing detailed information about processes, education, workspace setup, and key contacts.<br />
               <span className="tech">Tech: SharePoint (folders &amp; collections), Azure Search Index, Azure Functions, Blob Storage, Aspose library, .NET Core</span>
             </li>
             <li>

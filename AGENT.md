@@ -149,7 +149,7 @@ each section component            → renders from profile data
   `Vector Index`, `Svc Bus`, `Eval + Trace`) over long prose. The goal is that
   a viewer can immediately associate the graph with a real Agentic AI workflow.
 - Agent/project labels should be based on real portfolio content where possible
-  (e.g. `Review Agent`, `Supplier Bot`, `ISR Agent`). If profile data changes,
+  (e.g. `Doc Review Agent`, `Procurement Bot`, `Portfolio Agent`). If profile data changes,
   update the workflow labels via profile-derived logic before hard-coding new
   names.
 - Node color semantics are meaningful and should stay consistent unless the
@@ -180,6 +180,24 @@ each section component            → renders from profile data
 ### Do NOT commit
 - `dist/`, `node_modules/`, `.env*` — all gitignored. Never commit build output
   or dependencies.
+
+### Client confidentiality (IMPORTANT)
+- This portfolio is **public**. Client engagements must be described **without
+  naming the client or its internal project codes.**
+- Refer to clients by **sector**, not name — e.g. `Multilateral Development
+  Institution`. Use **descriptive-generic** project titles (e.g. `Document
+  Compliance Review Agent`, `Procurement Policy Assistant`, `Portfolio
+  Monitoring & Results Agent`) instead of the client's internal product names
+  or acronyms.
+- Keep summaries **technical** (architecture, stack, outcome) and drop
+  client-specific business rules, document-type names, and internal volume
+  limits.
+- When you rename a project in `profile.json`, you must also update
+  `shortProjectName()` in `AIBackground.jsx` (its matchers key off the title
+  string), `AIPipelineVisualizer.jsx` if the project has a pipeline, and
+  `scripts/generate_resume.py` output — then **regenerate the PDF** (§7).
+- Do **not** add client names back in comments, commit messages, `AGENT.md`,
+  `org.yaml`, or `components.yaml`.
 
 ---
 
@@ -236,8 +254,8 @@ each section component            → renders from profile data
 This is the most stateful component. It was refactored to fix step-counter bugs.
 Understand the invariants **before** touching it:
 
-- There are three pipelines (`PIPELINES`): `reviewAgent`, `supplierChatbot`,
-  `isrAgent`, each with exactly **4 steps**.
+- There are three pipelines (`PIPELINES`): `docReviewAgent`, `procurementAssistant`,
+  `portfolioAgent`, each with exactly **4 steps**.
 - The step index is driven by a **single source of truth** — the `activeStep`
   state — which is **bounded** by `total` (steps length). `[STEP n/N]` can
   never exceed `N/N`.
