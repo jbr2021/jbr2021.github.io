@@ -4,7 +4,6 @@ import Hero from './components/Hero';
 import About from './components/About';
 import AIPipelineVisualizer from './components/AIPipelineVisualizer';
 import Experience from './components/Experience';
-import BackstageCatalog from './components/BackstageCatalog';
 import Skills from './components/Skills';
 import EducationCertifications from './components/EducationCertifications';
 import Contact from './components/Contact';
@@ -84,9 +83,6 @@ function App() {
 
         {/* Skills Section */}
         <Skills profile={profile} />
-
-        {/* Enterprise Backstage Platform Catalog */}
-        <BackstageCatalog profile={profile} />
 
         {/* Education & Certifications */}
         <EducationCertifications profile={profile} />

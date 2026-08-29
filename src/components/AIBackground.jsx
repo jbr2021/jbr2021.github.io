@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef } from 'react';
 
-const DEFAULT_AGENT_LABELS = ['Review Agent', 'Supplier Bot', 'ISR Agent'];
+const DEFAULT_AGENT_LABELS = ['Doc Review Agent', 'Procurement Bot', 'Portfolio Agent'];
 
 const truncateText = (value, max = 26) => {
   if (!value) return '';
@@ -19,13 +19,14 @@ const unique = (items) => [
 const shortProjectName = (value = '') => {
   const lower = value.toLowerCase();
 
-  if (lower.includes('implementation status') || lower.includes('(isr)')) return 'ISR Agent';
-  if (lower.includes('supplier chatbot')) return 'Supplier Bot';
-  if (lower.includes('review agent')) return 'Review Agent';
-  if (lower.includes('document review tool')) return 'DRT';
-  if (lower.includes('project approval document') || lower.includes('(pad)')) return 'PAD Gen';
+  if (lower.includes('portfolio monitoring')) return 'Portfolio Agent';
+  if (lower.includes('procurement policy')) return 'Procurement Bot';
+  if (lower.includes('compliance language')) return 'Language Screen';
+  if (lower.includes('document compliance review')) return 'Doc Review Agent';
+  if (lower.includes('structured approval document')) return 'Approval Doc Gen';
   if (lower.includes('internal developer portal') || lower.includes('backstage')) return 'Backstage IDP';
-  if (lower.includes('global mobility')) return 'GMP RAG';
+  if (lower.includes('global mobility')) return 'Mobility RAG';
+  if (lower.includes('microsoft 365')) return 'M365 Integrator';
 
   return truncateText(value, 18);
 };

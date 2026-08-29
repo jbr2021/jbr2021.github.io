@@ -46,8 +46,6 @@ jbr2021.github.io/
 ├── vite.config.js              # Vite config — IMPORTANT: base: './'
 ├── package.json                # Scripts + dependencies
 ├── .github/workflows/main.yml  # GitHub Actions deploy to GitHub Pages
-├── components.yaml             # Backstage "Component" catalog example data
-├── org.yaml                    # Backstage "Group" catalog example data
 ├── public/                     # Static assets copied verbatim to dist/
 │   ├── Jaibir-Singh-Resume.pdf # GENERATED resume (see §7 — do not hand-edit)
 │   ├── favicon.svg / favicon.png / apple-touch-icon.png
@@ -86,9 +84,8 @@ each section component            → renders from profile data
 
 **Rules:**
 - `profile.json` is the **single source of truth**. To change name, title,
-  tagline, skills, experience, education, social links, photos, or the
-  Backstage catalog, edit `profile.json` — do **not** hard-code content in
-  components.
+  tagline, skills, experience, education, social links, or photos, edit
+  `profile.json` — do **not** hard-code content in components.
 - `profileService.js` is deliberately async (simulated 10 ms delay) so it can
   later be swapped for a real API/DB **without touching any component**.
 - Components receive `profile` as a prop and use safe fallbacks
@@ -120,7 +117,7 @@ each section component            → renders from profile data
 
 ### Anchor navigation
 - Sections are identified by `id`: `hero`, `about`, `experience`,
-  `ai-pipeline`, `skills`, `backstage`, `education`, `contact`, `resume`.
+  `ai-pipeline`, `skills`, `education`, `contact`, `resume`.
 - The `Navbar` uses a `scrollTo(id)` helper that **offsets ~135px** to account
   for the fixed navbar. Keep that offset in mind if you change navbar height.
 
@@ -149,7 +146,7 @@ each section component            → renders from profile data
   `Vector Index`, `Svc Bus`, `Eval + Trace`) over long prose. The goal is that
   a viewer can immediately associate the graph with a real Agentic AI workflow.
 - Agent/project labels should be based on real portfolio content where possible
-  (e.g. `Review Agent`, `Supplier Bot`, `ISR Agent`). If profile data changes,
+  (e.g. `Doc Review Agent`, `Procurement Bot`, `Portfolio Agent`). If profile data changes,
   update the workflow labels via profile-derived logic before hard-coding new
   names.
 - Node color semantics are meaningful and should stay consistent unless the
@@ -181,6 +178,26 @@ each section component            → renders from profile data
 - `dist/`, `node_modules/`, `.env*` — all gitignored. Never commit build output
   or dependencies.
 
+### Client confidentiality (IMPORTANT)
+- This portfolio is **public**. Client engagements must be described **without
+  naming the client or its internal project codes.**
+- Refer to clients by **sector**, not name — e.g. `Multilateral Development
+  Institution`. Use **descriptive-generic** project titles (e.g. `Document
+  Compliance Review Agent`, `Procurement Policy Assistant`, `Portfolio
+  Monitoring & Results Agent`) instead of the client's internal product names
+  or acronyms.
+- Keep summaries **technical** (architecture, stack, outcome) and drop
+  client-specific business rules, document-type names, and internal volume
+  limits.
+- When you rename a project in `profile.json`, you must also update
+  `shortProjectName()` in `AIBackground.jsx` (its matchers key off the title
+  string), `AIPipelineVisualizer.jsx` if the project has a pipeline, and
+  `scripts/generate_resume.py` output — then **regenerate the PDF** (§7).
+- Do **not** add client names back in comments, commit messages, or
+  `AGENT.md`, and do **not** re-introduce a client's internal org structure
+  (tribe/squad names, service catalogs, internal Jira keys) anywhere in the
+  repo.
+
 ---
 
 ## 6. Components (`src/components/`)
@@ -195,7 +212,6 @@ each section component            → renders from profile data
 | `Experience.jsx` | Timeline of roles/projects; opens `ProjectModal` on selection |
 | `AIPipelineVisualizer.jsx` | **"Live AI Agent Workflow Visualizer"** — interactive step/console simulator |
 | `Skills.jsx` | Skill bars grouped by category |
-| `BackstageCatalog.jsx` | Renders Backstage catalog data (tribes/clusters + components) |
 | `EducationCertifications.jsx` | Education & certifications |
 | `Contact.jsx` | Contact info & channels |
 | `Footer.jsx` | Footer |
@@ -236,8 +252,8 @@ each section component            → renders from profile data
 This is the most stateful component. It was refactored to fix step-counter bugs.
 Understand the invariants **before** touching it:
 
-- There are three pipelines (`PIPELINES`): `reviewAgent`, `supplierChatbot`,
-  `isrAgent`, each with exactly **4 steps**.
+- There are three pipelines (`PIPELINES`): `docReviewAgent`, `procurementAssistant`,
+  `portfolioAgent`, each with exactly **4 steps**.
 - The step index is driven by a **single source of truth** — the `activeStep`
   state — which is **bounded** by `total` (steps length). `[STEP n/N]` can
   never exceed `N/N`.
@@ -280,13 +296,27 @@ npm run deploy       # gh-pages -d dist (manual deploy)
 
 ---
 
-## 11. Backstage catalog files
+## 11. Backstage catalog (removed)
 
-- `org.yaml` and `components.yaml` are **Backstage entity catalog** example
-  data (groups/teams and components). They are mirrored in
-  `profile.json` → `backstageCatalog` and rendered by `BackstageCatalog.jsx`.
-- Keep `org.yaml` / `components.yaml` and the `profile.json` catalog data in
-  sync if you add/remove entries.
+- The **"Backstage IDP Platform"** section (`BackstageCatalog.jsx`, section id
+  `backstage`, nav label "Platform Mesh") has been **removed** from the site,
+  together with its desktop and mobile `Navbar` links. Do **not** re-add it
+  unless explicitly asked.
+- Its data sources were **deleted** as well: `org.yaml`, `components.yaml`, and
+  the `backstageCatalog` block in `profile.json`. They mirrored a client's
+  internal org structure (tribe/squad names, service catalog, internal Jira
+  keys) and had no remaining consumer. They remain in git history if genuinely
+  needed — find the deleting commit with
+  `git log --diff-filter=D --oneline -- org.yaml`, then restore with
+  `git show <commit>^:org.yaml`. Re-check anything recovered against the
+  confidentiality rules in §5 **before** committing it.
+- `profile.json` top-level keys are now: `personal`, `summary`, `highlights`,
+  `skills`, `experience`, `education`.
+- Other Backstage **mentions** are intentionally kept — the `Backstage IDP`
+  tech pill, the `Backstage IDP (Catalog, Scaffolder, TechDocs)` skill bar, the
+  "Internal Developer Portal (Backstage)" experience entry, and the
+  `platformLabel` in `AIBackground.jsx`. Those describe skills and experience,
+  not the removed section.
 
 ---
 
